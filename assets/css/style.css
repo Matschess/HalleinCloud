@@ -1,12 +1,79 @@
 body {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
   background-color: #f3f3f3;
   margin: 0;
   padding: 0; }
 
-.navbar {
-  background-color: #fff; }
-  .navbar h1 {
+.topbar {
+  background-color: #fff;
+  padding: 15px 30px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); }
+  .topbar h1 {
+    display: inline;
     margin: 0;
     padding: 0; }
+  .topbar .user {
+    float: right; }
+    .topbar .user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; }
+
+.navbar {
+  display: inline-block;
+  background-color: #2b2f38;
+  color: #fff;
+  width: 20%;
+  height: 400px; }
+  .navbar ul {
+    padding: 0; }
+    .navbar ul li {
+      list-style: none;
+      padding: 20px 30px; }
+      .navbar ul li:hover {
+        background-color: #21262f; }
+
+.container {
+  display: inline-block;
+  position: absolute;
+  width: 80%;
+  left: 20%;
+  padding: 50px; }
+  .container .dashboardBox {
+    position: relative;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    width: 30%;
+    padding: 20px;
+    margin-bottom: 50px; }
+    .container .dashboardBox .notification {
+      position: absolute;
+      font-size: 15px;
+      color: #fff;
+      top: -15px;
+      right: -15px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 50%; }
+      .container .dashboardBox .notification i {
+        font-size: 15px;
+        line-height: 30px; }
+      .container .dashboardBox .notification.alert {
+        background-color: #FF0000; }
+      .container .dashboardBox .notification.success {
+        background-color: #01DF01; }
+    .container .dashboardBox .title {
+      font-size: 20px;
+      margin-bottom: 10px; }
+    .container .dashboardBox .text {
+      font-size: 16px; }
 
 /*# sourceMappingURL=style.css.map */
