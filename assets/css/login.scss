@@ -1,0 +1,83 @@
+$primary-font: 'Roboto', sans-serif;
+
+body{
+  font-family: $primary-font;
+  background-color: #f3f3f3;
+  color: #333;
+
+h1{
+  text-align: center;
+  margin-top: 180px;
+  font-size: 55px;
+}
+
+.loginwrapper{
+  width:300px;
+  position:absolute;
+  left: 50%;
+  margin-left: -150px;
+
+}
+
+input{
+  margin-top:20px;
+  background-color: rgba(0,0,0,0.0);
+  border-color: black;
+  border: solid 1px;
+  width: 300px;
+  height: 35px;
+  border-radius: 90px;
+
+}
+
+.passwordlost{
+  font-size: 19px;
+  margin-top: 35px;
+  position: absolute;
+  margin-left: 30px;
+  text-decoration: none;
+  color: #333;
+}
+.usericon{
+  font-size:30px;
+  position:absolute;
+  margin-left: 819px;
+  margin-top:25px;
+}
+
+.passwordicon{
+  font-size:26px;
+  position:absolute;
+  margin-left: 820px;
+  margin-top:85px;
+}
+
+.doneicon{
+  font-size:48px;
+  position:absolute;
+  margin-left: 1052px;
+  margin-top:140px;
+  border: solid 1px;
+  border-radius: 100px;
+}
+
+.devs{
+  margin-top: -200px;
+  position:absolute;
+  margin-left: 1600px;
+  font-size: 20px;
+
+.we{
+  color: #333;
+  text-decoration: none;
+}
+
+.whoarewe{
+  color: #333;
+  text-decoration:none;
+}
+}
+
+
+
+}
