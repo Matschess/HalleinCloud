@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/style.css" media="screen">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-  </head>
+    </head>
   <body>
   <div class="navbar">
     <h1>Verwaltungsdashboard</h1>
