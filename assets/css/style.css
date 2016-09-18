@@ -1,57 +1,98 @@
+@font-face {
+  font-family: 'Gravity Light';
+  src: url(assets/fonts/Gravity-Light.eot), url(assets/fonts/Gravity-Light.otf); }
+@font-face {
+  font-family: 'Gravity';
+  src: url(assets/fonts/Gravity.eot), url(assets/fonts/Gravity.otf); }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Gravity Light", sans-serif;
   font-size: 15px;
   background-color: #f3f3f3;
+  color: #444;
   margin: 0;
   padding: 0; }
 
 .topbar {
   background-color: #fff;
-  padding: 15px 30px;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); }
+  height: 70px;
+  line-height: 70px;
+  padding: 0 30px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3); }
   .topbar h1 {
     display: inline;
     margin: 0;
     padding: 0; }
   .topbar .user {
-    float: right; }
+    display: inline-block;
+    position: absolute;
+    right: 20px; }
     .topbar .user img {
+      margin-left: 15px;
       width: 50px;
       height: 50px;
-      border-radius: 50%; }
+      border-radius: 50%;
+      vertical-align: middle; }
+    .topbar .user .icon {
+      width: auto;
+      height: 10px; }
+  .topbar .options {
+    display: none;
+    position: absolute;
+    width: 200px;
+    top: 70px;
+    right: 0;
+    background-color: #fff;
+    line-height: 22px;
+    z-index: 1;
+    cursor: default; }
+    .topbar .options ul {
+      padding: 0; }
+      .topbar .options ul li {
+        list-style: none;
+        padding: 5px 20px; }
+        .topbar .options ul li:hover {
+          color: #000; }
+  .topbar .user:hover + .options, .topbar .options:hover {
+    display: block; }
 
 .navbar {
   display: inline-block;
+  position: absolute;
   background-color: #2b2f38;
+  font-size: 18px;
   color: #fff;
-  width: 20%;
-  height: 400px; }
+  min-width: 20%;
+  height: calc(100% - 70px);
+  cursor: default; }
   .navbar ul {
     padding: 0; }
     .navbar ul li {
       list-style: none;
-      padding: 20px 30px; }
+      padding: 25px 30px; }
       .navbar ul li:hover {
         background-color: #21262f; }
 
 .container {
   display: inline-block;
   position: absolute;
-  width: 80%;
+  width: calc(80% - 50px * 2);
+  height: calc(100% - 70px - 100px);
   left: 20%;
   padding: 50px; }
   .container .dashboardBox {
+    display: none;
     position: relative;
     background-color: #fff;
-    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     width: 30%;
     padding: 20px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    cursor: default; }
     .container .dashboardBox .notification {
       position: absolute;
       font-size: 15px;
@@ -62,7 +103,12 @@ body {
       height: 30px;
       text-align: center;
       line-height: 30px;
-      border-radius: 50%; }
+      border-radius: 50%;
+      -webkit-transition: background-color .1s;
+      -moz-transition: background-color .1s;
+      -ms-transition: background-color .1s;
+      -o-transition: background-color .1s;
+      transition: background-color .1s; }
       .container .dashboardBox .notification i {
         font-size: 15px;
         line-height: 30px; }
@@ -75,5 +121,45 @@ body {
       margin-bottom: 10px; }
     .container .dashboardBox .text {
       font-size: 16px; }
+    .container .dashboardBox:hover .notification.alert {
+      background-color: #e60000; }
+    .container .dashboardBox:hover .notification.success {
+      background-color: #01c601; }
+    .container .dashboardBox:active {
+      cursor: move; }
+  .container .fullBox {
+    position: absolute;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    width: calc(100% - 20% - 64px - 30px);
+    height: calc(100% - 140px); }
+    .container .fullBox .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      padding: 12px 20px; }
+      .container .fullBox .title.loading {
+        background-color: #21262f;
+        color: #fff;
+        text-transform: uppercase; }
+    .container .fullBox .content {
+      padding: 20px; }
+
+.actionbar {
+  position: absolute;
+  background-color: #2b2f38;
+  color: #fff;
+  height: calc(100% - 70px);
+  right: 0; }
+  .actionbar .icon {
+    padding: 20px;
+    cursor: default; }
+    .actionbar .icon.bottom {
+      position: absolute;
+      bottom: 0; }
+    .actionbar .icon:hover {
+      background-color: #21262f; }
 
 /*# sourceMappingURL=style.css.map */
