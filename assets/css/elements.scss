@@ -1,6 +1,8 @@
 input[type=radio] {
-  position: relative;
   visibility: hidden;
+}
+label{
+  position: relative;
   &:before {
     visibility: visible;
     content: '';
@@ -8,11 +10,12 @@ input[type=radio] {
     background-color: #f2f2f2;
     width: 15px;
     height: 15px;
+    left: -20px;
     border-radius: 50%;
   }
 }
 
-input[type=radio]:checked {
+input[type=radio]:checked + label {
   &:after {
     visibility: visible;
     content: '';
@@ -20,8 +23,8 @@ input[type=radio]:checked {
     background-color: #555;
     width: 7px;
     height: 7px;
-    top: 4px;
-    left: 4px;
+    top: 2px;
+    left: -16px;
     border-radius: 50%;
   }
 }

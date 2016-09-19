@@ -10,7 +10,8 @@ body {
   background-color: #f3f3f3;
   color: #444;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  overflow: hidden; }
 
 .topbar {
   background-color: #fff;
@@ -20,10 +21,15 @@ body {
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3); }
-  .topbar h1 {
+  .topbar .burgericon {
+    display: none;
+    margin-right: 30px;
+    vertical-align: middle; }
+  .topbar .headline {
     display: inline;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    vertical-align: middle; }
   .topbar .user {
     display: inline-block;
     position: absolute;
@@ -40,20 +46,26 @@ body {
   .topbar .options {
     display: none;
     position: absolute;
-    width: 200px;
+    width: 250px;
     top: 70px;
     right: 0;
     background-color: #fff;
     line-height: 22px;
     z-index: 1;
-    cursor: default; }
+    cursor: default;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3); }
     .topbar .options ul {
       padding: 0; }
       .topbar .options ul li {
         list-style: none;
-        padding: 5px 20px; }
+        padding: 8px 30px;
+        color: #777; }
         .topbar .options ul li:hover {
           color: #000; }
+          .topbar .options ul li:hover#logout {
+            color: #FF4000; }
   .topbar .user:hover + .options, .topbar .options:hover {
     display: block; }
 
@@ -74,15 +86,25 @@ body {
       .navbar ul li:hover {
         background-color: #21262f; }
 
+.container::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 2px; }
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9; }
+
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #bebebe; }
+
 .container {
   display: inline-block;
   position: absolute;
-  width: calc(80% - 50px * 2);
-  height: calc(100% - 70px - 100px);
+  width: calc(80% - 64px - 50px * 2);
+  height: calc(100% - 70px - 80px);
   left: 20%;
-  padding: 50px; }
+  padding: 40px 50px;
+  overflow: auto; }
   .container .dashboardBox {
-    display: none;
     position: relative;
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -112,10 +134,18 @@ body {
       .container .dashboardBox .notification i {
         font-size: 15px;
         line-height: 30px; }
-      .container .dashboardBox .notification.alert {
-        background-color: #FF0000; }
       .container .dashboardBox .notification.success {
         background-color: #01DF01; }
+      .container .dashboardBox .notification.alert {
+        background-color: #FF0000; }
+      .container .dashboardBox .notification.error {
+        background-color: transparent;
+        border-radius: 0;
+        width: 0;
+        height: 0;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        border-bottom: 35px solid #f1c40f; }
     .container .dashboardBox .title {
       font-size: 20px;
       margin-bottom: 10px; }
@@ -128,14 +158,15 @@ body {
     .container .dashboardBox:active {
       cursor: move; }
   .container .fullBox {
-    position: absolute;
+    display: none;
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    width: calc(100% - 20% - 64px - 30px);
-    height: calc(100% - 140px); }
+    width: 100%;
+    height: auto;
+    min-height: 100%; }
     .container .fullBox .title {
       font-size: 20px;
       margin-bottom: 10px;

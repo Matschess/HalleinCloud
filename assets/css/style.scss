@@ -20,6 +20,7 @@ body {
   color: #444;
   margin: 0;
   padding: 0;
+  overflow: hidden; // sothat only container is scrollable
 }
 
 .topbar {
@@ -31,10 +32,17 @@ body {
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 
-  h1 {
+  .burgericon {
+    display: none;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  .headline {
     display: inline;
     margin: 0;
     padding: 0;
+    vertical-align: middle;
   }
 
   .user {
@@ -56,22 +64,30 @@ body {
   .options {
     display: none;
     position: absolute;
-    width: 200px;
+    width: 250px;
     top: 70px;
     right: 0;
     background-color: #fff;
     line-height: 22px;
     z-index: 1;
     cursor: default;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
     ul {
       padding: 0;
 
       li {
         list-style: none;
-        padding: 5px 20px;
+        padding: 8px 30px;
+        color: #777;
         &:hover {
           color: #000;
+          &#logout{
+            color: #FF4000;
+          }
         }
+
       }
     }
   }
@@ -103,16 +119,31 @@ body {
   }
 }
 
+.container::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 2px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #bebebe;
+
+}
+
 .container {
   display: inline-block;
   position: absolute;
-  width: calc(80% - 50px * 2);
-  height: calc(100% - 70px - 100px);
+  width: calc(80% - 64px - 50px * 2);
+  height: calc(100% - 70px - 80px);
   left: 20%;
-  padding: 50px;
+  padding: 40px 50px;
+  overflow: auto; // sothat only container is scrollable
 
   .dashboardBox {
-    display: none;
     position: relative;
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -146,12 +177,22 @@ body {
         line-height: 30px;
       }
 
+      &.success {
+        background-color: #01DF01;
+      }
+
       &.alert {
         background-color: #FF0000;
       }
 
-      &.success {
-        background-color: #01DF01;
+      &.error {
+        background-color: transparent;
+        border-radius: 0;
+        width: 0;
+        height: 0;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        border-bottom: 35px solid #f1c40f;
       }
     }
 
@@ -174,32 +215,33 @@ body {
         }
       }
     }
-    &:active{
+    &:active {
       cursor: move;
     }
   }
 
   .fullBox {
-    position: absolute;
+    display: none;
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    width: calc(100% - 20% - 64px - 30px);
-    height: calc(100% - 140px);
+    width: 100%;
+    height: auto;
+    min-height: 100%;
 
     .title {
       font-size: 20px;
       margin-bottom: 10px;
       padding: 12px 20px;
-      &.loading{
+      &.loading {
         background-color: #21262f;
         color: #fff;
         text-transform: uppercase;
       }
     }
-    .content{
+    .content {
       padding: 20px;
     }
 
