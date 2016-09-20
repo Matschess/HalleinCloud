@@ -1,17 +1,19 @@
 // Font-inclusions
 @font-face {
   font-family: 'Gravity Light';
-  src: url(assets/fonts/Gravity-Light.eot), /* EOT for IE */
-  url(assets/fonts/Gravity-Light.otf);
+  src: url('../../assets/fonts/Gravity-Light.eot');
+  src: url('../../assets/fonts/Gravity-Light.eot?#iefix') format('embedded-opentype'),  /* IE6-IE8 */
+  url('../../assets/fonts/Gravity-Light.woff') format('woff')
 }
 
 @font-face {
   font-family: 'Gravity';
-  src: url(assets/fonts/Gravity.eot), /* EOT for IE */
-  url(assets/fonts/Gravity.otf);
+  src: url('../../assets/fonts/Gravity-Regular.eot');
+  src: url('../../assets/fonts/Gravity-Regular.eot?#iefix') format('embedded-opentype'),  /* IE6-IE8 */
+  url('../../assets/fonts/Gravity-Regular.woff') format('woff')
 }
 
-$primary-font: 'Gravity Light', sans-serif;
+$primary-font: 'Gravity', sans-serif;
 
 body {
   font-family: $primary-font;
@@ -23,7 +25,49 @@ body {
   overflow: hidden; // sothat only container is scrollable
 }
 
+.overlay{
+  display: none;
+  background-color: #000;
+  opacity: .5;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+}
+
+.popup {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  padding: 30px;
+  &.large{
+    width: 400px;
+    height: 200px;
+    margin-left: -200px;
+    margin-top: -100px;
+  }
+  .close{
+    font-size: 30px;
+    color: #999;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: default;
+    &:hover{
+      color: #000;
+    }
+  }
+  h2{
+    font-weight: normal;
+    margin-top: 0;
+  }
+}
+
 .topbar {
+  position: relative;
   background-color: #fff;
   height: 70px;
   line-height: 70px;
@@ -31,6 +75,8 @@ body {
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  cursor: default;
 
   .burgericon {
     display: none;
@@ -39,6 +85,7 @@ body {
   }
 
   .headline {
+    font-weight: normal;
     display: inline;
     margin: 0;
     padding: 0;
@@ -51,8 +98,8 @@ body {
     right: 20px;
     img {
       margin-left: 15px;
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       vertical-align: middle;
     }
@@ -84,7 +131,7 @@ body {
         &:hover {
           color: #000;
           &#logout{
-            color: #FF4000;
+            color: #e74c3c;
           }
         }
 
@@ -99,15 +146,15 @@ body {
 .navbar {
   display: inline-block;
   position: absolute;
-  background-color: #2b2f38;
+  font-family: 'Gravity Light';
   font-size: 18px;
+  background-color: #2b2f38;
   color: #fff;
   min-width: 20%;
   height: calc(100% - 70px);
   cursor: default;
   ul {
     padding: 0;
-
     li {
       list-style: none;
       padding: 25px 30px;
@@ -186,13 +233,7 @@ body {
       }
 
       &.error {
-        background-color: transparent;
-        border-radius: 0;
-        width: 0;
-        height: 0;
-        border-left: 18px solid transparent;
-        border-right: 18px solid transparent;
-        border-bottom: 35px solid #f1c40f;
+        background-color: #F7CA18;
       }
     }
 
@@ -207,11 +248,14 @@ body {
 
     &:hover {
       .notification {
+        &.success {
+          background-color: darken(#01DF01, 5%);
+        }
         &.alert {
           background-color: darken(#FF0000, 5%);
         }
-        &.success {
-          background-color: darken(#01DF01, 5%);
+        &.error {
+          background-color: darken(#F7CA18, 5%);
         }
       }
     }

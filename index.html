@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="dashboard">
 <head>
     <meta charset="utf-8">
     <!-- Viewport for mobile devices -->
@@ -17,16 +17,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="controllers/navigationController.js"></script>
     <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" rel="stylesheet">
-    <link href="assets/css/tooltipster.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-noir.min.css"
-          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <script type="text/javascript" src="assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/tooltipster-customized.css" />
+    <script src="assets/plugins/js-cookie/js.cookie.js"></script>
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
 </head>
-<body>
+<body ng-controller="NavigationController">
+<div class="overlay"></div>
+<div class="popup large"><i class="material-icons close" ng-click="popupClose()">close</i>
+    <h2>Einstellungen</h2>
+    <content>Hier sind die Einstellungen</content>
+</div>
 <div class="topbar">
     <i class="material-icons burgericon">menu</i>
     <h1 class="headline">Verwaltungsdashboard</h1>
@@ -34,42 +41,36 @@
     <div class="user">
         Benutzername
 
-        <img src="assets/imgs/user.jpg"/>
+        <img src="assets/imgs/profile_default.png"/>
         <img class="icon" src="assets/icons/arrow_down.png"/>
     </div>
     <div class="options">
         <ul>
-            <li>Einstellungen</li>
+            <li ng-click="openSettings()">Einstellungen</li>
             <li>Nachrichten</li>
             <li id="logout">Logout</li>
         </ul>
     </div>
 </div>
 <div class="navbar">
-    <ul>
-        <li>Dashboard</li>
-        <li>Mahlzeiten</li>
-        <li>Feedback</li>
-        <li>Restaurantseite</li>
-        <li>Hilfe</li>
+    <ul ng-repeat="link in links">
+        <li>{{ link }}</li>
     </ul>
 </div>
 <div class="container">
-    <div class="dashboardBox">
+    <div id="alert1" class="dashboardBox">
         <div class="notification alert">3</div>
         <div class="title">Alert-Kasten</div>
-        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eligendi eos est ex
-            exercitationem fuga nobis provident ratione recusandae soluta?
-        </div>
+        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolores ducimus earum, enim, et eum explicabo facere ipsum iure quia quos recusandae tempora tempore! Aut eveniet ex harum molestias quos.</div>
     </div>
-    <div class="dashboardBox">
+    <div id="success1" class="dashboardBox">
         <div class="notification success"><i class="material-icons">done</i></div>
         <div class="title">Erledigt-Kasten</div>
         <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam libero quidem rem sequi
             tenetur! A?
         </div>
     </div>
-    <div class="dashboardBox">
+    <div id="error1" class="dashboardBox">
         <div class="notification error">!</div>
         <div class="title">Error-Kasten</div>
         <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem ducimus fugiat illum iure quos ratione repellendus sapiente tenetur voluptatibus.</div>
@@ -102,8 +103,8 @@
     </div>
 </div>
 <div class="actionbar">
-    <div class="icon tooltip" title="Planer"><i class="material-icons">done</i></div>
-    <div class="icon bottom"><i class="material-icons">delete</i></div>
+    <div class="icon tooltip" title="Speichern"><i class="material-icons">done</i></div>
+    <div class="icon bottom tooltip" title="Verwerfen"><i class="material-icons">delete</i></div>
 </div>
 </body>
 </html>
