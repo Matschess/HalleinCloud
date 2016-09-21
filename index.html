@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!-- Viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verwaltung</title>
+    <title>Hallein-App - Backend</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/style.css" media="screen">
     <link rel="stylesheet" href="assets/css/elements.css" media="screen">
@@ -19,18 +19,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
     <script src="controllers/navigationController.js"></script>
     <!-- Libraries -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <script type="text/javascript" src="assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/tooltipster-customized.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/tooltipster-customized.css"/>
     <script src="assets/plugins/js-cookie/js.cookie.js"></script>
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
 </head>
 <body ng-controller="NavigationController">
-<div class="overlay"></div>
-<div class="popup large"><i class="material-icons close" ng-click="popupClose()">close</i>
+<div class="overlay" ng-class="{true:'visible'}[popup]" ng-click="popupClose()"></div>
+<div class="popup large" ng-class="{true:'visible'}[popup]"><i class="material-icons close" ng-click="popupClose()">close</i>
     <h2>Einstellungen</h2>
     <content>Hier sind die Einstellungen</content>
 </div>
@@ -52,57 +54,13 @@
         </ul>
     </div>
 </div>
-<div class="navbar">
+<div class="navbar" ng-click="open()">
     <ul ng-repeat="link in links">
-        <li>{{ link }}</li>
+        <li ng-click="load(link.url, link.action)">{{ link.name }}</li>
     </ul>
 </div>
-<div class="container">
-    <div id="alert1" class="dashboardBox">
-        <div class="notification alert">3</div>
-        <div class="title">Alert-Kasten</div>
-        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolores ducimus earum, enim, et eum explicabo facere ipsum iure quia quos recusandae tempora tempore! Aut eveniet ex harum molestias quos.</div>
-    </div>
-    <div id="success1" class="dashboardBox">
-        <div class="notification success"><i class="material-icons">done</i></div>
-        <div class="title">Erledigt-Kasten</div>
-        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam libero quidem rem sequi
-            tenetur! A?
-        </div>
-    </div>
-    <div id="error1" class="dashboardBox">
-        <div class="notification error">!</div>
-        <div class="title">Error-Kasten</div>
-        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem ducimus fugiat illum iure quos ratione repellendus sapiente tenetur voluptatibus.</div>
-    </div>
-    <div class="fullBox">
-        <div class="title loading">Speichern...</div>
-        <div class="content">
-            Radio-Button:
-            <br/>
-            <input type="radio" id="mc" name="radiobutton" value="yes" checked/>
-            <label for="mc">Ja</label>
-            <input type="radio" id="vi" name="radiobutton" value="no"/>
-            <label for="vi">Nein</label>
-            <br/>
-            <br/>
-            Button:
-            <br/>
-            <button><i class="material-icons">done</i>Erstellen</button>
-            <br/>
-            <br/>
-            Textbereich:
-            <br/>
-            <textarea>Textbereich</textarea>
-            <br/>
-            <br/>
-            Tags:
-            <br/>
-            <tag>Test</tag>
-        </div>
-    </div>
-</div>
-<div class="actionbar">
+<div class="container" ng-bind-html="content"></div>
+<div class="actionbar" ng-if="action">
     <div class="icon tooltip" title="Speichern"><i class="material-icons">done</i></div>
     <div class="icon bottom tooltip" title="Verwerfen"><i class="material-icons">delete</i></div>
 </div>
