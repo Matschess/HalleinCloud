@@ -18,6 +18,26 @@ body{
   background-color: #f3f3f3;
   color: #333;
 
+
+  .devs {
+    margin-top: -200px;
+    position: absolute;
+   right: 50px;
+    font-size: 20px;
+
+
+    .we{
+      color: #333;
+      text-decoration: none;
+    }
+
+    .whoarewe{
+      color: #333;
+      text-decoration:none;
+    }
+
+  }
+
 h1{
   text-align: center;
   margin-top: 180px;
@@ -84,24 +104,6 @@ input{
 
 }
 
-
-.devs{
-  margin-top: -200px;
-  position:absolute;
-  margin-left: 1600px;
-  font-size: 20px;
-
-.we{
-  color: #333;
-  text-decoration: none;
-}
-
-.whoarewe{
-  color: #333;
-  text-decoration:none;
-}
-
-}
 
 
 
