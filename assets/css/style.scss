@@ -86,6 +86,23 @@ body {
     font-weight: normal;
     margin-top: 0;
   }
+  navigation {
+    width:
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        padding: 8px 30px;
+        color: #777;
+        &:hover {
+          color: #000;
+          &#logout {
+            color: #e74c3c;
+          }
+        }
+      }
+    }
+  }
   @keyframes popUp {
     0% {
       transform: scale(0);
@@ -199,7 +216,7 @@ body {
         font-size: 15px;
         background-color: #d82b2b;
         color: #fff;
-       width: 25px;
+        width: 25px;
         height: 25px;
         margin-left: 10px;
         text-align: center;
@@ -383,12 +400,12 @@ body {
   height: calc(100% - 70px);
   right: 0;
   transform: translateX(64px);
-  -webkit-transition: transform .4s cubic-bezier(1,0,.96,.82);
-  -moz-transition: transform .4s cubic-bezier(1,0,.96,.82);
-  -ms-transition: transform .4s cubic-bezier(1,0,.96,.82);
-  -o-transition: transform .4s cubic-bezier(1,0,.96,.82);
-  transition: transform .4s cubic-bezier(1,0,.96,.82);
-  &.visible{
+  -webkit-transition: transform .4s cubic-bezier(1, 0, .96, .82);
+  -moz-transition: transform .4s cubic-bezier(1, 0, .96, .82);
+  -ms-transition: transform .4s cubic-bezier(1, 0, .96, .82);
+  -o-transition: transform .4s cubic-bezier(1, 0, .96, .82);
+  transition: transform .4s cubic-bezier(1, 0, .96, .82);
+  &.visible {
     transform: translateX(0);
     -webkit-transition: transform .3s;
     -moz-transition: transform .3s;

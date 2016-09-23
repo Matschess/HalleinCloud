@@ -35,7 +35,12 @@
 <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
                                                                              ng-click="popupClose()">close</i>
     <h2>Einstellungen</h2>
-    <content>Hier sind die Einstellungen</content>
+    <navigation>
+        <ul>
+            <li ng-repeat="link in popupLinks">{{ link.name }}</li>
+        </ul>
+    </navigation>
+    <content></content>
 </div>
 <div class="topbar">
     <i class="material-icons burgericon">menu</i>

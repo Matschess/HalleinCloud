@@ -6,7 +6,11 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
         {name: 'Mahlzeiten', url: 'food.html', action: 'save'},
         {name: 'Feedback', url: 'feedback.html', alerts: 3, action: 'save'},
         {name: 'Restaurantseite', url: 'page.html', action: 'save'},
-        {name: 'Hilfe', url: 'help.html'},
+        {name: 'Hilfe', url: 'help.html'}
+    ];
+    $scope.popupLinks = [
+        {name: 'Passwort ändern', url: 'settings/dashboard.html'},
+        {name: 'Feedback', url: 'food.html', action: 'save'}
     ];
     var url;
     if($cookies.get('view')) {
