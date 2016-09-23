@@ -10,6 +10,17 @@ body {
   font-family: "Gravity Light";
   background-color: #f3f3f3;
   color: #333; }
+  body .devs {
+    margin-top: -200px;
+    position: absolute;
+    right: 50px;
+    font-size: 20px; }
+    body .devs .we {
+      color: #333;
+      text-decoration: none; }
+    body .devs .whoarewe {
+      color: #333;
+      text-decoration: none; }
   body h1 {
     text-align: center;
     margin-top: 180px;
@@ -51,16 +62,5 @@ body {
   body .passwordicon {
     font-size: 26px;
     display: inline-block; }
-  body .devs {
-    margin-top: -200px;
-    position: absolute;
-    margin-left: 1600px;
-    font-size: 20px; }
-    body .devs .we {
-      color: #333;
-      text-decoration: none; }
-    body .devs .whoarewe {
-      color: #333;
-      text-decoration: none; }
 
 /*# sourceMappingURL=login.css.map */
