@@ -15,7 +15,7 @@
 
 // Mixins
 @mixin animate-popIn($delay:0s) {
-  animation: popIn .5s $delay cubic-bezier(.17, .67, .33, 1.31) forwards;
+  animation: popIn .4s $delay ease forwards;
 }
 
 $primary-font: 'Gravity', sans-serif;
@@ -56,19 +56,14 @@ body {
   left: 50%;
   top: 50%;
   padding: 30px;
-  transform: scale(0);
-  -webkit-transition: transform .4s;
-  -moz-transition: transform .4s;
-  -ms-transition: transform .4s;
-  -o-transition: transform .4s;
-  transition: transform .4s;
+  opacity: 0;
+  -webkit-transition: opacity .4s;
+  -moz-transition: opacity .4s;
+  -ms-transition: opacity .4s;
+  -o-transition: opacity .4s;
+  transition: opacity .4s;
   &.visible {
-    transform: scale(1);
-    -webkit-transition: transform .4s cubic-bezier(.17, .67, .33, 1.31);
-    -moz-transition: transform .4s cubic-bezier(.17, .67, .33, 1.31);
-    -ms-transition: transform .4s cubic-bezier(.17, .67, .33, 1.31);
-    -o-transition: transform .4s cubic-bezier(.17, .67, .33, 1.31);
-    transition: transform .4s cubic-bezier(.17, .67, .33, 1.31);
+    opacity: 1;
   }
   &.large {
     width: 400px;
@@ -111,7 +106,7 @@ body {
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  z-index: 2;
+  z-index: 999;
   cursor: default;
 
   .burgericon {
@@ -153,7 +148,7 @@ body {
     right: 0;
     background-color: #fff;
     line-height: 22px;
-    z-index: 1;
+    z-index: 999;
     cursor: default;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
@@ -199,6 +194,18 @@ body {
       &:hover, &.active {
         background-color: #21262f;
       }
+      .notification {
+        display: inline-block;
+        font-size: 15px;
+        background-color: #d82b2b;
+        color: #fff;
+       width: 25px;
+        height: 25px;
+        margin-left: 10px;
+        text-align: center;
+        line-height: 25px;
+        border-radius: 50%;
+      }
     }
   }
 }
@@ -228,6 +235,7 @@ body {
   overflow: auto; // sothat only container is scrollable
 
   .dashboardBox {
+    display: inline-block;
     opacity: 0;
     position: relative;
     background-color: #fff;
@@ -238,7 +246,14 @@ body {
     width: 30%;
     padding: 20px;
     margin-bottom: 50px;
+    margin-right: 30px;
+    vertical-align: top;
     cursor: default;
+    -webkit-transition: box-shadow .3s;
+    -moz-transition: box-shadow .3s;
+    -ms-transition: box-shadow .3s;
+    -o-transition: box-shadow .3s;
+    transition: box-shadow .3s;
 
     &:nth-of-type(1) {
       @include animate-popIn();
@@ -247,6 +262,15 @@ body {
       @include animate-popIn(.05s);
     }
     &:nth-of-type(3) {
+      @include animate-popIn(.1s);
+    }
+    &:nth-of-type(4) {
+      @include animate-popIn(.1s);
+    }
+    &:nth-of-type(5) {
+      @include animate-popIn(.1s);
+    }
+    &:nth-of-type(6) {
       @include animate-popIn(.1s);
     }
 
@@ -306,15 +330,18 @@ body {
     }
 
     &:hover {
+      -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
       .notification {
         &.success {
-          background-color: darken(#01DF01, 5%);
+          background-color: darken(#01DF01, 2%);
         }
         &.alert {
-          background-color: darken(#FF0000, 5%);
+          background-color: darken(#FF0000, 2%);
         }
         &.error {
-          background-color: darken(#F7CA18, 5%);
+          background-color: darken(#F7CA18, 2%);
         }
       }
     }
@@ -355,7 +382,20 @@ body {
   color: #fff;
   height: calc(100% - 70px);
   right: 0;
-  animation: slideIn .4s;
+  transform: translateX(64px);
+  -webkit-transition: transform .4s cubic-bezier(1,0,.96,.82);
+  -moz-transition: transform .4s cubic-bezier(1,0,.96,.82);
+  -ms-transition: transform .4s cubic-bezier(1,0,.96,.82);
+  -o-transition: transform .4s cubic-bezier(1,0,.96,.82);
+  transition: transform .4s cubic-bezier(1,0,.96,.82);
+  &.visible{
+    transform: translateX(0);
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    -ms-transition: transform .3s;
+    -o-transition: transform .3s;
+    transition: transform .3s;
+  }
   .icon {
     padding: 20px;
     cursor: default;
@@ -365,14 +405,6 @@ body {
     }
     &:hover {
       background-color: #21262f;
-    }
-  }
-  @keyframes slideIn {
-    0% {
-      transform: translateX(64px);
-    }
-    100% {
-      transform: translateX(0);
     }
   }
 }
