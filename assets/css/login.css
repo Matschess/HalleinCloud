@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Gravity Light';
+  src: url("../../assets/fonts/Gravity-Light.eot");
+  src: url("../../assets/fonts/Gravity-Light.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Light.woff") format("woff"); }
+@font-face {
+  font-family: 'Gravity';
+  src: url("../../assets/fonts/Gravity-Regular.eot");
+  src: url("../../assets/fonts/Gravity-Regular.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Regular.woff") format("woff"); }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Gravity Light";
   background-color: #f3f3f3;
   color: #333; }
   body h1 {
@@ -18,7 +26,10 @@ body {
     border: solid 1px;
     width: 300px;
     height: 35px;
-    border-radius: 90px; }
+    border-radius: 90px;
+    padding-left: 50px;
+    vertical-align: middle;
+    display: inline-block; }
   body .passwordlost {
     font-size: 19px;
     margin-top: 35px;
@@ -28,19 +39,14 @@ body {
     color: #333; }
   body .usericon {
     font-size: 30px;
-    position: absolute;
-    margin-left: 819px;
-    margin-top: 25px; }
+    vertical-align: middle;
+    display: inline-block; }
   body .passwordicon {
     font-size: 26px;
-    position: absolute;
-    margin-left: 820px;
-    margin-top: 85px; }
+    position: absolute; }
   body .doneicon {
     font-size: 48px;
     position: absolute;
-    margin-left: 1052px;
-    margin-top: 140px;
     border: solid 1px;
     border-radius: 100px; }
   body .devs {

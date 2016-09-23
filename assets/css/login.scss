@@ -1,5 +1,18 @@
-$primary-font: 'Roboto', sans-serif;
 
+@font-face {
+  font-family: 'Gravity Light';
+  src: url('../../assets/fonts/Gravity-Light.eot');
+  src: url('../../assets/fonts/Gravity-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../assets/fonts/Gravity-Light.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'Gravity';
+  src: url('../../assets/fonts/Gravity-Regular.eot');
+  src: url('../../assets/fonts/Gravity-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../assets/fonts/Gravity-Regular.woff') format('woff')
+}
+$primary-font: "Gravity Light";
 body{
   font-family: $primary-font;
   background-color: #f3f3f3;
@@ -17,6 +30,7 @@ h1{
   left: 50%;
   margin-left: -150px;
 
+
 }
 
 input{
@@ -27,6 +41,9 @@ input{
   width: 300px;
   height: 35px;
   border-radius: 90px;
+  padding-left: 50px;
+  vertical-align:middle;
+  display: inline-block;
 
 }
 
@@ -40,23 +57,20 @@ input{
 }
 .usericon{
   font-size:30px;
-  position:absolute;
-  margin-left: 819px;
-  margin-top:25px;
+  vertical-align:middle;
+  display: inline-block;
+
 }
 
 .passwordicon{
   font-size:26px;
   position:absolute;
-  margin-left: 820px;
-  margin-top:85px;
+
 }
 
 .doneicon{
   font-size:48px;
   position:absolute;
-  margin-left: 1052px;
-  margin-top:140px;
   border: solid 1px;
   border-radius: 100px;
 }
@@ -76,6 +90,7 @@ input{
   color: #333;
   text-decoration:none;
 }
+
 }
 
 
