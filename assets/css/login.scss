@@ -25,10 +25,10 @@ h1{
 }
 
 .loginwrapper{
-  width:300px;
+  width:400px;
   position:absolute;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -200px;
 
 
 }
@@ -38,13 +38,10 @@ input{
   background-color: rgba(0,0,0,0.0);
   border-color: black;
   border: solid 1px;
-  width: 300px;
+  width: 80%;
   height: 35px;
   border-radius: 90px;
   padding-left: 50px;
-  vertical-align:middle;
-  display: inline-block;
-
 }
 
 .passwordlost{
@@ -56,15 +53,15 @@ input{
   color: #333;
 }
 .usericon{
-  font-size:30px;
-  vertical-align:middle;
+  font-size:26px;
   display: inline-block;
 
 }
 
 .passwordicon{
   font-size:26px;
-  position:absolute;
+  display: inline-block;
+
 
 }
 

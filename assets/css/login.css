@@ -15,21 +15,19 @@ body {
     margin-top: 180px;
     font-size: 55px; }
   body .loginwrapper {
-    width: 300px;
+    width: 400px;
     position: absolute;
     left: 50%;
-    margin-left: -150px; }
+    margin-left: -200px; }
   body input {
     margin-top: 20px;
     background-color: transparent;
     border-color: black;
     border: solid 1px;
-    width: 300px;
+    width: 80%;
     height: 35px;
     border-radius: 90px;
-    padding-left: 50px;
-    vertical-align: middle;
-    display: inline-block; }
+    padding-left: 50px; }
   body .passwordlost {
     font-size: 19px;
     margin-top: 35px;
@@ -38,12 +36,11 @@ body {
     text-decoration: none;
     color: #333; }
   body .usericon {
-    font-size: 30px;
-    vertical-align: middle;
+    font-size: 26px;
     display: inline-block; }
   body .passwordicon {
     font-size: 26px;
-    position: absolute; }
+    display: inline-block; }
   body .doneicon {
     font-size: 48px;
     position: absolute;
