@@ -25,10 +25,12 @@ h1{
 }
 
 .loginwrapper{
-  width:400px;
+  width:330px;
   position:absolute;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -180px;
+  text-align: right;
+
 
 
 }
@@ -38,23 +40,40 @@ input{
   background-color: rgba(0,0,0,0.0);
   border-color: black;
   border: solid 1px;
-  width: 80%;
+  width: calc(244px - 50px);
   height: 35px;
   border-radius: 90px;
   padding-left: 50px;
+  padding-right:50px;
+
 }
 
 .passwordlost{
   font-size: 19px;
-  margin-top: 35px;
-  position: absolute;
   margin-left: 30px;
   text-decoration: none;
   color: #333;
+  vertical-align: middle;
+  padding-right: 60px;
 }
-.usericon{
+  .doneicon{
+    font-size:48px;
+    border: solid 1px;
+    border-radius: 100px;
+    vertical-align: middle;
+
+  }
+
+  .passwordlostbox{
+    margin-top: 30px;
+
+    right:0;
+
+  }
+  .usericon{
   font-size:26px;
   display: inline-block;
+
 
 }
 
@@ -65,12 +84,6 @@ input{
 
 }
 
-.doneicon{
-  font-size:48px;
-  position:absolute;
-  border: solid 1px;
-  border-radius: 100px;
-}
 
 .devs{
   margin-top: -200px;
