@@ -14,10 +14,11 @@
 }
 $primary-font: "Gravity Light";
 body{
-  font-family: $primary-font;
   background-color: #f3f3f3;
   color: #333;
-
+  .login{
+    font-family: $primary-font;
+  }
 
   .devs {
     margin-top: -200px;

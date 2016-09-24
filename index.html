@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="dashboard">
+<html>
 <head>
     <meta charset="utf-8">
     <!-- Viewport for mobile devices -->
@@ -22,7 +22,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
-    <script src="controllers/navigationController.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <script src="controllers/main.js"></script>
     <!-- Libraries -->
     <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <script type="text/javascript" src="assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
@@ -30,67 +31,68 @@
     <script src="assets/plugins/js-cookie/js.cookie.js"></script>
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-    <link rel="stylesheet"
-          href="../../../Users/MaxiPC/Documents/MEGA/Diplomarbeit/Assets, Plugins/Examples/Translate/style.scss">
 </head>
-<body ng-controller="NavigationController">
-
-<div ng-if="!loggedIn">
-<h1>Hallein APP - Verwaltung</h1>
-<div class="devs"><a class="we" href="#">Die Entwickler</a><a class="whoarewe" href="#">| Über </a></div>
-<div class="loginwrapper">
-    <i class="material-icons usericon">person_outline</i><input class="username" type="text"/>
-    <i class="material-icons passwordicon">lock_outline</i><input class="password" type="text"/>
-    <div class="passwordlostbox" ng-click="logIn()"><a class="passwordlost" href="#">Passwort vergessen?</a><i class="material-icons doneicon">done</i></div>
-</div>
-    </div>
-
-
-
-<div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
-    <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
-                                                                                 ng-click="popupClose()">close</i>
-        <h2>Einstellungen</h2>
-        <navigation>
-            <ul>
-                <li ng-repeat="link in popupLinks" ng-click="popupLoad(link.url)"><i class="material-icons">{{ link.icon
-                    }}</i>{{ link.name }}
-                </li>
-            </ul>
-        </navigation>
-        <content ng-bind-html="popupContent"></content>
-    </div>
-    <div class="topbar">
-        <i class="material-icons burgericon">menu</i>
-        <h1 class="headline">Verwaltungsdashboard</h1>
-
-        <div class="user">
-            Benutzername
-
-            <img src="assets/imgs/profile_default.png"/>
-            <img class="icon" src="assets/icons/arrow_down.png"/>
-        </div>
-        <div class="options">
-            <ul>
-                <li ng-click="openSettings()">Einstellungen</li>
-                <li>Nachrichten</li>
-                <li id="logout" ng-click="logOut()">Logout</li>
-            </ul>
+<body ng-app="myApp">
+<div ng-controller="mainController">
+    <div class="login" ng-if="!loggedIn">
+        <h1>Hallein APP - Verwaltung</h1>
+        <div class="devs"><a class="we" href="#">Die Entwickler</a><a class="whoarewe" href="#">| Über </a></div>
+        <div class="loginwrapper">
+            <i class="material-icons usericon">person_outline</i><input class="username" type="text"/>
+            <i class="material-icons passwordicon">lock_outline</i><input class="password" type="text"/>
+            <div class="passwordlostbox" ng-click="logIn()"><a class="passwordlost" href="#">Passwort vergessen?</a><i
+                    class="material-icons doneicon">done</i></div>
         </div>
     </div>
-    <div class="overlay" ng-class="{true:'visible'}[popup]" ng-click="popupClose()"></div>
-    <div class="navbar" ng-click="open()">
-        <ul ng-repeat="link in links">
-            <li ng-click="load(link.url, link.action)">
-                {{ link.name }}
-                <div class="notification" ng-if="link.alerts">{{ link.alerts }}</div>
-            </li>
-        </ul>
-    </div>
-    <div class="container" ng-bind-html="content"></div>
-    <div class="actionbar" ng-class="{true:'visible'}[action]">
-        <div class="icon tooltip" title="Speichern"><i class="material-icons">done</i></div>
-        <div class="icon bottom tooltip" title="Verwerfen"><i class="material-icons">delete</i></div>
+
+
+    <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
+        <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
+                                                                                     ng-click="popupClose()">close</i>
+            <h2>Einstellungen</h2>
+            <navigation>
+                <ul>
+                    <li ng-repeat="link in popupLinks" ng-click="popupLoad(link.url)"><i class="material-icons">{{
+                        link.icon
+                        }}</i>{{ link.name }}
+                    </li>
+                </ul>
+            </navigation>
+            <content ng-bind-html-unsafe="popupContent"></content>
+        </div>
+        <div class="topbar">
+            <i class="material-icons burgericon">menu</i>
+            <h1 class="headline">Verwaltungsdashboard</h1>
+
+            <div class="user">
+                Benutzername
+
+                <img src="assets/imgs/profile_default.png"/>
+                <img class="icon" src="assets/icons/arrow_down.png"/>
+            </div>
+            <div class="options">
+                <ul>
+                    <li ng-click="openSettings()">Einstellungen</li>
+                    <li>Nachrichten</li>
+                    <li id="logout" ng-click="logOut()">Logout</li>
+                </ul>
+            </div>
+        </div>
+        <div class="overlay" ng-class="{true:'visible'}[popup]" ng-click="popupClose()"></div>
+        <div class="navbar" ng-click="open()">
+            <ul ng-repeat="route in routes">
+                <a href="#{{ route.path }}">
+                    <li>{{ route.name }}</li>
+                </a>
+            </ul>
+        </div>
+        <div class="container">
+            <div ng-view></div>
+        </div>
+        <div class="actionbar" ng-class="{true:'visible'}[action]">
+            <div class="icon tooltip" title="Speichern"><i class="material-icons">done</i></div>
+            <div class="icon bottom tooltip" title="Verwerfen"><i class="material-icons">delete</i></div>
+        </div>
     </div>
 </div>
 </body>

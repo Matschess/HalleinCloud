@@ -29,14 +29,12 @@ body {
   /* Chrome, Safari, Opera  */
   transform: rotateX(45deg) scale(0.6);
   transform-origin: bottom;
-  /*
   -webkit-transition: transform 2s;
   -moz-transition: transform 2s;
   -ms-transition: transform 2s;
   -o-transition: transform 2s;
   transition: transform 2s;
-  animation: translateMe 1.5s ease-in-out 2s forwards;
-  */ }
+  animation: translateMe 1.5s ease-in-out 2s forwards; }
   .wrapper.finished {
     -webkit-transform: rotateX(0deg) scale(1);
     /* Chrome, Safari, Opera  */

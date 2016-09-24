@@ -7,9 +7,10 @@
   src: url("../../assets/fonts/Gravity-Regular.eot");
   src: url("../../assets/fonts/Gravity-Regular.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Regular.woff") format("woff"); }
 body {
-  font-family: "Gravity Light";
   background-color: #f3f3f3;
   color: #333; }
+  body .login {
+    font-family: "Gravity Light"; }
   body .devs {
     margin-top: -200px;
     position: absolute;

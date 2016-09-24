@@ -10,22 +10,19 @@ myApp.config(function ($routeProvider) {
         .when('/food', {
             templateUrl: 'content/food.html',
             name: 'Mahlzeiten',
-            controller: 'foodController'
+            action: true
         })
         .when('/feedback', {
             templateUrl: 'content/feedback.html',
-            name: 'Feedback',
-            controller: 'feedbackController'
+            name: 'Feedback'
         })
         .when('/page', {
             templateUrl: 'content/page.html',
-            name: 'Restaurantseite',
-            controller: 'feedbackController'
+            name: 'Restaurantseite'
         })
         .when('/help', {
             templateUrl: 'content/help.html',
-            name: 'Hilfe',
-            controller: 'feedbackController'
+            name: 'Hilfe'
         })
         .otherwise({
             redirectTo: "/"
@@ -34,20 +31,7 @@ myApp.config(function ($routeProvider) {
 
 
 
-myApp.controller('dashboardController', function ($scope) {
-    $scope.message = 'Look! I am an about page.';
-});
-
-myApp.controller('foodController', function ($scope) {
-    alert("tet");
-});
-
-myApp.controller('feedbackController', function ($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
-});
-
-
-myApp.controller('NavigationController', function ($scope, $route, $http, $cookies) {
+myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
     $scope.routes = [];
     angular.forEach($route.routes, function (route, path) {
         if (route.name) {
@@ -57,21 +41,19 @@ myApp.controller('NavigationController', function ($scope, $route, $http, $cooki
             });
         }
     });
-    console.log($scope.routes);
+
+    // Looks if action bar is a param
+    $scope.$on('$routeChangeSuccess', function(next, current) {
+        $scope.action = current.$$route.action;
+    });
+
+
 
     $scope.popupLinks = [
         {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'},
         {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
     ];
-    var url;
-    if ($cookies.get('view')) {
-        url = $cookies.get('view');
-    }
-    else {
-        url = $scope.links[0].url;
-    }
 
-    $scope.loggedIn = true;
     $scope.logIn = function (url, action) {
         $scope.loggedIn = true;
     }
@@ -80,11 +62,6 @@ myApp.controller('NavigationController', function ($scope, $route, $http, $cooki
         $scope.loggedIn = false;
     }
 
-    $http.get('content/' + url)
-        .then(function (response) {
-            $scope.content = response.data;
-        });
-    $scope.action;
 
     $scope.openSettings = function () {
         $scope.popup = true;
@@ -111,4 +88,20 @@ myApp.controller('NavigationController', function ($scope, $route, $http, $cooki
                 $scope.popupContent = response.data;
             });
     }
+});
+
+myApp.controller('dashboardController', function ($scope) {
+    // make dashboard-boxes draggable
+    $('.dashboardBox').each(function () {
+        if (Cookies.get(this.id + '-box-position')) {
+            $(this).css('top', Cookies.getJSON(this.id + '-box-position').top + 'px');
+            $(this).css('left', Cookies.getJSON(this.id + '-box-position').left + 'px');
+        }
+    });
+    $('.dashboardBox').draggable({
+        containment: '.container',
+        stop: function (event, ui) {
+            Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
+        }
+    });
 });
