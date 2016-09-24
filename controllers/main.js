@@ -10,7 +10,8 @@ myApp.config(function ($routeProvider) {
         .when('/food', {
             templateUrl: 'content/food.html',
             name: 'Mahlzeiten',
-            action: true
+            action: true,
+            controller: 'foodController'
         })
         .when('/feedback', {
             templateUrl: 'content/feedback.html',
@@ -100,6 +101,15 @@ myApp.controller('dashboardController', function ($scope) {
     });
     $('.dashboardBox').draggable({
         containment: '.container',
+        stop: function (event, ui) {
+            Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
+        }
+    });
+});
+myApp.controller('foodController', function ($scope) {
+    // make dashboard-boxes draggable
+    $('.menuclass').draggable({
+        containment: '.content',
         stop: function (event, ui) {
             Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
         }
