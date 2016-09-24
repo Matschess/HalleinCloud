@@ -58,9 +58,15 @@ body {
     right: 0; }
   body .usericon {
     font-size: 26px;
-    display: inline-block; }
+    display: inline-block;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 5px; }
   body .passwordicon {
     font-size: 26px;
-    display: inline-block; }
+    display: inline-block;
+    position: absolute;
+    margin-top: 85px;
+    margin-left: -290px; }
 
 /*# sourceMappingURL=login.css.map */
