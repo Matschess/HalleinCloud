@@ -315,6 +315,8 @@ body {
         background-color: #f7c80e; }
     .container .dashboardBox:active, .container .feedbackBox:active {
       cursor: move; }
+  .container .view {
+    height: 100%; }
   .container .fullBox {
     background-color: #fff;
     -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
