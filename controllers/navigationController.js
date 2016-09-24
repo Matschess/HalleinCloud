@@ -20,6 +20,10 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
         url = $scope.links[0].url;
     }
 
+    $scope.logIn = function (url, action) {
+        $scope.loggedIn = true;
+    }
+
     $http.get('content/' + url)
         .then(function (response) {
             $scope.content = response.data;
