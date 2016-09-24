@@ -4,19 +4,19 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
     $scope.links = [
         {name: 'Dashboard', url: 'dashboard.html'},
         {name: 'Mahlzeiten', url: 'food.html', action: 'save'},
-        {name: 'Feedback', url: 'feedback.html', alerts: 3, action: 'save'},
+        {name: 'Feedback', url: 'feedback.html', alerts: 3},
         {name: 'Restaurantseite', url: 'page.html', action: 'save'},
         {name: 'Hilfe', url: 'help.html'}
     ];
     $scope.popupLinks = [
-        {name: 'Passwort ändern', url: 'settings/dashboard.html'},
-        {name: 'Feedback', url: 'food.html', action: 'save'}
+        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'},
+        {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
     ];
     var url;
-    if($cookies.get('view')) {
+    if ($cookies.get('view')) {
         url = $cookies.get('view');
     }
-    else{
+    else {
         url = $scope.links[0].url;
     }
 
@@ -26,7 +26,6 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
         });
     $scope.action;
 
-
     $scope.openSettings = function () {
         $scope.popup = true;
     }
@@ -34,7 +33,7 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
         $scope.popup = false;
     }
     $scope.load = function (url, action) {
-        if(action) {
+        if (action) {
             $scope.action = true;
         }
         else {
@@ -44,6 +43,12 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
             .then(function (response) {
                 $scope.content = response.data;
                 $cookies.put('view', url);
+            });
+    }
+    $scope.popupLoad = function (url) {
+        $http.get('content/' + url)
+            .then(function (response) {
+                $scope.popupContent = response.data;
             });
     }
 });
