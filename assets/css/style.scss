@@ -510,6 +510,9 @@ body {
     -o-transition: transform .3s;
     transition: transform .3s;
   }
+  a {
+    color: #fff;
+  }
   .icon {
     padding: 20px;
     cursor: default;

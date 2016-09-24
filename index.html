@@ -90,8 +90,9 @@
             <div class="view" ng-view></div>
         </div>
         <div class="actionbar" ng-class="{true:'visible'}[action]">
-            <div class="icon tooltip" title="Speichern"><i class="material-icons">done</i></div>
-            <div class="icon bottom tooltip" title="Verwerfen"><i class="material-icons">delete</i></div>
+            <div ng-repeat="action in actions">
+                <a href="#{{ action.route }}"><div class="icon tooltip" ng-class="{true:'bottom'}[action.bottom]" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></div></a>
+            </div>
         </div>
     </div>
 </div>

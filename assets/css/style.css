@@ -386,6 +386,8 @@ body {
     -ms-transition: transform .3s;
     -o-transition: transform .3s;
     transition: transform .3s; }
+  .actionbar a {
+    color: #fff; }
   .actionbar .icon {
     padding: 20px;
     cursor: default; }

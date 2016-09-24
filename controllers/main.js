@@ -10,14 +10,19 @@ myApp.config(function ($routeProvider) {
         .when('/food', {
             templateUrl: 'content/food.html',
             name: 'Mahlzeiten',
-            action: true,
+            actions: [
+                {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
+            ],
             controller: 'foodController'
         })
         .when('/food-add', {
             templateUrl: 'content/food-add.html',
             name: 'Mahlzeit erstellen',
-            action: true,
-            controller: 'foodCreateController'
+            actions: [
+                {title: 'Speichern', icon: 'done'},
+                {title: 'Löschen', icon: 'delete', bottom: true}
+            ],
+            controller: 'foodAddController'
         })
         .when('/feedback', {
             templateUrl: 'content/feedback.html',
@@ -25,6 +30,10 @@ myApp.config(function ($routeProvider) {
         })
         .when('/page', {
             templateUrl: 'content/page.html',
+            actions: [
+                {title: 'Speichern', icon: 'done'},
+                {title: 'Löschen', icon: 'delete', bottom: true}
+            ],
             name: 'Restaurantseite'
         })
         .when('/help', {
@@ -35,7 +44,6 @@ myApp.config(function ($routeProvider) {
             redirectTo: "/"
         });
 });
-
 
 
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
@@ -50,10 +58,16 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     });
 
     // Looks if action bar is a param
-    $scope.$on('$routeChangeSuccess', function(next, current) {
-        $scope.action = current.$$route.action;
-    });
+    $scope.$on('$routeChangeSuccess', function (next, current) {
 
+        if (current.$$route.actions) {
+            $scope.action = true;
+            $scope.actions = current.$$route.actions;
+        }
+        else {
+            $scope.action = false;
+        }
+    });
 
 
     $scope.popupLinks = [
