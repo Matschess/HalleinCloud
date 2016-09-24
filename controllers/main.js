@@ -13,6 +13,12 @@ myApp.config(function ($routeProvider) {
             action: true,
             controller: 'foodController'
         })
+        .when('/food-add', {
+            templateUrl: 'content/food-add.html',
+            name: 'Mahlzeit erstellen',
+            action: true,
+            controller: 'foodCreateController'
+        })
         .when('/feedback', {
             templateUrl: 'content/feedback.html',
             name: 'Feedback'
@@ -55,6 +61,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
     ];
 
+    $scope.loggedIn = true;
     $scope.logIn = function (url, action) {
         $scope.loggedIn = true;
     }
@@ -114,4 +121,8 @@ myApp.controller('foodController', function ($scope) {
             Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
         }
     });
+});
+
+myApp.controller('foodAddController', function ($scope) {
+
 });
