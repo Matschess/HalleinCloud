@@ -24,6 +24,10 @@ myApp.controller('NavigationController', function ($scope, $http, $cookies) {
         $scope.loggedIn = true;
     }
 
+    $scope.logOut = function (url, action) {
+        $scope.loggedIn = false;
+    }
+
     $http.get('content/' + url)
         .then(function (response) {
             $scope.content = response.data;
