@@ -510,5 +510,7 @@ body {
   vertical-align: middle; }
 
 /* food-add */
+.menucategory select {
+  background-color: red; }
 
 /*# sourceMappingURL=style.css.map */

@@ -41,7 +41,8 @@ body {
     height: 35px;
     border-radius: 90px;
     padding-left: 50px;
-    padding-right: 50px; }
+    padding-right: 50px;
+    outline: 0; }
   body .passwordlost {
     font-size: 19px;
     margin-left: 30px;
