@@ -108,10 +108,14 @@ myApp.controller('dashboardController', function ($scope) {
 });
 myApp.controller('foodController', function ($scope) {
     // make dashboard-boxes draggable
-    $('.menuclass').draggable({
-        containment: '.content',
-        stop: function (event, ui) {
-            Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
-        }
+    $('.menuclass').draggable();
+    $( ".day" ).droppable({
+     hoverClass: "hovered"
+
+
+
     });
+
+
+
 });
