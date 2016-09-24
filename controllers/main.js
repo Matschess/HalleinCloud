@@ -67,6 +67,13 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         else {
             $scope.action = false;
         }
+        $('.tooltip').tooltipster({
+            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+            side: 'left',
+            arrow: false,
+            delay: 100,
+            animationDuration: 200
+        });
     });
 
 
@@ -75,7 +82,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
     ];
 
-    $scope.loggedIn = true;
+
     $scope.logIn = function (url, action) {
         $scope.loggedIn = true;
     }
