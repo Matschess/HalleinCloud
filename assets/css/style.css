@@ -25,17 +25,14 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  /*
--webkit-transform: rotateX(45deg) scale(1);
+  -webkit-transform: rotateX(45deg) scale(1);
   transform: rotateX(45deg) scale(0.6);
   transform-origin: bottom;
-
   -webkit-transition: transform 2s;
   -moz-transition: transform 2s;
   -ms-transition: transform 2s;
   -o-transition: transform 2s;
-  transition: transform 2s;
-  */ }
+  transition: transform 2s; }
   .wrapper.finished {
     -webkit-transform: rotateX(0deg) scale(1);
     /* Chrome, Safari, Opera  */
