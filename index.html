@@ -5,11 +5,8 @@
     <!-- Viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hallein-App - Backend</title>
-    <!-- Stylesheets -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css" media="screen">
-    <link rel="stylesheet" href="assets/css/login.css" media="screen">
-    <link rel="stylesheet" href="assets/css/elements.css" media="screen">
-    <link rel="stylesheet" href="assets/css/queries.css" media="screen">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <!-- Icons -->
@@ -20,14 +17,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
     <script src="controllers/main.js"></script>
+    <script src="controllers/controllers.js"></script>
     <!-- Libraries -->
     <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <script type="text/javascript" src="assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/tooltipster-customized.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/tooltipster.css"/>
     <script src="assets/plugins/js-cookie/js.cookie.js"></script>
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
@@ -45,7 +42,6 @@
         </div>
     </div>
 
-
     <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
         <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
                                                                                      ng-click="popupClose()">close</i>
@@ -58,15 +54,13 @@
                     </li>
                 </ul>
             </navigation>
-            <content ng-bind-html-unsafe="popupContent"></content>
+            <content ng-include="popupContent"></content>
         </div>
         <div class="topbar">
             <i class="material-icons burgericon">menu</i>
             <h1 class="headline">Verwaltungsdashboard</h1>
-
             <div class="user">
                 Benutzername
-
                 <img src="assets/imgs/profile_default.png"/>
                 <img class="icon" src="assets/icons/arrow_down.png"/>
             </div>
@@ -91,7 +85,10 @@
         </div>
         <div class="actionbar" ng-class="{true:'visible'}[action]">
             <div ng-repeat="action in actions">
-                <a href="#{{ action.route }}"><div class="icon tooltip" ng-class="{true:'bottom'}[action.bottom]" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></div></a>
+                <a href="#{{ action.route }}">
+                    <div class="icon tooltip" ng-class="{true:'bottom'}[action.bottom]" title="{{ action.title }}"><i
+                            class="material-icons">{{ action.icon }}</i></div>
+                </a>
             </div>
         </div>
     </div>

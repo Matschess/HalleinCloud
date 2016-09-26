@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngSanitize', 'ngCookies']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 
 myApp.config(function ($routeProvider) {
     $routeProvider
@@ -17,10 +17,9 @@ myApp.config(function ($routeProvider) {
         })
         .when('/food-add', {
             templateUrl: 'content/food-add.html',
-            name: 'Mahlzeit erstellen',
             actions: [
-                {title: 'Speichern', icon: 'done'},
-                {title: 'Löschen', icon: 'delete', bottom: true}
+                {title: 'Speichern', icon: 'done', route: '/food'},
+                {title: 'Löschen', icon: 'delete', bottom: true, route: '/food'}
             ],
             controller: 'foodAddController'
         })
@@ -45,8 +44,26 @@ myApp.config(function ($routeProvider) {
         });
 });
 
-
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
+
+    $('.tooltip').tooltipster({
+        theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+        side: 'left',
+        arrow: false,
+        delay: 100,
+        animationDuration: 200
+    });
+
+    // Login
+    $scope.loggedIn = true;
+    $scope.logIn = function (url, action) {
+        $scope.loggedIn = true;
+    }
+    $scope.logOut = function (url, action) {
+        $scope.loggedIn = false;
+    }
+
+    // Save routes in an array for navigation
     $scope.routes = [];
     angular.forEach($route.routes, function (route, path) {
         if (route.name) {
@@ -57,9 +74,8 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
     });
 
-    // Looks if action bar is a param
+    // Watches, if actionbar is a param
     $scope.$on('$routeChangeSuccess', function (next, current) {
-
         if (current.$$route.actions) {
             $scope.action = true;
             $scope.actions = current.$$route.actions;
@@ -67,49 +83,20 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         else {
             $scope.action = false;
         }
-        $('.tooltip').tooltipster({
-            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-            side: 'left',
-            arrow: false,
-            delay: 100,
-            animationDuration: 200
-        });
     });
-
 
     $scope.popupLinks = [
         {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'},
         {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
     ];
 
-
-    $scope.logIn = function (url, action) {
-        $scope.loggedIn = true;
-    }
-
-    $scope.logOut = function (url, action) {
-        $scope.loggedIn = false;
-    }
-
-
+    // Popup
+    $scope.popupContent = 'content/settings/pwChange.html';
     $scope.openSettings = function () {
         $scope.popup = true;
     }
     $scope.popupClose = function () {
         $scope.popup = false;
-    }
-    $scope.load = function (url, action) {
-        if (action) {
-            $scope.action = true;
-        }
-        else {
-            $scope.action = false;
-        }
-        $http.get('content/' + url)
-            .then(function (response) {
-                $scope.content = response.data;
-                $cookies.put('view', url);
-            });
     }
     $scope.popupLoad = function (url) {
         $http.get('content/' + url)
@@ -117,39 +104,5 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
                 $scope.popupContent = response.data;
             });
     }
-});
-
-myApp.controller('dashboardController', function ($scope) {
-    // make dashboard-boxes draggable
-    $('.dashboardBox').each(function () {
-        if (Cookies.get(this.id + '-box-position')) {
-            $(this).css('top', Cookies.getJSON(this.id + '-box-position').top + 'px');
-            $(this).css('left', Cookies.getJSON(this.id + '-box-position').left + 'px');
-        }
-    });
-    $('.dashboardBox').draggable({
-        containment: '.container',
-        stop: function (event, ui) {
-            Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
-        }
-    });
-});
-myApp.controller('foodController', function ($scope) {
-    // make dashboard-boxes draggable
-    $('.menuclass').draggable({
-    hoverClass: "whiledragged"
-    });
-    $( ".day" ).droppable({
-     hoverClass: "hovered"
-    });
-
-
-
-
-
-});
-
-myApp.controller('foodAddController', function ($scope) {
-
 });
 
