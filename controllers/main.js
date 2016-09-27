@@ -46,6 +46,12 @@ myApp.config(function ($routeProvider) {
 
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
 
+    $scope.checkKey = function ($event) {
+        if ($event.keyCode == 27) {
+            $scope.popupClose();
+        }
+    }
+
     $('.tooltip').tooltipster({
         theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
         side: 'left',
@@ -85,24 +91,33 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
     });
 
-    $scope.popupLinks = [
-        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'},
-        {name: 'Feedback', icon: 'star', url: 'settings/feedbackSettings.html'}
+    var settingsLinks = [
+        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'}
     ];
 
-    // Popup
-    $scope.popupContent = 'content/settings/pwChange.html';
+    var mailerLinks = [
+        {name: 'Nachrichten', icon: 'mail_outline', url: 'mailer/mails.html'},
+        {name: 'Papierkorb', icon: 'delete', url: 'mailer/dustbin.html'},
+        {name: 'Nachricht schreiben', icon: 'add', url: 'mailer/mail-add.html'}
+    ];
+
     $scope.openSettings = function () {
         $scope.popup = true;
+        $scope.popupTitle = 'Einstellungen';
+        $scope.popupLinks = settingsLinks;
+        $scope.popupContent = 'content/' + $scope.popupLinks[0].url;
+    }
+    $scope.openMailer = function () {
+        $scope.popup = true;
+        $scope.popupTitle = 'Mailer';
+        $scope.popupLinks = mailerLinks;
+        $scope.popupContent = 'content/' + $scope.popupLinks[0].url;
     }
     $scope.popupClose = function () {
         $scope.popup = false;
     }
     $scope.popupLoad = function (url) {
-        $http.get('content/' + url)
-            .then(function (response) {
-                $scope.popupContent = response.data;
-            });
+        $scope.popupContent = 'content/' + url;
     }
 });
 

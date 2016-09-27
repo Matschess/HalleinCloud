@@ -14,7 +14,7 @@ myApp.controller('dashboardController', function ($scope) {
         }
     });
 
-    $scope.order = function() {
+    $scope.order = function () {
         $('.dashboardBox').each(function () {
             if (Cookies.get(this.id + '-box-position')) {
                 $(this).css('top', 'auto');
@@ -35,5 +35,25 @@ myApp.controller('foodController', function ($scope) {
 });
 
 myApp.controller('foodAddController', function ($scope) {
+
+});
+
+myApp.controller('pwChange', function ($scope) {
+    $scope.pwValidate = function () {
+        var pwNew = $scope.pwNew.toString();
+        $scope.pwSafety = 1;
+        if (pwNew.match(".{8}[a-z]")) {
+            $scope.pwSafety+=1;
+        }
+        if (pwNew.match("[0-9]?[A-Z]")) {
+            $scope.pwSafety++;
+        }
+        if (pwNew.match("[!\"§$%&/()=?]")) {
+            $scope.pwSafety++;
+        }
+    }
+});
+
+myApp.controller('mailController', function ($scope) {
 
 });

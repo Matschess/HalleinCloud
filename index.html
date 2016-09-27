@@ -29,8 +29,8 @@
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
 </head>
-<body ng-app="myApp">
-<div ng-controller="mainController">
+<body ng-app="myApp" ng-controller="mainController" ng-keyup="checkKey($event)">
+<div>
     <div class="login" ng-if="!loggedIn">
         <h1>Hallein APP - Verwaltung</h1>
         <div class="devs"><a class="we" href="#">Die Entwickler</a><a class="whoarewe" href="#">| Über </a></div>
@@ -45,7 +45,7 @@
     <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
         <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
                                                                                      ng-click="popupClose()">close</i>
-            <h2>Einstellungen</h2>
+            <h2>{{ popupTitle }}</h2>
             <navigation>
                 <ul>
                     <li ng-repeat="link in popupLinks" ng-click="popupLoad(link.url)"><i class="material-icons">{{
@@ -67,7 +67,7 @@
             <div class="options">
                 <ul>
                     <li ng-click="openSettings()">Einstellungen</li>
-                    <li>Nachrichten</li>
+                    <li ng-click="openMailer()">Nachrichten</li>
                     <li id="logout" ng-click="logOut()">Logout</li>
                 </ul>
             </div>
