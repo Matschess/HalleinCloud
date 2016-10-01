@@ -1,6 +1,23 @@
-<div class="fullBox">
-    <div class="title">Restaurantseite</div>
-    <div class="content">
-        Hier kann man den Auftritt gestalten
-    </div>
+<div class="left">
+    <h3>Grunddaten:</h3>
+    <input type="text" placeholder="Restaurantname"/><br/>
+    <textarea placeholder="Beschreibung"></textarea>
+    <label>
+        <input type="checkbox" value="pupilMeal">
+        Anbieter von Schülermahlzeit
+    </label>
+    <h3>Adresse:</h3>
+    <input type="text" placeholder="Straße"/><input type="text" class="short" placeholder="Hausnummer"/><br/>
+    <input type="text" class="short" placeholder="PLZ"/><input type="text" placeholder="Ort"/>
+    <h3>Kontaktdaten:</h3>
+    <input type="text" placeholder="Email-Adresse"/><br/>
+    <input type="text" placeholder="Telefonnummer"/><br/>
+    <input type="text" placeholder="Website"/><br/>
+</div>
+<div class="right">
+    <h3>Öffnungszeiten:</h3>
+    <div class="openingHours" ng-repeat="day in days" ng-class="{true:'sleep'}[day.sleep]"><label class="inline shorter">{{ day.shorthand }}</label><input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.from }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.toHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.fromHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.to }}"/><i class="material-icons tooltipRight" title="Ruhetag" ng-click="sleep($index)">block</i></div>
+    <h3>Ruhetage:</h3>
+    <div class="restDay" ng-repeat="restDay in restDays"><div>{{ restDay.fromDate }} - {{ restDay.toDate }}</div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove($index)">delete_outline</i></div>
+    <button><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
 </div>

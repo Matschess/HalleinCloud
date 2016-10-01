@@ -1,119 +1,96 @@
-
-@font-face {
-  font-family: 'Gravity Light';
-  src: url('../../assets/fonts/Gravity-Light.eot');
-  src: url('../../assets/fonts/Gravity-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../../assets/fonts/Gravity-Light.woff') format('woff')
-}
-
-@font-face {
-  font-family: 'Gravity';
-  src: url('../../assets/fonts/Gravity-Regular.eot');
-  src: url('../../assets/fonts/Gravity-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../../assets/fonts/Gravity-Regular.woff') format('woff')
-}
 $primary-font: "Gravity Light";
-body{
-  background-color: #f3f3f3;
-  color: #333;
-  .login{
-    font-family: $primary-font;
+
+.login {
+  font-family: $primary-font;
+  position: absolute;
+  width: 100%;
+  &.logout {
+    opacity: 0;
+    animation: showLogin .5s 1.5s forwards;
   }
+}
 
-  .devs {
-    margin-top: -200px;
-    position: absolute;
-   right: 50px;
-    font-size: 20px;
-
-
-    .we{
-      color: #333;
-      text-decoration: none;
-    }
-
-    .whoarewe{
-      color: #333;
-      text-decoration:none;
-    }
-
+@keyframes showLogin {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
-h1{
+.devs {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  font-size: 20px;
+  a {
+    color: #333;
+    margin: 0 5px;
+    text-decoration: none;
+    &:hover {
+      color: #000;
+      border-bottom: 1px solid #444;
+    }
+  }
+}
+
+h1 {
+  font-size: 55px;
   text-align: center;
   margin-top: 180px;
-  font-size: 55px;
 }
 
-.loginwrapper{
-  width:330px;
-  position:absolute;
+.loginwrapper {
+  position: absolute;
+  width: 330px;
   left: 50%;
-  margin-left: -180px;
+  margin-left: -165px;
   text-align: right;
 
-
-
-}
-
-input{
-  margin-top:20px;
-  background-color: rgba(0,0,0,0.0);
-  border-color: black;
-  border: solid 1px;
-  width: calc(244px - 50px);
-  height: 35px;
-  border-radius: 90px;
-  padding-left: 50px;
-  padding-right:50px;
-  outline: 0;
-
-}
-
-.passwordlost{
-  font-size: 19px;
-  margin-left: 30px;
-  text-decoration: none;
-  color: #333;
-  vertical-align: middle;
-  padding-right: 60px;
-}
-  .doneicon{
-    font-size:48px;
-    border: solid 1px;
-    border-radius: 100px;
+  .icon {
+    display: inline-block;
+    position: relative;
+    font-size: 24px;
+    left: 35px;
     vertical-align: middle;
-
   }
 
-  .passwordlostbox{
+  input[type=text], input[type=password] {
+    background-color: rgba(0, 0, 0, 0.0);
+    width: calc(100% - 86px);
+    height: 35px;
+    margin-top: 20px;
+    padding-left: 40px;
+    padding-right: 20px;
+    border: solid 1px #000;
+    border-radius: 90px;
+    outline: 0;
+  }
+
+  .passwordlostbox {
     margin-top: 30px;
-
-    right:0;
-
+    .passwordlost {
+      font-size: 18px;
+      color: #333;
+      text-decoration: none;
+      margin-right: 30px;
+      vertical-align: middle;
+      &:hover {
+        color: #000;
+      }
+    }
+    .doneicon {
+      font-size: 30px;
+      border: solid 1px #333;
+      border-radius: 100px;
+      padding: 5px;
+      vertical-align: middle;
+      cursor: default;
+      &:hover {
+        color: #333;
+        border-color: #333;
+      }
+    }
   }
-  .usericon{
-  font-size:26px;
-  display: inline-block;
-  position: absolute;
-    margin-top: 25px;
-    margin-left: 5px;
-
-
-}
-
-.passwordicon{
-  font-size:26px;
-  display: inline-block;
-   position: absolute;
-  margin-top: 85px;
-  margin-left: -290px;
-
-
-
-}
-
-
-
-
 }

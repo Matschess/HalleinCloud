@@ -1,7 +1,11 @@
+input{
+  outline: 0;
+}
+
 input[type=radio] {
   visibility: hidden;
 }
-label{
+label.checkLabel{
   position: relative;
   &:before {
     visibility: visible;
@@ -26,6 +30,25 @@ input[type=radio]:checked + label {
     top: 2px;
     left: -16px;
     border-radius: 50%;
+  }
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+  &:after{
+    visibility: visible;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #f2f2f2;
+
+  }
+  &:checked{
+    &:after {
+      background-image: url('../../assets/icons/done.png');
+      background-size: cover;
+    }
   }
 }
 

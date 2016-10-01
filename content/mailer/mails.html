@@ -1,20 +1,16 @@
-<div ng-controller="mails">
+<div ng-controller="mailController">
     <div class="title">Ihre Nachrichten:</div>
-    <table>
+    <table ng-if="mails">
         <tr>
             <th>Betreff</th>
             <th>Absender</th>
             <th>Datum</th>
         </tr>
-        <tr>
-            <td>Willkommen</td>
-            <td>System</td>
-            <td>13.09.2016</td>
-        </tr>
-        <tr>
-            <td>Anweisung</td>
-            <td>Reiner</td>
-            <td>27.09.2016</td>
+        <tr ng-click="mailRead(mail.id)" ng-repeat="mail in mails">
+            <td>{{ mail.subject }}</td>
+            <td>{{ mail.from }}</td>
+            <td>{{ mail.date }}</td>
         </tr>
     </table>
+    <span ng-if="!mails"><i class="material-icons">done</i>Keine Nachrichten</span>
 </div>

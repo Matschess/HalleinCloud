@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
-    <script src="controllers/main.js"></script>
+    <script src="controllers/routing.js"></script>
     <script src="controllers/controllers.js"></script>
     <!-- Libraries -->
     <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
@@ -29,19 +29,18 @@
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="mainController" ng-keyup="checkKey($event)">
+<body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
 <div>
-    <div class="login" ng-if="!loggedIn">
-        <h1>Hallein APP - Verwaltung</h1>
-        <div class="devs"><a class="we" href="#">Die Entwickler</a><a class="whoarewe" href="#">| Über </a></div>
+    <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]">
+        <h1>Hallein App - Verwaltung</h1>
+        <div class="devs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
         <div class="loginwrapper">
-            <i class="material-icons usericon">person_outline</i><input class="username" type="text"/>
-            <i class="material-icons passwordicon">lock_outline</i><input class="password" type="text"/>
-            <div class="passwordlostbox" ng-click="logIn()"><a class="passwordlost" href="#">Passwort vergessen?</a><i
-                    class="material-icons doneicon">done</i></div>
+            <i class="material-icons icon">person_outline</i><input type="text" class="username" spellcheck="false"/><br/>
+            <i class="material-icons icon">lock_outline</i><input type="password" class="password"/>
+            <div class="passwordlostbox"><a class="passwordlost" href="#">Passwort vergessen?</a><i
+                    class="material-icons doneicon" ng-click="logIn()">done</i></div>
         </div>
     </div>
-
     <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
         <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
                                                                                      ng-click="popupClose()">close</i>
@@ -73,15 +72,29 @@
             </div>
         </div>
         <div class="overlay" ng-class="{true:'visible'}[popup]" ng-click="popupClose()"></div>
-        <div class="navbar" ng-click="open()">
+        <div class="navbar">
             <ul ng-repeat="route in routes">
                 <a href="#{{ route.path }}">
-                    <li>{{ route.name }}</li>
+                    <li><img class="icon" ng-src="assets/icons/{{ route.icon }}"/>{{ route.name }}</li>
                 </a>
             </ul>
         </div>
         <div class="container">
-            <div class="view" ng-view></div>
+            <div class="fullBox" ng-if="fullBox">
+                <div class="title">
+                    <div class="text">{{ fullBox.title }}</div>
+                    <div class="actions">
+                            <a class="tooltipBottom" ng-repeat="action in fullBox.actions" href="#{{ action.route }}" title="{{ action.title }}">
+                                <div class="icon"><i class="material-icons">{{
+                                    action.icon }}</i></div>
+                            </a>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="view" ng-view></div>
+                </div>
+            </div>
+            <div class="view" ng-if="!fullBox" ng-view></div>
         </div>
         <div class="actionbar" ng-class="{true:'visible'}[action]">
             <div ng-repeat="action in actions">
