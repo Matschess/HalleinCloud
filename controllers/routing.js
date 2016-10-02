@@ -38,7 +38,7 @@ myApp.config(function ($routeProvider) {
             name: 'Feedback',
             frame: {
                 type: 'switchBox',
-                title: 'Ihr Feedback',
+                title: 'Feedback',
                 switcher: ['Neu', 'Akzeptiert', 'Abgelehnt']
             },
             controller: 'feedbackController'

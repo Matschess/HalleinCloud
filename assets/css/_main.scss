@@ -358,8 +358,8 @@ body {
   ul {
     padding: 0;
     .icon {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       margin-right: 8px;
       vertical-align: middle;
     }
@@ -370,7 +370,7 @@ body {
     }
     li {
       list-style: none;
-      padding: 20px 30px;
+      padding: 25px 30px;
       &:hover, &.active {
         background-color: #21262f;
       }
@@ -747,6 +747,7 @@ body {
         cursor: default;
       }
       .openingHours.sleep {
+        color: #c6c6c6;
         label {
           text-decoration: line-through;
         }
