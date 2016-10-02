@@ -1,34 +1,38 @@
-<div class="feedbackGroup" ng-init="newFeedbacksClosed=false" ng-class="{'closed' : newFeedbacksClosed}">
-    <label ng-click="newFeedbacksClosed = !newFeedbacksClosed">Neues Feedback</label>
-    <div class="feedbackBox" ng-if="newFeedbacks" ng-repeat="feedback in newFeedbacks">
+<div class="feedbackGroup" ng-if="frame.switched == 1">
+    <div class="feedbackBox" ng-if="newFeedbacks.length" ng-repeat="feedback in newFeedbacks">
         <div class="actions">
-            <div class="action accept tooltipTop" title="Akzeptieren" ng-click="accept($index)"><i class="material-icons">done</i></div>
-            <div class="action decline tooltipTop" title="Ablehnen" ng-click="decline($index)"><i class="material-icons">close</i></div>
+            <div class="action accept tooltipTop" title="Akzeptieren" ng-click="accept($index)"><i
+                    class="material-icons">done</i></div>
+            <div class="action decline tooltipTop" title="Ablehnen" ng-click="decline($index)"><i
+                    class="material-icons">close</i></div>
         </div>
         <div class="subject">{{ feedback.subject }}</div>
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
+    <div class="feedbackBox" ng-if="!newFeedbacks.length">Kein neues Feedback</div>
 </div>
-<div class="feedbackGroup" ng-init="acceptedFeedbacksClosed=true" ng-class="{'closed' : acceptedFeedbacksClosed}">
-    <label ng-click="acceptedFeedbacksClosed = !acceptedFeedbacksClosed">Akzeptiertes Feedback</label>
-    <div class="feedbackBox" ng-if="acceptedFeedbacks" ng-repeat="feedback in acceptedFeedbacks">
+<div class="feedbackGroup" ng-if="frame.switched == 2">
+    <div class="feedbackBox" ng-if="acceptedFeedbacks.length" ng-repeat="feedback in acceptedFeedbacks">
         <div class="actions">
-            <div class="action decline tooltipTop" title="Entfernen" ng-click="reDecline($index)"><i class="material-icons">close</i></div>
+            <div class="action decline tooltipTop" title="Entfernen" ng-click="reDecline($index)"><i
+                    class="material-icons">close</i></div>
         </div>
         <div class="subject">{{ feedback.subject }}</div>
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
+    <div class="feedbackBox" ng-if="!acceptedFeedbacks.length">Kein akzeptiertes Feedback</div>
 </div>
-<div class="feedbackGroup" ng-init="declinedFeedbacksClosed=true" ng-class="{'closed' : declinedFeedbacksClosed}">
-    <label ng-click="declinedFeedbacksClosed = !declinedFeedbacksClosed">Abgelehntes Feedback</label>
-    <div class="feedbackBox" ng-if="declinedFeedbacks" ng-repeat="feedback in declinedFeedbacks">
+<div class="feedbackGroup" ng-if="frame.switched == 3">
+    <div class="feedbackBox" ng-if="declinedFeedbacks.length" ng-repeat="feedback in declinedFeedbacks">
         <div class="actions">
-            <div class="action accept tooltipTop" title="Wiederherstellen" ng-click="reAccept($index)"><i class="material-icons">done</i></div>
+            <div class="action accept tooltipTop" title="Wiederherstellen" ng-click="reAccept($index)"><i
+                    class="material-icons">done</i></div>
         </div>
         <div class="subject">{{ feedback.subject }}</div>
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
+    <div class="feedbackBox" ng-if="!declinedFeedbacks.length">Kein abgelehntes Feedback</div>
 </div>

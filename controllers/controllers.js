@@ -41,11 +41,28 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
 
     // Watches, if actionbar is a param
     $scope.$on('$routeChangeSuccess', function (next, current) {
-        if (current.$$route.fullBox) {
-            $scope.fullBox = {actions: current.$$route.actions, title: current.$$route.title}
+        var frameParams = current.$$route.frame;
+        if (frameParams) {
+            switch (frameParams.type) {
+                case 'fullBox':
+                    $scope.frame = {
+                        type: 'fullBox',
+                        title: frameParams.title,
+                        actions: frameParams.actions,
+                    }
+                    break;
+                case 'switchBox':
+                    $scope.frame = {
+                        type: 'switchBox',
+                        title: frameParams.title,
+                        switched: 1,
+                        switcher: frameParams.switcher
+                    }
+                    break;
+            }
         }
         else {
-            $scope.fullBox = '';
+            $scope.frame = false;
         }
         $('.content').ready(function () {
             $('.tooltip').tooltipster({
@@ -138,7 +155,7 @@ myApp.controller('dashboardController', function ($scope) {
 
 myApp.controller('foodController', function ($scope) {
     $('.menu').draggable({
-        cursorAt: { left: 5 },
+        cursorAt: {left: 5},
         revert: true,
         revertDuration: 0,
     });

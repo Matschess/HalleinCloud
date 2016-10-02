@@ -418,6 +418,34 @@ body {
     height: 100%;
   }
 
+  .switchBox {
+    h2 {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 50px;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 30px;
+    }
+    .switcher{
+      position: absolute;
+      right: 30px;
+      top: 35px;
+      li{
+        display: inline;
+        padding: 5px 8px;
+        margin-left: 8px;
+        border-radius: 20px;
+        cursor: default;
+        &.active {
+          background-color: #e74c3c;
+          color: #fff;
+        }
+      }
+    }
+
+  }
   .dashboardBox, .feedbackBox {
     display: inline-block;
     opacity: 0;
@@ -611,26 +639,6 @@ body {
       vertical-align: middle;
     }
   }
-  .feedbackGroup {
-    &.closed {
-      label {
-        background-image: url('../../assets/icons/arrow_down.png');
-      }
-      .feedbackBox {
-        display: none;
-      }
-    }
-    label {
-      display: block;
-      border-bottom: 1px solid #888;
-      background-image: url('../../assets/icons/arrow_up.png');
-      background-size: 15px;
-      background-position: right 10px center;
-      background-repeat: no-repeat;
-      margin-bottom: 30px;
-      padding: 5px 10px;
-    }
-  }
 
   .fullBox {
     background-color: #fff;
@@ -652,10 +660,13 @@ body {
         color: #fff;
         text-transform: uppercase;
       }
-      .text {
+      h2 {
         display: inline-block;
-        padding: 0 20px;
+        font-size: 20px;
+        font-weight: normal;
         line-height: 50px;
+        padding: 0 20px;
+        margin: 0;
       }
       .actions {
         float: right;
@@ -772,13 +783,13 @@ body {
             color: #fff;
             animation: scaleIn .6s;
             @keyframes scaleIn {
-              0%{
+              0% {
                 transform: scale(1);
               }
-              50%{
+              50% {
                 transform: scale(0);
               }
-              100%{
+              100% {
                 transform: scale(1);
               }
             }

@@ -11,46 +11,59 @@ myApp.config(function ($routeProvider) {
         .when('/food', {
             templateUrl: 'content/food.html',
             name: 'Mahlzeiten',
-            fullBox: true,
-            title: 'Mahlzeiten',
-            actions: [
-                {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
-            ],
+            frame: {
+                type: 'fullBox',
+                title: 'Mahlzeiten',
+                actions: [
+                    {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
+                ]
+            },
             controller: 'foodController'
         })
         .when('/food-add', {
             templateUrl: 'content/food-add.html',
-            fullBox: true,
-            title: 'Mahlzeit erstellen',
-            actions: [
-                {title: 'Speichern', icon: 'done', route: '/food'},
-                {title: 'Verwerfen', icon: 'close', bottom: true, route: '/food'}
-            ],
+            frame: {
+                type: 'fullBox',
+                title: 'Mahlzeit erstellen',
+                actions: [
+                    {title: 'Speichern', icon: 'done', route: '/food'},
+                    {title: 'Verwerfen', icon: 'close', bottom: true, route: '/food'}
+                ]
+            },
             controller: 'foodAddController'
         })
         .when('/feedback', {
             templateUrl: 'content/feedback.html',
             icon: 'feedback.png',
             name: 'Feedback',
+            frame: {
+                type: 'switchBox',
+                title: 'Ihr Feedback',
+                switcher: ['Neu', 'Akzeptiert', 'Abgelehnt']
+            },
             controller: 'feedbackController'
         })
         .when('/page', {
             templateUrl: 'content/page.html',
             name: 'Restaurantseite',
-            fullBox: true,
-            title: 'Restaurantseite',
-            actions: [
-                {title: 'Speichern', icon: 'done'},
-                {title: 'Verwerfen', icon: 'close', bottom: true}
-            ],
+            frame: {
+                type: 'fullBox',
+                title: 'Restaurantseite',
+                actions: [
+                    {title: 'Speichern', icon: 'done'},
+                    {title: 'Verwerfen', icon: 'close', bottom: true}
+                ]
+            },
             controller: 'pagesController'
         })
         .when('/help', {
             templateUrl: 'content/help.html',
             icon: 'help.png',
             name: 'Hilfe',
-            fullBox: true,
-            title: 'Hilfe'
+            frame: {
+                type: 'fullBox',
+                title: 'Hilfe'
+            },
         })
         .otherwise({
             redirectTo: "/"

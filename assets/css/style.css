@@ -319,6 +319,27 @@ body {
   overflow: auto; }
   .container .view {
     height: 100%; }
+  .container .switchBox h2 {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 50px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30px; }
+  .container .switchBox .switcher {
+    position: absolute;
+    right: 30px;
+    top: 35px; }
+    .container .switchBox .switcher li {
+      display: inline;
+      padding: 5px 8px;
+      margin-left: 8px;
+      border-radius: 20px;
+      cursor: default; }
+      .container .switchBox .switcher li.active {
+        background-color: #e74c3c;
+        color: #fff; }
   .container .dashboardBox, .container .feedbackBox {
     display: inline-block;
     opacity: 0;
@@ -460,19 +481,6 @@ body {
       margin-left: 5%;
       width: 70%;
       vertical-align: middle; }
-  .container .feedbackGroup.closed label {
-    background-image: url("../../assets/icons/arrow_down.png"); }
-  .container .feedbackGroup.closed .feedbackBox {
-    display: none; }
-  .container .feedbackGroup label {
-    display: block;
-    border-bottom: 1px solid #888;
-    background-image: url("../../assets/icons/arrow_up.png");
-    background-size: 15px;
-    background-position: right 10px center;
-    background-repeat: no-repeat;
-    margin-bottom: 30px;
-    padding: 5px 10px; }
   .container .fullBox {
     background-color: #fff;
     -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
@@ -492,10 +500,13 @@ body {
         background-color: #21262f;
         color: #fff;
         text-transform: uppercase; }
-      .container .fullBox .title .text {
+      .container .fullBox .title h2 {
         display: inline-block;
+        font-size: 20px;
+        font-weight: normal;
+        line-height: 50px;
         padding: 0 20px;
-        line-height: 50px; }
+        margin: 0; }
       .container .fullBox .title .actions {
         float: right;
         line-height: 0; }

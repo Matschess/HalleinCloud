@@ -80,11 +80,11 @@
             </ul>
         </div>
         <div class="container">
-            <div class="fullBox" ng-if="fullBox">
+            <div class="fullBox" ng-if="frame.type == 'fullBox'">
                 <div class="title">
-                    <div class="text">{{ fullBox.title }}</div>
+                    <h2>{{ frame.title }}</h2>
                     <div class="actions">
-                            <a class="tooltipBottom" ng-repeat="action in fullBox.actions" href="#{{ action.route }}" title="{{ action.title }}">
+                            <a class="tooltipBottom" ng-repeat="action in frame.actions" href="#{{ action.route }}" title="{{ action.title }}">
                                 <div class="icon"><i class="material-icons">{{
                                     action.icon }}</i></div>
                             </a>
@@ -94,7 +94,16 @@
                     <div class="view" ng-view></div>
                 </div>
             </div>
-            <div class="view" ng-if="!fullBox" ng-view></div>
+            <div class="switchBox" ng-if="frame.type == 'switchBox'">
+                <ul class="switcher">
+                    <li ng-repeat="switch in frame.switcher" ng-click="frame.switched = $index + 1" ng-class="{true:'active'}[$index + 1 == frame.switched]">{{ switch }}</li>
+                </ul>
+                <h2>{{ frame.title }}</h2>
+                <div class="content">
+                    <div class="view" ng-view></div>
+                </div>
+            </div>
+            <div class="view" ng-if="!frame" ng-view></div>
         </div>
         <div class="actionbar" ng-class="{true:'visible'}[action]">
             <div ng-repeat="action in actions">
