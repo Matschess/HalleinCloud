@@ -1,11 +1,12 @@
-input{
+input {
   outline: 0;
 }
 
 input[type=radio] {
   visibility: hidden;
 }
-label.checkLabel{
+
+label.checkLabel {
   position: relative;
   &:before {
     visibility: visible;
@@ -35,7 +36,7 @@ input[type=radio]:checked + label {
 
 input[type=checkbox] {
   visibility: hidden;
-  &:after{
+  &:after {
     visibility: visible;
     content: '';
     position: absolute;
@@ -44,7 +45,7 @@ input[type=checkbox] {
     background-color: #f2f2f2;
 
   }
-  &:checked{
+  &:checked {
     &:after {
       background-image: url('../../assets/icons/done.png');
       background-size: cover;
@@ -65,7 +66,7 @@ button {
   }
 }
 
-textarea{
+textarea {
   font-family: inherit;
   background-color: #f2f2f2;
   background-image: url('../../assets/icons/edit.png');
@@ -78,13 +79,24 @@ textarea{
   padding: 8px 35px 8px 8px;
 }
 
-tag{
+.tag {
+  display: inline-block;
   background-color: #ec5555;
   background-image: url('../../assets/icons/close.png');
   background-size: 18px;
   background-position: right 10px center;
   background-repeat: no-repeat;
   color: #fff;
-  padding: 3px 35px 3px 20px;
+  padding: 4px 35px 4px 20px;
+  margin-right: 10px;
   border-radius: 20px;
+  &.red {
+    background-color: #ec5555;
+  }
+  &.yellow {
+    background-color: #f39c12;
+  }
+  &.orange {
+    background-color: #e67e22;
+  }
 }

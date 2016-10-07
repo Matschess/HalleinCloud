@@ -202,7 +202,13 @@ myApp.controller('feedbackController', function ($scope) {
 });
 
 myApp.controller('foodAddController', function ($scope) {
-
+    $scope.categories = ['Fleisch', 'Salat', 'Süßspeise'];
+    $scope.tags = [
+        {name: 'putenstreifensalat', class: 'red'},
+        {name: 'salat', class: 'yellow'},
+        {name: 'geflügel', class: 'orange'},
+    ];
+    $scope.appetizer = false;
 });
 
 myApp.controller('pagesController', function ($scope) {

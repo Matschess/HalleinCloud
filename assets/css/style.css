@@ -532,6 +532,10 @@ body {
         font-size: 16px;
         width: 50%;
         vertical-align: top; }
+      .container .fullBox .content .full {
+        font-size: 16px; }
+      .container .fullBox .content .tagBox {
+        margin-top: 10px; }
       .container .fullBox .content input[type=text], .container .fullBox .content input[type=time] {
         background-color: #f2f2f2;
         border: 0;
@@ -550,7 +554,11 @@ body {
       .container .fullBox .content textarea {
         width: 80%;
         height: 150px;
-        margin: 5px 5px 5px 0; }
+        margin: 5px 5px 5px 0;
+        vertical-align: top; }
+        .container .fullBox .content textarea.short {
+          width: 40%;
+          height: 100px; }
       .container .fullBox .content h3 {
         font-size: 16px;
         font-weight: normal;
@@ -775,15 +783,23 @@ textarea {
   resize: none;
   padding: 8px 35px 8px 8px; }
 
-tag {
+.tag {
+  display: inline-block;
   background-color: #ec5555;
   background-image: url("../../assets/icons/close.png");
   background-size: 18px;
   background-position: right 10px center;
   background-repeat: no-repeat;
   color: #fff;
-  padding: 3px 35px 3px 20px;
+  padding: 4px 35px 4px 20px;
+  margin-right: 10px;
   border-radius: 20px; }
+  .tag.red {
+    background-color: #ec5555; }
+  .tag.yellow {
+    background-color: #f39c12; }
+  .tag.orange {
+    background-color: #e67e22; }
 
 .login {
   font-family: "Gravity Light";
