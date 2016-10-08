@@ -64,7 +64,12 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         else {
             $scope.frame = false;
         }
+
         $('.content').ready(function () {
+            $('select').select2({
+                width: '180px'
+            }); // For select boxes
+
             $('.tooltip').tooltipster({
                 theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
                 side: 'left',
@@ -208,7 +213,6 @@ myApp.controller('foodAddController', function ($scope) {
         {name: 'salat', class: 'yellow'},
         {name: 'geflügel', class: 'orange'},
     ];
-    $scope.appetizer = false;
 });
 
 myApp.controller('pagesController', function ($scope) {

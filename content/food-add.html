@@ -13,23 +13,41 @@
     <label>Tags:</label>
     <div class="tagBox">
         <div class="tag" ng-repeat="tag in tags" ng-class="tag.class">{{ tag.name }}</div>
+        <div class="tag empty" contenteditable="true" placeholder="hinzufügen"></div>
     </div>
 </div>
 <div class="full">
-    <button ng-if="!appetizer" ng-click="appetizer=true"><i class="material-icons">restaurant</i> Vorspeise hinzufügen</button>
+    <button ng-show="!appetizer" ng-click="appetizer=true"><i class="material-icons">restaurant</i> Vorspeise hinzufügen</button>
     <br/>
-    <div ng-if="appetizer">
-        <label>Vorspeise:</label>
+    <div ng-show="appetizer">
+        <i ng-show="appetizer" ng-click="appetizer=false" class="material-icons remover tooltipBottom" title="Entfernen">remove_circle_outline</i>
+        <label class="longer distance">Vorspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
+        <label class="longer smaller">Vegetarisch:</label>
+        <input type="radio" id="y1" name="veggie1" value="Ja">
+        <label class="checkLabel" for="y1">Ja</label>
+        <input type="radio" id="n1" name="veggie1" value="Nein" checked>
+        <label class="checkLabel" for="n1">Nein</label>
     </div>
     <div>
-        <label>Hauptspeise:</label>
+        <label class="longer distance">Hauptspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
+        <label class="longer smaller">Vegetarisch:</label>
+        <input type="radio" id="y2" name="veggie2" value="Ja">
+        <label class="checkLabel" for="y2">Ja</label>
+        <input type="radio" id="n2" name="veggie2" value="Nein" checked>
+        <label class="checkLabel" for="n2">Nein</label>
     </div>
-    <div ng-if="dessert">
-        <label>Nachspeise:</label>
+    <div ng-show="dessert">
+        <i ng-show="dessert" ng-click="dessert=false" class="material-icons remover tooltipBottom" title="Entfernen">remove_circle_outline</i>
+        <label class="longer distance">Nachspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
+        <label class="longer smaller">Vegetarisch:</label>
+        <input type="radio" id="y3" name="veggie3" value="Ja">
+        <label class="checkLabel" for="y3">Ja</label>
+        <input type="radio" id="n3" name="veggie3" value="Nein" checked>
+        <label class="checkLabel" for="n3">Nein</label>
     </div>
     <br/>
-    <button ng-if=!dessert" ng-click="dessert=true"><i class="material-icons">restaurant</i> Dessert hinzufügen</button>
+    <button ng-show="!dessert" ng-click="dessert=true"><i class="material-icons">restaurant</i> Dessert hinzufügen</button>
 </div>

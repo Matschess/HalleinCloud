@@ -536,6 +536,8 @@ body {
         font-size: 16px; }
       .container .fullBox .content .tagBox {
         margin-top: 10px; }
+      .container .fullBox .content .remover {
+        position: absolute; }
       .container .fullBox .content input[type=text], .container .fullBox .content input[type=time] {
         background-color: #f2f2f2;
         border: 0;
@@ -572,6 +574,10 @@ body {
         margin-right: 10px; }
         .container .fullBox .content label.shorter {
           width: 20px; }
+        .container .fullBox .content label.longer {
+          width: 100px; }
+        .container .fullBox .content label.distance {
+          margin-left: 30px; }
       .container .fullBox .content i {
         font-size: 20px;
         vertical-align: middle;
@@ -744,7 +750,7 @@ input[type=radio]:checked + label:after {
   background-color: #555;
   width: 7px;
   height: 7px;
-  top: 2px;
+  top: 4px;
   left: -16px;
   border-radius: 50%; }
 
@@ -793,6 +799,8 @@ textarea {
   color: #fff;
   padding: 4px 35px 4px 20px;
   margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
   border-radius: 20px; }
   .tag.red {
     background-color: #ec5555; }
@@ -800,6 +808,15 @@ textarea {
     background-color: #f39c12; }
   .tag.orange {
     background-color: #e67e22; }
+  .tag.empty {
+    border-style: dashed;
+    border-color: #444;
+    background: none;
+    color: #444;
+    outline: 0; }
+
+.select2-container.req_place .select2-default .select2-chosen {
+  color: #FFF !important; }
 
 .login {
   font-family: "Gravity Light";

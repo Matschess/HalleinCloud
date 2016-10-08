@@ -28,7 +28,7 @@ input[type=radio]:checked + label {
     background-color: #555;
     width: 7px;
     height: 7px;
-    top: 2px;
+    top: 4px;
     left: -16px;
     border-radius: 50%;
   }
@@ -89,6 +89,8 @@ textarea {
   color: #fff;
   padding: 4px 35px 4px 20px;
   margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
   border-radius: 20px;
   &.red {
     background-color: #ec5555;
@@ -99,4 +101,14 @@ textarea {
   &.orange {
     background-color: #e67e22;
   }
+  &.empty{
+    border-style: dashed;
+    border-color: #444;
+    background: none;
+    color: #444;
+    outline: 0;
+  }
+}
+.select2-container.req_place .select2-default .select2-chosen {
+  color:#FFF !important;
 }

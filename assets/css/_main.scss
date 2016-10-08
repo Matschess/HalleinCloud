@@ -706,6 +706,9 @@ body {
       .tagBox{
         margin-top: 10px;
       }
+      .remover{
+        position: absolute;
+      }
       input[type=text], input[type=time] {
         background-color: #f2f2f2;
         border: 0;
@@ -750,6 +753,12 @@ body {
         margin-right: 10px;
         &.shorter {
           width: 20px;
+        }
+        &.longer{
+          width: 100px;
+        }
+        &.distance{
+          margin-left: 30px;
         }
       }
       i {
