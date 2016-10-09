@@ -164,18 +164,6 @@ body {
       margin-top: 10px;
       margin-bottom: 20px;
     }
-    input[type=text], input[type=password] {
-      background-color: #f2f2f2;
-      border: 0;
-      border-radius: 0;
-      margin: 5px 0 5px 0;
-      padding: 8px;
-      width: calc(100% - 16px);
-      height: auto;
-      &.short {
-        width: 60%;
-      }
-    }
     textarea {
       width: calc(100% - 35px - 8px);
       height: 60px;
@@ -709,23 +697,10 @@ body {
       .remover{
         position: absolute;
       }
-      input[type=text], input[type=time] {
-        background-color: #f2f2f2;
-        border: 0;
-        border-radius: 0;
-        margin: 5px 5px 5px 0;
-        padding: 8px;
-        width: 50%;
-        height: auto;
-        &.short {
-          width: 20%;
-        }
-        &.shorter {
-          width: 40px;
-        }
-        &:disabled {
-          background-color: lighten(#f2f2f2, 2%);
-          color: #999;
+      .veggieWrapper{
+        display: inline-block;
+        label:first-of-type{
+          margin-bottom: 10px;
         }
       }
       textarea {
@@ -751,6 +726,9 @@ body {
         display: inline-block;
         margin: 0;
         margin-right: 10px;
+        i{
+          vertical-align: top;
+        }
         &.shorter {
           width: 20px;
         }

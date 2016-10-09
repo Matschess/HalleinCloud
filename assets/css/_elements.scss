@@ -6,6 +6,10 @@ input[type=radio] {
   visibility: hidden;
 }
 
+label{
+  vertical-align: top;
+}
+
 label.checkLabel {
   position: relative;
   &:before {
@@ -17,6 +21,26 @@ label.checkLabel {
     height: 15px;
     left: -20px;
     border-radius: 50%;
+  }
+}
+
+input[type=text] {
+  background-color: #f2f2f2;
+  border: 0;
+  border-radius: 0;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  width: 50%;
+  height: auto;
+  &.short {
+    width: 20%;
+  }
+  &.shorter {
+    width: 40px;
+  }
+  &:disabled {
+    background-color: lighten(#f2f2f2, 2%);
+    color: #999;
   }
 }
 
@@ -82,16 +106,15 @@ textarea {
 .tag {
   display: inline-block;
   background-color: #ec5555;
-  background-image: url('../../assets/icons/close.png');
-  background-size: 18px;
-  background-position: right 10px center;
-  background-repeat: no-repeat;
   color: #fff;
-  padding: 4px 35px 4px 20px;
+  padding: 4px 14px 4px 20px;
   margin-right: 10px;
   margin-bottom: 10px;
   border: 1px solid transparent;
   border-radius: 20px;
+  i{
+    margin-left: 2px;
+  }
   &.red {
     background-color: #ec5555;
   }
@@ -102,13 +125,16 @@ textarea {
     background-color: #e67e22;
   }
   &.empty{
-    border-style: dashed;
-    border-color: #444;
-    background: none;
+    background-color: #eaeaea;
     color: #444;
+    padding: 4px 20px 4px 20px;
+    min-width: 100px;
     outline: 0;
   }
 }
-.select2-container.req_place .select2-default .select2-chosen {
-  color:#FFF !important;
+
+// For Add-Tags
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(data-placeholder);
+  opacity: 0.6;
 }

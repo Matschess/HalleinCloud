@@ -67,6 +67,11 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
 
         $('.content').ready(function () {
             $('select').select2({
+                width: '180px',
+                minimumResultsForSearch: Infinity
+            }); // For select boxes
+
+            $('select.search').select2({
                 width: '180px'
             }); // For select boxes
 
@@ -207,12 +212,14 @@ myApp.controller('feedbackController', function ($scope) {
 });
 
 myApp.controller('foodAddController', function ($scope) {
-    $scope.categories = ['Fleisch', 'Salat', 'Süßspeise'];
     $scope.tags = [
         {name: 'putenstreifensalat', class: 'red'},
         {name: 'salat', class: 'yellow'},
         {name: 'geflügel', class: 'orange'},
     ];
+    $scope.removeTag = function (index) {
+        $scope.tags.splice(index, 1);
+    }
 });
 
 myApp.controller('pagesController', function ($scope) {

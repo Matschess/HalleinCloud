@@ -1,53 +1,56 @@
-<div class="left">
-    <label>Typ:</label>
-    <select>
-        <option>Schülermahlzeit</option>
-        <option>Tagesmahlzeit</option>
-    </select><br/>
-    <label>Kategorie:</label>
-    <select>
-        <option ng-repeat="categorie in categories">{{ categorie }}</option>
-    </select>
-</div>
-<div class="right">
-    <label>Tags:</label>
-    <div class="tagBox">
-        <div class="tag" ng-repeat="tag in tags" ng-class="tag.class">{{ tag.name }}</div>
-        <div class="tag empty" contenteditable="true" placeholder="hinzufügen"></div>
-    </div>
-</div>
 <div class="full">
-    <button ng-show="!appetizer" ng-click="appetizer=true"><i class="material-icons">restaurant</i> Vorspeise hinzufügen</button>
+    <label>Tags: <i class="material-icons tooltipRight" title="Tags helfen beim Suchen nach Mahlzeiten und geben den Benutzern Essensvorschläge.">help_outline</i></label>
+    <div class="tagBox">
+        <div class="tag" ng-repeat="tag in tags" ng-class="tag.class">
+            {{ tag.name }}
+            <i class="material-icons" ng-click="removeTag($index)">close</i>
+        </div>
+        <div class="tag empty" contenteditable="true" data-placeholder="hinzufügen"></div>
+    </div>
+
     <br/>
+    <label class="longer">Menü:</label><br/>
+    <br/>
+    <i ng-show="!appetizer" ng-click="appetizer=true" class="material-icons remover tooltipRight" title="Vorspeise hinzufügen">add_circle_outline</i>
+    <i ng-show="appetizer" ng-click="appetizer=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
     <div ng-show="appetizer">
-        <i ng-show="appetizer" ng-click="appetizer=false" class="material-icons remover tooltipBottom" title="Entfernen">remove_circle_outline</i>
         <label class="longer distance">Vorspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
-        <label class="longer smaller">Vegetarisch:</label>
-        <input type="radio" id="y1" name="veggie1" value="Ja">
-        <label class="checkLabel" for="y1">Ja</label>
-        <input type="radio" id="n1" name="veggie1" value="Nein" checked>
-        <label class="checkLabel" for="n1">Nein</label>
+        <div class="veggieWrapper">
+            <label class="longer smaller">Vegetarisch?</label>
+            <br/>
+            <input type="radio" id="y1" name="veggie1" value="Ja">
+            <label class="checkLabel" for="y1">Ja</label>
+            <input type="radio" id="n1" name="veggie1" value="Nein" checked>
+            <label class="checkLabel" for="n1">Nein</label>
+        </div>
     </div>
+    <br/>
     <div>
         <label class="longer distance">Hauptspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
-        <label class="longer smaller">Vegetarisch:</label>
-        <input type="radio" id="y2" name="veggie2" value="Ja">
-        <label class="checkLabel" for="y2">Ja</label>
-        <input type="radio" id="n2" name="veggie2" value="Nein" checked>
-        <label class="checkLabel" for="n2">Nein</label>
+        <div class="veggieWrapper">
+            <label class="longer smaller">Vegetarisch?</label>
+            <br/>
+            <input type="radio" id="y2" name="veggie2" value="Ja">
+            <label class="checkLabel" for="y2">Ja</label>
+            <input type="radio" id="n2" name="veggie2" value="Nein" checked>
+            <label class="checkLabel" for="n2">Nein</label>
+        </div>
     </div>
+    <i ng-show="!dessert" ng-click="dessert=true" class="material-icons remover tooltipRight" title="Nachspeise hinzufügen">add_circle_outline</i>
+    <i ng-show="dessert" ng-click="dessert=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
     <div ng-show="dessert">
-        <i ng-show="dessert" ng-click="dessert=false" class="material-icons remover tooltipBottom" title="Entfernen">remove_circle_outline</i>
         <label class="longer distance">Nachspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
-        <label class="longer smaller">Vegetarisch:</label>
-        <input type="radio" id="y3" name="veggie3" value="Ja">
-        <label class="checkLabel" for="y3">Ja</label>
-        <input type="radio" id="n3" name="veggie3" value="Nein" checked>
-        <label class="checkLabel" for="n3">Nein</label>
+        <div class="veggieWrapper">
+            <label class="longer smaller">Vegetarisch?</label>
+            <br/>
+            <input type="radio" id="y3" name="veggie3" value="Ja">
+            <label class="checkLabel" for="y3">Ja</label>
+            <input type="radio" id="n3" name="veggie3" value="Nein" checked>
+            <label class="checkLabel" for="n3">Nein</label>
+        </div>
     </div>
     <br/>
-    <button ng-show="!dessert" ng-click="dessert=true"><i class="material-icons">restaurant</i> Dessert hinzufügen</button>
 </div>
