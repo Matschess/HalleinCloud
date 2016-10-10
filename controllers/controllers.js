@@ -164,34 +164,54 @@ myApp.controller('dashboardController', function ($scope) {
 });
 
 myApp.controller('foodController', function ($scope) {
-    $('.menu').draggable({
-        cursorAt: {left: 5},
-        revert: true,
-        revertDuration: 0,
+    $scope.menus = [
+        {name: 'Mahlzeit1'},
+        {name: 'Mahlzeit2'},
+    ];
+    $scope.days = [
+        {name: 'Montag', menu: 1},
+        {name: 'Dienstag'},
+        {name: 'Mittwoch'},
+        {name: 'Donnerstag'},
+        {name: 'Freitag'},
+        {name: 'Samstag'},
+        {name: 'Sonntag'}
+    ];
+    $scope.assignMenu = function(index, data) {
+        $scope.days[index].menu = data + 1; // Because a 0 would be a bug
+    }
+    $scope.removeMenu = function(index) {
+        delete $scope.days[index].menu;
+        console.log($scope.days);
+    }
+    /*
+    $('.content').ready(function () {
+        $('.menu').draggable({
+            cursorAt: {left: 5},
+            revert: true,
+            revertDuration: 0,
+        });
+        $(".day").droppable({
+            hoverClass: "hovered",
+            drop: function (event, ui) {
+                $(this).addClass("done");
+                $(this).html("<i class='material-icons'>done</i>");
+                console.log(event);
+            }
+        });
     });
-    $(".day").droppable({
-        hoverClass: "hovered",
-        drop: function (event, ui) {
-            $(this).addClass("done");
-            $(this).html("<i class='material-icons'>done</i>");
-            console.log(event);
-        }
-    });
+    */
 });
 
 myApp.controller('feedbackController', function ($scope) {
     $scope.newFeedbacks = [
         {id: 1, subject: "Super Essen!", rating: 5, text: "War ein super Essen!!"},
         {id: 1, subject: "Zu salzig!", rating: 4, text: "Die Suppe war etwas zu salzig, sonst sehr lecker."},
-        {id: 1, subject: "Wiederlich", rating: 1, text: "Mehr als ranzig fällt mir dazu nicht ein."}
+        {id: 1, subject: "Nicht gut", rating: 1, text: "Hab schon lange nicht mehr so schlecht gegessen."}
     ];
-    $scope.acceptedFeedbacks = [
-        {id: 1, subject: "Super Essen!", rating: 5, text: "War ein super Essen!!"},
-        {id: 1, subject: "Zu salzig!", rating: 4, text: "Die Suppe war etwas zu salzig, sonst sehr lecker."},
-        {id: 1, subject: "Wiederlich", rating: 1, text: "Mehr als ranzig fällt mir dazu nicht ein."}
-    ];
+    $scope.acceptedFeedbacks = [];
     $scope.declinedFeedbacks = [
-        {id: 1, subject: "Arschloch", rating: 1, text: "Arschloch"}
+        {id: 1, subject: "Schlecht", rating: 1, text: "Schlecht schlecht"}
     ];
     $scope.accept = function (index) {
         $scope.acceptedFeedbacks.push($scope.newFeedbacks[index]);
@@ -264,7 +284,7 @@ myApp.controller('pwChange', function ($scope) {
 myApp.controller('mailController', function ($scope) {
     $scope.mails = [
         {id: 1, subject: 'Willkommen', from: 'System', date: '13.09.2016'},
-        {id: 2, subject: 'Anweisung', from: 'Reiner', date: '27.09.2016'}
+        {id: 2, subject: 'Anweisung', from: 'Rainer', date: '27.09.2016'}
     ];
     $scope.mailRead = function (id) {
         alert(id);

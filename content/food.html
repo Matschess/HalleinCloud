@@ -1,19 +1,14 @@
 <div class="days">
-    <div class="day">Montag</div>
-    <div class="day">Dienstag</div>
-    <div class="day">Mittwoch</div>
-    <div class="day">Donnerstag</div>
-    <div class="day">Freitag</div>
-    <div class="day">Samstag</div>
-    <div class="day">Sonntag</div>
+    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-class="{done: day.menu}" ng-repeat="day in days">
+        <div ng-if="day.menu" ng-click="removeMenu($index)">
+            {{ menus[day.menu - 1].name }}
+            <i class='material-icons remove'>close</i>
+        </div>
+        <div ng-if="!day.menu">{{ day.name }}</div>
+    </div>
 </div>
 <div class="menunames">
-    <div class="menu">Cheeseburger mit Blattsalat</div>
-    <div class="menu">Cheeseburger mit Blattsalat</div>
-    <div class="menu">Cheeseburger mit Blattsalat</div>
-    <div class="menu">Cheeseburger mit Blattsalat</div>
-    <div class="menu">Cheeseburger mit Blattsalat</div>
-    <div class="menu">Cheeseburger mit Blattsalat</div>
+    <div class="menu" ng-drag="true" ng-drag-data="$index" ng-repeat="menu in menus">{{ menu.name }}</div>
 </div>
 <!--  Radio-Button:
   <br/>

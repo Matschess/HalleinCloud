@@ -19,7 +19,7 @@ label.checkLabel {
     left: -20px;
     border-radius: 50%; }
 
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f2f2f2;
   border: 0;
   border-radius: 0;
@@ -27,11 +27,13 @@ input[type=text] {
   padding: 8px;
   width: 50%;
   height: auto; }
-  input[type=text].short {
+  input[type=text].short, input[type=password].short {
     width: 20%; }
-  input[type=text].shorter {
+  input[type=text].shorter, input[type=password].shorter {
     width: 40px; }
-  input[type=text]:disabled {
+  input[type=text].longest, input[type=password].longest {
+    width: 100%; }
+  input[type=text]:disabled, input[type=password]:disabled {
     background-color: #f7f7f7;
     color: #999; }
 
@@ -85,7 +87,9 @@ textarea {
   display: inline-block;
   background-color: #ec5555;
   color: #fff;
-  padding: 4px 14px 4px 20px;
+  padding: 0 14px 0 20px;
+  height: 30px;
+  line-height: 30px;
   margin-right: 10px;
   margin-bottom: 10px;
   border: 1px solid transparent;
@@ -101,7 +105,7 @@ textarea {
   .tag.empty {
     background-color: #eaeaea;
     color: #444;
-    padding: 4px 20px 4px 20px;
+    padding: 0 14px 0 14px;
     min-width: 100px;
     outline: 0; }
 
@@ -268,6 +272,7 @@ body {
           .popup content .pwValidation div:last-of-type.active {
             background-color: #27ae60; }
     .popup content .profileImage {
+      position: absolute;
       margin-left: 15px;
       width: 48px;
       height: 48px;
@@ -452,7 +457,7 @@ body {
     border-radius: 3px;
     width: 250px;
     padding: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-right: 30px;
     vertical-align: top;
     cursor: default;
@@ -704,7 +709,18 @@ body {
           .container .fullBox .content .days .day.done {
             background-color: #27ae60;
             color: #fff;
-            animation: scaleIn .6s; }
+            animation: scaleIn .6s;
+            position: relative; }
+            .container .fullBox .content .days .day.done .remove {
+              display: none;
+              font-size: 40px;
+              position: absolute;
+              width: 100%;
+              left: 0;
+              line-height: 90px;
+              background-color: #1e8449; }
+            .container .fullBox .content .days .day.done:hover .remove {
+              display: inline; }
 @keyframes scaleIn {
   0% {
     transform: scale(1); }
