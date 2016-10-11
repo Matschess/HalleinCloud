@@ -65,45 +65,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
             $scope.frame = false;
         }
 
-        $('.content').ready(function () {
-            $('select').select2({
-                width: '180px',
-                minimumResultsForSearch: Infinity
-            }); // For select boxes
-
-            $('select.search').select2({
-                width: '180px'
-            }); // For select boxes
-
-            $('.tooltip').tooltipster({
-                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-                side: 'left',
-                arrow: false,
-                delay: 100,
-                animationDuration: 200
-            });
-            $('.tooltipTop').tooltipster({
-                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-                side: 'top',
-                arrow: false,
-                delay: 100,
-                animationDuration: 200
-            });
-            $('.tooltipRight').tooltipster({
-                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-                side: 'right',
-                arrow: false,
-                delay: 100,
-                animationDuration: 200
-            });
-            $('.tooltipBottom').tooltipster({
-                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-                side: 'bottom',
-                arrow: false,
-                delay: 100,
-                animationDuration: 200
-            });
-        });
+        tooltipstln();
     });
 
     var settingsLinks = [
@@ -145,6 +107,7 @@ myApp.controller('dashboardController', function ($scope) {
             $(this).css('left', Cookies.getJSON(this.id + '-box-position').left + 'px');
         }
     });
+
     $('.dashboardBox').draggable({
         containment: '.container',
         stop: function (event, ui) {
@@ -152,6 +115,12 @@ myApp.controller('dashboardController', function ($scope) {
         }
     });
 
+
+    $scope.notifications = [
+        {type: 'alert', number: 3, title: 'Fehler', text: 'Dies ist eine Fehler oder Nicht-behoben-Box.'},
+        {type: 'success', title: 'Erfolg', text: 'Eine Erfolgsmeldung.'},
+        {type: 'warning', title: 'Warnung', text: 'So sieht eine Warnung aus.'}
+    ]
     $scope.order = function () {
         $('.dashboardBox').each(function () {
             if (Cookies.get(this.id + '-box-position')) {
@@ -165,8 +134,11 @@ myApp.controller('dashboardController', function ($scope) {
 
 myApp.controller('foodController', function ($scope) {
     $scope.menus = [
-        {name: 'Mahlzeit1'},
-        {name: 'Mahlzeit2'},
+        {name: 'Griechischer Salat'},
+        {name: 'Hausburger mit Pommes'},
+        {name: 'Zanderfilet mit Bratkartoffeln'},
+        {name: 'Hauspizza'},
+        {name: 'Kaiserschmarrn'},
     ];
     $scope.days = [
         {name: 'Montag', menu: 1},
@@ -179,6 +151,15 @@ myApp.controller('foodController', function ($scope) {
     ];
     $scope.assignMenu = function(index, data) {
         $scope.days[index].menu = data + 1; // Because a 0 would be a bug
+        tooltipstln();
+    }
+    $scope.pushMenu = function(index) {
+        for(var i = 0; i < $scope.days.length; i++) {
+            if(!$scope.days[i].menu) {
+                $scope.days[i].menu = index + 1;
+                break;
+            }
+        }
     }
     $scope.removeMenu = function(index) {
         delete $scope.days[index].menu;
@@ -290,3 +271,45 @@ myApp.controller('mailController', function ($scope) {
         alert(id);
     }
 });
+
+function tooltipstln() {
+    $('.content').ready(function () {
+        $('select').select2({
+            width: '180px',
+            minimumResultsForSearch: Infinity
+        }); // For select boxes
+
+        $('select.search').select2({
+            width: '180px'
+        }); // For select boxes
+
+        $('.tooltip').tooltipster({
+            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+            side: 'left',
+            arrow: false,
+            delay: 100,
+            animationDuration: 200
+        });
+        $('.tooltipTop').tooltipster({
+            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+            side: 'top',
+            arrow: false,
+            delay: 100,
+            animationDuration: 200
+        });
+        $('.tooltipRight').tooltipster({
+            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+            side: 'right',
+            arrow: false,
+            delay: 100,
+            animationDuration: 200
+        });
+        $('.tooltipBottom').tooltipster({
+            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+            side: 'bottom',
+            arrow: false,
+            delay: 100,
+            animationDuration: 200
+        });
+    });
+}

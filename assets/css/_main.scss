@@ -510,14 +510,21 @@ body {
 
       &.success {
         background-color: #01DF01;
+        background-image: url('../icons/done_white.png');
+        background-size: 75%;
+        background-position: center;
+        background-repeat: no-repeat;
       }
 
       &.alert {
         background-color: #FF0000;
       }
 
-      &.error {
+      &.warning {
         background-color: #F7CA18;
+        &:after {
+          content: '!';
+        }
       }
     }
 
@@ -538,7 +545,7 @@ body {
         &.alert {
           background-color: darken(#FF0000, 2%);
         }
-        &.error {
+        &.warning {
           background-color: darken(#F7CA18, 2%);
         }
       }

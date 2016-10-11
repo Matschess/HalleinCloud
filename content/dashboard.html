@@ -1,29 +1,7 @@
-<div id="alert1" class="dashboardBox">
-    <div class="notification alert">3</div>
-    <div class="title">Alert-Kasten</div>
-    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dolores ducimus earum, enim, et
-        eum explicabo facere ipsum iure quia quos recusandae tempora tempore! Aut eveniet ex harum molestias quos.
-    </div>
-</div>
-<div id="success1" class="dashboardBox">
-    <div class="notification success"><i class="material-icons">done</i></div>
-    <div class="title">Erledigt-Kasten</div>
-    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur deserunt doloribus, error
-        esse, exercitationem iusto modi odit quaerat suscipit vel voluptate! Ab corporis deserunt, hic illo iusto odio
-        reprehenderit.
-    </div>
-</div>
-<div id="success2" class="dashboardBox">
-    <div class="notification success"><i class="material-icons">done</i></div>
-    <div class="title">Erledigt-Kasten</div>
-    <div class="text">Lorem ipsum dolor sit amet.</div>
-</div>
-<div id="error1" class="dashboardBox">
-    <div class="notification error">!</div>
-    <div class="title">Error-Kasten</div>
-    <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem ducimus fugiat illum iure
-        quos ratione repellendus sapiente tenetur voluptatibus.
-    </div>
+<div class="dashboardBox" ng-repeat="notification in notifications">
+    <div class="notification" ng-class="notification.type">{{ notification.number }}</div>
+    <div class="title">{{ notification.title }}</div>
+    <div class="text">{{ notification.text }}</div>
 </div>
 <div class="dashbaordOrder">
     <i class="material-icons tooltip" title="Ansicht zurücksetzen" ng-click="order()">widgets</i>

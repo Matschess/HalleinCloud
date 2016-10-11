@@ -505,11 +505,17 @@ body {
         font-size: 15px;
         line-height: 30px; }
       .container .dashboardBox .notification.success, .container .feedbackBox .notification.success {
-        background-color: #01DF01; }
+        background-color: #01DF01;
+        background-image: url("../icons/done_white.png");
+        background-size: 75%;
+        background-position: center;
+        background-repeat: no-repeat; }
       .container .dashboardBox .notification.alert, .container .feedbackBox .notification.alert {
         background-color: #FF0000; }
-      .container .dashboardBox .notification.error, .container .feedbackBox .notification.error {
+      .container .dashboardBox .notification.warning, .container .feedbackBox .notification.warning {
         background-color: #F7CA18; }
+        .container .dashboardBox .notification.warning:after, .container .feedbackBox .notification.warning:after {
+          content: '!'; }
     .container .dashboardBox .title, .container .feedbackBox .title {
       font-size: 20px;
       margin-bottom: 10px; }
@@ -519,7 +525,7 @@ body {
       background-color: #01d501; }
     .container .dashboardBox:hover .notification.alert, .container .feedbackBox:hover .notification.alert {
       background-color: #f50000; }
-    .container .dashboardBox:hover .notification.error, .container .feedbackBox:hover .notification.error {
+    .container .dashboardBox:hover .notification.warning, .container .feedbackBox:hover .notification.warning {
       background-color: #f7c80e; }
   .container .dashboardBox:active {
     -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);

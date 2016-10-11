@@ -1,7 +1,7 @@
 <div class="full">
     <label>Tags: <i class="material-icons tooltipRight" title="Tags helfen beim Suchen nach Mahlzeiten und geben den Benutzern Essensvorschläge.">help_outline</i></label>
     <div class="tagBox">
-        <div class="tag" ng-repeat="tag in tags" ng-class="tag.class">
+        <div ui-sortable class="tag" ng-repeat="tag in tags" ng-class="tag.class">
             {{ tag.name }}
             <i class="material-icons" ng-click="removeTag($index)">close</i>
         </div>
@@ -25,7 +25,6 @@
             <label class="checkLabel" for="n1">Nein</label>
         </div>
     </div>
-    <br/>
     <div>
         <label class="longer distance">Hauptspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>

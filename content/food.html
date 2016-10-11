@@ -1,14 +1,15 @@
 <div class="days">
     <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-class="{done: day.menu}" ng-repeat="day in days">
         <div ng-if="day.menu" ng-click="removeMenu($index)">
-            {{ menus[day.menu - 1].name }}
-            <i class='material-icons remove'>close</i>
+            <span ng-if="menus[day.menu - 1].name.length > 10">{{ menus[day.menu - 1].name | limitTo:10  }}...</span>
+            <span ng-if="menus[day.menu - 1].name.length < 13">{{ menus[day.menu - 1].name }}</span>
+            <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu - 1].name }}">close</i>
         </div>
         <div ng-if="!day.menu">{{ day.name }}</div>
     </div>
 </div>
 <div class="menunames">
-    <div class="menu" ng-drag="true" ng-drag-data="$index" ng-repeat="menu in menus">{{ menu.name }}</div>
+    <div class="menu" ng-drag="true" ng-drag-data="$index" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
 </div>
 <!--  Radio-Button:
   <br/>
