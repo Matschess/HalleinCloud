@@ -1,0 +1,16 @@
+<div class="users">
+    <div class="header">
+        <div>Name</div>
+        <div>Benutzername</div>
+        <div>Gruppe</div>
+        <div>Zuletzt eingeloggt</div>
+    </div>
+    <div class="user" ng-repeat="user in users">
+        <div class="edit"><span>Bearbeiten</span></div>
+        <div>{{ user.name }}</div>
+        <div>{{ user.username }}</div>
+        <div>{{ user.group }}</div>
+        <div>{{ user.lastLogin }}</div>
+        <div class="delete" ng-click="deleteUser($index)"><span>Löschen</span></div>
+    </div>
+</div>

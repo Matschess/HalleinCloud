@@ -5,7 +5,9 @@ input[type=radio] {
   visibility: hidden; }
 
 label {
-  vertical-align: top; }
+  font-size: 16px; }
+  label.top {
+    vertical-align: top; }
 
 label.checkLabel {
   position: relative; }
@@ -113,10 +115,66 @@ textarea {
   content: attr(data-placeholder);
   opacity: 0.6; }
 
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #2196F3; }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }
+
 @font-face {
   font-family: 'Gravity Light';
   src: url("../../assets/fonts/Gravity-Light.eot");
   src: url("../../assets/fonts/Gravity-Light.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Light.woff") format("woff"); }
+@font-face {
+  font-family: 'Gravity Book';
+  src: url("../../assets/fonts/Gravity-Book.eot");
+  src: url("../../assets/fonts/Gravity-Book.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Book.woff") format("woff"); }
 @font-face {
   font-family: 'Gravity';
   src: url("../../assets/fonts/Gravity-Regular.eot");
@@ -301,6 +359,23 @@ body {
         padding: 4px 8px; }
       .popup content table td {
         color: #666; }
+  .popup .action {
+    position: absolute;
+    right: 50px;
+    bottom: 30px; }
+    .popup .action i {
+      color: #666;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      margin-left: 10px;
+      line-height: 35px;
+      border: 1px solid #666;
+      border-radius: 50%;
+      cursor: default; }
+      .popup .action i:hover {
+        color: #333;
+        border-color: #333; }
 @keyframes popUp {
   0% {
     transform: scale(0); }
@@ -543,6 +618,9 @@ body {
       color: #000; }
   .container .feedbackBox {
     transition: left 1s; }
+    .container .feedbackBox i {
+      font-size: 20px;
+      vertical-align: middle; }
     .container .feedbackBox:hover .actions {
       transform: scale(1); }
     .container .feedbackBox .actions {
@@ -609,8 +687,12 @@ body {
       color: #fff;
       margin-bottom: 10px; }
       .container .fullBox .title.loading {
-        background-color: #21262f;
-        color: #fff;
+        text-transform: uppercase; }
+      .container .fullBox .title.success {
+        background-color: #2ecc71;
+        text-transform: uppercase; }
+      .container .fullBox .title.error {
+        background-color: #e74c3c;
         text-transform: uppercase; }
       .container .fullBox .title h2 {
         display: inline-block;
@@ -644,6 +726,54 @@ body {
         font-size: 16px;
         width: 50%;
         vertical-align: top; }
+      .container .fullBox .content .users {
+        position: relative;
+        font-size: 16px;
+        cursor: default; }
+        .container .fullBox .content .users .header, .container .fullBox .content .users .user {
+          height: 40px;
+          line-height: 40px; }
+        .container .fullBox .content .users .header {
+          background-color: #333;
+          color: #fff; }
+          .container .fullBox .content .users .header div {
+            display: inline-block;
+            width: 20%; }
+        .container .fullBox .content .users .user {
+          border-bottom: 1px solid #e8e8e8; }
+          .container .fullBox .content .users .user div {
+            display: inline-block;
+            width: 15%; }
+          .container .fullBox .content .users .user .edit, .container .fullBox .content .users .user .delete {
+            opacity: 0;
+            color: #fff;
+            text-align: center;
+            width: 15px;
+            height: 40px;
+            -webkit-transition: width .5s;
+            -moz-transition: width .5s;
+            -ms-transition: width .5s;
+            -o-transition: width .5s;
+            transition: width .5s; }
+            .container .fullBox .content .users .user .edit span, .container .fullBox .content .users .user .delete span {
+              text-transform: uppercase;
+              opacity: 0; }
+            .container .fullBox .content .users .user .edit:hover, .container .fullBox .content .users .user .delete:hover {
+              width: 140px; }
+              .container .fullBox .content .users .user .edit:hover span, .container .fullBox .content .users .user .delete:hover span {
+                animation: fadeIn .3s .2s forwards; }
+          .container .fullBox .content .users .user .delete {
+            float: right; }
+          .container .fullBox .content .users .user:hover {
+            background-color: #f2f2f2; }
+            .container .fullBox .content .users .user:hover .edit {
+              opacity: 1;
+              background-color: #2ecc71; }
+            .container .fullBox .content .users .user:hover .delete {
+              opacity: 1;
+              height: 40px;
+              right: 0;
+              background-color: #e74c3c; }
       .container .fullBox .content .full {
         font-size: 16px; }
       .container .fullBox .content .tagBox {
@@ -709,13 +839,9 @@ body {
           .container .fullBox .content .days .day:last-of-type {
             margin-right: 0;
             width: calc(100% / 7); }
-          .container .fullBox .content .days .day.hovered {
-            background-color: #e9e9e9;
-            color: #999; }
           .container .fullBox .content .days .day.done {
             background-color: #27ae60;
             color: #fff;
-            animation: scaleIn .6s;
             position: relative; }
             .container .fullBox .content .days .day.done .remove {
               display: none;
@@ -740,18 +866,18 @@ body {
         width: 80%;
         left: 10%; }
         .container .fullBox .content .menunames .menu {
-          font-size: 18px;
+          position: relative;
+          display: inline-block;
+          font-size: 16px;
           background-color: #f2f2f2;
           color: #333;
-          margin-bottom: 10px;
-          padding: 5px 15px;
-          border-radius: 8px; }
-          .container .fullBox .content .menunames .menu.ui-draggable-dragging {
-            font-size: 16px;
-            width: 100px;
-            padding: 8px;
-            border-radius: 0;
-            word-break: break-all; }
+          margin-right: 5px;
+          margin-bottom: 5px;
+          padding: 6px 12px;
+          border-radius: 20px;
+          cursor: move; }
+          .container .fullBox .content .menunames .menu:hover {
+            background-color: #f8f8f8; }
 
 .actionbar {
   position: absolute;
@@ -784,52 +910,47 @@ body {
       background-color: #21262f; }
 
 .loadingSpinner {
-  float: right; }
+  float: right;
+  margin-top: 10px;
+  margin-right: 8px; }
   .loadingSpinner .loading {
-    width: 30px;
-    height: 30px;
-    border: 3px solid #E6E6E6;
-    border-top: 3px solid #e67e22;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #E6E6E6;
+    border-top: 2px solid #e67e22;
     border-radius: 50%;
     animation: drey 1s ease infinite; }
   .loadingSpinner .success {
-    opacity: 0;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #2ecc71;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
     border-radius: 50%;
     text-align: center; }
     .loadingSpinner .success i {
       font-size: 20px;
-      line-height: 20px;
-      color: #2ecc71;
-      transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.22, 1.83);
-      transform: scale(0.3); }
-    .loadingSpinner .success.visible {
-      opacity: 1; }
-      .loadingSpinner .success.visible i {
-        transform: scale(1); }
+      line-height: 25px;
+      color: #fff;
+      transform: scale(0);
+      animation: scaleInBezizer .8s forwards; }
   .loadingSpinner .error {
-    opacity: 0;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: -3px;
-    left: -3px;
-    border: 3px solid #e74c3c;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
     border-radius: 50%;
     text-align: center; }
     .loadingSpinner .error i {
-      font-size: 30px;
-      line-height: 50px;
-      color: #e74c3c;
-      transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.22, 1.83);
-      transform: scale(0.3); }
-    .loadingSpinner .error.visible {
-      opacity: 1; }
-      .loadingSpinner .error.visible i {
-        transform: scale(1); }
-
+      font-size: 20px;
+      line-height: 25px;
+      color: #fff;
+      transform: scale(0);
+      animation: scaleInBezizer .8s forwards; }
+@keyframes scaleInBezizer {
+  0% {
+    transform: scale(0); }
+  40% {
+    transform: scale(1); }
+  100% {
+    transform: scale(0.95); } }
 @keyframes drey {
   0% {
     transform: rotate(0deg); }

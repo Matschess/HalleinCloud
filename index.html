@@ -32,40 +32,38 @@
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link rel="stylesheet" href="assets/plugins/select2/select2.css"/>
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
 <div>
+    <!-- Login -->
     <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]">
         <h1>Hallein App - Verwaltung</h1>
         <div class="devs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
         <div class="loginwrapper">
             <i class="material-icons icon">person_outline</i><input type="text" class="username" spellcheck="false"/><br/>
             <i class="material-icons icon">lock_outline</i><input type="password" class="password"/>
-            <div class="passwordlostbox"><a class="passwordlost" href="#">Passwort vergessen?</a><i
-                    class="material-icons doneicon" ng-click="logIn()">done</i></div>
+            <div class="passwordlostbox"><a class="passwordlost" href="#">Passwort vergessen?</a><i class="material-icons doneicon" ng-click="logIn()">done</i></div>
         </div>
     </div>
     <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
-        <div class="popup large" ng-if="popup" ng-class="{true:'visible'}[popup]"><i class="material-icons close"
-                                                                                     ng-click="popupClose()">close</i>
-            <h2>{{ popupTitle }}</h2>
+        <!-- Popup -->
+        <div class="overlay" ng-class="{visible: popup}" ng-click="popupClose()"></div>
+        <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close" ng-click="popupClose()">close</i>
+            <h2>{{ popup.title }}</h2>
             <navigation>
                 <ul>
-                    <li ng-repeat="link in popupLinks" ng-click="popupLoad(link.url)"><i class="material-icons">{{
-                        link.icon
-                        }}</i>{{ link.name }}
-                    </li>
+                    <li ng-repeat="link in popup.links" ng-click="popupLoad($index)"><i class="material-icons">{{link.icon}}</i>{{ link.name }}</li>
                 </ul>
             </navigation>
-            <content ng-include="popupContent"></content>
+            <content ng-include="popup.content"></content>
+            <div class="action"><i class="material-icons" ng-repeat="action in popup.actions">{{ action.icon }}</i></div>
         </div>
+        <!-- Topbar -->
         <div class="topbar">
             <i class="material-icons burgericon">menu</i>
             <h1 class="headline">Verwaltungsdashboard</h1>
             <div class="user">
-                Benutzername
+                {{ username }}
                 <img src="assets/imgs/profile_default.png"/>
                 <img class="icon" src="assets/icons/arrow_down.png"/>
             </div>
@@ -77,7 +75,7 @@
                 </ul>
             </div>
         </div>
-        <div class="overlay" ng-class="{true:'visible'}[popup]" ng-click="popupClose()"></div>
+        <!-- Navbar -->
         <div class="navbar">
             <ul ng-repeat="route in routes">
                 <a href="#{{ route.path }}">
@@ -85,14 +83,20 @@
                 </a>
             </ul>
         </div>
+        <!-- Container -->
         <div class="container">
             <div class="fullBox" ng-if="frame.type == 'fullBox'">
-                <div class="title">
-                    <h2>{{ frame.title }}</h2>
+                <div class="title" ng-class="loading.status">
+                    <h2 ng-if="loading.text">{{ loading.text }}</h2>
+                    <h2 ng-if="!loading.text">{{ frame.title }}</h2>
                     <div class="actions">
-                            <a class="tooltipBottom" ng-repeat="action in frame.actions" href="#{{ action.route }}" title="{{ action.title }}">
-                                <div class="icon"><i class="material-icons">{{
-                                    action.icon }}</i></div>
+                        <div class="loadingSpinner" ng-show="loading">
+                            <div class="loading" ng-show="loading.status == 'loading'"></div>
+                            <div class="success" ng-show="loading.status == 'success'"><i class="material-icons">done</i></div>
+                            <div class="error" ng-show="loading.status == 'error'"><i class="material-icons">close</i></div>
+                        </div>
+                            <a class="tooltipBottom" ng-show="!loading" ng-repeat="action in frame.actions" href="#{{ action.route }}" title="{{ action.title }}">
+                                <div class="icon"><i class="material-icons">{{ action.icon }}</i></div>
                             </a>
                     </div>
                 </div>
@@ -114,8 +118,7 @@
         <div class="actionbar" ng-class="{true:'visible'}[action]">
             <div ng-repeat="action in actions">
                 <a href="#{{ action.route }}">
-                    <div class="icon tooltip" ng-class="{true:'bottom'}[action.bottom]" title="{{ action.title }}"><i
-                            class="material-icons">{{ action.icon }}</i></div>
+                    <div class="icon tooltip" ng-class="{true:'bottom'}[action.bottom]" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></div>
                 </a>
             </div>
         </div>

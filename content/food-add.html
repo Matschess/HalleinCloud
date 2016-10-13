@@ -13,8 +13,9 @@
     <br/>
     <i ng-show="!appetizer" ng-click="appetizer=true" class="material-icons remover tooltipRight" title="Vorspeise hinzufügen">add_circle_outline</i>
     <i ng-show="appetizer" ng-click="appetizer=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
+    <label class="distance" ng-show="!appetizer">Vorspeise hinzufügen<br/></label>
     <div ng-show="appetizer">
-        <label class="longer distance">Vorspeise:</label>
+        <label class="longer distance top">Vorspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
         <div class="veggieWrapper">
             <label class="longer smaller">Vegetarisch?</label>
@@ -26,7 +27,7 @@
         </div>
     </div>
     <div>
-        <label class="longer distance">Hauptspeise:</label>
+        <label class="longer distance top">Hauptspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
         <div class="veggieWrapper">
             <label class="longer smaller">Vegetarisch?</label>
@@ -39,8 +40,9 @@
     </div>
     <i ng-show="!dessert" ng-click="dessert=true" class="material-icons remover tooltipRight" title="Nachspeise hinzufügen">add_circle_outline</i>
     <i ng-show="dessert" ng-click="dessert=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
+    <label class="distance" ng-show="!dessert">Nachspeise hinzufügen</label>
     <div ng-show="dessert">
-        <label class="longer distance">Nachspeise:</label>
+        <label class="longer distance top">Nachspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
         <div class="veggieWrapper">
             <label class="longer smaller">Vegetarisch?</label>

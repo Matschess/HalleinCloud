@@ -1,5 +1,9 @@
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
-
+    $scope.username = 'Benutzername';
+    /*$scope.loading = {
+        status: '',
+        text: ''
+    };*/
     $scope.checkKey = function ($event) {
         if ($event.keyCode == 27) {
             $scope.popupClose();
@@ -69,33 +73,39 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     });
 
     var settingsLinks = [
-        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'},
-        {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html'}
+        {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html', actions: [{icon: 'done'}]},
+        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html', actions: [{icon: 'send'}]}
     ];
 
     var mailerLinks = [
         {name: 'Nachrichten', icon: 'mail_outline', url: 'mailer/mails.html'},
         {name: 'Papierkorb', icon: 'delete', url: 'mailer/dustbin.html'},
-        {name: 'Nachricht schreiben', icon: 'add', url: 'mailer/mail-add.html'}
+        {name: 'Nachricht schreiben', icon: 'add', url: 'mailer/mail-add.html', actions: [{icon: 'send'}]}
     ];
 
     $scope.openSettings = function () {
-        $scope.popup = true;
-        $scope.popupTitle = 'Einstellungen';
-        $scope.popupLinks = settingsLinks;
-        $scope.popupContent = 'content/' + $scope.popupLinks[0].url;
+        $scope.popup = {
+            title: 'Einstellungen',
+            links: settingsLinks,
+            content: 'content/' + settingsLinks[0].url,
+            actions: settingsLinks[0].actions
+        }
     }
     $scope.openMailer = function () {
-        $scope.popup = true;
-        $scope.popupTitle = 'Mailer';
-        $scope.popupLinks = mailerLinks;
-        $scope.popupContent = 'content/' + $scope.popupLinks[0].url;
+        $scope.popup = {
+            title: 'Mailer',
+            links: mailerLinks,
+            content: 'content/' + mailerLinks[0].url,
+            actions: mailerLinks[0].actions
+        }
+    }
+    $scope.popupLoad = function (index) {
+        $scope.popup.content = 'content/' + $scope.popup.links[index].url;
+        $scope.popup.action = $scope.popup.links[index].actions;
+        console.log($scope.popup);
     }
     $scope.popupClose = function () {
         $scope.popup = false;
-    }
-    $scope.popupLoad = function (url) {
-        $scope.popupContent = 'content/' + url;
     }
 });
 
@@ -134,11 +144,15 @@ myApp.controller('dashboardController', function ($scope) {
 
 myApp.controller('foodController', function ($scope) {
     $scope.menus = [
-        {name: 'Griechischer Salat'},
-        {name: 'Hausburger mit Pommes'},
-        {name: 'Zanderfilet mit Bratkartoffeln'},
-        {name: 'Hauspizza'},
-        {name: 'Kaiserschmarrn'},
+        {name: 'Bunter Blattsalat'},
+        {name: 'Putenstreifen-Salat'},
+        {name: 'Steirischer Backhendl-Salat'},
+        {name: 'Putenfilet-Sandwich'},
+        {name: 'Hamburger mit Pommes'},
+        {name: 'Cordon Bleu'},
+        {name: 'Chickenburger paniert mit Pommes'},
+        {name: 'Wiener Schnitzel'},
+        {name: 'Spare Ribs'}
     ];
     $scope.days = [
         {name: 'Montag', menu: 1},
@@ -149,39 +163,31 @@ myApp.controller('foodController', function ($scope) {
         {name: 'Samstag'},
         {name: 'Sonntag'}
     ];
-    $scope.assignMenu = function(index, data) {
+    $scope.assignMenu = function (index, data) {
         $scope.days[index].menu = data + 1; // Because a 0 would be a bug
         tooltipstln();
     }
-    $scope.pushMenu = function(index) {
-        for(var i = 0; i < $scope.days.length; i++) {
-            if(!$scope.days[i].menu) {
-                $scope.days[i].menu = index + 1;
-                break;
-            }
-        }
-    }
-    $scope.removeMenu = function(index) {
+    $scope.removeMenu = function (index) {
         delete $scope.days[index].menu;
         console.log($scope.days);
     }
     /*
-    $('.content').ready(function () {
-        $('.menu').draggable({
-            cursorAt: {left: 5},
-            revert: true,
-            revertDuration: 0,
-        });
-        $(".day").droppable({
-            hoverClass: "hovered",
-            drop: function (event, ui) {
-                $(this).addClass("done");
-                $(this).html("<i class='material-icons'>done</i>");
-                console.log(event);
-            }
-        });
-    });
-    */
+     $('.content').ready(function () {
+     $('.menu').draggable({
+     cursorAt: {left: 5},
+     revert: true,
+     revertDuration: 0,
+     });
+     $(".day").droppable({
+     hoverClass: "hovered",
+     drop: function (event, ui) {
+     $(this).addClass("done");
+     $(this).html("<i class='material-icons'>done</i>");
+     console.log(event);
+     }
+     });
+     });
+     */
 });
 
 myApp.controller('feedbackController', function ($scope) {
@@ -223,6 +229,24 @@ myApp.controller('foodAddController', function ($scope) {
     }
 });
 
+myApp.controller('usersController', function ($scope) {
+    $scope.users = [
+        {name: 'Superuser', username: 'superuser', group: 'superuser'},
+        {name: 'Admin', username: 'admin', group: 'administrators'},
+        {name: 'Cleitzlers', username: 'cleitzler', group: 'restaurants', lastLogin: '12.10.2016'},
+        {name: 'Pizzeria Bella Palma', username: 'bella-palma', group: 'restaurants'},
+        {name: 'Gasthof Hager', username: 'hager', group: 'restaurants'},
+        {name: 'Koi', username: 'koi', group: 'restaurants'}
+    ]
+    $scope.deleteUser = function(index) {
+        $scope.users.splice(index, 1);
+    }
+});
+
+myApp.controller('userAddController', function ($scope) {
+    $scope.groups = ['restaurants', 'administratoren'];
+});
+
 myApp.controller('pagesController', function ($scope) {
     $scope.days = [
         {shorthand: 'M', from: '08:00', toHalf: '14:00', fromHalf: '15:00', to: '22:00'},
@@ -234,9 +258,9 @@ myApp.controller('pagesController', function ($scope) {
         {shorthand: 'S'}
     ];
     $scope.restDays = [
-        {fromDate: '22.10.2016', toDate: '22.10.216'},
-        {fromDate: '24.10.2016', toDate: '25.11.216'},
-        {fromDate: '20.10.2016', toDate: '22.10.216'}
+        {fromDate: '22.10.2016', toDate: '22.10.2016'},
+        {fromDate: '24.10.2016', toDate: '25.11.2016'},
+        {fromDate: '20.10.2016', toDate: '22.10.2016'}
     ];
     $scope.sleep = function (index) {
         $scope.days[index].sleep = !$scope.days[index].sleep;
