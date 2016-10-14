@@ -205,3 +205,38 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+// Password-Validation
+.pwValidation {
+  font-size: 0;
+  height: 2px;
+  margin-bottom: 5px;
+  div {
+    display: inline-block;
+    background-color: #e8e8e8;
+    width: 22.75%;
+    height: 2px;
+    vertical-align: top;
+    margin-right: 3%;
+    -webkit-transition: background-color .2s ease;
+    -moz-transition: background-color .2s ease;
+    -ms-transition: background-color .2s ease;
+    -o-transition: background-color .2s ease;
+    transition: background-color .2s ease;
+    &:nth-of-type(1).active {
+      background-color: #e74c3c;
+    }
+    &:nth-of-type(2).active {
+      background-color: #e67e22;
+    }
+    &:nth-of-type(3).active {
+      background-color: #f1c40f;
+    }
+    &:last-of-type {
+      margin-right: 0;
+      &.active {
+        background-color: #27ae60;
+      }
+    }
+  }
+}

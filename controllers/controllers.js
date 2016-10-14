@@ -1,9 +1,9 @@
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
     $scope.username = 'Benutzername';
     /*$scope.loading = {
-        status: '',
-        text: ''
-    };*/
+     status: '',
+     text: ''
+     };*/
     $scope.checkKey = function ($event) {
         if ($event.keyCode == 27) {
             $scope.popupClose();
@@ -238,13 +238,18 @@ myApp.controller('usersController', function ($scope) {
         {name: 'Gasthof Hager', username: 'hager', group: 'restaurants'},
         {name: 'Koi', username: 'koi', group: 'restaurants'}
     ]
-    $scope.deleteUser = function(index) {
+    $scope.deleteUser = function (index) {
         $scope.users.splice(index, 1);
     }
 });
 
 myApp.controller('userAddController', function ($scope) {
-    $scope.groups = ['restaurants', 'administratoren'];
+    $scope.group = {
+        value: 'restaurants',
+        values: [
+            {name: 'Restaurants', value: 'restaurants'},
+            {name: 'Administratoren', value: 'administrators'}]
+    }
 });
 
 myApp.controller('pagesController', function ($scope) {

@@ -1,23 +1,23 @@
 <div class="left">
     <h3>Grunddaten:</h3>
     <label>Gruppe:</label>
-    <select>
-        <option ng-repeat="group in groups">{{ group }}</option>
-    </select>
+    <select ng-model="group.value" ng-options="value.name for value in group.values"></select>
     <br/>
-    <input type="text" placeholder="Restaurantsname" ng-if="group == 'restaurant'"/>
+    <input type="text" placeholder="Restaurantsname" ng-if="group.value == 'restaurants'"/>
     <input type="text" placeholder="Vorname"/><br/>
     <input type="text" placeholder="Nachname"/><br/>
     <input type="text" placeholder="Benutzername"/><br/>
 </div>
 <div class="right">
     <h3>Passwort:</h3>
-    <input type="password" class="longest" placeholder="Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
-    <div class="pwValidation">
-        <div ng-class="{1:'active'}[pwSafety]"></div>
-        <div ng-class="{2:'active'}[pwSafety]"></div>
-        <div ng-class="{3:'active'}[pwSafety]"></div>
-        <div ng-class="{4:'active'}[pwSafety]"></div>
+    <div ng-controller="pwChange">
+        <input type="password" placeholder="Neues Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+        <div class="pwValidation">
+            <div ng-class="{1:'active'}[pwSafety]"></div>
+            <div ng-class="{2:'active'}[pwSafety]"></div>
+            <div ng-class="{3:'active'}[pwSafety]"></div>
+            <div ng-class="{4:'active'}[pwSafety]"></div>
+        </div>
+        <input type="password" placeholder="Wiederholung"/>
     </div>
-    <input type="password" class="longest" placeholder="Wiederholung"/>
 </div>
