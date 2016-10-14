@@ -232,12 +232,24 @@ myApp.controller('foodAddController', function ($scope) {
 myApp.controller('usersController', function ($scope) {
     $scope.users = [
         {name: 'Superuser', username: 'superuser', group: 'superuser'},
-        {name: 'Admin', username: 'admin', group: 'administrators'},
-        {name: 'Cleitzlers', username: 'cleitzler', group: 'restaurants', lastLogin: '12.10.2016'},
+        {name: 'Admin', username: 'admin', group: 'admins'},
+        {name: 'Cleitzlers', username: 'cleitzlers', group: 'restaurants', lastActive: '12.10.2016'},
         {name: 'Pizzeria Bella Palma', username: 'bella-palma', group: 'restaurants'},
         {name: 'Gasthof Hager', username: 'hager', group: 'restaurants'},
         {name: 'Koi', username: 'koi', group: 'restaurants'}
     ]
+
+    $scope.sort = function(property) {
+        $scope.users.sort(dynamicSort(property));
+    }
+
+    function dynamicSort(property) {
+        return function (a,b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result;
+        }
+    }
+
     $scope.deleteUser = function (index) {
         $scope.users.splice(index, 1);
     }
@@ -245,10 +257,10 @@ myApp.controller('usersController', function ($scope) {
 
 myApp.controller('userAddController', function ($scope) {
     $scope.group = {
-        value: 'restaurants',
-        values: [
-            {name: 'Restaurants', value: 'restaurants'},
-            {name: 'Administratoren', value: 'administrators'}]
+        selected: 'restaurants',
+        options: [
+            {name: 'Restaurant', value: 'restaurants'},
+            {name: 'Administrator', value: 'admins'}]
     }
 });
 

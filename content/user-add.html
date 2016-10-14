@@ -1,17 +1,25 @@
 <div class="left">
-    <h3>Grunddaten:</h3>
-    <label>Gruppe:</label>
-    <select ng-model="group.value" ng-options="value.name for value in group.values"></select>
+    <h3>Accountdaten:</h3>
+    <label>Kontotyp:</label>
+    <select ng-model="group.selected" ng-options="option.value as option.name for option in group.options"></select>
     <br/>
-    <input type="text" placeholder="Restaurantsname" ng-if="group.value == 'restaurants'"/>
-    <input type="text" placeholder="Vorname"/><br/>
-    <input type="text" placeholder="Nachname"/><br/>
-    <input type="text" placeholder="Benutzername"/><br/>
+    <br/>
+    <div ng-switch="group.selected">
+        <div ng-switch-when="restaurants">
+            <input type="text" placeholder="Restaurantname" ng-model="restaurantname"/><br/>
+            <input type="text" placeholder="Benutzername" value="{{ restaurantname | lowercase }}@{{ group.selected }}" readonly/>
+        </div>
+    <div ng-switch-default>
+        <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
+        <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
+        <input type="text" placeholder="Benutzername" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ group.selected }}" readonly/><br/>
+    </div>
+        </div>
 </div>
 <div class="right">
     <h3>Passwort:</h3>
-    <div ng-controller="pwChange">
-        <input type="password" placeholder="Neues Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+    <div class="pwChange" ng-controller="pwChange">
+        <input type="password" placeholder="Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
         <div class="pwValidation">
             <div ng-class="{1:'active'}[pwSafety]"></div>
             <div ng-class="{2:'active'}[pwSafety]"></div>

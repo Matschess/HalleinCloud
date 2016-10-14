@@ -1,16 +1,19 @@
-<div class="users">
-    <div class="header">
-        <div>Name</div>
-        <div>Benutzername</div>
-        <div>Gruppe</div>
-        <div>Zuletzt eingeloggt</div>
-    </div>
-    <div class="user" ng-repeat="user in users">
-        <div class="edit"><span>Bearbeiten</span></div>
-        <div>{{ user.name }}</div>
-        <div>{{ user.username }}</div>
-        <div>{{ user.group }}</div>
-        <div>{{ user.lastLogin }}</div>
-        <div class="delete" ng-click="deleteUser($index)"><span>Löschen</span></div>
-    </div>
-</div>
+<table class="users" ng-if="users.length">
+    <tr>
+        <th class="sortable" ng-click="sort('name')">Name</th>
+        <th class="sortable" ng-click="sort('username')">Benutzername</th>
+        <th class="sortable" ng-click="sort('group')">Kontotyp</th>
+        <th ng-click="sort('lastActive')">Letzte Aktivität</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.group }}</td>
+        <td>{{ user.lastActive }}</td>
+        <td class="actions">
+            <div><i class="material-icons">edit</i></div>
+            <div><i class="material-icons" ng-click="deleteUser($index)">close</i></div>
+        </td>
+    </tr>
+</table>
