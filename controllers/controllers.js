@@ -20,13 +20,6 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
 
     // Login
     $scope.loggedIn = true;
-    $scope.logIn = function (url, action) {
-        $scope.loggedIn = true;
-    }
-    $scope.logOut = function (url, action) {
-        $scope.loggedIn = false;
-        $scope.logout = true;
-    }
 
     // Save routes in an array for navigation
     $scope.routes = [];
@@ -77,26 +70,12 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html', actions: [{icon: 'send'}]}
     ];
 
-    var mailerLinks = [
-        {name: 'Nachrichten', icon: 'mail_outline', url: 'mailer/mails.html'},
-        {name: 'Papierkorb', icon: 'delete', url: 'mailer/dustbin.html'},
-        {name: 'Nachricht schreiben', icon: 'add', url: 'mailer/mail-add.html', actions: [{icon: 'send'}]}
-    ];
-
     $scope.openSettings = function () {
         $scope.popup = {
             title: 'Einstellungen',
             links: settingsLinks,
             content: 'content/' + settingsLinks[0].url,
             actions: settingsLinks[0].actions
-        }
-    }
-    $scope.openMailer = function () {
-        $scope.popup = {
-            title: 'Mailer',
-            links: mailerLinks,
-            content: 'content/' + mailerLinks[0].url,
-            actions: mailerLinks[0].actions
         }
     }
     $scope.popupLoad = function (index) {
@@ -106,6 +85,45 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     }
     $scope.popupClose = function () {
         $scope.popup = false;
+    }
+});
+
+myApp.controller('loginController', function ($scope, $route, $routeParams, $http, $cookies) {
+    var routes = {
+        login: {
+            title: 'Hallein App - Verwaltung',
+            aboutUs: true,
+            content: 'content/login.html'
+        },
+        setup: {
+            restaurant: {
+                basicData: {
+                    title: 'Einrichtung - Schritt 1',
+                    content: 'content/setup/restaurants/basicData.html'
+                },
+                address: {
+                    title: 'Einrichtung - Schritt 2',
+                    content: 'content/setup/restaurants/address.html'
+                },
+                openingTimes: {
+                    title: 'Einrichtung - Schritt 3',
+                    content: 'content/setup/restaurants/openingTimes.html'
+                }
+            },
+        }
+    };
+    $scope.route = routes.login;
+
+    $scope.logIn = function (url, action) {
+           $scope.route = routes.setup.restaurant.basicData;
+    }
+    $scope.complete = function(src){
+        switch(src){
+            case 'basicData':
+                $scope.route = routes.setup.restaurant.address;
+            case 'address':
+                $scope.route = routes.setup.restaurant.openingTimes;
+        }
     }
 });
 
@@ -262,6 +280,22 @@ myApp.controller('userAddController', function ($scope) {
             {name: 'Restaurant', value: 'restaurants'},
             {name: 'Administrator', value: 'admins'}]
     }
+
+    generateRandom(10);
+
+    $scope.generatePassword = function () {
+        generateRandom(10);
+    }
+
+    function generateRandom(length) {
+        var password = '';
+        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for (var i = 0; i < length; i++)
+            password += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        $scope.pwNew = password;
+    }
 });
 
 myApp.controller('pagesController', function ($scope) {
@@ -300,16 +334,6 @@ myApp.controller('pwChange', function ($scope) {
         if (pwNew.match("[!\"§$%&/()=?]")) {
             $scope.pwSafety++;
         }
-    }
-});
-
-myApp.controller('mailController', function ($scope) {
-    $scope.mails = [
-        {id: 1, subject: 'Willkommen', from: 'System', date: '13.09.2016'},
-        {id: 2, subject: 'Anweisung', from: 'Rainer', date: '27.09.2016'}
-    ];
-    $scope.mailRead = function (id) {
-        alert(id);
     }
 });
 

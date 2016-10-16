@@ -1,4 +1,4 @@
-<div class="left">
+<div class="full">
     <h3>Accountdaten:</h3>
     <label>Kontotyp:</label>
     <select ng-model="group.selected" ng-options="option.value as option.name for option in group.options"></select>
@@ -15,17 +15,19 @@
         <input type="text" placeholder="Benutzername" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ group.selected }}" readonly/><br/>
     </div>
         </div>
-</div>
-<div class="right">
     <h3>Passwort:</h3>
     <div class="pwChange" ng-controller="pwChange">
-        <input type="password" placeholder="Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+        <input type="text" placeholder="Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+        <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
         <div class="pwValidation">
             <div ng-class="{1:'active'}[pwSafety]"></div>
             <div ng-class="{2:'active'}[pwSafety]"></div>
             <div ng-class="{3:'active'}[pwSafety]"></div>
             <div ng-class="{4:'active'}[pwSafety]"></div>
         </div>
-        <input type="password" placeholder="Wiederholung"/>
     </div>
+    <label>
+        <input type="checkbox" value="passwordNeedsInit" checked>
+        Passwort muss bei erster Anmeldung geändert werden
+    </label>
 </div>

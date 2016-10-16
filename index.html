@@ -21,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngDraggable/0.1.11/ngDraggable.min.js"></script>
     <script src="controllers/routing.js"></script>
+    <script src="controllers/services.js"></script>
     <script src="controllers/controllers.js"></script>
     <!-- Libraries -->
     <!-- Tooltipster -->
@@ -36,14 +37,11 @@
 <body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
 <div>
     <!-- Login -->
-    <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]">
-        <h1>Hallein App - Verwaltung</h1>
-        <div class="devs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
-        <div class="loginwrapper">
-            <i class="material-icons icon">person_outline</i><input type="text" class="username" spellcheck="false"/><br/>
-            <i class="material-icons icon">lock_outline</i><input type="password" class="password"/>
-            <div class="passwordlostbox"><a class="passwordlost" href="#">Passwort vergessen?</a><i class="material-icons doneicon" ng-click="logIn()">done</i></div>
-        </div>
+    <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
+        <h1>{{ route.title }}</h1>
+        <div class="devs" ng-if="route.aboutUs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
+        <div class="loginwrapper" ng-include="route.content"></div>
+    </div>
     </div>
     <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
         <!-- Popup -->
@@ -70,7 +68,6 @@
             <div class="options">
                 <ul>
                     <li ng-click="openSettings()">Einstellungen</li>
-                    <li ng-click="openMailer()">Nachrichten</li>
                     <li id="logout" ng-click="logOut()">Logout</li>
                 </ul>
             </div>
