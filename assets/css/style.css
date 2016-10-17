@@ -604,81 +604,69 @@ body {
       margin-bottom: 10px; }
     .container .dashboardBox .text, .container .feedbackBox .text {
       font-size: 16px; }
-    .container .dashboardBox:hover .notification.success, .container .feedbackBox:hover .notification.success {
-      background-color: #01d501; }
-    .container .dashboardBox:hover .notification.alert, .container .feedbackBox:hover .notification.alert {
-      background-color: #f50000; }
-    .container .dashboardBox:hover .notification.warning, .container .feedbackBox:hover .notification.warning {
-      background-color: #f7c80e; }
-  .container .dashboardBox:active {
+  .container .dashboardBox:hover {
     -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    cursor: move; }
-  .container .dashbaordOrder {
-    opacity: 0;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1); }
+    .container .dashboardBox:hover .notification.success {
+      background-color: #01d501; }
+    .container .dashboardBox:hover .notification.alert {
+      background-color: #f50000; }
+    .container .dashboardBox:hover .notification.warning {
+      background-color: #f7c80e; }
+  .container .feedbackBox i {
+    font-size: 20px;
+    vertical-align: middle; }
+  .container .feedbackBox:hover .actions {
+    transform: scale(1); }
+  .container .feedbackBox .actions {
+    transform: scale(0);
     position: absolute;
-    right: 40px;
-    top: 30px;
-    cursor: default;
-    animation: fadeIn .3s .4s ease forwards; }
-    .container .dashbaordOrder:hover {
-      color: #000; }
-  .container .feedbackBox {
-    transition: left 1s; }
-    .container .feedbackBox i {
-      font-size: 20px;
-      vertical-align: middle; }
-    .container .feedbackBox:hover .actions {
-      transform: scale(1); }
-    .container .feedbackBox .actions {
-      transform: scale(0);
-      position: absolute;
-      top: -15px;
-      right: -15px;
-      -webkit-transition: background-color .1s, visibility .3s;
-      -moz-transition: background-color .1s;
-      -ms-transition: background-color .1s;
-      -o-transition: background-color .1s;
-      transition: background-color 0.1s, transform 0.3s cubic-bezier(0.17, 0.67, 0.55, 1.17); }
-    .container .feedbackBox .action {
-      display: inline-block;
+    top: -15px;
+    right: -15px;
+    -webkit-transition: background-color .1s, visibility .3s;
+    -moz-transition: background-color .1s;
+    -ms-transition: background-color .1s;
+    -o-transition: background-color .1s;
+    transition: background-color 0.1s, transform 0.3s cubic-bezier(0.17, 0.67, 0.55, 1.17); }
+  .container .feedbackBox .action {
+    display: inline-block;
+    font-size: 15px;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%; }
+    .container .feedbackBox .action i {
       font-size: 15px;
-      color: #fff;
-      width: 30px;
-      height: 30px;
-      margin-left: 5px;
-      text-align: center;
-      line-height: 30px;
-      border-radius: 50%; }
-      .container .feedbackBox .action i {
-        font-size: 15px;
-        line-height: 30px; }
-      .container .feedbackBox .action.accept {
-        background-color: #01DF01;
-        right: -15px; }
-        .container .feedbackBox .action.accept:hover {
-          background-color: #01c601; }
-      .container .feedbackBox .action.decline {
-        background-color: #FF0000;
-        right: 25px; }
-        .container .feedbackBox .action.decline:hover {
-          background-color: #e60000; }
-    .container .feedbackBox .subject {
-      font-size: 18px;
-      margin-bottom: 5px; }
-    .container .feedbackBox .rating {
-      display: inline-block;
-      width: 20%;
-      font-size: 80px;
-      right: 0;
-      opacity: .4;
-      vertical-align: middle; }
-    .container .feedbackBox .content {
-      display: inline-block;
-      margin-left: 5%;
-      width: 70%;
-      vertical-align: middle; }
+      line-height: 30px; }
+    .container .feedbackBox .action.accept {
+      background-color: #01DF01;
+      right: -15px; }
+      .container .feedbackBox .action.accept:hover {
+        background-color: #01c601; }
+    .container .feedbackBox .action.decline {
+      background-color: #FF0000;
+      right: 25px; }
+      .container .feedbackBox .action.decline:hover {
+        background-color: #e60000; }
+  .container .feedbackBox .subject {
+    font-size: 18px;
+    margin-bottom: 5px; }
+  .container .feedbackBox .rating {
+    display: inline-block;
+    width: 20%;
+    font-size: 80px;
+    right: 0;
+    opacity: .4;
+    vertical-align: middle; }
+  .container .feedbackBox .content {
+    display: inline-block;
+    margin-left: 5%;
+    width: 70%;
+    vertical-align: middle; }
   .container .fullBox {
     background-color: #fff;
     -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);

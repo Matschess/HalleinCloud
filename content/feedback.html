@@ -10,7 +10,7 @@
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
-    <div class="feedbackBox" ng-if="!newFeedbacks.length"><i class="material-icons">done</i> Kein neues Feedback</div>
+    <div class="feedbackBox empty" ng-if="!newFeedbacks.length"><i class="material-icons">done</i> Kein neues Feedback</div>
 </div>
 <div class="feedbackGroup" ng-if="frame.switched == 2">
     <div class="feedbackBox" ng-if="acceptedFeedbacks.length" ng-repeat="feedback in acceptedFeedbacks">
@@ -22,7 +22,7 @@
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
-    <div class="feedbackBox" ng-if="!acceptedFeedbacks.length"><i class="material-icons">block</i> Kein akzeptiertes Feedback</div>
+    <div class="feedbackBox empty" ng-if="!acceptedFeedbacks.length"><i class="material-icons">block</i> Kein akzeptiertes Feedback</div>
 </div>
 <div class="feedbackGroup" ng-if="frame.switched == 3">
     <div class="feedbackBox" ng-if="declinedFeedbacks.length" ng-repeat="feedback in declinedFeedbacks">
@@ -34,5 +34,5 @@
         <div class="rating">{{ feedback.rating }}</div>
         <div class="content">{{ feedback.text }}</div>
     </div>
-    <div class="feedbackBox" ng-if="!declinedFeedbacks.length"><i class="material-icons">block</i> Kein abgelehntes Feedback</div>
+    <div class="feedbackBox empty" ng-if="!declinedFeedbacks.length"><i class="material-icons">block</i> Kein abgelehntes Feedback</div>
 </div>

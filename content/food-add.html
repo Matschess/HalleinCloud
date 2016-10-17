@@ -1,4 +1,11 @@
 <div class="full">
+    <label>Typ:</label>
+    <select>
+        <option>Vorspeise</option>
+        <option selected>Hauptspeise</option>
+        <option>Nachspeise</option>
+    </select><br/>
+    <br/>
     <label>Tags: <i class="material-icons tooltipRight" title="Tags helfen beim Suchen nach Mahlzeiten und geben den Benutzern Essensvorschläge.">help_outline</i></label>
     <div class="tagBox">
         <div ui-sortable class="tag" ng-repeat="tag in tags" ng-class="tag.class">
@@ -9,49 +16,17 @@
     </div>
 
     <br/>
-    <label class="longer">Menü:</label><br/>
+    <label class="longer">Beschreibung:</label><br/>
     <br/>
-    <i ng-show="!appetizer" ng-click="appetizer=true" class="material-icons remover tooltipRight" title="Vorspeise hinzufügen">add_circle_outline</i>
-    <i ng-show="appetizer" ng-click="appetizer=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
-    <label class="distance" ng-show="!appetizer">Vorspeise hinzufügen<br/></label>
-    <div ng-show="appetizer">
-        <label class="longer distance top">Vorspeise:</label>
-        <textarea class="short" placeholder="Beschreibung"></textarea>
-        <div class="veggieWrapper">
-            <label class="longer smaller">Vegetarisch?</label>
-            <br/>
-            <input type="radio" id="y1" name="veggie1" value="Ja">
-            <label class="checkLabel" for="y1">Ja</label>
-            <input type="radio" id="n1" name="veggie1" value="Nein" checked>
-            <label class="checkLabel" for="n1">Nein</label>
-        </div>
-    </div>
     <div>
-        <label class="longer distance top">Hauptspeise:</label>
         <textarea class="short" placeholder="Beschreibung"></textarea>
         <div class="veggieWrapper">
             <label class="longer smaller">Vegetarisch?</label>
             <br/>
-            <input type="radio" id="y2" name="veggie2" value="Ja">
-            <label class="checkLabel" for="y2">Ja</label>
-            <input type="radio" id="n2" name="veggie2" value="Nein" checked>
-            <label class="checkLabel" for="n2">Nein</label>
+            <input type="radio" id="y" name="veggie" value="Ja">
+            <label class="checkLabel" for="y">Ja</label>
+            <input type="radio" id="n" name="veggie" value="Nein" checked>
+            <label class="checkLabel" for="n">Nein</label>
         </div>
     </div>
-    <i ng-show="!dessert" ng-click="dessert=true" class="material-icons remover tooltipRight" title="Nachspeise hinzufügen">add_circle_outline</i>
-    <i ng-show="dessert" ng-click="dessert=false" class="material-icons remover tooltipRight" title="Entfernen">remove_circle_outline</i>
-    <label class="distance" ng-show="!dessert">Nachspeise hinzufügen</label>
-    <div ng-show="dessert">
-        <label class="longer distance top">Nachspeise:</label>
-        <textarea class="short" placeholder="Beschreibung"></textarea>
-        <div class="veggieWrapper">
-            <label class="longer smaller">Vegetarisch?</label>
-            <br/>
-            <input type="radio" id="y3" name="veggie3" value="Ja">
-            <label class="checkLabel" for="y3">Ja</label>
-            <input type="radio" id="n3" name="veggie3" value="Nein" checked>
-            <label class="checkLabel" for="n3">Nein</label>
-        </div>
-    </div>
-    <br/>
 </div>

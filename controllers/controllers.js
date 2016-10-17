@@ -128,49 +128,25 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
 });
 
 myApp.controller('dashboardController', function ($scope) {
-    // Position dashboard-boxes on the right place
-    $('.dashboardBox').each(function () {
-        if (Cookies.get(this.id + '-box-position')) {
-            $(this).css('top', Cookies.getJSON(this.id + '-box-position').top + 'px');
-            $(this).css('left', Cookies.getJSON(this.id + '-box-position').left + 'px');
-        }
-    });
-
-    $('.dashboardBox').draggable({
-        containment: '.container',
-        stop: function (event, ui) {
-            Cookies.set(this.id + '-box-position', ui.position, {expires: 365});
-        }
-    });
-
-
     $scope.notifications = [
         {type: 'alert', number: 3, title: 'Fehler', text: 'Dies ist eine Fehler oder Nicht-behoben-Box.'},
         {type: 'success', title: 'Erfolg', text: 'Eine Erfolgsmeldung.'},
         {type: 'warning', title: 'Warnung', text: 'So sieht eine Warnung aus.'}
     ]
-    $scope.order = function () {
-        $('.dashboardBox').each(function () {
-            if (Cookies.get(this.id + '-box-position')) {
-                $(this).css('top', 'auto');
-                $(this).css('left', 'auto');
-                Cookies.remove(this.id + '-box-position');
-            }
-        });
-    }
 });
 
 myApp.controller('foodController', function ($scope) {
     $scope.menus = [
-        {name: 'Bunter Blattsalat'},
-        {name: 'Putenstreifen-Salat'},
-        {name: 'Steirischer Backhendl-Salat'},
-        {name: 'Putenfilet-Sandwich'},
-        {name: 'Hamburger mit Pommes'},
-        {name: 'Cordon Bleu'},
-        {name: 'Chickenburger paniert mit Pommes'},
-        {name: 'Wiener Schnitzel'},
-        {name: 'Spare Ribs'}
+        {name: 'Bunter Blattsalat', type: 'appetizer'},
+        {name: 'Putenstreifen-Salat', type: 'appetizer'},
+        {name: 'Steirischer Backhendl-Salat', type: 'mainCourse'},
+        {name: 'Putenfilet-Sandwich', type: 'mainCourse'},
+        {name: 'Hamburger mit Pommes', type: 'mainCourse'},
+        {name: 'Cordon Bleu', type: 'mainCourse'},
+        {name: 'Chickenburger ganiert mit Pommes', type: 'mainCourse'},
+        {name: 'Wiener Schnitzel', type: 'mainCourse'},
+        {name: 'Spare Ribs', type: 'mainCourse'},
+        {name: 'Schoko Pudding', type: 'dessert'}
     ];
     $scope.days = [
         {name: 'Montag', menu: 1},

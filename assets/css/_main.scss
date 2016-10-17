@@ -530,8 +530,12 @@ body {
     .text {
       font-size: 16px;
     }
-
+  }
+  .dashboardBox{
     &:hover {
+      -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
       .notification {
         &.success {
           background-color: darken(#01DF01, 2%);
@@ -545,25 +549,7 @@ body {
       }
     }
   }
-  .dashboardBox:active {
-    -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
-    cursor: move;
-  }
-  .dashbaordOrder {
-    opacity: 0;
-    position: absolute;
-    right: 40px;
-    top: 30px;
-    cursor: default;
-    animation: fadeIn .3s .4s ease forwards;
-    &:hover {
-      color: #000;
-    }
-  }
   .feedbackBox {
-    transition: left 1s;
     i {
       font-size: 20px;
       vertical-align: middle;
