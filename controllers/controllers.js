@@ -10,6 +10,11 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
     }
 
+    $scope.frameSwitch = function(index){
+        $scope.frame.switched = index + 1;
+        tooltipstln();
+    }
+
     $('.tooltip').tooltipster({
         theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
         side: 'left',
@@ -136,6 +141,10 @@ myApp.controller('dashboardController', function ($scope) {
 });
 
 myApp.controller('foodController', function ($scope) {
+    $scope.type = 'mainCourse';
+    $scope.setType = function(data) {
+        $scope.type = data;
+    }
     $scope.menus = [
         {name: 'Bunter Blattsalat', type: 'appetizer'},
         {name: 'Putenstreifen-Salat', type: 'appetizer'},

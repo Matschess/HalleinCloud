@@ -103,7 +103,7 @@
             </div>
             <div class="switchBox" ng-if="frame.type == 'switchBox'">
                 <ul class="switcher">
-                    <li ng-repeat="switch in frame.switcher" ng-click="frame.switched = $index + 1" ng-class="{true:'active'}[$index + 1 == frame.switched]">{{ switch }}</li>
+                    <li ng-repeat="switch in frame.switcher" ng-click="frameSwitch($index)" ng-class="{true:'active'}[$index + 1 == frame.switched]">{{ switch }}</li>
                 </ul>
                 <h2>{{ frame.title }}</h2>
                 <div class="content">

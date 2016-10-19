@@ -25,6 +25,10 @@
   animation: popIn .4s $delay ease forwards;
 }
 
+@mixin animate-slideIn($delay:0s) {
+  animation: slideIn .4s $delay ease;
+}
+
 $primary-font: 'Gravity', sans-serif;
 
 // Animations
@@ -34,6 +38,17 @@ $primary-font: 'Gravity', sans-serif;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -885,13 +900,32 @@ body {
           font-size: 16px;
           background-color: #f2f2f2;
           color: #333;
+          opacity: 1;
           margin-right: 5px;
           margin-bottom: 5px;
           padding: 6px 12px;
           border-radius: 20px;
           cursor: move;
+          &:nth-of-type(6n+1) {
+            @include animate-slideIn();
+          }
+          &:nth-of-type(6n+2) {
+            @include animate-slideIn(.05s);
+          }
+          &:nth-of-type(6n+3) {
+            @include animate-slideIn(.1s);
+          }
+          &:nth-of-type(6n+4) {
+            @include animate-slideIn(.105s);
+          }
+          &:nth-of-type(6n+5) {
+            @include animate-slideIn(.2s);
+          }
+          &:nth-of-type(6n+6) {
+            @include animate-slideIn(.2s);
+          }
           &:hover {
-            background-color: #f8f8f8;
+            background-color: #e8e8e8;
           }
         }
       }

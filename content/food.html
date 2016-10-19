@@ -9,5 +9,11 @@
     </div>
 </div>
 <div class="menunames">
-    <div class="menu" ng-drag="true" ng-drag-data="$index" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+    <div class="tabs">
+        <b>Sortieren nach:</b>
+        <li ng-class="{appetizer:'active'}[type]" ng-click="setType('appetizer')">Vorspeisen</li>
+        <li ng-class="{mainCourse:'active'}[type]" ng-click="setType('mainCourse')">Hauptspeisen</li>
+        <li ng-class="{dessert:'active'}[type]" ng-click="setType('dessert')">Nachspeisen</li>
+    </div>
+    <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == type" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
 </div>

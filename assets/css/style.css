@@ -201,6 +201,19 @@ input:checked + .slider:before {
         .pwChange .pwValidation div:last-of-type.active {
           background-color: #27ae60; }
 
+.tabs {
+  font-size: 16px;
+  margin-bottom: 20px; }
+  .tabs li {
+    display: inline;
+    padding: 5px 8px;
+    margin-left: 8px;
+    border-radius: 20px;
+    cursor: default; }
+    .tabs li.active {
+      background-color: #e74c3c;
+      color: #fff; }
+
 @font-face {
   font-family: 'Gravity Light';
   src: url("../../assets/fonts/Gravity-Light.eot");
@@ -218,6 +231,13 @@ input:checked + .slider:before {
     opacity: 0; }
   100% {
     opacity: 1; } }
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
 body {
   font-family: "Gravity", sans-serif;
   font-size: 15px;
@@ -870,13 +890,26 @@ body {
           font-size: 16px;
           background-color: #f2f2f2;
           color: #333;
+          opacity: 1;
           margin-right: 5px;
           margin-bottom: 5px;
           padding: 6px 12px;
           border-radius: 20px;
           cursor: move; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+1) {
+            animation: slideIn 0.4s 0s ease; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+2) {
+            animation: slideIn 0.4s 0.05s ease; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+3) {
+            animation: slideIn 0.4s 0.1s ease; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+4) {
+            animation: slideIn 0.4s 0.105s ease; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+5) {
+            animation: slideIn 0.4s 0.2s ease; }
+          .container .fullBox .content .menunames .menu:nth-of-type(6n+6) {
+            animation: slideIn 0.4s 0.2s ease; }
           .container .fullBox .content .menunames .menu:hover {
-            background-color: #f8f8f8; }
+            background-color: #e8e8e8; }
 
 .actionbar {
   position: absolute;
