@@ -158,7 +158,7 @@ myApp.controller('foodController', function ($scope) {
         {name: 'Schoko Pudding', type: 'dessert'}
     ];
     $scope.days = [
-        {name: 'Montag', menu: 1},
+        {name: 'Montag', menu: {appetizer: 1, mainCourse: 3, dessert: 7}},
         {name: 'Dienstag'},
         {name: 'Mittwoch'},
         {name: 'Donnerstag'},
@@ -170,9 +170,18 @@ myApp.controller('foodController', function ($scope) {
         $scope.days[index].menu = data + 1; // Because a 0 would be a bug
         tooltipstln();
     }
-    $scope.removeMenu = function (index) {
-        delete $scope.days[index].menu;
-        console.log($scope.days);
+    $scope.removeMenu = function (type, index) {
+        switch(type) {
+            case 'appetizer':
+                delete $scope.days[index].menu.appetizer;
+                return;
+            case 'mainCourse':
+                delete $scope.days[index].menu.mainCourse;
+                return;
+            case 'dessert':
+                delete $scope.days[index].menu.dessert;
+                return;
+        }
     }
     /*
      $('.content').ready(function () {
