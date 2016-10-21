@@ -235,6 +235,14 @@ input:checked + .slider:before {
   100% {
     opacity: 1; } }
 
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -515,14 +523,14 @@ body {
         line-height: 25px;
         border-radius: 50%; }
 
-.container::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 10px;
   border-radius: 2px; }
 
-.container::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: #d9d9d9; }
 
-.container::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background-color: #bebebe; }
 
 .container {
@@ -854,6 +862,7 @@ body {
       .container .fullBox .content .days {
         width: 100%; }
         .container .fullBox .content .days .day {
+          opacity: 0;
           display: inline-block;
           font-size: 16px;
           background-color: #f2f2f2;
@@ -862,7 +871,22 @@ body {
           width: calc(100% / 7 - 4px);
           height: 120px;
           margin-right: 4px;
-          text-align: center; }
+          text-align: center;
+          vertical-align: top; }
+          .container .fullBox .content .days .day:nth-of-type(1) {
+            animation: slideDown 0.4s 0s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(2) {
+            animation: slideDown 0.4s 0.05s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(3) {
+            animation: slideDown 0.4s 0.1s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(4) {
+            animation: slideDown 0.4s 0.15s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(5) {
+            animation: slideDown 0.4s 0.2s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(6) {
+            animation: slideDown 0.4s 0.25s ease forwards; }
+          .container .fullBox .content .days .day:nth-of-type(7) {
+            animation: slideDown 0.4s 0.3s ease forwards; }
           .container .fullBox .content .days .day:last-of-type {
             margin-right: 0;
             width: calc(100% / 7); }
@@ -877,11 +901,22 @@ body {
               width: 100%;
               left: 0;
               line-height: 40px;
-              background-color: #1e8449;
               color: #fff; }
+            .container .fullBox .content .days .day .menu.yellow {
+              background-color: #f39c12; }
+              .container .fullBox .content .days .day .menu.yellow .remove {
+                background-color: #c87f0a; }
+            .container .fullBox .content .days .day .menu.red {
+              background-color: #e74c3c; }
+              .container .fullBox .content .days .day .menu.red .remove {
+                background-color: #d62c1a; }
+            .container .fullBox .content .days .day .menu.brown {
+              background-color: #d35400; }
+              .container .fullBox .content .days .day .menu.brown .remove {
+                background-color: #a04000; }
             .container .fullBox .content .days .day .menu:hover .remove {
               display: inline; }
-          .container .fullBox .content .days .day.done {
+          .container .fullBox .content .days .day .done {
             background-color: #27ae60;
             color: #fff;
             position: relative; }
@@ -894,14 +929,35 @@ body {
   100% {
     transform: scale(1); } }
       .container .fullBox .content .menunames {
-        position: relative;
-        margin-top: 80px;
+        margin-top: 60px;
         width: 100%; }
         .container .fullBox .content .menunames .menutype {
+          opacity: 0;
           display: inline-block;
           font-size: 16px;
-          width: 33%;
+          background-color: #fafafa;
+          width: 32%;
+          margin-right: 1.5%;
           vertical-align: top; }
+          .container .fullBox .content .menunames .menutype:nth-of-type(1) {
+            animation: slideIn 0.4s 0.1s ease forwards; }
+          .container .fullBox .content .menunames .menutype:nth-of-type(2) {
+            animation: slideIn 0.4s 0.15s ease forwards; }
+          .container .fullBox .content .menunames .menutype:nth-of-type(3) {
+            animation: slideIn 0.4s 0.2s ease forwards; }
+          .container .fullBox .content .menunames .menutype:last-of-type {
+            margin-right: 0; }
+          .container .fullBox .content .menunames .menutype label {
+            background-color: #f2f2f2;
+            color: #888;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            text-transform: uppercase; }
+          .container .fullBox .content .menunames .menutype .menuWrapper {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto; }
           .container .fullBox .content .menunames .menutype .menu {
             position: relative;
             display: inline-block;
@@ -909,23 +965,11 @@ body {
             background-color: #f2f2f2;
             color: #333;
             opacity: 1;
-            margin-right: 5px;
             margin-bottom: 5px;
             padding: 6px 12px;
+            width: calc(100% - 24px);
             border-radius: 20px;
             cursor: move; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+1) {
-              animation: slideIn 0.4s 0s ease; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+2) {
-              animation: slideIn 0.4s 0.05s ease; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+3) {
-              animation: slideIn 0.4s 0.1s ease; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+4) {
-              animation: slideIn 0.4s 0.105s ease; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+5) {
-              animation: slideIn 0.4s 0.2s ease; }
-            .container .fullBox .content .menunames .menutype .menu:nth-of-type(6n+6) {
-              animation: slideIn 0.4s 0.2s ease; }
             .container .fullBox .content .menunames .menutype .menu:hover {
               background-color: #e8e8e8; }
 

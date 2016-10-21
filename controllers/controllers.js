@@ -167,7 +167,20 @@ myApp.controller('foodController', function ($scope) {
         {name: 'Sonntag'}
     ];
     $scope.assignMenu = function (index, data) {
-        $scope.days[index].menu = data + 1; // Because a 0 would be a bug
+        if(!$scope.days[index].menu){
+            $scope.days[index].menu = {};
+        }
+        switch($scope.menus[data].type) {
+            case 'appetizer':
+                $scope.days[index].menu.appetizer = data + 1; // Because a 0 would be a bug
+                return;
+            case 'mainCourse':
+                $scope.days[index].menu.mainCourse = data + 1;
+                return;
+            case 'dessert':
+                $scope.days[index].menu.dessert = data + 1;
+                return;
+        }
         tooltipstln();
     }
     $scope.removeMenu = function (type, index) {

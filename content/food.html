@@ -1,39 +1,42 @@
 <div class="days">
-    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-class="{done: day.menu}" ng-repeat="day in days">
-        <div ng-if="day.menu" ng-init="appetizer=day.menu.appetizer; mainCourse=day.menu.mainCourse; dessert=day.menu.dessert">
-            <div class="menu" ng-if="appetizer" ng-click="removeMenu('appetizer', $index)">
-                <span ng-if="menus[appetizer - 1].name.length >= 13">{{ menus[appetizer - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[appetizer - 1].name.length < 13">{{ menus[appetizer - 1].name }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ menus[appetizer - 1].name }}">close</i>
+    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
+        <div class="done" ng-if="day.menu.appetizer || day.menu.mainCourse || day.menu.dessert">
+            <div class="menu yellow" ng-if="day.menu.appetizer" ng-click="removeMenu('appetizer', $index)">
+                <span ng-if="menus[day.menu.appetizer - 1].name.length >= 13">{{ menus[day.menu.appetizer - 1].name | limitTo:10  }}...</span>
+                <span ng-if="menus[day.menu.appetizer - 1].name.length < 13">{{ menus[day.menu.appetizer - 1].name }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.appetizer - 1].name }}">close</i>
             </div>
-            <div class="menu" ng-if="mainCourse" ng-click="removeMenu('mainCourse', $index)">
-                <span ng-if="menus[mainCourse - 1].name.length >= 13">{{ menus[mainCourse - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[mainCourse - 1].name.length < 13">{{ menus[mainCourse - 1].name }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ menus[mainCourse - 1].name }}">close</i>
+            <div class="menu red" ng-if="day.menu.mainCourse" ng-click="removeMenu('mainCourse', $index)">
+                <span ng-if="menus[day.menu.mainCourse - 1].name.length >= 13">{{ menus[day.menu.mainCourse - 1].name | limitTo:10  }}...</span>
+                <span ng-if="menus[day.menu.mainCourse - 1].name.length < 13">{{ menus[day.menu.mainCourse - 1].name }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.mainCourse - 1].name }}">close</i>
             </div>
-            <div class="menu" ng-if="dessert" ng-click="removeMenu('dessert', $index)">
-                <span ng-if="menus[dessert - 1].name.length >= 13">{{ menus[dessert - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[dessert - 1].name.length < 13">{{ menus[dessert - 1].name }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ menus[dessert - 1].name }}">close</i>
+            <div class="menu brown" ng-if="day.menu.dessert" ng-click="removeMenu('dessert', $index)">
+                <span ng-if="menus[day.menu.dessert - 1].name.length >= 13">{{ menus[day.menu.dessert - 1].name | limitTo:10  }}...</span>
+                <span ng-if="menus[day.menu.dessert - 1].name.length < 13">{{ menus[day.menu.dessert - 1].name }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.dessert - 1].name }}">close</i>
             </div>
         </div>
-        <div ng-if="!day.menu">{{ day.name }}</div>
+        <div ng-if="!day.menu.appetizer && !day.menu.mainCourse && !day.menu.dessert">{{ day.name }}</div>
     </div>
 </div>
 <div class="menunames">
     <div class="menutype">
-        Vorspeisen:
-        <br/>
-        <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'appetizer'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        <label>Vorspeisen</label>
+        <div class="menuWrapper">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'appetizer'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        </div>
     </div>
     <div class="menutype">
-        Hauptspeisen:
-        <br/>
-        <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'mainCourse'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        <label>Hauptspeisen</label>
+        <div class="menuWrapper">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'mainCourse'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        </div>
     </div>
     <div class="menutype">
-        Nachspeisen:
-        <br/>
-        <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'dessert'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        <label>Nachspeisen</label>
+        <div class="menuWrapper">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'dessert'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.name }}</div>
+        </div>
     </div>
 </div>
