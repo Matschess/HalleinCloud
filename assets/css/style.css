@@ -218,19 +218,23 @@ input:checked + .slider:before {
   font-family: 'Gravity Light';
   src: url("../../assets/fonts/Gravity-Light.eot");
   src: url("../../assets/fonts/Gravity-Light.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Light.woff") format("woff"); }
+
 @font-face {
   font-family: 'Gravity Book';
   src: url("../../assets/fonts/Gravity-Book.eot");
   src: url("../../assets/fonts/Gravity-Book.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Book.woff") format("woff"); }
+
 @font-face {
   font-family: 'Gravity';
   src: url("../../assets/fonts/Gravity-Regular.eot");
   src: url("../../assets/fonts/Gravity-Regular.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/Gravity-Regular.woff") format("woff"); }
+
 @keyframes fadeIn {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -238,6 +242,7 @@ input:checked + .slider:before {
   100% {
     opacity: 1;
     transform: translateY(0); } }
+
 body {
   font-family: "Gravity", sans-serif;
   font-size: 15px;
@@ -404,11 +409,13 @@ body {
       .popup .action i:hover {
         color: #333;
         border-color: #333; }
+
 @keyframes popUp {
   0% {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
+
 .topbar {
   position: relative;
   background-color: #fff;
@@ -581,6 +588,7 @@ body {
       animation: popIn 0.4s 0.1s ease forwards; }
     .container .dashboardBox:nth-of-type(6), .container .feedbackBox:nth-of-type(6) {
       animation: popIn 0.4s 0.1s ease forwards; }
+
 @keyframes popIn {
   0% {
     opacity: 0;
@@ -877,6 +885,7 @@ body {
             background-color: #27ae60;
             color: #fff;
             position: relative; }
+
 @keyframes scaleIn {
   0% {
     transform: scale(1); }
@@ -985,6 +994,7 @@ body {
       color: #fff;
       transform: scale(0);
       animation: scaleInBezizer .8s forwards; }
+
 @keyframes scaleInBezizer {
   0% {
     transform: scale(0); }
@@ -992,11 +1002,13 @@ body {
     transform: scale(1); }
   100% {
     transform: scale(0.95); } }
+
 @keyframes drey {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
 /* food-add */
 .menucategory select {
   background-color: red; }
@@ -1014,6 +1026,7 @@ body {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
 .devs {
   position: absolute;
   top: 50px;
@@ -1078,17 +1091,14 @@ h1 {
 @media screen and (max-width: 650px) {
   .topbar .headline {
     display: none; } }
+
 @media screen and (max-width: 800px) {
   .topbar .burgericon {
     display: inline; }
-
   .navbar {
     display: none; }
-
   .container {
     left: 0;
     width: calc(100% - 64px - 20px * 2);
     height: calc(100% - 70px - 40px);
     padding: 20px; } }
-
-/*# sourceMappingURL=style.css.map */
