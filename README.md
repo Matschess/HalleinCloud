@@ -2,6 +2,7 @@
 ## Setup
 ### Server
 Install [Node.js](https://nodejs.org/en/download/)
+
 Open commandline in halleinApp/
 ```
 $ npm install express
