@@ -1,4 +1,4 @@
-var URL = 'http://localhost:3000';
+var URL = 'http://46.38.236.5:3000';
 
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
     $scope.username = 'Benutzername';
@@ -218,15 +218,21 @@ myApp.controller('foodController', function ($scope) {
 });
 
 myApp.controller('feedbackController', function ($scope, $http) {
-    $http.get(URL + '/feedback')
+    $http.get(URL + '/feedback?status=new')
         .then(function (response) {
-            $scope.newFeedbacks = response.data
+            $scope.newFeedbacks = response.data;
         })
 
-    $scope.acceptedFeedbacks = [];
-    $scope.declinedFeedbacks = [
-        {id: 1, subject: "Schlecht", rating: 1, text: "Schlecht schlecht"}
-    ];
+    $http.get(URL + '/feedback?status=accepted')
+        .then(function (response) {
+            $scope.acceptedFeedbacks = response.data;
+        })
+
+    $http.get(URL + '/feedback?status=declined')
+        .then(function (response) {
+            $scope.declinedFeedbacks = response.data;
+        })
+
     $scope.accept = function (index) {
         $scope.acceptedFeedbacks.push($scope.newFeedbacks[index]);
         $scope.newFeedbacks.splice(index, 1);
