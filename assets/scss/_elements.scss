@@ -266,3 +266,8 @@ input:checked + .slider:before {
     }
   }
 }
+
+// For ng-drag elements, sothat they are always visible
+[ng-drag].dragging{
+  position: absolute !important;
+}

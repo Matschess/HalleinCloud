@@ -2,18 +2,18 @@
     <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
         <div class="done" ng-if="day.menu.appetizer || day.menu.mainCourse || day.menu.dessert">
             <div class="menu yellow" ng-if="day.menu.appetizer" ng-click="removeMenu('appetizer', $index)">
-                <span ng-if="menus[day.menu.appetizer - 1].name.length >= 13">{{ menus[day.menu.appetizer - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[day.menu.appetizer - 1].name.length < 13">{{ menus[day.menu.appetizer - 1].name }}</span>
+                <span ng-if="menus[day.menu.appetizer - 1].name.length >= 15">{{ menus[day.menu.appetizer - 1].name | limitTo:12  }}...</span>
+                <span ng-if="menus[day.menu.appetizer - 1].name.length < 15">{{ menus[day.menu.appetizer - 1].name }}</span>
                 <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.appetizer - 1].name }}">close</i>
             </div>
             <div class="menu red" ng-if="day.menu.mainCourse" ng-click="removeMenu('mainCourse', $index)">
-                <span ng-if="menus[day.menu.mainCourse - 1].name.length >= 13">{{ menus[day.menu.mainCourse - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[day.menu.mainCourse - 1].name.length < 13">{{ menus[day.menu.mainCourse - 1].name }}</span>
+                <span ng-if="menus[day.menu.mainCourse - 1].name.length >= 15">{{ menus[day.menu.mainCourse - 1].name | limitTo:12  }}...</span>
+                <span ng-if="menus[day.menu.mainCourse - 1].name.length < 15">{{ menus[day.menu.mainCourse - 1].name }}</span>
                 <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.mainCourse - 1].name }}">close</i>
             </div>
             <div class="menu brown" ng-if="day.menu.dessert" ng-click="removeMenu('dessert', $index)">
-                <span ng-if="menus[day.menu.dessert - 1].name.length >= 13">{{ menus[day.menu.dessert - 1].name | limitTo:10  }}...</span>
-                <span ng-if="menus[day.menu.dessert - 1].name.length < 13">{{ menus[day.menu.dessert - 1].name }}</span>
+                <span ng-if="menus[day.menu.dessert - 1].name.length >= 15">{{ menus[day.menu.dessert - 1].name | limitTo:12  }}...</span>
+                <span ng-if="menus[day.menu.dessert - 1].name.length < 15">{{ menus[day.menu.dessert - 1].name }}</span>
                 <i class='material-icons remove tooltipBottom' title="{{ menus[day.menu.dessert - 1].name }}">close</i>
             </div>
         </div>

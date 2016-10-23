@@ -214,6 +214,9 @@ input:checked + .slider:before {
       background-color: #e74c3c;
       color: #fff; }
 
+[ng-drag].dragging {
+  position: absolute !important; }
+
 @font-face {
   font-family: 'Gravity Light';
   src: url("../../assets/fonts/Gravity-Light.eot");
@@ -891,6 +894,7 @@ body {
             margin-right: 0;
             width: calc(100% / 7); }
           .container .fullBox .content .days .day .menu {
+            font-size: 14px;
             height: 40px;
             line-height: 40px;
             position: relative; }

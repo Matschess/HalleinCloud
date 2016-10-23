@@ -1,3 +1,5 @@
+var URL = 'http://localhost:3000';
+
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
     $scope.username = 'Benutzername';
     /*$scope.loading = {
@@ -10,7 +12,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
     }
 
-    $scope.frameSwitch = function(index){
+    $scope.frameSwitch = function (index) {
         $scope.frame.switched = index + 1;
         tooltipstln();
     }
@@ -120,10 +122,10 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
     $scope.route = routes.login;
 
     $scope.logIn = function (url, action) {
-           $scope.route = routes.setup.restaurant.basicData;
+        $scope.route = routes.setup.restaurant.basicData;
     }
-    $scope.complete = function(src){
-        switch(src){
+    $scope.complete = function (src) {
+        switch (src) {
             case 'basicData':
                 $scope.route = routes.setup.restaurant.address;
             case 'address':
@@ -142,7 +144,7 @@ myApp.controller('dashboardController', function ($scope) {
 
 myApp.controller('foodController', function ($scope) {
     $scope.type = 'mainCourse';
-    $scope.setType = function(data) {
+    $scope.setType = function (data) {
         $scope.type = data;
     }
     $scope.menus = [
@@ -167,10 +169,10 @@ myApp.controller('foodController', function ($scope) {
         {name: 'Sonntag'}
     ];
     $scope.assignMenu = function (index, data) {
-        if(!$scope.days[index].menu){
+        if (!$scope.days[index].menu) {
             $scope.days[index].menu = {};
         }
-        switch($scope.menus[data].type) {
+        switch ($scope.menus[data].type) {
             case 'appetizer':
                 $scope.days[index].menu.appetizer = data + 1; // Because a 0 would be a bug
                 return;
@@ -184,7 +186,7 @@ myApp.controller('foodController', function ($scope) {
         tooltipstln();
     }
     $scope.removeMenu = function (type, index) {
-        switch(type) {
+        switch (type) {
             case 'appetizer':
                 delete $scope.days[index].menu.appetizer;
                 return;
@@ -215,12 +217,12 @@ myApp.controller('foodController', function ($scope) {
      */
 });
 
-myApp.controller('feedbackController', function ($scope) {
-    $scope.newFeedbacks = [
-        {id: 1, subject: "Super Essen!", rating: 5, text: "War ein super Essen!!"},
-        {id: 1, subject: "Zu salzig!", rating: 4, text: "Die Suppe war etwas zu salzig, sonst sehr lecker."},
-        {id: 1, subject: "Nicht gut", rating: 1, text: "Hab schon lange nicht mehr so schlecht gegessen."}
-    ];
+myApp.controller('feedbackController', function ($scope, $http) {
+    $http.get(URL + '/feedback')
+        .then(function (response) {
+            $scope.newFeedbacks = response.data
+        })
+
     $scope.acceptedFeedbacks = [];
     $scope.declinedFeedbacks = [
         {id: 1, subject: "Schlecht", rating: 1, text: "Schlecht schlecht"}
@@ -254,30 +256,43 @@ myApp.controller('foodAddController', function ($scope) {
     }
 });
 
-myApp.controller('usersController', function ($scope) {
-    $scope.users = [
-        {name: 'Superuser', username: 'superuser', group: 'superuser'},
-        {name: 'Admin', username: 'admin', group: 'admins'},
-        {name: 'Cleitzlers', username: 'cleitzlers', group: 'restaurants', lastActive: '12.10.2016'},
-        {name: 'Pizzeria Bella Palma', username: 'bella-palma', group: 'restaurants'},
-        {name: 'Gasthof Hager', username: 'hager', group: 'restaurants'},
-        {name: 'Koi', username: 'koi', group: 'restaurants'}
-    ]
+myApp.controller('usersController', function ($scope, $http) {
+    $http.get(URL + '/users')
+        .then(function (response) {
+            $scope.users = response.data
+        });
 
-    $scope.sort = function(property) {
+    $scope.sort = function (property) {
         $scope.users.sort(dynamicSort(property));
     }
 
     function dynamicSort(property) {
-        return function (a,b) {
+        return function (a, b) {
             var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
             return result;
         }
     }
 
-    $scope.deleteUser = function (index) {
-        $scope.users.splice(index, 1);
+    $scope.deleteUser = function (id, index) {
+        var params = "?id=" + id;
+        $http.delete(URL + '/users' + params)
+            .success(function () {
+                $scope.users.splice(index, 1);
+            });
     }
+
+    params = {
+        username: 'Matthias',
+        group: 0,
+        email: 'matthias@gmail.com',
+        password: 'test'
+    }
+    $http.post(URL + '/users?', params)
+        .then(function (response) {
+            if (response.data == 'done') {
+                alert("done");
+            }
+        });
 });
 
 myApp.controller('userAddController', function ($scope) {
