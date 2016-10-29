@@ -5,11 +5,9 @@ Install [Node.js](https://nodejs.org/en/download/)
 
 Open commandline in halleinApp/
 ```
-$ npm install express
+$ npm install
  
-$ npm install mysql
- 
-$ nodejs server.js
+$ node server.js
 ```
 
 ### Gulp
