@@ -26,7 +26,7 @@ myApp.config(function ($routeProvider) {
                 type: 'fullBox',
                 title: 'Mahlzeit erstellen',
                 actions: [
-                    {title: 'Speichern', icon: 'done', route: '/food'},
+                    {title: 'Speichern', icon: 'done', route: '/food', function: 'foodAdd()'},
                     {title: 'Verwerfen', icon: 'close', route: '/food'}
                 ]
             },
@@ -44,16 +44,8 @@ myApp.config(function ($routeProvider) {
             controller: 'feedbackController'
         })
         .when('/page', {
-            templateUrl: 'content/page.html',
+            templateUrl: 'templates/window.html',
             name: 'Restaurantseite',
-            frame: {
-                type: 'fullBox',
-                title: 'Restaurantseite',
-                actions: [
-                    {title: 'Speichern', icon: 'done'},
-                    {title: 'Verwerfen', icon: 'close'}
-                ]
-            },
             controller: 'pagesController'
         })
         .when('/users', {
@@ -69,15 +61,7 @@ myApp.config(function ($routeProvider) {
             controller: 'usersController'
         })
         .when('/user-add', {
-            templateUrl: 'content/user-add.html',
-            frame: {
-                type: 'fullBox',
-                title: 'Benutzer erstellen',
-                actions: [
-                    {title: 'Speichern', icon: 'done', route: '/users'},
-                    {title: 'Verwerfen', icon: 'close', route: '/users'}
-                ]
-            },
+            templateUrl: 'templates/window.html',
             controller: 'userAddController'
         })
         .when('/help', {

@@ -1,6 +1,12 @@
 var URL = 'http://46.38.236.5:3000';
+var user = 57;
+var restaurant = 1;
 
 myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
+    $scope.foodAdd = function () {
+        myApp.foodAddController.foodAdd();
+    }
+
     $scope.username = 'Benutzername';
     /*$scope.loading = {
      status: '',
@@ -95,6 +101,20 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     }
 });
 
+myApp.controller('demoController', function ($scope) {
+    $scope.config = {
+        title: 'Mahlzeiten',
+        actions: [
+            {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
+        ],
+        content: 'content/food.html'
+    }
+
+    $scope.return = function (index) {
+        alert(index);
+    }
+});
+
 myApp.controller('loginController', function ($scope, $route, $routeParams, $http, $cookies) {
     var routes = {
         login: {
@@ -142,25 +162,17 @@ myApp.controller('dashboardController', function ($scope) {
     ]
 });
 
-myApp.controller('foodController', function ($scope) {
-    $scope.type = 'mainCourse';
-    $scope.setType = function (data) {
-        $scope.type = data;
+myApp.controller('foodController', function ($scope, $http, $routeParams) {
+    $scope.action = function () {
+        alert('done');
     }
-    $scope.menus = [
-        {name: 'Bunter Blattsalat', type: 'appetizer'},
-        {name: 'Putenstreifen-Salat', type: 'appetizer'},
-        {name: 'Steirischer Backhendl-Salat', type: 'mainCourse'},
-        {name: 'Putenfilet-Sandwich', type: 'mainCourse'},
-        {name: 'Hamburger mit Pommes', type: 'mainCourse'},
-        {name: 'Cordon Bleu', type: 'mainCourse'},
-        {name: 'Chickenburger ganiert mit Pommes', type: 'mainCourse'},
-        {name: 'Wiener Schnitzel', type: 'mainCourse'},
-        {name: 'Spare Ribs', type: 'mainCourse'},
-        {name: 'Schoko Pudding', type: 'dessert'}
-    ];
+    console.log($scope.params);
+    $http.get(URL + '/meals?restaurant=' + restaurant)
+        .then(function (response) {
+            $scope.menus = response.data;
+        })
     $scope.days = [
-        {name: 'Montag', menu: {appetizer: 1, mainCourse: 3, dessert: 7}},
+        {name: 'Montag', menu: {appetizer: 1}},
         {name: 'Dienstag'},
         {name: 'Mittwoch'},
         {name: 'Donnerstag'},
@@ -260,6 +272,11 @@ myApp.controller('foodAddController', function ($scope) {
     $scope.removeTag = function (index) {
         $scope.tags.splice(index, 1);
     }
+
+    $scope.foodAdd = function () {
+        alert('oe')
+    }
+
 });
 
 myApp.controller('usersController', function ($scope, $http) {
@@ -286,22 +303,35 @@ myApp.controller('usersController', function ($scope, $http) {
                 $scope.users.splice(index, 1);
             });
     }
-
-    params = {
-        username: 'Matthias',
-        group: 0,
-        email: 'matthias@gmail.com',
-        password: 'test'
-    }
-    $http.post(URL + '/users?', params)
-        .then(function (response) {
-            if (response.data == 'done') {
-                alert("done");
-            }
-        });
 });
 
-myApp.controller('userAddController', function ($scope) {
+myApp.controller('userAddController', function ($scope, $http) {
+    $scope.config = {
+        title: 'Benutzer hinzufügen',
+        actions: [
+            {title: 'Speichern', icon: 'done', route: '/users'},
+            {title: 'Verwerfen', icon: 'close', route: '/users'}
+        ],
+        content: 'content/user-add.html',
+        return: function (index) {
+            switch (index) {
+                case 0:
+                /*
+                 var data = {
+                 username: 'Matthias',
+                 group: 0,
+                 email: 'matthias@gmail.com',
+                 password: 'test2'
+                 }
+                 $http.post(URL + '/users', data)
+                 .then(function (response) {
+                 console.log(response);
+                 });
+                 */
+            }
+        }
+    }
+
     $scope.group = {
         selected: 'restaurants',
         options: [
@@ -326,15 +356,29 @@ myApp.controller('userAddController', function ($scope) {
     }
 });
 
-myApp.controller('pagesController', function ($scope) {
+myApp.controller('pagesController', function ($scope, $http) {
+    $scope.config = {
+        title: 'Mahlzeiten',
+        actions: [
+            {title: 'Speichern', icon: 'done', route: '/page'},
+            {title: 'Verwerfen', icon: 'close', route: '/'}
+        ],
+        content: 'content/page.html'
+    }
+
+    $http.get(URL + '/restaurants?user=' + user)
+        .then(function (response) {
+            $scope.pages = response.data[0];
+        });
+
     $scope.days = [
-        {shorthand: 'M', from: '08:00', toHalf: '14:00', fromHalf: '15:00', to: '22:00'},
-        {shorthand: 'D'},
-        {shorthand: 'M'},
-        {shorthand: 'D'},
-        {shorthand: 'F'},
-        {shorthand: 'S'},
-        {shorthand: 'S'}
+        {shorthand: 'Mo', from: '08:00', toHalf: '14:00', fromHalf: '15:00', to: '22:00'},
+        {shorthand: 'Di'},
+        {shorthand: 'Mi'},
+        {shorthand: 'Do'},
+        {shorthand: 'Fr'},
+        {shorthand: 'Sa'},
+        {shorthand: 'So'}
     ];
     $scope.restDays = [
         {fromDate: '22.10.2016', toDate: '22.10.2016'},

@@ -92,7 +92,7 @@
                             <div class="success" ng-show="loading.status == 'success'"><i class="material-icons">done</i></div>
                             <div class="error" ng-show="loading.status == 'error'"><i class="material-icons">close</i></div>
                         </div>
-                            <a class="tooltipBottom" ng-show="!loading" ng-repeat="action in frame.actions" href="#{{ action.route }}" title="{{ action.title }}">
+                            <a class="tooltipBottom" ng-show="!loading" ng-repeat="action in frame.actions" href="#{{ action.route }}" ng-click="foodAdd()" title="{{ action.title }}">
                                 <div class="icon"><i class="material-icons">{{ action.icon }}</i></div>
                             </a>
                     </div>

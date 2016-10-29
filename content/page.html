@@ -1,18 +1,18 @@
 <div class="left">
     <h3>Grunddaten:</h3>
-    <input type="text" placeholder="Restaurantname"/><br/>
-    <textarea placeholder="Beschreibung"></textarea>
+    <input type="text" placeholder="Restaurantname" value="{{ pages.restaurantname }}"><br/>
+    <textarea placeholder="Beschreibung">{{ pages.description }}</textarea>
     <label>
-        <input type="checkbox" value="pupilMeal">
+        <input type="checkbox" value="pupilMeal" checked="{{ pages.studentMeals }}">
         Anbieter von Schülermahlzeit
     </label>
     <h3>Adresse:</h3>
-    <input type="text" placeholder="Straße"/><input type="text" class="short" placeholder="Hausnummer"/><br/>
-    <input type="text" class="short" placeholder="PLZ"/><input type="text" placeholder="Ort"/>
+    <input type="text" placeholder="Straße" value="{{ pages.street }}"/><input type="text" class="short" placeholder="Hausnummer" value="{{ pages.houseNumber }}"/><br/>
+    <input type="text" class="short" placeholder="PLZ" value="{{ pages.countryCode }}"/><input type="text" placeholder="Ort" value="{{ pages.country }}"/>
     <h3>Kontaktdaten:</h3>
-    <input type="text" placeholder="Email-Adresse"/><br/>
-    <input type="text" placeholder="Telefonnummer"/><br/>
-    <input type="text" placeholder="Website"/><br/>
+    <input type="text" placeholder="Email-Adresse" value="{{ pages.email }}"/><br/>
+    <input type="text" placeholder="Telefonnummer" value="{{ pages.tel }}"/><br/>
+    <input type="text" placeholder="Website" value="{{ pages.website }}"/><br/>
 </div>
 <div class="right">
     <h3>Öffnungszeiten:</h3>
