@@ -12,12 +12,12 @@
     <div ng-switch-default>
         <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
         <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
-        <input type="text" placeholder="Benutzername" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ group.selected }}" readonly/><br/>
+        <input type="text" placeholder="Benutzername" ng-model="username" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ group.selected }}" readonly/><br/>
     </div>
         </div>
     <h3>Passwort:</h3>
     <div class="pwChange" ng-controller="pwChange">
-        <input type="text" placeholder="Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+        <input type="text" placeholder="Passwort" ng-model="password" ng-keyup="pwValidate()"/>
         <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
         <div class="pwValidation">
             <div ng-class="{1:'active'}[pwSafety]"></div>
@@ -27,7 +27,7 @@
         </div>
     </div>
     <label>
-        <input type="checkbox" value="passwordNeedsInit" checked>
+        <input type="checkbox" ng-init="pwTemp = true" ng-model="pwTemp" checked>
         Passwort muss bei erster Anmeldung geändert werden
     </label>
 </div>

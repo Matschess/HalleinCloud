@@ -31,7 +31,7 @@ gulp.task('scss', function () {
 
 gulp.task('js', function () {
     return watch('private/js/**/*', { ignoreInitial: false }, function() {
-        gulp.src(['private/js/angular/routing.js', 'private/js/angular/controller/*'])
+        gulp.src(['private/js/angular/routing.js', 'private/js/angular/controller/**/*', 'private/js/app.js'])
             .pipe(concat('app.js'))
             .pipe(gulp.dest('public/js'));
     });
