@@ -15,7 +15,7 @@ Install [Node.js](https://nodejs.org/en/download/)
 
 Open commandline in halleinApp/
 ```
-$ npm install --global gulp-cli
+$ npm install
 ```
 In commandline or PhpStorm (just press [CTRL]+[SHIFT]+[X]) type
 ```
