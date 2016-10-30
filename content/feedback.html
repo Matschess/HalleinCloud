@@ -1,4 +1,4 @@
-<div class="feedbackGroup" ng-if="frame.switched == 1">
+<div class="feedbackGroup" ng-if="config.switched == 1">
     <div class="feedbackBox" ng-if="newFeedbacks.length" ng-repeat="feedback in newFeedbacks">
         <div class="actions">
             <div class="action accept tooltipTop" title="Akzeptieren" ng-click="accept($index)"><i
@@ -12,7 +12,7 @@
     </div>
     <div class="feedbackBox empty" ng-if="!newFeedbacks.length"><i class="material-icons">done</i> Kein neues Feedback</div>
 </div>
-<div class="feedbackGroup" ng-if="frame.switched == 2">
+<div class="feedbackGroup" ng-if="config.switched == 2">
     <div class="feedbackBox" ng-if="acceptedFeedbacks.length" ng-repeat="feedback in acceptedFeedbacks">
         <div class="actions">
             <div class="action decline tooltipTop" title="Entfernen" ng-click="reDecline($index)"><i
@@ -24,7 +24,7 @@
     </div>
     <div class="feedbackBox empty" ng-if="!acceptedFeedbacks.length"><i class="material-icons">block</i> Kein akzeptiertes Feedback</div>
 </div>
-<div class="feedbackGroup" ng-if="frame.switched == 3">
+<div class="feedbackGroup" ng-if="config.switched == 3">
     <div class="feedbackBox" ng-if="declinedFeedbacks.length" ng-repeat="feedback in declinedFeedbacks">
         <div class="actions">
             <div class="action accept tooltipTop" title="Wiederherstellen" ng-click="reAccept($index)"><i

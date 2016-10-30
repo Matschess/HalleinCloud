@@ -101,20 +101,6 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     }
 });
 
-myApp.controller('demoController', function ($scope) {
-    $scope.config = {
-        title: 'Mahlzeiten',
-        actions: [
-            {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
-        ],
-        content: 'content/food.html'
-    }
-
-    $scope.return = function (index) {
-        alert(index);
-    }
-});
-
 myApp.controller('loginController', function ($scope, $route, $routeParams, $http, $cookies) {
     var routes = {
         login: {
@@ -155,6 +141,10 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
 });
 
 myApp.controller('dashboardController', function ($scope) {
+    $scope.config = {
+        content: 'content/dashboard.html'
+    }
+
     $scope.notifications = [
         {type: 'alert', number: 3, title: 'Fehler', text: 'Dies ist eine Fehler oder Nicht-behoben-Box.'},
         {type: 'success', title: 'Erfolg', text: 'Eine Erfolgsmeldung.'},
@@ -163,10 +153,14 @@ myApp.controller('dashboardController', function ($scope) {
 });
 
 myApp.controller('foodController', function ($scope, $http, $routeParams) {
-    $scope.action = function () {
-        alert('done');
+    $scope.config = {
+        title: 'Mahlzeiten',
+        actions: [
+            {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
+        ],
+        content: 'content/food.html'
     }
-    console.log($scope.params);
+
     $http.get(URL + '/meals?restaurant=' + restaurant)
         .then(function (response) {
             $scope.menus = response.data;
@@ -230,6 +224,12 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
 });
 
 myApp.controller('feedbackController', function ($scope, $http) {
+    $scope.config = {
+        title: 'Feedback',
+        switches: ['Neu', 'Akzeptiert', 'Abgelehnt'],
+        content: 'content/feedback.html'
+    }
+
     $http.get(URL + '/feedback?status=new')
         .then(function (response) {
             $scope.newFeedbacks = response.data;
@@ -280,6 +280,14 @@ myApp.controller('foodAddController', function ($scope) {
 });
 
 myApp.controller('usersController', function ($scope, $http) {
+    $scope.config = {
+        title: 'Benutzer',
+        actions: [
+            {title: 'Hinzufügen', icon: 'add', route: '/user-add'}
+        ],
+        content: 'content/users.html'
+    }
+
     $http.get(URL + '/users')
         .then(function (response) {
             $scope.users = response.data
@@ -390,6 +398,13 @@ myApp.controller('pagesController', function ($scope, $http) {
     }
     $scope.restDayRemove = function (index) {
         $scope.restDays.splice(index, 1);
+    }
+});
+
+myApp.controller('helpController', function ($scope, $http) {
+    $scope.config = {
+        title: 'Hilfe',
+        content: 'content/help.html'
     }
 });
 

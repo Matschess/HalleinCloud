@@ -58,3 +58,7 @@ fabric.properties
 
 # Gulp
 node_modules/
+
+# Public
+assets/
+public/
