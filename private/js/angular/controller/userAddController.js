@@ -9,26 +9,43 @@ myApp.controller('userAddController', function ($scope, $http) {
         return: function (index) {
             switch (index) {
                 case 0:
-                 var data = {
-                     username: $scope.username,
-                     group: $scope.group.selected,
-                     password: $scope.password,
-                     pwTemp: $scope.pwTemp
-                 }
-                 $http.post(URL + '/users', data)
-                    .success(function (response) {
-                    });
-                 break;
+                    console.log( $scope.firstname);
+                    switch ($scope.types.selected) {
+
+                        case 1:
+                            var name = $scope.firstname + ' ' + $scope.lastname;
+
+                        case 2:
+                            var name = $scope.restaurantname;
+                    }
+                    alert($scope.pwTemp);
+                    var data = {
+                        username: $scope.username,
+                        name: name,
+                        type: $scope.types.selected,
+                        password: $scope.password,
+                        pwTemp: $scope.pwTemp
+                    }
+                    $http.post(URL + '/users', data)
+                        .success(function (response) {
+                        });
+                    break;
             }
         }
     }
 
-    $scope.group = {
+    $scope.types = {
         selected: 'restaurants',
         options: [
-            {name: 'Restaurant', value: 'restaurants'},
-            {name: 'Administrator', value: 'admins'}]
+            {name: 'Administrator', value: '1'},
+            {name: 'Restaurant', value: '2'}
+        ]
     }
+
+    $scope.pwTemp = true;
+    $scope.firstname = '';
+    $scope.lastname = '';
+    $scope.restaurantname = '';
 
     generateRandom(10);
 

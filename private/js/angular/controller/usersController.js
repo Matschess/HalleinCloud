@@ -7,7 +7,7 @@ myApp.controller('usersController', function ($scope, $http) {
         content: 'content/users.html'
     }
 
-    $http.get(URL + '/users')
+    $http.get(URL + '/users?get=id,username,type,lastLogin')
         .then(function (response) {
             $scope.users = response.data
         });
