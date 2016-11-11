@@ -533,7 +533,7 @@ body {
 
       &.success {
         background-color: #01DF01;
-        background-image: url('../icons/done_white.png');
+        background-image: url('../../assets/icons/done_white.png');
         background-size: 75%;
         background-position: center;
         background-repeat: no-repeat;
@@ -982,23 +982,21 @@ body {
           }
           .menuWrapper{
             height: 300px;
-            padding: 10px;
             overflow-y: auto;
           }
           .menu {
             position: relative;
             display: inline-block;
             font-size: 16px;
-            background-color: #f2f2f2;
             color: #333;
             opacity: 1;
-            margin-bottom: 5px;
-            padding: 6px 12px;
+            padding: 8px 12px;
+            border-bottom: 1px solid #d2d2d2;
             width: calc(100% - 24px);
-            border-radius: 20px;
             cursor: move;
             &:hover {
               background-color: #e8e8e8;
+              border-color: #e8e8e8;
             }
           }
         }

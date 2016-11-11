@@ -22,9 +22,7 @@
 </div>
 <div class="menunames">
     <div class="menutype">
-        <label>Vorspeisen
-            {{ params }}
-            df</label>
+        <label>Vorspeisen</label>
         <div class="menuWrapper">
             <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'appetizer'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
         </div>
