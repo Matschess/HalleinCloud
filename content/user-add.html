@@ -1,20 +1,21 @@
 <div class="full">
-    <h3>Accountdaten:</h3>
+    <label>Grunddaten:</label><br/>
+    <br/>
     <label>Kontotyp:</label>
-    <select ng-model="types.selected" ng-options="option.value as option.name for option in types.options"></select>
+    <select ng-model="types.selected" ng-options="option.name for option in types.options track by option.id"></select>
     <br/>
     <br/>
-    <div ng-switch="types.selected">
+    <div ng-switch="types.selected.group">
         <div ng-switch-when="restaurants">
             <input type="text" placeholder="Restaurantname" ng-model="restaurantname"/><br/>
-            <input type="text" placeholder="Benutzername" value="{{ restaurantname | lowercase }}@{{ types.selected }}" readonly/>
         </div>
-    <div ng-switch-default>
-        <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
-        <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
-        <input type="text" placeholder="Benutzername" ng-model="username" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ types.selected }}" readonly/><br/>
     </div>
-        </div>
+    <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
+    <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
+    <br/>
+    <label>Benutzername:</label><br/>
+    <input type="text" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ types.selected.group }}" readonly/><br/>
+    <br/>
     <h3>Passwort:</h3>
     <div class="pwChange" ng-controller="pwChange">
         <input type="text" placeholder="Passwort" ng-model="password" ng-keyup="pwValidate()"/>

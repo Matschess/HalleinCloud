@@ -19,32 +19,35 @@ myApp.controller('userAddController', function ($scope, $http) {
                             var name = $scope.restaurantname;
                     }
                     alert($scope.pwTemp);
+
                     var data = {
                         username: $scope.username,
-                        name: name,
+                        firstname: $scope.firstname,
+                        lastname: $scope.lastname,
                         type: $scope.types.selected,
                         password: $scope.password,
                         pwTemp: $scope.pwTemp
                     }
-                    $http.post(URL + '/users', data)
-                        .success(function (response) {
-                        });
+                    $http({
+                        url: URL + '/users',
+                        method: 'POST',
+                        params: data
+                    });
                     break;
             }
         }
     }
 
     $scope.types = {
-        selected: 'restaurants',
+        selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
         options: [
-            {name: 'Administrator', value: '1'},
-            {name: 'Restaurant', value: '2'}
+            {id: 1, name: 'Superuser', group: 'superuser'},
+            {id: 2, name: 'Administrator', group: 'admins'},
+            {id: 3, name: 'Restaurant', group: 'restaurants'}
         ]
     }
 
     $scope.pwTemp = true;
-    $scope.firstname = '';
-    $scope.lastname = '';
     $scope.restaurantname = '';
 
     generateRandom(10);
