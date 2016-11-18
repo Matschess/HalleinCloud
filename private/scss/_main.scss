@@ -560,7 +560,7 @@ body {
       font-size: 16px;
     }
   }
-  .dashboardBox{
+  .dashboardBox {
     &:hover {
       -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
@@ -723,13 +723,13 @@ body {
         tr {
           height: 40px;
           line-height: 40px;
-          &:last-of-type{
-            td{
+          &:last-of-type {
+            td {
               border-bottom: 0;
             }
           }
-          &:hover{
-            td{
+          &:hover {
+            td {
               border-color: #d2d2d2;
             }
             .actions {
@@ -740,44 +740,44 @@ body {
             }
           }
         }
-        th{
+        th {
           padding: 0 15px;
           background-color: #e9e9e9;
           text-align: left;
           font-weight: normal;
-          &.sortable:hover{
+          &.sortable:hover {
             background-color: #d7d7d7;
             background-image: url('../../assets/icons/arrow_down.png');
             background-position: right 10px center;
             background-size: 15px;
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
           }
         }
         td {
           padding: 0 15px;
           border-bottom: 1px solid #e2e2e2;
-            &:nth-of-type(1) {
-              width: 25%;
-            }
-            &:nth-of-type(2) {
-              width: 20%;
-            }
-            &:nth-of-type(3) {
-              width: 20%;
-            }
-            &:nth-of-type(4) {
-              width: 25%;
-            }
+          &:nth-of-type(1) {
+            width: 25%;
+          }
+          &:nth-of-type(2) {
+            width: 20%;
+          }
+          &:nth-of-type(3) {
+            width: 20%;
+          }
+          &:nth-of-type(4) {
+            width: 25%;
+          }
           &.actions {
             width: 10%;
             padding: 0;
             font-size: 0;
-            div{
+            div {
               display: none;
               opacity: .6;
               text-align: center;
               width: 50%;
-              &:hover{
+              &:hover {
                 opacity: 1;
                 background-color: #d8d8d8;
               }
@@ -868,36 +868,36 @@ body {
           margin-right: 4px;
           text-align: center;
           vertical-align: top;
-          &:nth-of-type(1){
+          &:nth-of-type(1) {
             @include animate-slideDown();
           }
-          &:nth-of-type(2){
+          &:nth-of-type(2) {
             @include animate-slideDown(.05s);
           }
-          &:nth-of-type(3){
+          &:nth-of-type(3) {
             @include animate-slideDown(.1s);
           }
-          &:nth-of-type(4){
+          &:nth-of-type(4) {
             @include animate-slideDown(.15s);
           }
-          &:nth-of-type(5){
+          &:nth-of-type(5) {
             @include animate-slideDown(.2s);
           }
-          &:nth-of-type(6){
+          &:nth-of-type(6) {
             @include animate-slideDown(.25s);
           }
-          &:nth-of-type(7){
+          &:nth-of-type(7) {
             @include animate-slideDown(.3s);
           }
           &:last-of-type {
             margin-right: 0;
             width: calc(100% / 7);
           }
-          .menu{
+          .menu {
             font-size: 14px;
             height: 40px;
             line-height: 40px;
-            position:relative;
+            position: relative;
             .remove {
               display: none;
               font-size: 30px;
@@ -907,21 +907,21 @@ body {
               line-height: 40px;
               color: #fff;
             }
-            &.yellow{
+            &.yellow {
               background-color: #f39c12;
-              .remove{
+              .remove {
                 background-color: darken(#f39c12, 10%);
               }
             }
-            &.red{
+            &.red {
               background-color: #e74c3c;
-              .remove{
+              .remove {
                 background-color: darken(#e74c3c, 10%);
               }
             }
-            &.brown{
+            &.brown {
               background-color: #d35400;
-              .remove{
+              .remove {
                 background-color: darken(#d35400, 10%);
               }
             }
@@ -960,19 +960,19 @@ body {
           width: 32%;
           margin-right: 1.5%;
           vertical-align: top;
-          &:nth-of-type(1){
+          &:nth-of-type(1) {
             @include animate-slideIn(.1s);
           }
-          &:nth-of-type(2){
+          &:nth-of-type(2) {
             @include animate-slideIn(.15s);
           }
-          &:nth-of-type(3){
+          &:nth-of-type(3) {
             @include animate-slideIn(.2s);
           }
-          &:last-of-type{
+          &:last-of-type {
             margin-right: 0;
           }
-          label{
+          label {
             background-color: #f2f2f2;
             color: #888;
             padding: 10px 0;
@@ -980,7 +980,7 @@ body {
             width: 100%;
             text-transform: uppercase;
           }
-          .menuWrapper{
+          .menuWrapper {
             height: 300px;
             overflow-y: auto;
           }
@@ -1038,6 +1038,30 @@ body {
     &:hover {
       background-color: #21262f;
     }
+  }
+}
+
+.globalNotification {
+  position: fixed;
+  color: #fff;
+  font-size: 20px;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  top: 0;
+  left: calc(50% - 200px);
+  opacity: 0;
+  z-index: 999;
+  transition: all .4s;
+  &.visible{
+    opacity: .8;
+    top: 20px;
+  }
+  &.success {
+    background-color: #2ecc71;
+  }
+  &.error {
+    background-color: #e74c3c;
   }
 }
 

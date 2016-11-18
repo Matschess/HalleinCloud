@@ -5,22 +5,24 @@
     <br/>
     <div ng-switch="types.selected.group">
         <div ng-switch-when="restaurants">
-            <input type="text" placeholder="Restaurantname" ng-model="restaurantname"/><br/>
+            <input type="text" placeholder="Restaurantname" ng-model="input.restaurantname"/><br/>
         </div>
     </div>
-    <input type="text" placeholder="Email-Adresse" ng-model="email"/>
-    <i class="material-icons tooltipRight" title="Bei einer eingegeben Email-Adresse erhält der neue Benutzer eine Benachrichtigung.">help_outline</i><br/>
-    <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
-    <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
+    <input type="text" placeholder="Email-Adresse" ng-model="input.email"/>
+    <input type="text" placeholder="Vorname" ng-model="input.firstname"/>
+    <input type="text" placeholder="Nachname" ng-model="input.lastname"/>
+    <br/>
     <br/>
     <label>Benutzername:</label><br/>
-    <input type="text" class="short" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ types.selected.group }}" readonly/><br/>
+    <input type="text" value="{{ input.firstname | limitTo: 2 | lowercase}}{{input.lastname | lowercase }}" readonly/>
+    <br/>
     <br/>
     <label>Passwort:</label><br/>
-    <input type="text" class="short" name=password" ng-model="password" readonly>
-    <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button><br/>
+    <input type="text" class="short" name=password" ng-model="input.password">
+    <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
+    <br/>
     <label>
-        <input type="checkbox" ng-model="pwTemp">
+        <input type="checkbox" ng-model="input.pwTemp">
         Passwort muss bei erster Anmeldung geändert werden
     </label>
 </div>

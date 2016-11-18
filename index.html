@@ -34,6 +34,8 @@
 </head>
 <body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
 <div>
+    <!-- Notification -->
+    <div class="globalNotification"></div>
     <!-- Login -->
     <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
         <h1>{{ route.title }}</h1>

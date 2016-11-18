@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable']);
 
 //var URL = 'http://46.38.236.5:3000';
-var URL = 'http://localhost:3000';
+var URL = 'http://46.38.236.5:3000';
 var user = 57;
 var restaurant = 57;
 

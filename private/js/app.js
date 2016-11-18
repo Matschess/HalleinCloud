@@ -43,3 +43,23 @@ function selectln() {
         }); // For select boxes
     });
 }
+
+function globalNotification(type, text){
+    $('.globalNotification').addClass('visible');
+    $('.globalNotification').removeClass('success error');
+    switch(type){
+        case 'success':
+            $('.globalNotification').addClass('success');
+            break;
+        case 'error':
+            $('.globalNotification').addClass('error');
+            break;
+    }
+    $('.globalNotification').html(text);
+    $('.globalNotification').click(function() {
+        $('.globalNotification').removeClass('visible');
+    })
+    setTimeout(function(){
+        $('.globalNotification').removeClass('visible');
+    }, 3000);
+}

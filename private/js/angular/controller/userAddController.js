@@ -1,4 +1,4 @@
-myApp.controller('userAddController', function ($scope, $http) {
+myApp.controller('userAddController', function ($scope, $location, $http) {
     $scope.config = {
         title: 'Benutzer hinzufügen',
         actions: [
@@ -6,27 +6,38 @@ myApp.controller('userAddController', function ($scope, $http) {
             {title: 'Verwerfen', icon: 'close', route: '/users'}
         ],
         content: 'content/user-add.html',
-        return: function (index) {
+        return: function (index, e) {
             switch (index) {
                 case 0:
-                    var data = {
-                        username: $scope.username,
-                        firstname: $scope.firstname,
-                        lastname: $scope.lastname,
-                        type: $scope.types.selected,
-                        password: $scope.password,
-                        pwTemp: $scope.pwTemp
+                    if ($scope.input.firstname && $scope.input.lastname) {
+                        var data = {
+                            username: ($scope.input.firstname.substr(0, 2) + $scope.input.lastname).toLowerCase(),
+                            firstname: $scope.input.firstname,
+                            lastname: $scope.input.lastname,
+                            type: $scope.types.selected.id,
+                            password: $scope.input.password,
+                            pwTemp: 1
+                        }
+                        console.log(data);
+                        $http({
+                            url: URL + '/users',
+                            method: 'POST',
+                            params: data
+                        });
+                        globalNotification('success', 'Der Benutzer wurde erstellt.')
                     }
-                    $http({
-                        url: URL + '/users',
-                        method: 'POST',
-                        params: data
-                    });
+                    else{
+                        globalNotification('error', 'Bitte geben Sie alle Daten ein')
+                    }
                     break;
             }
         }
     }
-    
+
+    $scope.input = {
+        pwTemp: true
+    };
+
     $scope.types = {
         selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
         options: [
@@ -36,13 +47,12 @@ myApp.controller('userAddController', function ($scope, $http) {
         ]
     }
 
-    $scope.pwTemp = true;
     $scope.restaurantname = '';
 
-    $scope.password = generateRandom(6);
+    $scope.input.password = generateRandom(6);
 
     $scope.generatePassword = function () {
-        $scope.password = generateRandom(6);
+        $scope.input.password = generateRandom(6);
     }
 
     function generateRandom(length) {
