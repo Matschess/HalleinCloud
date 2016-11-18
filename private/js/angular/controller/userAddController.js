@@ -9,17 +9,6 @@ myApp.controller('userAddController', function ($scope, $http) {
         return: function (index) {
             switch (index) {
                 case 0:
-                    console.log( $scope.firstname);
-                    switch ($scope.types.selected) {
-
-                        case 1:
-                            var name = $scope.firstname + ' ' + $scope.lastname;
-
-                        case 2:
-                            var name = $scope.restaurantname;
-                    }
-                    alert($scope.pwTemp);
-
                     var data = {
                         username: $scope.username,
                         firstname: $scope.firstname,
@@ -37,7 +26,7 @@ myApp.controller('userAddController', function ($scope, $http) {
             }
         }
     }
-
+    
     $scope.types = {
         selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
         options: [
@@ -50,10 +39,10 @@ myApp.controller('userAddController', function ($scope, $http) {
     $scope.pwTemp = true;
     $scope.restaurantname = '';
 
-    generateRandom(10);
+    $scope.password = generateRandom(6);
 
     $scope.generatePassword = function () {
-        generateRandom(10);
+        $scope.password = generateRandom(6);
     }
 
     function generateRandom(length) {
@@ -63,6 +52,6 @@ myApp.controller('userAddController', function ($scope, $http) {
         for (var i = 0; i < length; i++)
             password += possible.charAt(Math.floor(Math.random() * possible.length));
 
-        $scope.password = password;
+        return password;
     }
 });

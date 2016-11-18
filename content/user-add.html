@@ -1,6 +1,4 @@
 <div class="full">
-    <label>Grunddaten:</label><br/>
-    <br/>
     <label>Kontotyp:</label>
     <select ng-model="types.selected" ng-options="option.name for option in types.options track by option.id"></select>
     <br/>
@@ -10,23 +8,17 @@
             <input type="text" placeholder="Restaurantname" ng-model="restaurantname"/><br/>
         </div>
     </div>
+    <input type="text" placeholder="Email-Adresse" ng-model="email"/>
+    <i class="material-icons tooltipRight" title="Bei einer eingegeben Email-Adresse erhält der neue Benutzer eine Benachrichtigung.">help_outline</i><br/>
     <input type="text" placeholder="Vorname" ng-model="firstname"/><br/>
     <input type="text" placeholder="Nachname" ng-model="lastname"/><br/>
     <br/>
     <label>Benutzername:</label><br/>
-    <input type="text" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ types.selected.group }}" readonly/><br/>
+    <input type="text" class="short" value="{{ firstname | limitTo: 1 | lowercase }}{{ lastname | lowercase }}@{{ types.selected.group }}" readonly/><br/>
     <br/>
-    <h3>Passwort:</h3>
-    <div class="pwChange" ng-controller="pwChange">
-        <input type="text" placeholder="Passwort" ng-model="password" ng-keyup="pwValidate()"/>
-        <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
-        <div class="pwValidation">
-            <div ng-class="{1:'active'}[pwSafety]"></div>
-            <div ng-class="{2:'active'}[pwSafety]"></div>
-            <div ng-class="{3:'active'}[pwSafety]"></div>
-            <div ng-class="{4:'active'}[pwSafety]"></div>
-        </div>
-    </div>
+    <label>Passwort:</label><br/>
+    <input type="text" class="short" name=password" ng-model="password" readonly>
+    <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button><br/>
     <label>
         <input type="checkbox" ng-model="pwTemp">
         Passwort muss bei erster Anmeldung geändert werden

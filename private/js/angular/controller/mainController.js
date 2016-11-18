@@ -72,6 +72,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
 
         tooltipstln();
+        selectln();
     });
 
     var settingsLinks = [
