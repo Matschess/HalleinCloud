@@ -33,8 +33,6 @@
   animation: slideIn .4s $delay ease forwards;
 }
 
-$primary-font: 'Gravity', sans-serif;
-
 // Animations
 @keyframes fadeIn {
   0% {
@@ -1042,26 +1040,33 @@ body {
 }
 
 .globalNotification {
+  background-size: 30px;
+  background-position: center left 20px;
+  background-repeat: no-repeat;
   position: fixed;
   color: #fff;
-  font-size: 20px;
-  width: 400px;
-  padding: 20px;
+  font-size: 18px;
+  padding: 20px 60px;
   text-align: center;
   top: 0;
-  left: calc(50% - 200px);
   opacity: 0;
   z-index: 999;
-  transition: all .4s;
+  transition: all .4s ease;
   &.visible{
     opacity: .8;
     top: 20px;
   }
   &.success {
     background-color: #2ecc71;
+    background-image: url('../../assets/icons/done_white.png');
+  }
+  &.warning {
+    background-color: #f39c12;
+    background-image: url('../../assets/icons/warning.png');
   }
   &.error {
     background-color: #e74c3c;
+    background-image: url('../../assets/icons/close.png');
   }
 }
 

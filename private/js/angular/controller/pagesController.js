@@ -5,13 +5,53 @@ myApp.controller('pagesController', function ($scope, $http) {
             {title: 'Speichern', icon: 'done', route: '/page'},
             {title: 'Verwerfen', icon: 'close', route: '/'}
         ],
-        content: 'content/page.html'
+        content: 'content/page.html',
+        return: function (index) {
+            switch (index) {
+                case 0:
+                    if ($scope.input.restaurantname) {
+                        var data = {
+                            id: user,
+                            restaurantname: $scope.input.restaurantname,
+                            description: $scope.input.description,
+                            studentMeals: $scope.input.studentMeals,
+                            street: $scope.input.street,
+                            houseNumber: $scope.input.houseNumber,
+                            countryCode: $scope.input.countryCode,
+                            country: $scope.input.country,
+                            email: $scope.input.email,
+                            tel: $scope.input.tel,
+                            website: $scope.input.website
+                        }
+                        data = prepareUpload(data);
+                        $http({
+                            url: URL + '/restaurants',
+                            method: 'PUT',
+                            params: data
+                        }).then(function () {
+                                globalNotification('success', 'Die Daten wurden gespeichert.');
+                            load();
+                        },
+                            function () {
+                                globalNotification('error')
+                            });
+                    }
+                    else {
+                        globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
+                    }
+                    break;
+            }
+        }
     }
 
-    $http.get(URL + '/restaurants?user=' + user)
-        .then(function (response) {
-            $scope.pages = response.data[0];
-        });
+    load();
+
+    function load() {
+        $http.get(URL + '/restaurants?user=' + user)
+            .then(function (response) {
+                $scope.input = response.data[0];
+            });
+    }
 
     $scope.days = [
         {shorthand: 'Mo', from: '08:00', toHalf: '14:00', fromHalf: '15:00', to: '22:00'},

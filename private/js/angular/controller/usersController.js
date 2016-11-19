@@ -26,8 +26,12 @@ myApp.controller('usersController', function ($scope, $http) {
     $scope.deleteUser = function (id, index) {
         var params = "?id=" + id;
         $http.delete(URL + '/users' + params)
-            .success(function () {
+            .then(function () {
                 $scope.users.splice(index, 1);
+                globalNotification('success', 'Der Benutzer wurde gelöscht.')
+            },
+            function () {
+                globalNotification('error')
             });
     }
 });

@@ -2,7 +2,7 @@ input {
   outline: 0;
 }
 
-*:focus{
+*:focus {
   outline: none;
 }
 
@@ -10,12 +10,18 @@ input[type=radio] {
   visibility: hidden;
 }
 
-label{
+.clean {
+  color: $primary-color;
+  text-decoration: none;
+  cursor: default;
+}
+
+label {
   font-size: 16px;
-  &.top{
+  &.top {
     vertical-align: top;
   }
-  i{
+  i {
     vertical-align: middle;
   }
 }
@@ -48,7 +54,7 @@ input[type=text], input[type=password] {
   &.shorter {
     width: 40px;
   }
-  &.longest{
+  &.longest {
     width: 100%;
   }
   &:disabled {
@@ -127,7 +133,7 @@ textarea {
   margin-bottom: 10px;
   border: 1px solid transparent;
   border-radius: 20px;
-  i{
+  i {
     margin-left: 2px;
   }
   &.red {
@@ -139,7 +145,7 @@ textarea {
   &.orange {
     background-color: #e67e22;
   }
-  &.empty{
+  &.empty {
     background-color: #eaeaea;
     color: #444;
     padding: 0 14px 0 14px;
@@ -149,8 +155,8 @@ textarea {
 }
 
 // For Add-Tags
-[contentEditable=true]:empty:not(:focus):before{
-  content:attr(data-placeholder);
+[contentEditable=true]:empty:not(:focus):before {
+  content: attr(data-placeholder);
   opacity: 0.6;
 }
 
@@ -163,7 +169,9 @@ textarea {
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 /* The slider */
 .slider {
@@ -216,7 +224,7 @@ input:checked + .slider:before {
 // Password-Validation
 .pwChange {
   width: 80%;
-  input[type=password]{
+  input[type=password] {
     width: calc(100% - 16px);
   }
   .pwValidation {
@@ -254,7 +262,7 @@ input:checked + .slider:before {
   }
 }
 
-.tabs{
+.tabs {
   font-size: 16px;
   margin-bottom: 20px;
   li {
@@ -271,6 +279,6 @@ input:checked + .slider:before {
 }
 
 // For ng-drag elements, sothat they are always visible
-[ng-drag].dragging{
+[ng-drag].dragging {
   position: absolute !important;
 }

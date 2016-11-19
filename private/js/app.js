@@ -46,20 +46,37 @@ function selectln() {
 
 function globalNotification(type, text){
     $('.globalNotification').addClass('visible');
-    $('.globalNotification').removeClass('success error');
+    $('.globalNotification').removeClass('success warning error');
     switch(type){
         case 'success':
             $('.globalNotification').addClass('success');
             break;
+        case 'warning':
+            $('.globalNotification').addClass('warning');
+            break;
         case 'error':
             $('.globalNotification').addClass('error');
+            if(!text) text = 'Fehler';
             break;
     }
     $('.globalNotification').html(text);
+    var width = $('.globalNotification').outerWidth();
+    $('.globalNotification').css('left', 'calc(50% - ' + width / 2 + 'px)');
     $('.globalNotification').click(function() {
         $('.globalNotification').removeClass('visible');
     })
     setTimeout(function(){
         $('.globalNotification').removeClass('visible');
     }, 3000);
+}
+
+function prepareUpload(data){
+    var result = {};
+    var value;
+    for(var propertyName in data) {
+        value = data[propertyName];
+        if(!value) value = ' ';
+        result[propertyName] = value;
+    }
+    return result;
 }

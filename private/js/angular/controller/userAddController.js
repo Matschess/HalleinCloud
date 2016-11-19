@@ -2,7 +2,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
     $scope.config = {
         title: 'Benutzer hinzufügen',
         actions: [
-            {title: 'Speichern', icon: 'done', route: '/users'},
+            {title: 'Speichern', icon: 'done'},
             {title: 'Verwerfen', icon: 'close', route: '/users'}
         ],
         content: 'content/user-add.html',
@@ -14,20 +14,25 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
                             username: ($scope.input.firstname.substr(0, 2) + $scope.input.lastname).toLowerCase(),
                             firstname: $scope.input.firstname,
                             lastname: $scope.input.lastname,
+                            email: $scope.input.email,
                             type: $scope.types.selected.id,
                             password: $scope.input.password,
                             pwTemp: 1
                         }
-                        console.log(data);
                         $http({
                             url: URL + '/users',
                             method: 'POST',
                             params: data
-                        });
-                        globalNotification('success', 'Der Benutzer wurde erstellt.')
+                        }).then(function () {
+                                $location.path('/users');
+                                globalNotification('success', 'Der Benutzer wurde erstellt.')
+                            },
+                            function () {
+                                globalNotification('error')
+                            });
                     }
-                    else{
-                        globalNotification('error', 'Bitte geben Sie alle Daten ein')
+                    else {
+                        globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
                     }
                     break;
             }
