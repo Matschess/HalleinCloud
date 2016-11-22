@@ -28,7 +28,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     });
 
     // Login
-    $scope.loggedIn = false;
+    $scope.loggedIn = true;
 
     // Save routes in an array for navigation
     $scope.routes = [];
