@@ -44,7 +44,9 @@ function selectln() {
     });
 }
 
+var globalNotificationsTimeout;
 function globalNotification(type, text){
+    clearTimeout(globalNotificationsTimeout);
     $('.globalNotification').addClass('visible');
     $('.globalNotification').removeClass('success warning error');
     switch(type){
@@ -65,7 +67,7 @@ function globalNotification(type, text){
     $('.globalNotification').click(function() {
         $('.globalNotification').removeClass('visible');
     })
-    setTimeout(function(){
+    globalNotificationsTimeout = setTimeout(function(){
         $('.globalNotification').removeClass('visible');
     }, 3000);
 }

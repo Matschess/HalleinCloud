@@ -76,8 +76,8 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
     });
 
     var settingsLinks = [
-        {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html', actions: [{icon: 'done'}]},
-        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html', actions: [{icon: 'send'}]}
+        {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html'},
+        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'}
     ];
 
     $scope.openSettings = function () {

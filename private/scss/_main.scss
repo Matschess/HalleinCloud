@@ -204,14 +204,6 @@ body {
       height: 60px;
       margin: 5px 0 5px 0;
     }
-    .profileImage {
-      position: absolute;
-      margin-left: 15px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      vertical-align: middle;
-    }
     button.done {
       float: right;
       background: none;
@@ -1051,10 +1043,13 @@ body {
   top: 0;
   opacity: 0;
   z-index: 999;
-  transition: all .4s ease;
+  transform: scale(0);
+  transition: top .4s ease, transform .2s ease, opacity .4s ease;
+  cursor: default;
   &.visible{
     opacity: .8;
     top: 20px;
+    transform: scale(1);
   }
   &.success {
     background-color: #2ecc71;
@@ -1071,6 +1066,7 @@ body {
 }
 
 .loadingSpinner {
+  display: none;
   float: right;
   margin-top: 10px;
   margin-right: 8px;

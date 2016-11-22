@@ -5,17 +5,17 @@ myApp.controller('feedbackController', function ($scope, $http) {
         content: 'content/feedback.html'
     }
 
-    $http.get(URL + '/feedback?status=new')
+    $http.get(URL + '/feedback?status=1')
         .then(function (response) {
             $scope.newFeedbacks = response.data;
         })
 
-    $http.get(URL + '/feedback?status=accepted')
+    $http.get(URL + '/feedback?status=2')
         .then(function (response) {
             $scope.acceptedFeedbacks = response.data;
         })
 
-    $http.get(URL + '/feedback?status=declined')
+    $http.get(URL + '/feedback?status=3')
         .then(function (response) {
             $scope.declinedFeedbacks = response.data;
         })

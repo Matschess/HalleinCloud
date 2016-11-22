@@ -7,9 +7,9 @@
                 <div class="success"><i class="material-icons">done</i></div>
                 <div class="error"><i class="material-icons">close</i></div>
             </div>
-            <span class="tooltipBottom" ng-show="!config.loading" ng-repeat="action in config.actions" ng-click="config.return($index)" title="{{ action.title }}">
-                <a class="icon" ng-if="action.route" href="#{{action.route}}"><i class="material-icons">{{ action.icon }}</i></a>
-                <a class="icon" ng-if="!action.route"><i class="material-icons">{{ action.icon }}</i></a>
+            <span ng-show="!config.loading" ng-repeat="action in config.actions" ng-click="config.return($index)">
+                <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
+                <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
             </span>
         </div>
     </div>
