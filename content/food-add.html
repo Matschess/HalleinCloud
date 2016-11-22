@@ -1,10 +1,7 @@
 <div class="full">
     <label>Typ:</label>
-    <select>
-        <option>Vorspeise</option>
-        <option selected>Hauptspeise</option>
-        <option>Nachspeise</option>
-    </select><br/>
+    <select ng-model="types.selected" ng-options="option.name for option in types.options track by option.id"></select>
+    <br/>
     <br/>
     <label>Tags: <i class="material-icons tooltipRight" title="Tags helfen beim Suchen nach Mahlzeiten und geben den Benutzern Essensvorschläge.">help_outline</i></label>
     <div class="tagBox">
@@ -19,13 +16,13 @@
     <label class="longer">Beschreibung:</label><br/>
     <br/>
     <div>
-        <textarea class="short" placeholder="Beschreibung"></textarea>
+        <textarea class="short" placeholder="Beschreibung" ng-model="input.description"></textarea>
         <div class="veggieWrapper">
             <label class="longer smaller">Vegetarisch?</label>
             <br/>
-            <input type="radio" id="y" name="veggie" value="Ja">
+            <input type="radio" id="y" name="veggie" value="1" ng-model="input.veggie">
             <label class="checkLabel" for="y">Ja</label>
-            <input type="radio" id="n" name="veggie" value="Nein" checked>
+            <input type="radio" id="n" name="veggie" value="0" ng-model="input.veggie">
             <label class="checkLabel" for="n">Nein</label>
         </div>
     </div>

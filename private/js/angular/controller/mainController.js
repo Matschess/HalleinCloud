@@ -3,7 +3,10 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         myApp.foodAddController.foodAdd();
     }
 
-    $scope.username = 'Benutzername';
+    $http.get(URL + '/users?get=firstname&id=' + user)
+        .then(function (response) {
+            $scope.username = response.data[0].firstname;
+        });
     /*$scope.loading = {
      status: '',
      text: ''

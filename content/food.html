@@ -24,19 +24,19 @@
     <div class="menutype">
         <label>Vorspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'appetizer'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
         </div>
     </div>
     <div class="menutype">
         <label>Hauptspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'mainCourse'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
         </div>
     </div>
     <div class="menutype">
         <label>Nachspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 'dessert'" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-repeat="menu in menus" ng-click="pushMenu($index)">{{ menu.description }}</div>
         </div>
     </div>
 </div>

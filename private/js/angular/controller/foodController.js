@@ -7,7 +7,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
         content: 'content/food.html'
     }
 
-    $http.get(URL + '/meals?restaurant')
+    $http.get(URL + '/meals?get=id,type,description,veggie&restaurant=' + restaurant)
         .then(function (response) {
             $scope.menus = response.data;
         })
