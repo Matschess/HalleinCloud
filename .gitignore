@@ -56,12 +56,12 @@ fabric.properties
 # .idea/misc.xml 
 # *.ipr
 
-# Gulp
+# npm
 node_modules/
+
+# Yarn
+yarn.lock
 
 # Public
 assets/
 public/
-
-# Yarn
-yarn.lock
