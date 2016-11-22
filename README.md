@@ -6,7 +6,6 @@ Install [Node.js](https://nodejs.org/en/download/)
 Open commandline in halleinApp/
 ```
 $ npm install
- 
 $ node server.js
 ```
 
@@ -15,7 +14,8 @@ Install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.co
 
 Open commandline in halleinApp/
 ```
-$ npm install
+$ npm install --global gulp-cli
+$ yarn
 ```
 In commandline or PhpStorm (just press [CTRL]+[SHIFT]+[X]) type
 ```
