@@ -11,9 +11,7 @@ $ node server.js
 ```
 
 ### Gulp
-Install [Node.js](https://nodejs.org/en/download/)
-
-Install [Yarn](https://yarnpkg.com/en/docs/install)
+Install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/en/docs/install)
 
 Open commandline in halleinApp/
 ```
