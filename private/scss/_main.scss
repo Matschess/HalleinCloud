@@ -986,6 +986,13 @@ body {
             cursor: move;
             &:hover {
               background-color: #e8e8e8;
+              .remove{
+                display: block;
+              }
+            }
+            .remove{
+              display: none;
+              float: right;
             }
           }
         }
