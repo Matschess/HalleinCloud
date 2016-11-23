@@ -12,7 +12,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                 $scope.menus = response.data;
             })
         $scope.days = [
-            {name: 'Montag', menu: {appetizer: 1}},
+            {name: 'Montag'},
             {name: 'Dienstag'},
             {name: 'Mittwoch'},
             {name: 'Donnerstag'},
@@ -25,13 +25,13 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                 $scope.days[index].menu = {};
             }
             switch ($scope.menus[data].type) {
-                case 'appetizer':
+                case 1:
                     $scope.days[index].menu.appetizer = data + 1; // Because a 0 would be a bug
                     return;
-                case 'mainCourse':
+                case 2:
                     $scope.days[index].menu.mainCourse = data + 1;
                     return;
-                case 'dessert':
+                case 3:
                     $scope.days[index].menu.dessert = data + 1;
                     return;
             }
