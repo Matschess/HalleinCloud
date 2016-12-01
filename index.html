@@ -35,9 +35,6 @@
 </head>
 <body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
 <div>
-    <div class="loadingSpinner" ng-if="loading">
-        <div class="loading"></div>
-    </div>
     <!-- Notification -->
     <div class="globalNotification"></div>
     <!-- Login -->
@@ -63,6 +60,9 @@
         <div class="topbar">
             <i class="material-icons burgericon">menu</i>
             <h1 class="headline">Verwaltungsdashboard</h1>
+            <div class="loadingSpinner" ng-if="loading">
+                <div class="loading"></div>
+            </div>
             <div class="user">
                 {{ username }}
                 <img src="assets/imgs/profile_default.png"/>

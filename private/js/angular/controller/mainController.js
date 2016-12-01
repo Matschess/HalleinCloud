@@ -48,8 +48,10 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
         }
     });
 
-    // Watches, if actionbar is a param
-    $scope.$on('$routeChangeSuccess', function (next, current) {
+    $scope.$on('$routeChangeStart', function ($rootScope) {
+        $rootScope.loading = true;
+    });
+    $scope.$on('$routeChangeSuccess', function (next, current, $rootScope) {
         var frameParams = current.$$route.frame;
         if (frameParams) {
             switch (frameParams.type) {
@@ -76,6 +78,7 @@ myApp.controller('mainController', function ($scope, $route, $routeParams, $http
 
         tooltipstln();
         selectln();
+        $rootScope.loading = false;
     });
 
     var settingsLinks = [

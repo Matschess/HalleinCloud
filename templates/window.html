@@ -1,13 +1,8 @@
 <div class="fullBox">
-    <div class="title" ng-class="config.loading.status">
-        <h2 ng-if="!config.loading.text">{{ config.title }}</h2>
+    <div class="title">
+        <h2>{{ config.title }}</h2>
         <div class="actions">
-            <div class="loadingSpinner">
-                <div class="loading"></div>
-                <div class="success"><i class="material-icons">done</i></div>
-                <div class="error"><i class="material-icons">close</i></div>
-            </div>
-            <span ng-show="!config.loading" ng-repeat="action in config.actions" ng-click="config.return($index)">
+            <span ng-repeat="action in config.actions" ng-click="config.return($index)">
                 <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
                 <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
             </span>

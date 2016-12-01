@@ -1072,12 +1072,10 @@ body {
 }
 
 .loadingSpinner {
-  display: none;
   float: right;
   margin-top: 10px;
   margin-right: 8px;
   .loading {
-    display: none;
     width: 25px;
     height: 25px;
     border: 2px solid #E6E6E6;
