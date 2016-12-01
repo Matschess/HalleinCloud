@@ -19,7 +19,7 @@
 </div>
 <div class="right">
     <h3>Öffnungszeiten:</h3>
-    <div class="openingHours" ng-repeat="day in days" ng-class="{true:'sleep'}[day.sleep]"><label class="inline shorter">{{ day.shorthand }}</label><input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.from }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.toHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.fromHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.to }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
+    <div class="openingHours" ng-repeat="day in days" ng-class="{0:'sleep'}[day.data.length]"><label class="inline shorter">{{ day.shorthand }}</label><input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
     <h3>Ruhetage:</h3>
     <div class="restDay" ng-repeat="restDay in restDays"><div>{{ restDay.fromDate }} - {{ restDay.toDate }}</div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove($index)">delete_outline</i></div>
     <div ng-if="!restDays.length">Keine geplanten Ruhetage</div><br/>

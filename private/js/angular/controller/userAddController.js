@@ -17,7 +17,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
                             email: $scope.input.email,
                             type: $scope.types.selected.id,
                             password: $scope.input.password,
-                            pwTemp: 1
+                            pwTemp: $scope.input.pwTemp
                         }
                         $http({
                             url: URL + '/users',
@@ -40,7 +40,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
     }
 
     $scope.input = {
-        pwTemp: true
+        pwTemp: 1
     };
 
     $scope.types = {

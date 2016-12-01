@@ -1085,48 +1085,6 @@ body {
     border-radius: 50%;
     animation: drey 1s ease infinite;
   }
-
-  .success {
-    display: none;
-    width: 25px;
-    height: 25px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    text-align: center;
-    i {
-      font-size: 20px;
-      line-height: 25px;
-      color: #fff;
-      transform: scale(0);
-      animation: scaleInBezizer .8s forwards;
-    }
-  }
-  .error {
-    display: none;
-    width: 25px;
-    height: 25px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    text-align: center;
-    i {
-      font-size: 20px;
-      line-height: 25px;
-      color: #fff;
-      transform: scale(0);
-      animation: scaleInBezizer .8s forwards;
-    }
-  }
-  @keyframes scaleInBezizer {
-    0% {
-      transform: scale(0);
-    }
-    40% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(.95);
-    }
-  }
 }
 
 @keyframes drey {

@@ -30,8 +30,8 @@ myApp.controller('pagesController', function ($scope, $http) {
                             params: data
                         }).then(function () {
                                 globalNotification('success', 'Die Daten wurden gespeichert.');
-                            load();
-                        },
+                                load();
+                            },
                             function () {
                                 globalNotification('error')
                             });
@@ -51,24 +51,37 @@ myApp.controller('pagesController', function ($scope, $http) {
             .then(function (response) {
                 $scope.input = response.data[0];
             });
+        $http.get(URL + '/openingTimes?get=id,weekday,opens,closesHalf,opensHalf,closes&restaurant=' + restaurant)
+            .then(function (response) {
+                $scope.days = [
+                    {id: 1, shorthand: 'Mo'},
+                    {id: 2, shorthand: 'Di'},
+                    {id: 3, shorthand: 'Mi'},
+                    {id: 4, shorthand: 'Do'},
+                    {id: 5, shorthand: 'Fr'},
+                    {id: 6, shorthand: 'Sa'},
+                    {id: 7, shorthand: 'So'}
+                ]
+                for(var i = 0; i < $scope.days.length; i++){
+                    if(response.data[i]){
+                        $scope.days[i].data = response.data[i];
+                    }
+                }
+            });
     }
 
-    $scope.days = [
-        {shorthand: 'Mo', from: '08:00', toHalf: '14:00', fromHalf: '15:00', to: '22:00'},
-        {shorthand: 'Di'},
-        {shorthand: 'Mi'},
-        {shorthand: 'Do'},
-        {shorthand: 'Fr'},
-        {shorthand: 'Sa'},
-        {shorthand: 'So'}
-    ];
     $scope.restDays = [
         {fromDate: '22.10.2016', toDate: '22.10.2016'},
         {fromDate: '24.10.2016', toDate: '25.11.2016'},
         {fromDate: '20.10.2016', toDate: '22.10.2016'}
     ];
     $scope.sleep = function (index) {
-        $scope.days[index].sleep = !$scope.days[index].sleep;
+        if(!$scope.days[index].data){
+            $scope.days[index].data = {
+                id
+            };
+        }
+        else delete $scope.days[index].data;
     }
     $scope.restDayRemove = function (index) {
         $scope.restDays.splice(index, 1);
