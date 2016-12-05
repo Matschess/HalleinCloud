@@ -10,7 +10,7 @@
         <td>{{ user.typename }}</td>
         <td>{{ user.lastLogin | date:"dd.MM.yyyy 'um' HH:mm" }}</td>
         <td class="actions">
-            <div><i class="material-icons">edit</i></div>
+            <a href="#user-edit/{{user.id}}"><i class="material-icons">edit</i></a>
             <div ng-click="deleteUser(user.id, $index)"><i class="material-icons">close</i></div>
         </td>
     </tr>

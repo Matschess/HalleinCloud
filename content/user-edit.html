@@ -1,0 +1,33 @@
+<div class="full">
+    <label>Kontotyp:</label>
+    <span ng-switch="input.type">
+        <span ng-switch-when="1">Superuser</span>
+        <span ng-switch-when="2">Administrator</span>
+        <span ng-switch-when="3">Restaurant</span>
+    </span>
+    <br/>
+    <br/>
+    <label>Email-Adresse:</label><br/>
+    <input type="text" placeholder="Email-Adresse" ng-model="input.email"/><i class="material-icons tooltipRight" title="Beim Angeben einer Email-Adresse erhält der neue Benutzer eine Email mit den Anmeldedaten.">help_outline</i><br/>
+    <label>Vorname:</label><br/>
+    <input type="text" placeholder="Vorname" ng-model="input.firstname"/><br/>
+    <label>Nachname:</label><br/>
+    <input type="text" placeholder="Nachname" ng-model="input.lastname"/>
+    <br/>
+    <br/>
+    <label>Benutzername:</label><br/>
+    <input type="text" value="{{ input.firstname | limitTo: 2 | lowercase}}{{input.lastname | lowercase }}" readonly/>
+    <br/>
+    <br/>
+    <button ng-show="!resetPassword" ng-click="showResetPassword()">Passwort zurücksetzen</button>
+    <div ng-show="resetPassword">
+    <label>Neues Passwort:</label><br/>
+    <input type="text" class="short" name=password" ng-model="input.password">
+    <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
+    <br/>
+    <label>
+        <input type="checkbox" ng-model="input.pwTemp" ng-true-value="1" ng-false-value="0">
+        Passwort muss bei erster Anmeldung geändert werden
+    </label>
+    </div>
+</div>

@@ -42,6 +42,10 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'userAddController'
         })
+        .when('/user-edit/:id', {
+            templateUrl: 'templates/window.html',
+            controller: 'userEditController'
+        })
         .when('/help', {
             templateUrl: 'templates/window.html',
             controller: 'helpController',
@@ -53,6 +57,7 @@ myApp.config(function ($routeProvider) {
         });
 });
 
+var serverLost;
 myApp.service('LoadingInterceptor',
     ['$q', '$rootScope', '$log',
         function($q, $rootScope, $log) {
@@ -82,3 +87,17 @@ myApp.service('LoadingInterceptor',
 myApp.config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('LoadingInterceptor');
 }]);
+
+// Check internet connection
+window.addEventListener("offline", function (e) {
+    $('.serverConnected').removeClass('active');
+    $('.serverLost').addClass('active');
+});
+
+window.addEventListener("online", function (e) {
+    $('.serverLost').removeClass('active');
+    $('.serverConnected').addClass('active');
+    setTimeout(function () {
+        $('.serverConnected').removeClass('active');
+    }, 4000);
+});

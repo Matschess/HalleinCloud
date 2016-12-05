@@ -60,10 +60,16 @@
         <div class="topbar">
             <i class="material-icons burgericon">menu</i>
             <h1 class="headline">Verwaltungsdashboard</h1>
-            <div class="loadingSpinner" ng-if="loading">
-                <div class="loading"></div>
-            </div>
             <div class="user">
+                <div class="loadingSpinner" ng-if="loading">
+                    <div class="loading"></div>
+                </div>
+                <div class="serverLost">
+                    Die Verbindung zum Server wurde abgebrochen
+                </div>
+                <div class="serverConnected">
+                    Verbindung wiederhergestellt
+                </div>
                 {{ username }}
                 <img src="assets/imgs/profile_default.png"/>
                 <img class="icon" src="assets/icons/arrow_down.png"/>
