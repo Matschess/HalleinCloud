@@ -20,11 +20,12 @@
         <div ng-if="!day.menu.appetizer && !day.menu.mainCourse && !day.menu.dessert">{{ day.name }}</div>
     </div>
 </div>
+<div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>
 <div class="menunames">
     <div class="menutype">
         <label>Vorspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1"  ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
                 {{ menu.description }}
                 <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
             </div>
@@ -33,7 +34,7 @@
     <div class="menutype">
         <label>Hauptspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
                 {{ menu.description }}
                 <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
             </div>
@@ -42,7 +43,7 @@
     <div class="menutype">
         <label>Nachspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
+            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
                 {{ menu.description }}
                 <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
             </div>

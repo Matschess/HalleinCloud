@@ -2,7 +2,7 @@ myApp.controller('foodAddController', function ($scope, $location, $http) {
     $scope.config = {
         title: 'Mahlzeit hinzufügen',
         actions: [
-            {title: 'Speichern', icon: 'done', route: '/food'},
+            {title: 'Speichern', icon: 'done'},
             {title: 'Verwefen', icon: 'close', route: '/food'}
         ],
         content: 'content/food-add.html',

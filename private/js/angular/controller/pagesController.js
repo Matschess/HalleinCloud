@@ -51,7 +51,8 @@ myApp.controller('pagesController', function ($scope, $http) {
             .then(function (response) {
                 $scope.input = response.data[0];
             });
-        $http.get(URL + '/openingTimes?get=id,weekday,opens,closesHalf,opensHalf,closes&restaurant=' + restaurant)
+
+        $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
             .then(function (response) {
                 $scope.days = [
                     {id: 1, shorthand: 'Mo'},
@@ -77,9 +78,7 @@ myApp.controller('pagesController', function ($scope, $http) {
     ];
     $scope.sleep = function (index) {
         if(!$scope.days[index].data){
-            $scope.days[index].data = {
-                id
-            };
+            $scope.days[index].data = {};
         }
         else delete $scope.days[index].data;
     }

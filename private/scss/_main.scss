@@ -940,9 +940,23 @@ body {
           }
         }
       }
-
+      .mealIndicator {
+        opacity: 0;
+        font-size: 16px;
+        color: #000;
+        text-align: right;
+        margin-top: 30px;
+        @include animate-slideIn(.25s);
+        span {
+          border-left: 3px solid;
+          padding-left: 4px;
+          &.veggie {
+            border-color: #69c800;
+          }
+        }
+      }
       .menunames {
-        margin-top: 60px;
+        margin-top: 20px;
         width: 100%;
         .menutype {
           opacity: 0;
@@ -950,7 +964,7 @@ body {
           font-size: 16px;
           background-color: #fafafa;
           width: 32%;
-          margin-right: 1.5%;
+          margin-right: 2%;
           vertical-align: top;
           &:nth-of-type(1) {
             @include animate-slideIn(.1s);
@@ -975,26 +989,30 @@ body {
           .menuWrapper {
             height: 300px;
             overflow-y: auto;
-          }
-          .menu {
-            position: relative;
-            display: inline-block;
-            font-size: 16px;
-            color: #333;
-            opacity: 1;
-            padding: 8px 12px;
-            border-bottom: 1px solid #d2d2d2;
-            width: calc(100% - 24px);
-            cursor: move;
-            &:hover {
-              background-color: #e8e8e8;
-              .remove {
-                display: block;
+            .menu {
+              position: relative;
+              display: inline-block;
+              font-size: 16px;
+              color: #333;
+              opacity: 1;
+              padding: 8px 12px;
+              border-bottom: 1px solid #d2d2d2;
+              border-left: 3px solid transparent;
+              width: calc(100% - 27px);
+              cursor: move;
+              &.veggie {
+                border-left: 3px solid #69c800;
               }
-            }
-            .remove {
-              display: none;
-              float: right;
+              &:hover {
+                background-color: #e8e8e8;
+                .remove {
+                  display: block;
+                }
+              }
+              .remove {
+                display: none;
+                float: right;
+              }
             }
           }
         }

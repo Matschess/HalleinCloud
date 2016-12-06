@@ -3,6 +3,7 @@
     <select ng-model="types.selected" ng-options="option.name for option in types.options track by option.id"></select>
     <br/>
     <br/>
+    <!--
     <label>Tags: <i class="material-icons tooltipRight" title="Tags helfen beim Suchen nach Mahlzeiten und geben den Benutzern Essensvorschläge.">help_outline</i></label>
     <div class="tagBox">
         <div ui-sortable class="tag" ng-repeat="tag in tags" ng-class="tag.class">
@@ -11,10 +12,9 @@
         </div>
         <div class="tag empty" contenteditable="true" data-placeholder="hinzufügen"></div>
     </div>
-
     <br/>
+    -->
     <label class="longer">Beschreibung:</label><br/>
-    <br/>
     <div>
         <textarea class="short" placeholder="Beschreibung" ng-model="input.description"></textarea>
         <div class="veggieWrapper">
