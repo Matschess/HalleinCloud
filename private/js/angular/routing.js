@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource']);
 
-//var URL = 'http://46.38.236.5:3000';
-var URL = 'http://46.38.236.5:3000';
+//var URL = 'http://46.38.236.5:443';
+var URL = 'http://46.38.236.5:443';
 var user = 2;
 var restaurant = 2;
 
