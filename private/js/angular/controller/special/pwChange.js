@@ -1,6 +1,6 @@
 myApp.controller('pwChange', function ($scope) {
-    $scope.pwValidate = function () {
-        var pwNew = $scope.pwNew.toString();
+    $scope.pwValidate = function (pwNew) {
+        var pwNew = pwNew.toString();
         $scope.pwSafety = 1;
         if (pwNew.match(".{8}[a-z]")) {
             $scope.pwSafety += 1;

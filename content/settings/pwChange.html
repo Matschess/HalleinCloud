@@ -1,14 +1,15 @@
 <div ng-controller="passwordSettingsController">
     <div class="pwChange" ng-controller="pwChange">
         <div class="title">Legen Sie Ihr neues Passwort fest:</div>
-        <input type="password" class="longest" placeholder="Altes Passwort"/>
-        <input type="password" class="longest" placeholder="Neues Passwort" ng-model="pwNew" ng-keyup="pwValidate()"/>
+        <input type="password" class="longest" placeholder="Altes Passwort" ng-model="input.pwOld"/>
+        <input type="password" class="longest" placeholder="Neues Passwort" ng-model="input.pwNew" ng-keyup="pwValidate(input.pwNew)"/>
         <div class="pwValidation">
             <div ng-class="{1:'active'}[pwSafety]"></div>
             <div ng-class="{2:'active'}[pwSafety]"></div>
             <div ng-class="{3:'active'}[pwSafety]"></div>
             <div ng-class="{4:'active'}[pwSafety]"></div>
         </div>
-        <input type="password" class="longest" placeholder="Wiederholung"/>
+        <input type="password" class="longest" placeholder="Wiederholung" ng-model="input.pwRepeat"/>
     </div>
+    <div class="action" ng-click="save()"><i class="material-icons">done</i></div>
 </div>

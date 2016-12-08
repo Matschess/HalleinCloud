@@ -1,11 +1,11 @@
-myApp.controller('mainController', function ($scope, $route, $routeParams, $http, $cookies) {
+myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, $cookies) {
     $scope.foodAdd = function () {
         myApp.foodAddController.foodAdd();
     }
 
     $http.get(URL + '/users?get=firstname&id=' + user)
         .then(function (response) {
-            $scope.username = response.data[0].firstname;
+            $rootScope.username = response.data[0].firstname;
         });
     /*$scope.loading = {
      status: '',
