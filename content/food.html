@@ -1,5 +1,5 @@
 <div class="days">
-    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
+    <div class="day" ng-class="{'closed':day.closed}" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
         <div class="done" ng-if="day.menu.meals">
             <div class="menu yellow" ng-if="day.menu.meals.appetizer" ng-click="removeMenu('appetizer', $index)">
                 <span ng-if="day.menu.meals.appetizer.description.length >= 15">{{ day.menu.meals.appetizer.description | limitTo:12  }}...</span>
@@ -18,6 +18,8 @@
             </div>
         </div>
         <div ng-if="!day.menu.meals">{{ day.name }}</div>
+        <i ng-if="!day.menu.meals" ng-click="closeToggle($index)" class='material-icons closed tooltip' title="Geschlossen">block</i>
+        <img ng-if="day.closed" class="closedTag" src="assets/imgs/closedTag.png"/>
     </div>
 </div>
 <div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>

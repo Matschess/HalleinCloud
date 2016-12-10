@@ -7,32 +7,45 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
             content: 'content/food.html'
         }
 
-    $scope.days = [
-        {id: 1, name: 'Montag'},
-        {id: 2, name: 'Dienstag'},
-        {id: 3, name: 'Mittwoch'},
-        {id: 4, name: 'Donnerstag'},
-        {id: 5, name: 'Freitag'},
-        {id: 6, name: 'Samstag'},
-        {id: 7, name: 'Sonntag'}
-    ]
-    $http.get(URL + '/menus?restaurant=' + restaurant)
-        .then(function (response) {
-            console.log( response.data);
-            for(var i = 0; i <= $scope.days.length; i++){
-                console.log(response.data[i]);
-                if(response.data[i]){
-                    $scope.days[i].menu = response.data[i];
-                    console.log('done');
+        var date = new Date();
+        date.setDate(date.getDate() - 1);
+
+    $scope.days = [];
+        var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        for (var i = 0; i < 7; i++) {
+            var day = {};
+            date.setDate(date.getDate() + 1)
+            day.weekday = date.getDay();
+            day.name = weekdays[date.getDay()];
+            day.date = date
+                $scope.days.push(day);
+        }
+
+        console.log($scope.days);
+
+        $http.get(URL + '/menus?restaurant=' + restaurant)
+            .then(function (response) {
+                console.log(response.data);
+                for (var i = 0; i <= $scope.days.length; i++) {
+                    console.log(response.data[i]);
+                    if (response.data[i]) {
+                        $scope.days[i].menu = response.data[i];
+                        console.log('done');
+                    }
                 }
-            }
-            console.log($scope.days);
-        });
+                console.log($scope.days);
+            });
 
         $http.get(URL + '/meals?get=id,type,description,veggie&restaurant=' + restaurant)
             .then(function (response) {
                 $scope.menus = response.data;
             })
+        $scope.closeToggle = function (index) {
+            if (!$scope.days[index].closed) {
+                $scope.days[index].closed = true;
+            }
+            else $scope.days[index].closed = false;
+        }
         $scope.assignMenu = function (index, data) {
             if (!$scope.days[index].menu) {
                 $scope.days[index].menu = {};
@@ -65,7 +78,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                     delete $scope.days[index].menu.meals.dessert;
                     break;
             }
-            if($.isEmptyObject($scope.days[index].menu.meals)){
+            if ($.isEmptyObject($scope.days[index].menu.meals)) {
                 delete $scope.days[index].menu;
             }
             console.log($scope.days);

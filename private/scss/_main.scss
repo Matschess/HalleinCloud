@@ -860,6 +860,7 @@ body {
           margin-right: 4px;
           text-align: center;
           vertical-align: top;
+          cursor: default;
           &:nth-of-type(1) {
             @include animate-slideDown();
           }
@@ -884,6 +885,49 @@ body {
           &:last-of-type {
             margin-right: 0;
             width: calc(100% / 7);
+          }
+          &.closed{
+            background-color: #e2e2e2;
+            div{
+              text-decoration: line-through;
+            }
+          }
+          .closed{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            color: #e2e2e2;
+          }
+          .closedTag{
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+            height: 60px;
+            .animate{
+              animation: tag 1s;
+            }
+            @keyframes tag {
+              0%,100%{
+                transform: rotate(0deg);
+              }
+              20%{
+                transform: rotate(5deg);
+              }
+              40%{
+                transform: rotate(-5deg);
+              }
+              60%{
+                transform: rotate(2deg);
+              }
+              80%{
+                transform: rotate(-2deg);
+              }
+            }
+          }
+          &:hover{
+            .closed{
+              color: #333;
+            }
           }
           .menu {
             font-size: 14px;
