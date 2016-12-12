@@ -75,9 +75,6 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         else {
             $scope.frame = false;
         }
-
-        tooltipstln();
-        selectln();
         $rootScope.loading = false;
     });
 

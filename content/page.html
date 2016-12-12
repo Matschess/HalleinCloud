@@ -21,7 +21,16 @@
     <h3>Öffnungszeiten:</h3>
     <div class="openingHours" ng-repeat="day in days" ng-class="{'sleep':!day.data}"><label class="inline shorter">{{ day.shorthand }}</label><input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
     <h3>Ruhetage:</h3>
-    <div class="restDay" ng-repeat="restDay in restDays"><div>{{ restDay.fromDate }} - {{ restDay.toDate }}</div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove($index)">delete_outline</i></div>
+    <div class="restDay" ng-repeat="restDay in restDays"><div><span>{{ restDay.date }}</span> <span>{{ restDay.description }}</span></div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove(restDay.id, $index)">delete_outline</i></div>
     <div ng-if="!restDays.length">Keine geplanten Ruhetage</div><br/>
-    <button><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
+    <button ng-show="!restDayShow" ng-click="restDayShow = true"><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
+    <div class="restDays" ng-show="restDayShow">
+        <input type="text" class="datepicker short" placeholder="von" ng-model="input.restDayFrom" ng-change="restDayDateAssume()"/>
+        <input type="text" class="datepicker short" placeholder="bis" ng-model="input.restDayTo"/>
+        <br/>
+        <textarea class="low" placeholder="Grund (optional)" ng-model="input.restDayDescription"></textarea>
+        <br/>
+        <button ng-click="restDayAdd()"><i class="material-icons">done</i> Eintragen</button>
+        <button ng-click="restDayShow = false"><i class="material-icons">close</i> Abbrechen</button>
+    </div>
 </div>

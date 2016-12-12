@@ -252,10 +252,10 @@ input:checked + .slider:before {
       &:nth-of-type(3).active {
         background-color: #f1c40f;
       }
-      &:last-of-type {
+      &:nth-of-type(4) {
         margin-right: 0;
         &.active {
-          background-color: #27ae60;
+          background-color: #97CE68;
         }
       }
     }

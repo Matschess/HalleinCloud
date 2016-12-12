@@ -44,6 +44,37 @@ myApp.controller('pagesController', function ($scope, $http) {
         }
     }
 
+    $scope.restDayShow = false;
+    $scope.restDayDateAssume = function () {
+        $scope.input.restDayTo = $scope.input.restDayFrom;
+    }
+    $scope.restDayAdd = function () {
+        if ($scope.input.restDayFrom && $scope.input.restDayTo) {
+            var data = {
+                id: user,
+                restaurant: restaurant,
+                date: mysqlDate($scope.input.restDayFrom),
+                description: $scope.input.restDayDescription
+            }
+            data = prepareUpload(data);
+            $http({
+                url: URL + '/restDays',
+                method: 'POST',
+                params: data
+            }).then(function () {
+                    globalNotification('success', 'Der Ruhetag wurde gespeichert.');
+                    $scope.restDayShow = false;
+                    load();
+                },
+                function () {
+                    globalNotification('error')
+                });
+        }
+        else {
+            globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
+        }
+    }
+
     load();
 
     function load() {
@@ -63,26 +94,41 @@ myApp.controller('pagesController', function ($scope, $http) {
                     {id: 6, shorthand: 'Sa'},
                     {id: 7, shorthand: 'So'}
                 ]
-                for(var i = 0; i < $scope.days.length; i++){
-                    if(response.data[i]){
+                for (var i = 0; i < $scope.days.length; i++) {
+                    if (response.data[i]) {
                         $scope.days[i].data = response.data[i];
                     }
                 }
             });
+
+
+        $http.get(URL + '/restDays?get=id,date:localDate,description&orderBy=date&restaurant=' + restaurant)
+            .then(function (response) {
+                $scope.restDays = response.data;
+            });
     }
 
-    $scope.restDays = [
-        {fromDate: '22.10.2016', toDate: '22.10.2016'},
-        {fromDate: '24.10.2016', toDate: '25.11.2016'},
-        {fromDate: '20.10.2016', toDate: '22.10.2016'}
-    ];
     $scope.sleep = function (index) {
-        if(!$scope.days[index].data){
+        if (!$scope.days[index].data) {
             $scope.days[index].data = {};
         }
         else delete $scope.days[index].data;
     }
-    $scope.restDayRemove = function (index) {
-        $scope.restDays.splice(index, 1);
+    $scope.restDayRemove = function (id, index) {
+        var data = {
+            id: id
+        }
+        data = prepareUpload(data);
+        $http({
+            url: URL + '/restDays',
+            method: 'DELETE',
+            params: data
+        }).then(function () {
+                globalNotification('success', 'Gelöscht');
+                load();
+            },
+            function () {
+                globalNotification('error')
+            });
     }
 });

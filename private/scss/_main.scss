@@ -801,6 +801,9 @@ body {
           width: 40%;
           height: 100px;
         }
+        &.low {
+          height: 80px;
+        }
       }
       h3 {
         font-size: 16px;
@@ -843,7 +846,15 @@ body {
         margin-bottom: 5px;
         div {
           display: inline-block;
-          width: 200px;
+          span {
+            display: inline-block;
+            &:first-of-type {
+              width: 100px;
+            }
+            &:last-of-type {
+              width: 150px;
+            }
+          }
         }
       }
       .days {
@@ -886,46 +897,46 @@ body {
             margin-right: 0;
             width: calc(100% / 7);
           }
-          &.closed{
+          &.closed {
             background-color: #e2e2e2;
-            div{
+            div {
               text-decoration: line-through;
             }
           }
-          .closed{
+          .closed {
             position: absolute;
             right: 10px;
             top: 5px;
             color: #e2e2e2;
           }
-          .closedTag{
+          .closedTag {
             position: absolute;
             bottom: -40px;
             left: 20px;
             height: 60px;
-            .animate{
+            .animate {
               animation: tag 1s;
             }
             @keyframes tag {
-              0%,100%{
+              0%, 100% {
                 transform: rotate(0deg);
               }
-              20%{
+              20% {
                 transform: rotate(5deg);
               }
-              40%{
+              40% {
                 transform: rotate(-5deg);
               }
-              60%{
+              60% {
                 transform: rotate(2deg);
               }
-              80%{
+              80% {
                 transform: rotate(-2deg);
               }
             }
           }
-          &:hover{
-            .closed{
+          &:hover {
+            .closed {
               color: #333;
             }
           }
@@ -1207,10 +1218,9 @@ body {
   }
 }
 
-
-.copyright{
+.copyright {
   font-size: 12px;
   position: absolute;
-  bottom:0;
+  bottom: 0;
   padding: 25px 30px;
 }
