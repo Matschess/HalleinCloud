@@ -63,5 +63,5 @@ node_modules/
 yarn.lock
 
 # Public
-assets/
+./assets/
 public/
