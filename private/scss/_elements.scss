@@ -282,3 +282,88 @@ input:checked + .slider:before {
 [ng-drag].dragging {
   position: absolute !important;
 }
+
+// jQuery-Datepicker
+
+.ui-datepicker{
+  font-family: 'Gravity Light';
+  color: #fff;
+  padding: 0;
+  .ui-datepicker-header{
+    font-family: 'Gravity';
+    background: $accent-color;
+    color: #fff;
+    padding: 5px 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .ui-datepicker-prev-hover, .ui-datepicker-next-hover{
+    top: 2px;
+    .ui-icon{
+      opacity: 1;
+    }
+  }
+  .ui-icon{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .8;
+  }
+  .ui-datepicker-prev{
+    &.ui-datepicker-prev-hover{
+      left: 2px;
+    }
+    .ui-icon {
+      background-image: url(../../assets/icons/arrow_left.png);
+    }
+  }
+  .ui-datepicker-next{
+    &.ui-datepicker-next-hover{
+      right: 2px;
+    }
+    .ui-icon {
+      background-image: url(../../assets/icons/arrow_right.png);
+    }
+  }
+  .ui-state-hover{
+    background: transparent;
+    border: 0;
+  }
+  table{
+    background: #e76557;
+    th{
+      font-family: 'Gravity';
+      background: $accent-color;
+      color: #e2e2e2;
+    }
+    td{
+      padding: 0;
+    }
+  }
+  .ui-datepicker-week-col{
+    font-family: 'Gravity';
+    text-align: center;
+  }
+  .ui-state-default{
+    background: none;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   border: 0;
+    &.ui-state-highlight{
+      color: $accent-color;
+      font-family: 'Gravity';
+      &:hover{
+        color: #fff;
+      }
+    }
+    &:hover, &.ui-state-active{
+      background-color: $accent-color;
+    }
+  }
+}
+
+.ui-widget.ui-widget-content{
+  border: 0;
+}

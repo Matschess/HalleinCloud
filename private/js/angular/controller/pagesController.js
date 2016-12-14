@@ -50,25 +50,37 @@ myApp.controller('pagesController', function ($scope, $http) {
     }
     $scope.restDayAdd = function () {
         if ($scope.input.restDayFrom && $scope.input.restDayTo) {
-            var data = {
-                id: user,
-                restaurant: restaurant,
-                date: mysqlDate($scope.input.restDayFrom),
-                description: $scope.input.restDayDescription
+            var date = stringToDate($scope.input.restDayFrom);
+            date.setDate(date.getDate() - 1);
+            var dateTo = stringToDate($scope.input.restDayTo);
+            var diff = Math.abs(dateTo.getTime() - date.getTime());
+            var diff = Math.ceil(diff / (1000 * 3600 * 24));
+            if(diff < 7) {
+                for (var i = 0; i < diff; i++) {
+                    date.setDate(date.getDate() + 1);
+                    var dateFormatted = dateToString(date);
+                    var data = {
+                        id: user,
+                        restaurant: restaurant,
+                        date: dateFormatted,
+                        description: $scope.input.restDayDescription
+                    }
+                    data = prepareUpload(data);
+                    $http({
+                        url: URL + '/restDays',
+                        method: 'POST',
+                        params: data
+                    }).then(function () {
+                            globalNotification('success', 'Der Ruhetag wurde gespeichert.');
+                            $scope.restDayShow = false;
+                            load();
+                        },
+                        function () {
+                            globalNotification('alert')
+                        });
+                }
             }
-            data = prepareUpload(data);
-            $http({
-                url: URL + '/restDays',
-                method: 'POST',
-                params: data
-            }).then(function () {
-                    globalNotification('success', 'Der Ruhetag wurde gespeichert.');
-                    $scope.restDayShow = false;
-                    load();
-                },
-                function () {
-                    globalNotification('error')
-                });
+            else globalNotification('error', 'Bitte geben Sie einen geringeren Zeitabstand ein.')
         }
         else {
             globalNotification('warning', 'Bitte geben Sie alle Daten ein.')

@@ -31,11 +31,19 @@ function tooltipstln() {
     });
 }
 
-function mysqlDate(date) {
+function stringToDate(date) {
     var day = date.substr(0, 2);
     var month = date.substr(3, 2);
     var year = date.substr(6);
-    date = year + '-' + month + '-' + day;
+    date = new Date(year,month-1,day);
+    return date;
+}
+
+function dateToString(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    date = year + '-' + month + '-' + day
     return date;
 }
 
@@ -58,7 +66,6 @@ function datepicker() {
                 dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
                 dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
                 weekHeader: 'KW',
-                showMonthAfterYear: false,
                 minDate: 0,
                 showWeek: true,
                 firstDay: 1,

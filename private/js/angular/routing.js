@@ -33,6 +33,10 @@ myApp.config(function ($routeProvider) {
             controller: 'pagesController',
             name: 'Restaurantseite'
         })
+        .when('/app-control', {
+            templateUrl: 'templates/window.html',
+            controller: 'appControlController',
+        })
         .when('/users', {
             templateUrl: 'templates/window.html',
             controller: 'usersController',
