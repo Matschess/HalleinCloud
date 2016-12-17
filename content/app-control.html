@@ -1,0 +1,22 @@
+<div class="full">
+    <label>App-Status:</label>
+    <span class="appDown" ng-if="appStatus == 0">Gestoppt (Offline)</span>
+    <span class="appUp" ng-if="appStatus == 1">Läuft (Online)</span>
+    <br/>
+    <br/>
+    <label>Aktive Benutzer:</label>
+    {{ activeUsers }}
+    <br/>
+    <br/>
+    <label>Downloads:</label><br/>
+    <img class="icon" src="assets/icons/android.png"/>
+    {{ downloads.android }}
+    <br/>
+    <img class="icon" src="assets/icons/ios.png"/>
+    {{ downloads.iOS }}
+    <br/>
+    <img class="icon" src="assets/icons/windows.png"/>
+    {{ downloads.windows }}
+    <br/>
+    Gesamt: {{ downloads.android + downloads.iOS + downloads.windows }}
+</div>
