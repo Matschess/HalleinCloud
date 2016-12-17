@@ -1219,8 +1219,31 @@ body {
 }
 
 .copyright {
-  font-size: 12px;
+  width: 85%;
   position: absolute;
+  padding: 30px 30px;
   bottom: 0;
-  padding: 25px 30px;
+  display: inline;
+
+  i {
+    display: inline;
+
+    position: fixed;
+    bottom: 30px;
+
+  }
+
+  p {
+    position: absolute;
+    font-size: 15px;
+    margin-left: 28px;
+    bottom: 23px;
+    display: none;
+
+  }
+
+}
+
+.copyright:hover  p{
+  display: inline;
 }

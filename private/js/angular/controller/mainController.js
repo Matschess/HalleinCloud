@@ -99,4 +99,9 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
     $scope.popupClose = function () {
         $scope.popup = false;
     }
+
+
+
+
+
 });
