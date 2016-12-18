@@ -358,6 +358,18 @@ body {
   min-width: 23%;
   height: calc(100% - 70px);
   cursor: default;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #636e7b;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #76828f;
+  }
   ul {
     padding: 0;
     .icon {
