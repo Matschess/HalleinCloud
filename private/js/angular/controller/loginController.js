@@ -24,7 +24,7 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
     };
     $scope.route = routes.login;
 
-    $scope.logIn = function (url, action) {
+    $scope.logIn = function (ur, action) {
         $scope.route = routes.setup.restaurant.basicData;
     }
     $scope.complete = function (src) {
