@@ -128,3 +128,12 @@ function prepareUpload(data) {
     }
     return result;
 }
+
+$('.content').ready(function () {
+$('.topbar .burgericon').click(function(){
+    $('.navbar').toggleClass('visible');
+});
+    $('.navbar ul a').click(function(){
+        $('.navbar').removeClass('visible');
+    });
+});

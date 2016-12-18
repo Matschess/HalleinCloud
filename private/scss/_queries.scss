@@ -9,11 +9,19 @@
     display: inline;
   }
   .navbar{
-    display: none;
+    position: absolute;
+    width: 80%;
+    left: -80%;
+    z-index: 999;
+    transition: left .3s;
+    &.visible{
+      left: 0;
+      transition: left .3s;
+    }
   }
   .container{
     left: 0;
-    width: calc(100% - 64px - 20px * 2);
+    width: calc(100% - 20px * 2);
     height: calc(100% - 70px - 40px);
     padding: 20px;
   }
