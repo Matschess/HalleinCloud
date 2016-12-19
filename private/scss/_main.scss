@@ -626,8 +626,11 @@ body {
       &.decline {
         background-color: #FF0000;
         right: 25px;
+
+
         &:hover {
           background-color: darken(#FF0000, 5%);
+
         }
       }
     }
