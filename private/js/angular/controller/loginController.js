@@ -24,15 +24,33 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
     };
     $scope.route = routes.login;
 
+    $scope.input = {}
+
     $scope.logIn = function (ur, action) {
         $scope.route = routes.setup.restaurant.basicData;
+        $('.wrapper').addClass('background');
     }
     $scope.complete = function (src) {
         switch (src) {
             case 'basicData':
                 $scope.route = routes.setup.restaurant.address;
+                break;
             case 'address':
                 $scope.route = routes.setup.restaurant.openingTimes;
+                break;
+        }
+    }
+    $scope.back = function (src) {
+        switch (src) {
+            case 'basicData':
+                $scope.route = routes.login;
+                break;
+            case 'address':
+                $scope.route = routes.setup.restaurant.basicData;
+                break;
+            case 'basicData':
+                $scope.route = routes.setup.restaurant.address;
+                break;
         }
     }
 });
