@@ -49,7 +49,7 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
     });
 
     $scope.$on('$routeChangeStart', function ($rootScope) {
-        $rootScope.loading = true;
+        $rootScope.loading = false;
     });
     $scope.$on('$routeChangeSuccess', function (next, current, $rootScope) {
         var frameParams = current.$$route.frame;

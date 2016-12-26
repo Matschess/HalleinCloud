@@ -64,44 +64,83 @@ myApp.config(function ($routeProvider) {
 var serverLost;
 myApp.service('LoadingInterceptor',
     ['$q', '$rootScope', '$log',
-        function($q, $rootScope, $log) {
+        function ($q, $rootScope, $log) {
             'use strict';
 
             return {
-                request: function(config) {
+                request: function (config) {
                     $rootScope.loading = true;
                     return config;
                 },
-                requestError: function(rejection) {
+                requestError: function (rejection) {
                     $rootScope.loading = false;
                     $log.error('Request error:', rejection);
                     return $q.reject(rejection);
                 },
-                response: function(response) {
+                response: function (response) {
                     $rootScope.loading = false;
                     return response;
                 },
-                responseError: function(rejection) {
+                responseError: function (rejection) {
                     $rootScope.loading = false;
+                    serverConnection('disconnected');
+                    serverConnection('check');
                     $log.error('Response error:', rejection);
                     return $q.reject(rejection);
                 }
             };
         }]);
-myApp.config(['$httpProvider', function($httpProvider) {
+
+myApp.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('LoadingInterceptor');
 }]);
 
+function serverConnection(job) {
+    if (job == 'check') check();
+    switch (job) {
+        case 'check':
+            check();
+            break;
+        case 'offline':
+            $('.serverConnected').removeClass('active');
+            $('.serverLost').addClass('active');
+            $('.serverLost').html('Die Verbindung zum Internet ist unterbrochen');
+            break;
+        case 'disconnected':
+            $('.serverConnected').removeClass('active');
+            $('.serverLost').addClass('active');
+            $('.serverLost').html('Die Verbindung zum Server wurde abgebrochen');
+            setInterval(function () {
+                $('.serverLost').html('Verbindungsversuch');
+            }, 8000);
+            setTimeout(function () {
+                setInterval(function () {
+                    $('.serverLost').html('Die Verbindung zum Server wurde abgebrochen');
+                }, 8000);
+            }, 4000);
+            break;
+        case 'connected':
+            $('.serverLost').removeClass('active');
+            $('.serverConnected').addClass('active');
+            setTimeout(function () {
+                $('.serverConnected').removeClass('active');
+            }, 4000);
+            break;
+    }
+    function check() {
+        $.get(URL + '/', function (data) {
+        }).fail(function () {
+            setTimeout(check(), 10000);
+        }).done(function () {
+            serverConnection('connected');
+        })
+    }
+}
 // Check internet connection
 window.addEventListener("offline", function (e) {
-    $('.serverConnected').removeClass('active');
-    $('.serverLost').addClass('active');
+    serverConnection('offline');
 });
 
 window.addEventListener("online", function (e) {
-    $('.serverLost').removeClass('active');
-    $('.serverConnected').addClass('active');
-    setTimeout(function () {
-        $('.serverConnected').removeClass('active');
-    }, 4000);
+    serverConnection('connected');
 });
