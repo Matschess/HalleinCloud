@@ -18,6 +18,9 @@
       left: 0;
       transition: left .3s;
     }
+    ul li{
+      padding: 15px 30px;
+    }
   }
   .serverLost, .serverConnected {
     font-size: 0;
