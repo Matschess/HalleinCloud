@@ -1,3 +1,5 @@
+tooltipstln();
+
 function tooltipstln() {
     $('.content').ready(function () {
         $('.tooltip').tooltipster({

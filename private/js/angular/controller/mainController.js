@@ -1,4 +1,11 @@
 myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, $cookies) {
+    $scope.system = {
+        version: '1.2.7',
+        versionName: 'Fresh Water',
+        released: '',
+        copyright: '2016 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
+    };
+
     $scope.foodAdd = function () {
         myApp.foodAddController.foodAdd();
     }

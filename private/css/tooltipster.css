@@ -8,10 +8,10 @@
 }
 
 .tooltipster-sidetip.tooltipster-light.tooltipster-light-customized .tooltipster-box {
-    background-color: #fff;
-    border: 1px solid #333;
+    background-color: #2980b9;
+   border: 0;
 }
 
 .tooltipster-sidetip.tooltipster-light.tooltipster-light-customized .tooltipster-content {
-    color: #333;
+    color: #fff;
 }
