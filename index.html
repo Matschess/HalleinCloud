@@ -43,60 +43,61 @@
         <div class="devs" ng-if="route.aboutUs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
         <div class="loginwrapper" ng-include="route.content"></div>
     </div>
-    </div>
-    <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
-        <!-- Popup -->
-        <div class="overlay" ng-class="{visible: popup}" ng-click="popupClose()"></div>
-        <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close" ng-click="popupClose()">close</i>
-            <h2>{{ popup.title }}</h2>
-            <navigation>
-                <ul>
-                    <li ng-repeat="link in popup.links" ng-click="popupLoad($index)"><i class="material-icons">{{link.icon}}</i>{{ link.name }}</li>
-                </ul>
-            </navigation>
-            <content ng-include="popup.content"></content>
-        </div>
-        <!-- Topbar -->
-        <div class="topbar">
-            <i class="material-icons burgericon">menu</i>
-            <h1 class="headline">Verwaltungsdashboard</h1>
-            <div class="user">
-                <div class="loadingSpinner" ng-if="loading">
-                    <div class="loading"></div>
-                </div>
-                <div class="serverLost"></div>
-                <div class="serverConnected">
-                    Verbindung wiederhergestellt
-                </div>
-                <span class="username">{{ username }}</span>
-                <img src="assets/imgs/profile_default.png"/>
-                <img class="icon" src="assets/icons/arrow_down.png"/>
-            </div>
-            <div class="options">
-                <ul>
-                    <li ng-click="openSettings()">Einstellungen</li>
-                    <li id="logout" ng-click="logOut()">Logout</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Navbar -->
-        <div class="navbar">
-            <ul ng-repeat="route in routes">
-                <a href="#{{ route.path }}">
-                    <li><img class="icon" ng-src="assets/icons/{{ route.icon }}"/>{{ route.name }}</li>
-                </a>
+</div>
+<div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
+    <!-- Popup -->
+    <div class="overlay" ng-class="{visible: popup}" ng-click="popupClose()"></div>
+    <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close"
+                                                                          ng-click="popupClose()">close</i>
+        <h2>{{ popup.title }}</h2>
+        <navigation>
+            <ul>
+                <li ng-repeat="link in popup.links" ng-click="popupLoad($index)"><i
+                        class="material-icons">{{link.icon}}</i>{{ link.name }}
+                </li>
             </ul>
-
-            <div class="copyright">
-                <i class="material-icons ">copyright</i>
-                <p id="tag">by Matthias Lang, Maximilian H&ouml;lzl, Thomas Steiner</p>
+        </navigation>
+        <content ng-include="popup.content"></content>
+    </div>
+    <!-- Topbar -->
+    <div class="topbar">
+        <i class="material-icons burgericon">menu</i>
+        <h1 class="headline">Verwaltungsdashboard</h1>
+        <div class="user">
+            <div class="loadingSpinner" ng-if="loading">
+                <div class="loading"></div>
             </div>
+            <div class="serverLost"></div>
+            <div class="serverConnected">
+                Verbindung wiederhergestellt
+            </div>
+            <span class="username">{{ username }}</span>
+            <img src="assets/imgs/profile_default.png"/>
+            <img class="icon" src="assets/icons/arrow_down.png"/>
         </div>
-        <!-- Container -->
-        <div class="container">
-            <div class="view" ng-if="!frame" ng-view></div>
+        <div class="options">
+            <ul>
+                <li ng-click="openSettings()">Einstellungen</li>
+                <li id="logout" ng-click="logOut()">Logout</li>
+            </ul>
         </div>
     </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <a href="#{{ route.path }}" ng-repeat="route in routes">
+                <li><img class="icon" ng-src="assets/icons/{{ route.icon }}"/>{{ route.name }}</li>
+            </a>
+        </ul>
+        <div class="copyright">
+            <i class="material-icons tooltipLight" title="Matthias Lang, Maximilian H&ouml;lzl, Thomas Steiner, 2016">copyright</i>
+        </div>
+    </div>
+    <!-- Container -->
+    <div class="container">
+        <div class="view" ng-if="!frame" ng-view></div>
+    </div>
+</div>
 </div>
 </body>
 </html>

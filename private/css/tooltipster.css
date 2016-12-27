@@ -6,3 +6,12 @@
 .tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
     color: #fff;
 }
+
+.tooltipster-sidetip.tooltipster-light.tooltipster-light-customized .tooltipster-box {
+    background-color: #fff;
+    border: 1px solid #333;
+}
+
+.tooltipster-sidetip.tooltipster-light.tooltipster-light-customized .tooltipster-content {
+    color: #333;
+}

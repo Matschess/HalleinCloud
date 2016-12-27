@@ -90,7 +90,7 @@ body {
   -webkit-transform: rotateX(45deg) scale(1);
   transform: rotateX(45deg) scale(0.6);
   transform-origin: bottom;
-  bottom:0;
+  bottom: 0;
   transition: bottom .3s;
   /*
     -webkit-transition: transform 2s;
@@ -109,7 +109,7 @@ body {
     -ms-filter: blur(0);
     filter: blur(0);
   }
-  &.background{
+  &.background {
     bottom: -50%;
   }
 }
@@ -362,20 +362,22 @@ body {
   min-width: 23%;
   height: calc(100% - 70px);
   cursor: default;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #636e7b;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #76828f;
-  }
   ul {
     padding: 0;
+    margin: 0;
+    overflow: auto;
+    height: calc(100% - 60px);
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #636e7b;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #76828f;
+    }
     .icon {
       width: 40px;
       height: 40px;
@@ -386,24 +388,27 @@ body {
       color: #fff;
       text-decoration: none;
       cursor: default;
-    }
-    li {
-      list-style: none;
-      padding: 25px 30px;
-      &:hover, &.active {
-        background-color: #21262f;
-      }
-      .notification {
-        display: inline-block;
-        font-size: 15px;
-        background-color: #d82b2b;
-        color: #fff;
-        width: 25px;
-        height: 25px;
-        margin-left: 10px;
-        text-align: center;
-        line-height: 25px;
-        border-radius: 50%;
+      li {
+        list-style: none;
+        padding: 25px 30px;
+        &:hover, &.active {
+          background-color: #21262f;
+        }
+        &:first-of-type{
+          margin-top: 20px;
+        }
+        .notification {
+          display: inline-block;
+          font-size: 15px;
+          background-color: #d82b2b;
+          color: #fff;
+          width: 25px;
+          height: 25px;
+          margin-left: 10px;
+          text-align: center;
+          line-height: 25px;
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -631,7 +636,6 @@ body {
         background-color: #FF0000;
         right: 25px;
 
-
         &:hover {
           background-color: darken(#FF0000, 5%);
 
@@ -811,15 +815,15 @@ body {
           margin-bottom: 10px;
         }
       }
-      .icon{
+      .icon {
         width: 24px;
         height: 24px;
         vertical-align: middle;
       }
-      .appUp{
+      .appUp {
         color: #75dc00;
       }
-      .appDown{
+      .appDown {
         color: #ff5444;
       }
       textarea {
@@ -1242,38 +1246,14 @@ body {
 /* food-add */
 
 .menucategory {
-
   select {
     background-color: red;
   }
 }
 
 .copyright {
-  width: 85%;
-  position: absolute;
-  padding: 30px 30px;
-  bottom: 0;
-  display: inline;
-
-  i {
-    display: inline;
-
-    position: fixed;
-    bottom: 30px;
-
-  }
-
-  p {
-    position: absolute;
-    font-size: 15px;
-    margin-left: 28px;
-    bottom: 23px;
-    display: none;
-
-  }
-
-}
-
-.copyright:hover  p{
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
   display: inline;
 }
