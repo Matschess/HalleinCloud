@@ -18,8 +18,15 @@
       left: 0;
       transition: left .3s;
     }
-    ul li{
-      padding: 15px 30px;
+    ul a{
+      li {
+        padding: 20px 30px;
+      }
+      &:first-of-type {
+        li {
+          margin-top: 0;
+        }
+      }
     }
   }
   .serverLost, .serverConnected {

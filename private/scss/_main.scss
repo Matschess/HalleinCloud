@@ -390,12 +390,9 @@ body {
       cursor: default;
       li {
         list-style: none;
-        padding: 25px 30px;
+        padding: 30px 30px;
         &:hover, &.active {
           background-color: #21262f;
-        }
-        &:first-of-type{
-          margin-top: 20px;
         }
         .notification {
           display: inline-block;
@@ -408,6 +405,11 @@ body {
           text-align: center;
           line-height: 25px;
           border-radius: 50%;
+        }
+      }
+      &:first-of-type {
+        li {
+          margin-top: 20px;
         }
       }
     }
@@ -1252,8 +1254,12 @@ body {
 }
 
 .copyright {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  display: inline;
+  height: 55px;
+  background-color: #16161d;
+  i {
+    position: relative;
+    font-size: 24px;
+    top: calc(55px / 2 - 24px / 2);
+    left: 20px;
+  }
 }
