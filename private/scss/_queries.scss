@@ -19,6 +19,16 @@
       transition: left .3s;
     }
   }
+  .serverLost, .serverConnected {
+    font-size: 0;
+    padding: 12px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-image: url('../../assets/icons/wifi.png');
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
   .container{
     left: 0;
     width: calc(100% - 20px * 2);

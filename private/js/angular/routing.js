@@ -136,6 +136,7 @@ function serverConnection(job) {
         })
     }
 }
+
 // Check internet connection
 window.addEventListener("offline", function (e) {
     serverConnection('offline');
