@@ -125,6 +125,13 @@ function serverConnection(job) {
             setTimeout(function () {
                 $('.serverConnected').removeClass('active');
             }, 4000);
+            var username = $('.user .username').html();
+            if(!username){
+                $.get(URL + '/users?get=firstname&id=' + user, function (data) {
+                    username = data[0].firstname;
+                    $('.user .username').html(username);
+                });
+            }
             break;
     }
     function check() {
