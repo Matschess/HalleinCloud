@@ -17,7 +17,7 @@
                 <i class='material-icons remove tooltipBottom' title="{{ day.menu.meals.dessert.description }}">close</i>
             </div>
         </div>
-        <div ng-if="!day.menu.meals">{{ day.name }}</div>
+        <div ng-if="!day.menu.meals">{{ day.name | limitTo : 2 }}</div>
         <i ng-if="!day.menu.meals" ng-click="closeToggle($index)" class='material-icons closed tooltip' title="Geschlossen">block</i>
         <img ng-if="day.closed" class="closedTag" src="assets/imgs/closedTag.png"/>
     </div>

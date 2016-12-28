@@ -414,6 +414,16 @@ body {
       }
     }
   }
+  .copyright {
+    height: 55px;
+    background-color: #1d1f28;
+    i {
+      position: relative;
+      font-size: 24px;
+      top: calc(55px / 2 - 24px / 2);
+      left: 20px;
+    }
+  }
 }
 
 *::-webkit-scrollbar {
@@ -1237,11 +1247,11 @@ body {
 
 @keyframes pulse {
   0%, 100% {
-    opacity: .7;
+    opacity: .4;
   }
 
   50% {
-    opacity: .4;
+    opacity: .7;
   }
 }
 
@@ -1250,16 +1260,5 @@ body {
 .menucategory {
   select {
     background-color: red;
-  }
-}
-
-.copyright {
-  height: 55px;
-  background-color: #16161d;
-  i {
-    position: relative;
-    font-size: 24px;
-    top: calc(55px / 2 - 24px / 2);
-    left: 20px;
   }
 }
