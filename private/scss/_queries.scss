@@ -13,10 +13,10 @@
     width: 80%;
     left: -80%;
     z-index: 999;
-    transition: left .3s;
+    transition: left .2s;
     &.visible{
       left: 0;
-      transition: left .3s;
+      transition: left .2s;
     }
     ul a{
       li {
