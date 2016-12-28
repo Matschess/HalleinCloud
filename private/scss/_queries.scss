@@ -52,7 +52,8 @@
 
     .dashboardBox, .feedbackBox{
       width: calc(50% - 20px - 30px);
-      margin-bottom: 20px;
+      margin-top: 20px;
+   margin-bottom: 0;
       margin-right: 20px;
       &:nth-of-type(2n+2){
         margin-right: 0;
@@ -95,11 +96,18 @@
   .container {
     .dashboardBox {
       width: calc(100% - 30px - 20px);
-      margin-bottom: 25px;
+
     }
     .feedbackBox{
       width: calc(100% - 20px - 20px);
-      margin-bottom: 20px;
+      &:first-of-type{
+        margin-top: 80px;
+      }
+    }
+    .switchBox{
+      h2{
+        display: none;
+      }
     }
     .fullBox .content{
       .days .day{
