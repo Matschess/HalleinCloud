@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngR
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
 var user = 2;
-var userType = 3;
+var userType = 1;
 var restaurant = 2;
 
 switch(userType){
@@ -145,6 +145,10 @@ switch(userType){
         break;
 }
 
+myApp.run(function($http) {
+    $http.defaults.headers.common['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDgzMDI1MDMyLCJleHAiOjE0ODMxMTE0MzJ9.U7MyFrkiLL1BfV2aHUo4esgXDjmseeR71785xEx0nsk';
+});
+
 var serverLost;
 myApp.service('LoadingInterceptor',
     ['$q', '$rootScope', '$log',
@@ -167,8 +171,13 @@ myApp.service('LoadingInterceptor',
                 },
                 responseError: function (rejection) {
                     $rootScope.loading = false;
-                    serverConnection('disconnected');
-                    serverConnection('check');
+                    if(rejection.status.toString().substr(0,1) != 4) {
+                        serverConnection('disconnected');
+                        serverConnection('check');
+                    }
+                    if(rejection.status == 401) {
+                        alert('No Grants');
+                    }
                     $log.error('Response error:', rejection);
                     return $q.reject(rejection);
                 }
