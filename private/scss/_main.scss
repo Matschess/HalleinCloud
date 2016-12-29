@@ -1067,21 +1067,29 @@ body {
           width: 32%;
           margin-right: 2%;
           vertical-align: top;
-          &:nth-of-type(1) {
+          &.appetizer{
             @include animate-slideIn(.1s);
+            label{
+              background-color: #f39c12;
+            }
           }
-          &:nth-of-type(2) {
+          &.mainCourse {
             @include animate-slideIn(.15s);
+            label{
+              background-color: #e74c3c;
+            }
           }
-          &:nth-of-type(3) {
+          &.desert {
             @include animate-slideIn(.2s);
+            label{
+              background-color: #d35400;
+            }
           }
           &:last-of-type {
             margin-right: 0;
           }
           label {
-            background-color: #f2f2f2;
-            color: #888;
+            color: #fff;
             padding: 10px 0;
             text-align: center;
             width: 100%;
@@ -1101,6 +1109,7 @@ body {
               border-left: 3px solid transparent;
               width: calc(100% - 27px);
               cursor: move;
+              z-index: 1;
               &.veggie {
                 border-left: 3px solid #69c800;
               }

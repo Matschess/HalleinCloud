@@ -3,63 +3,147 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngR
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
 var user = 2;
+var userType = 3;
 var restaurant = 2;
 
-myApp.config(function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'templates/empty.html',
-            controller: 'dashboardController',
-            icon: 'dashboard.png',
-            name: 'Dashboard'
-        })
-        .when('/food', {
-            templateUrl: 'templates/window.html',
-            controller: 'foodController',
-            name: 'Mahlzeiten'
-        })
-        .when('/food-add', {
-            templateUrl: 'templates/window.html',
-            controller: 'foodAddController'
-        })
-        .when('/feedback', {
-            templateUrl: 'templates/switch.html',
-            controller: 'feedbackController',
-            icon: 'feedback.png',
-            name: 'Feedback'
-        })
-        .when('/page', {
-            templateUrl: 'templates/window.html',
-            controller: 'pagesController',
-            name: 'Restaurantseite'
-        })
-        .when('/app-control', {
-            templateUrl: 'templates/window.html',
-            controller: 'appControlController',
-        })
-        .when('/users', {
-            templateUrl: 'templates/window.html',
-            controller: 'usersController',
-            name: 'Benutzer'
-        })
-        .when('/user-add', {
-            templateUrl: 'templates/window.html',
-            controller: 'userAddController'
-        })
-        .when('/user-edit/:id', {
-            templateUrl: 'templates/window.html',
-            controller: 'userEditController'
-        })
-        .when('/help', {
-            templateUrl: 'templates/window.html',
-            controller: 'helpController',
-            icon: 'help.png',
-            name: 'Hilfe'
-        })
-        .otherwise({
-            redirectTo: "/"
+switch(userType){
+    case 1:
+        myApp.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'templates/empty.html',
+                    controller: 'dashboardController',
+                    icon: 'dashboard.png',
+                    name: 'Dashboard'
+                })
+                .when('/food', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'foodController',
+                    name: 'Mahlzeiten'
+                })
+                .when('/food-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'foodAddController'
+                })
+                .when('/feedback', {
+                    templateUrl: 'templates/switch.html',
+                    controller: 'feedbackController',
+                    icon: 'feedback.png',
+                    name: 'Feedback'
+                })
+                .when('/page', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'pagesController',
+                    name: 'Restaurantseite'
+                })
+                .when('/app-control', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'appControlController',
+                    name: 'App-Wartung'
+                })
+                .when('/users', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'usersController',
+                    name: 'Benutzer'
+                })
+                .when('/user-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'userAddController'
+                })
+                .when('/user-edit/:id', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'userEditController'
+                })
+                .when('/help', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpController',
+                    icon: 'help.png',
+                    name: 'Hilfe'
+                })
+                .otherwise({
+                    redirectTo: "/"
+                });
         });
-});
+        break;
+    case 2:
+        myApp.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'templates/empty.html',
+                    controller: 'dashboardController',
+                    icon: 'dashboard.png',
+                    name: 'Dashboard'
+                })
+                .when('/app-control', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'appControlController',
+                    name: 'App-Wartung'
+                })
+                .when('/users', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'usersController',
+                    name: 'Benutzer'
+                })
+                .when('/user-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'userAddController'
+                })
+                .when('/user-edit/:id', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'userEditController'
+                })
+                .when('/help', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpController',
+                    icon: 'help.png',
+                    name: 'Hilfe'
+                })
+                .otherwise({
+                    redirectTo: "/"
+                });
+        });
+        break;
+    case 3:
+        myApp.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'templates/empty.html',
+                    controller: 'dashboardController',
+                    icon: 'dashboard.png',
+                    name: 'Dashboard'
+                })
+                .when('/food', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'foodController',
+                    name: 'Mahlzeiten'
+                })
+                .when('/food-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'foodAddController'
+                })
+                .when('/feedback', {
+                    templateUrl: 'templates/switch.html',
+                    controller: 'feedbackController',
+                    icon: 'feedback.png',
+                    name: 'Feedback'
+                })
+                .when('/page', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'pagesController',
+                    name: 'Restaurantseite'
+                })
+                .when('/help', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpController',
+                    icon: 'help.png',
+                    name: 'Hilfe'
+                })
+                .otherwise({
+                    redirectTo: "/"
+                });
+        });
+        break;
+}
 
 var serverLost;
 myApp.service('LoadingInterceptor',

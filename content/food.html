@@ -24,30 +24,36 @@
 </div>
 <div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>
 <div class="menunames">
-    <div class="menutype">
+    <div class="menutype appetizer">
         <label>Vorspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1"  ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
-                {{ menu.description }}
-                <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+            <div ng-repeat="menu in menus track by $index">
+                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                    {{ menu.description }}
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                </div>
             </div>
         </div>
     </div>
-    <div class="menutype">
+    <div class="menutype mainCourse">
         <label>Hauptspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
-                {{ menu.description }}
-                <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+            <div ng-repeat="menu in menus track by $index">
+                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                    {{ menu.description }}
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                </div>
             </div>
         </div>
     </div>
-    <div class="menutype">
+    <div class="menutype desert">
         <label>Nachspeisen</label>
         <div class="menuWrapper">
-            <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-class="{'veggie':menu.veggie}" ng-repeat="menu in menus track by $index" ng-click="pushMenu($index)">
-                {{ menu.description }}
-                <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+            <div ng-repeat="menu in menus track by $index">
+                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                    {{ menu.description }}
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                </div>
             </div>
         </div>
     </div>
