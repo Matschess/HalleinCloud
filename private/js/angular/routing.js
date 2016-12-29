@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngR
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
 var user = 2;
-var userType = 1;
+var userType = 3;
 var restaurant = 2;
 
 switch(userType){
