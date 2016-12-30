@@ -48,6 +48,10 @@
       .left, .right{
         width: 100%;
       }
+      .help{
+        width: calc(100% - 20px);
+        margin-left:0;
+      }
     }
 
     .dashboardBox, .feedbackBox{

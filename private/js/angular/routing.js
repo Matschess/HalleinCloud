@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize']);
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
@@ -35,14 +35,14 @@ switch(userType){
                 .when('/page', {
                     templateUrl: 'templates/window.html',
                     controller: 'pagesController',
-                    name: 'Restaurantseite',
-                    icon: 'home'
+                    icon: 'home',
+                    name: 'Restaurantseite'
                 })
                 .when('/app-control', {
                     templateUrl: 'templates/window.html',
                     controller: 'appControlController',
-                    name: 'App-Wartung',
-                    icon: 'phonelink_setup'
+                    icon: 'phonelink_setup',
+                    name: 'App-Wartung'
                 })
                 .when('/users', {
                     templateUrl: 'templates/window.html',
@@ -83,17 +83,19 @@ switch(userType){
                 .when('/', {
                     templateUrl: 'templates/empty.html',
                     controller: 'dashboardController',
-                    icon: 'dashboard.png',
+                    icon: 'dashboard',
                     name: 'Dashboard'
                 })
                 .when('/app-control', {
                     templateUrl: 'templates/window.html',
                     controller: 'appControlController',
+                    icon: 'phonelink_setup',
                     name: 'App-Wartung'
                 })
                 .when('/users', {
                     templateUrl: 'templates/window.html',
                     controller: 'usersController',
+                    icon: 'person_outline',
                     name: 'Benutzer'
                 })
                 .when('/user-add', {
@@ -107,7 +109,7 @@ switch(userType){
                 .when('/help', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpController',
-                    icon: 'help.png',
+                    icon: 'help_outline',
                     name: 'Hilfe'
                 })
                 .when('/help-add', {
@@ -129,12 +131,13 @@ switch(userType){
                 .when('/', {
                     templateUrl: 'templates/empty.html',
                     controller: 'dashboardController',
-                    icon: 'dashboard.png',
+                    icon: 'dashboard',
                     name: 'Dashboard'
                 })
                 .when('/food', {
                     templateUrl: 'templates/window.html',
                     controller: 'foodController',
+                    icon: 'local_dining',
                     name: 'Mahlzeiten'
                 })
                 .when('/food-add', {
@@ -144,19 +147,19 @@ switch(userType){
                 .when('/feedback', {
                     templateUrl: 'templates/switch.html',
                     controller: 'feedbackController',
-                    icon: 'feedback.png',
+                    icon: 'thumbs_up_down',
                     name: 'Feedback'
                 })
                 .when('/page', {
                     templateUrl: 'templates/window.html',
                     controller: 'pagesController',
-                    name: 'Restaurantseite',
-                    icon: 'home'
+                    icon: 'home',
+                    name: 'Restaurantseite'
                 })
                 .when('/help', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpController',
-                    icon: 'help.png',
+                    icon: 'help_outline',
                     name: 'Hilfe'
                 })
                 .when('/help-add', {
