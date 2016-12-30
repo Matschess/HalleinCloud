@@ -175,7 +175,7 @@ switch(userType){
 }
 
 myApp.run(function($http) {
-    $http.defaults.headers.common['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDgzMDI1MDMyLCJleHAiOjE0ODMxMTE0MzJ9.U7MyFrkiLL1BfV2aHUo4esgXDjmseeR71785xEx0nsk';
+    $http.defaults.headers.common['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDgzMTExODM1LCJleHAiOjE0OTE3NTE4MzV9.WPfiNR3ffUnZu4ojeUiXKWvA8qOoziaKZ2HDzfUCRQQ';
 });
 
 var serverLost;
