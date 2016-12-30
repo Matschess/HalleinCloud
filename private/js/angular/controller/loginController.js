@@ -48,7 +48,7 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
             case 'address':
                 $scope.route = routes.setup.restaurant.basicData;
                 break;
-            case 'basicData':
+            case 'openingTimes':
                 $scope.route = routes.setup.restaurant.address;
                 break;
         }

@@ -179,7 +179,25 @@ h1 {
       position: absolute;
       margin-top: 11px;
     }
+
   }
+.openingTimesIcons{
+
+  .doneicon{
+
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 30px;
+
+  }
+  .backicon{
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+  }
+}
+  
   .addresswrapper {
     position: absolute;
     left: -100px;
@@ -188,11 +206,22 @@ h1 {
       background-color: transparent;
       width: 200px;
       height: 35px;
-      margin: 0;
+      margin-bottom: 10px;
+      margin-top:0;
       padding: 5px 20px 5px 20px;
       border: solid 1px #000;
       border-radius: 90px;
       outline: 0;
+    }
+
+    .backicon{
+
+      border: solid 1px #000;
+      border-radius: 100px;
+      padding: 5px;
+      margin-top: 10px;
+      float: left;
+
     }
   }
     .kontaktwrapper {
@@ -204,12 +233,23 @@ h1 {
         background-color: transparent;
         width: 200px;
         height: 35px;
-        margin: 0;
+        margin-top:0;
+        margin-bottom: 10px;
         padding: 5px 20px 5px 20px;
         border: solid 1px #000;
         border-radius: 90px;
         outline: 0;
       }
+
+      .doneicon{
+
+          border: solid 1px #000;
+          border-radius: 100px;
+          padding: 5px;
+        margin-top: 67px;
+
+      }
+
     }
 
 
