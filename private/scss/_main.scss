@@ -262,6 +262,7 @@ body {
         border-color: #333;
       }
     }
+
   }
   @keyframes popUp {
     0% {
@@ -378,11 +379,13 @@ body {
     &::-webkit-scrollbar-thumb:hover {
       background-color: #76828f;
     }
-    .icon {
+    i {
       width: 40px;
       height: 40px;
-      margin-right: 8px;
+      margin-right: 10px;
       vertical-align: middle;
+      margin-top: 11px;
+
     }
     a {
       color: #fff;
@@ -1070,21 +1073,21 @@ body {
           width: 32%;
           margin-right: 2%;
           vertical-align: top;
-          &.appetizer{
+          &.appetizer {
             @include animate-slideIn(.1s);
-            label{
+            label {
               background-color: #f39c12;
             }
           }
           &.mainCourse {
             @include animate-slideIn(.15s);
-            label{
+            label {
               background-color: #e74c3c;
             }
           }
           &.desert {
             @include animate-slideIn(.2s);
-            label{
+            label {
               background-color: #d35400;
             }
           }
@@ -1131,6 +1134,42 @@ body {
         }
       }
     }
+  }
+
+
+  .help  {
+    font-size: 25px;
+    margin-left: 15%;
+    border-bottom: 1px solid black;
+    width: 70%;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    .question {
+      color: #f39c12;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      i {
+        float:right;
+        margin-top: 4px;
+        font-size: 35px;
+
+      }
+    }
+
+    .answer{
+      margin-top: -50px;
+     visibility: hidden;
+      opacity: 0;
+      transition: all .2s;
+      &.visible{
+        margin-top: 0;
+       visibility: visible;
+        opacity: 1;
+
+
+      }
+    }
+
   }
 }
 
@@ -1273,4 +1312,6 @@ body {
   select {
     background-color: red;
   }
+
 }
+

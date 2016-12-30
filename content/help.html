@@ -1,1 +1,13 @@
-Hier findet man Hilfe - lol :D
+
+<div class="help" ng-repeat="question in questions">
+
+    <div class="question" ng-click="question.show=!question.show">
+        {{question.question}}
+        <i class="material-icons" ng-show="!question.show">keyboard_arrow_right</i>
+        <i class="material-icons" ng-show="question.show">keyboard_arrow_up</i>
+    </div>
+    <div class="answer" ng-class="{'visible':question.show}">
+        {{question.answer}}
+    </div>
+
+</div>

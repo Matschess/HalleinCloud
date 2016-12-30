@@ -13,12 +13,13 @@ switch(userType){
                 .when('/', {
                     templateUrl: 'templates/empty.html',
                     controller: 'dashboardController',
-                    icon: 'dashboard.png',
+                    icon: 'dashboard',
                     name: 'Dashboard'
                 })
                 .when('/food', {
                     templateUrl: 'templates/window.html',
                     controller: 'foodController',
+                    icon: 'local_dining',
                     name: 'Mahlzeiten'
                 })
                 .when('/food-add', {
@@ -28,22 +29,25 @@ switch(userType){
                 .when('/feedback', {
                     templateUrl: 'templates/switch.html',
                     controller: 'feedbackController',
-                    icon: 'feedback.png',
+                    icon: 'thumbs_up_down',
                     name: 'Feedback'
                 })
                 .when('/page', {
                     templateUrl: 'templates/window.html',
                     controller: 'pagesController',
-                    name: 'Restaurantseite'
+                    name: 'Restaurantseite',
+                    icon: 'home'
                 })
                 .when('/app-control', {
                     templateUrl: 'templates/window.html',
                     controller: 'appControlController',
-                    name: 'App-Wartung'
+                    name: 'App-Wartung',
+                    icon: 'phonelink_setup'
                 })
                 .when('/users', {
                     templateUrl: 'templates/window.html',
                     controller: 'usersController',
+                    icon: 'person_outline',
                     name: 'Benutzer'
                 })
                 .when('/user-add', {
@@ -57,8 +61,12 @@ switch(userType){
                 .when('/help', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpController',
-                    icon: 'help.png',
+                    icon: 'help_outline',
                     name: 'Hilfe'
+                })
+                .when('/help-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpAddController'
                 })
                 .otherwise({
                     redirectTo: "/"
@@ -98,6 +106,10 @@ switch(userType){
                     icon: 'help.png',
                     name: 'Hilfe'
                 })
+                .when('/help-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpAddController'
+                })
                 .otherwise({
                     redirectTo: "/"
                 });
@@ -130,13 +142,18 @@ switch(userType){
                 .when('/page', {
                     templateUrl: 'templates/window.html',
                     controller: 'pagesController',
-                    name: 'Restaurantseite'
+                    name: 'Restaurantseite',
+                    icon: 'home'
                 })
                 .when('/help', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpController',
                     icon: 'help.png',
                     name: 'Hilfe'
+                })
+                .when('/help-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpAddController'
                 })
                 .otherwise({
                     redirectTo: "/"
