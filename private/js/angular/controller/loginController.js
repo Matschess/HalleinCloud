@@ -65,9 +65,6 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
     ]
 
     $scope.sleep = function (index) {
-        if (!$scope.days[index].data) {
-            $scope.days[index].data = {};
-        }
-        else delete $scope.days[index].data;
+        $scope.days[index].sleep = !$scope.days[index].sleep;
     }
 });
