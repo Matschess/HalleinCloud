@@ -6,10 +6,6 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         copyright: '2016 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
     };
 
-    $scope.foodAdd = function () {
-        myApp.foodAddController.foodAdd();
-    }
-
     $http.get(URL + '/users?get=firstname&id=' + user)
         .then(function (response) {
             $rootScope.username = response.data[0].firstname;
@@ -38,7 +34,7 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
     });
 
     // Login
-    $scope.loggedIn = false;
+    $scope.loggedIn = true;
 
     // Save routes in an array for navigation
     $scope.routes = [];

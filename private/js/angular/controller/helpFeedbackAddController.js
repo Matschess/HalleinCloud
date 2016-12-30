@@ -1,11 +1,11 @@
-myApp.controller('helpAddController', function ($scope, $location, $http) {
+myApp.controller('helpFeedbackAddController', function ($scope, $location, $http) {
     $scope.config = {
-        title: 'Frage stellen',
+        title: 'Feedback geben',
         actions: [
             {title: 'Abschicken', icon: 'done'},
             {title: 'Verwefen', icon: 'close', route: '/help'}
         ],
-        content: 'content/help-add.html',
+        content: 'content/help-feedback-add.html',
         return: function (index, e) {
             switch (index) {
                 case 0:

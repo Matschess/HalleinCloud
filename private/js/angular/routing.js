@@ -68,6 +68,10 @@ switch(userType){
                     templateUrl: 'templates/window.html',
                     controller: 'helpAddController'
                 })
+                .when('/help-feedback-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpFeedbackAddController'
+                })
                 .otherwise({
                     redirectTo: "/"
                 });
@@ -109,6 +113,10 @@ switch(userType){
                 .when('/help-add', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpAddController'
+                })
+                .when('/help-feedback-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpFeedbackAddController'
                 })
                 .otherwise({
                     redirectTo: "/"
@@ -154,6 +162,10 @@ switch(userType){
                 .when('/help-add', {
                     templateUrl: 'templates/window.html',
                     controller: 'helpAddController'
+                })
+                .when('/help-feedback-add', {
+                    templateUrl: 'templates/window.html',
+                    controller: 'helpFeedbackAddController'
                 })
                 .otherwise({
                     redirectTo: "/"
