@@ -48,9 +48,26 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
             case 'address':
                 $scope.route = routes.setup.restaurant.basicData;
                 break;
-            case 'basicData':
+            case 'openingTimes':
                 $scope.route = routes.setup.restaurant.address;
                 break;
         }
+    }
+
+    $scope.days = [
+        {id: 1, shorthand: 'Mo'},
+        {id: 2, shorthand: 'Di'},
+        {id: 3, shorthand: 'Mi'},
+        {id: 4, shorthand: 'Do'},
+        {id: 5, shorthand: 'Fr'},
+        {id: 6, shorthand: 'Sa'},
+        {id: 7, shorthand: 'So'}
+    ]
+
+    $scope.sleep = function (index) {
+        if (!$scope.days[index].data) {
+            $scope.days[index].data = {};
+        }
+        else delete $scope.days[index].data;
     }
 });

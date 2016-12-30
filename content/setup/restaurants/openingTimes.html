@@ -1,10 +1,10 @@
 <h3>Öffnungszeiten:</h3>
-<div class="openingtimeswrapper"  >
-    <label class="">Mo:</label>
-    <input type="text"  placeholder="00:00" /> -
-    <input type="text"  placeholder="00:00" />
-    <input type="text"  placeholder="00:00" />-
-    <input type="text"  placeholder="00:00" />
-    <i class="material-icons tooltipRight" title="Geschlossen" >block</i>
+<div class="openingtimeswrapper" ng-repeat="day in days" ng-class="{'sleep':!day.data}"><label class="inline shorter">{{ day.shorthand }}</label><input type=   "text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
+
+
 </div>
+
+<div class="openingTimesIcons">
 <i class="material-icons doneicon" ng-click="complete('address')">done</i>
+<i class="material-icons backicon" ng-click="back('openingTimes')">arrow_back</i>
+</div>
