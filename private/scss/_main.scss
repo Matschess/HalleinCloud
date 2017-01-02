@@ -84,7 +84,7 @@ body {
 }
 
 .wrapper {
-
+  background-color: #f3f3f3;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -94,11 +94,11 @@ body {
   bottom: 0;
   transition: bottom .3s;
 
-    -webkit-transition: transform 2s;
-    -moz-transition: transform 2s;
-    -ms-transition: transform 2s;
-    -o-transition: transform 2s;
-    transition: transform 2s;
+  -webkit-transition: transform 2s;
+  -moz-transition: transform 2s;
+  -ms-transition: transform 2s;
+  -o-transition: transform 2s;
+  transition: transform 2s;
 
   &.finished {
     -webkit-transform: rotateX(0deg) scale(1);
@@ -1133,19 +1133,18 @@ body {
     }
   }
 
-
-  .help  {
-font-size: 16px;
+  .help {
+    font-size: 16px;
     margin-left: 15%;
     background-color: #fafafa;
     color: #444;
     border-bottom: 1px solid #e2e2e2;
     width: 70%;
-   padding: 15px 10px;
+    padding: 15px 10px;
     &:last-of-type {
       border-bottom: 0;
     }
-    &:hover{
+    &:hover {
       border-color: #d2d2d2;
     }
     .question {
@@ -1155,31 +1154,31 @@ font-size: 16px;
       background-repeat: no-repeat;
       padding-right: 40px;
       cursor: default;
-      &.opened{
+      &.opened {
         background-image: url('../../assets/icons/arrow_down.png');
         background-size: 15px auto;
       }
       i {
-        float:right;
+        float: right;
 
         font-size: 35px;
 
       }
     }
 
-    .answer{
+    .answer {
       opacity: 0;
       height: 0;
       overflow: hidden;
       padding: 0;
       padding-right: 40px;
-     transition: all .3s ease;
-      &.visible{
+      transition: all .3s ease;
+      &.visible {
         opacity: 1;
         height: auto;
         padding: 20px 40px 0 0;
       }
-      a{
+      a {
         color: #444;
       }
     }
