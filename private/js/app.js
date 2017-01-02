@@ -7,35 +7,40 @@ function tooltipstln() {
             side: 'left',
             arrow: false,
             delay: 100,
-            animationDuration: 200
+            animationDuration: 200,
+            debug: false
         });
         $('.tooltipTop').tooltipster({
             theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
             side: 'top',
             arrow: false,
             delay: 100,
-            animationDuration: 200
+            animationDuration: 200,
+            debug: false
         });
         $('.tooltipRight').tooltipster({
             theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
             side: 'right',
             arrow: false,
             delay: 100,
-            animationDuration: 200
+            animationDuration: 200,
+            debug: false
         });
         $('.tooltipBottom').tooltipster({
             theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
             side: 'bottom',
             arrow: false,
             delay: 100,
-            animationDuration: 200
+            animationDuration: 200,
+            debug: false
         });
         $('.tooltipLight').tooltipster({
             theme: ['tooltipster-light', 'tooltipster-light-customized'],
             side: 'right',
             arrow: false,
             delay: 100,
-            animationDuration: 200
+            animationDuration: 200,
+            debug: false
         });
     });
 }

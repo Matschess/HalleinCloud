@@ -1,4 +1,6 @@
 myApp.controller('loginController', function ($scope, $route, $http, loginHandler) {
+    loginHandler.buildNavbar();
+
     $route.routes['/planer'] = {templateUrl: 'templates/switch.html'};
     var routes = {
         login: {

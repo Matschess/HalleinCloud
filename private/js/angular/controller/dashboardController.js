@@ -52,4 +52,21 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 }
             });
     }
+    else if (userType <= 2) {
+        $scope.notifications.push({
+            type: 'success',
+            title: 'App online',
+            text: 'Die App ist aktiviert und online.',
+            route: 'app-control'
+        })
+        /*
+        $scope.notifications.push({
+            type: 'alert',
+            number: 1,
+            title: 'App offline',
+            text: 'Die App ist heruntergefahren. Klicken für Fehlerbehebung.',
+            route: 'app-control'
+        })
+        */
+    }
 });

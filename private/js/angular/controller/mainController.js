@@ -1,7 +1,5 @@
 myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, loginHandler) {
-    // Check for existing login
-    loginHandler.checkLogin();
-
+    // System-Infos
     $scope.system = {
         version: '1.2.7',
         versionName: 'Fresh Water',
@@ -9,36 +7,19 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         copyright: '2016 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
     };
 
-    /*$scope.loading = {
-     status: '',
-     text: ''
-     };*/
     $scope.checkKey = function ($event) {
         if ($event.keyCode == 27) {
             $scope.popupClose();
         }
     }
 
-    $scope.frameSwitch = function (index) {
-        $scope.frame.switched = index + 1;
-        tooltipstln();
-    }
-
-    $('.tooltip').tooltipster({
-        theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-        side: 'left',
-        arrow: false,
-        delay: 100,
-        animationDuration: 200
-    });
-
+    // Check for existing login
+    loginHandler.checkLogin();
     $scope.logout = function () {
         loginHandler.logout();
     }
 
-    // Save routes in an array for navigation
-
-
+    // Route-Change
     $scope.$on('$routeChangeStart', function ($rootScope) {
         $rootScope.loading = false;
     });
@@ -69,11 +50,11 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         $rootScope.loading = false;
     });
 
+    // Popup
     var settingsLinks = [
         {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html'},
         {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'}
     ];
-
     $scope.openSettings = function () {
         $scope.popup = {
             title: 'Einstellungen',
@@ -84,15 +65,8 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
     }
     $scope.popupLoad = function (index) {
         $scope.popup.content = 'content/' + $scope.popup.links[index].url;
-        $scope.popup.action = $scope.popup.links[index].actions;
-        console.log($scope.popup);
     }
     $scope.popupClose = function () {
         $scope.popup = false;
     }
-
-
-
-
-
 });

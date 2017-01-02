@@ -104,7 +104,12 @@ button {
   i {
     vertical-align: middle;
   }
-
+&:hover{
+  background-color: #e2e2e2;
+}
+  &.transparent{
+    background: none;
+  }
 }
 
 textarea {

@@ -1,4 +1,5 @@
 <div ng-controller="passwordSettingsController">
+    <form ng-submit="save()">
     <div class="pwChange">
         <div class="title">Legen Sie Ihr neues Passwort fest:</div>
         <input type="password" class="longest" placeholder="Altes Passwort" ng-model="input.pwOld"/>
@@ -11,5 +12,6 @@
         </div>
         <input type="password" class="longest" placeholder="Wiederholung" ng-model="input.pwRepeat"/>
     </div>
-    <div class="action" ng-click="save()"><i class="material-icons">done</i></div>
+        <button type="submit" class="transparent action"><i class="material-icons" ng-click="save()">done</i></button>
+    </form>
 </div>

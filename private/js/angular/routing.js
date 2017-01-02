@@ -2,8 +2,8 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngR
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
-var user = 2;
-var userType = 1;
+var user;
+var userType;
 var restaurant = 2;
 
 myApp.config(function ($routeProvider) {
@@ -136,23 +136,28 @@ myApp.config(function ($routeProvider) {
         });
 });
 
-myApp.service('loginHandler', function ($route, $rootScope, $http, $cookies) {
+myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $cookies) {
     this.checkLogin = function () {
         var userdata = $cookies.get('userdata');
         if (userdata) {
             var userdata = JSON.parse(userdata);
-            console.log(userdata);
-            if (userdata) {
-                userType = userdata.user.type;
-                $http.defaults.headers.common['x-access-token'] = userdata.token;
-                $rootScope.loggedIn = true;
-                this.getUsername();
-                this.buildNavbar();
-            }
+            user = userdata.user.id;
+            userType = userdata.user.type;
+            $http.defaults.headers.common['x-access-token'] = userdata.token;
+            $.ajaxSetup({
+                headers: {'x-access-token': userdata.token}
+            });
+            $rootScope.loggedIn = true;
+            this.getUsername();
+            this.buildNavbar();
         }
     }
     this.login = function (data) {
+        $('.wrapper').addClass('animate');
         $http.defaults.headers.common['x-access-token'] = data.token;
+        $.ajaxSetup({
+            headers: {'x-access-token': data.token}
+        });
         user = data.user.id;
         userType = data.user.type;
         $cookies.put('userdata', JSON.stringify(data));
@@ -161,6 +166,14 @@ myApp.service('loginHandler', function ($route, $rootScope, $http, $cookies) {
         this.buildNavbar();
     }
     this.logout = function () {
+        $('.wrapper').addClass('animate');
+        $http.defaults.headers.common['x-access-token'] = '';
+        $.ajaxSetup({
+            headers: {'x-access-token': ''}
+        });
+        user = false;
+        userType = false;
+        $location.path('/');
         $cookies.remove('userdata');
         $rootScope.loggedIn = false;
     }
@@ -171,6 +184,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $http, $cookies) {
             });
     }
     this.buildNavbar = function () {
+        // Save routes in an array for navigation
         $rootScope.routes = [];
         angular.forEach($route.routes, function (route, path) {
             if (route.name) {
@@ -195,10 +209,6 @@ myApp.service('loginHandler', function ($route, $rootScope, $http, $cookies) {
             }
         });
     }
-});
-
-$.ajaxSetup({
-    headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJjbGVpdHpsZXJzIiwidHlwZSI6MywiaWF0IjoxNDgzMzU5MDg3LCJleHAiOjE0OTE5OTkwODd9.oNS7Y7Q4wVlz18DsX33RhnA5rcbQ3jmcfG8iFUjv8yM'}
 });
 
 var serverLost;
