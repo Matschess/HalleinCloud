@@ -6,179 +6,199 @@ var user = 2;
 var userType = 1;
 var restaurant = 2;
 
-switch(userType){
-    case 1:
-        myApp.config(function ($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    templateUrl: 'templates/empty.html',
-                    controller: 'dashboardController',
-                    icon: 'dashboard',
-                    name: 'Dashboard'
-                })
-                .when('/food', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'foodController',
-                    icon: 'local_dining',
-                    name: 'Mahlzeiten'
-                })
-                .when('/food-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'foodAddController'
-                })
-                .when('/feedback', {
-                    templateUrl: 'templates/switch.html',
-                    controller: 'feedbackController',
-                    icon: 'thumbs_up_down',
-                    name: 'Feedback'
-                })
-                .when('/page', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'pagesController',
-                    icon: 'home',
-                    name: 'Restaurantseite'
-                })
-                .when('/app-control', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'appControlController',
-                    icon: 'phonelink_setup',
-                    name: 'App-Wartung'
-                })
-                .when('/users', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'usersController',
-                    icon: 'person_outline',
-                    name: 'Benutzer'
-                })
-                .when('/user-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'userAddController'
-                })
-                .when('/user-edit/:id', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'userEditController'
-                })
-                .when('/help', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpController',
-                    icon: 'help_outline',
-                    name: 'Hilfe'
-                })
-                .when('/help-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpAddController'
-                })
-                .when('/help-feedback-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpFeedbackAddController'
-                })
-                .otherwise({
-                    redirectTo: "/"
-                });
+myApp.config(function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'templates/empty.html',
+            controller: 'dashboardController',
+            icon: 'dashboard',
+            name: 'Dashboard'
+        })
+        .when('/food', {
+            templateUrl: 'templates/window.html',
+            controller: 'foodController',
+            icon: 'local_dining',
+            name: 'Mahlzeiten',
+            grant: [3],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (userType != 3) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/food-add', {
+            templateUrl: 'templates/window.html',
+            controller: 'foodAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (userType != 3) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/feedback', {
+            templateUrl: 'templates/switch.html',
+            controller: 'feedbackController',
+            icon: 'thumbs_up_down',
+            name: 'Feedback',
+            grant: [3],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (userType != 3) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/page', {
+            templateUrl: 'templates/window.html',
+            controller: 'pagesController',
+            icon: 'home',
+            name: 'Restaurantseite',
+            grant: [3],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (userType != 3) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/app-control', {
+            templateUrl: 'templates/window.html',
+            controller: 'appControlController',
+            icon: 'phonelink_setup',
+            name: 'App-Wartung',
+            grant: [1, 2],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/users', {
+            templateUrl: 'templates/window.html',
+            controller: 'usersController',
+            icon: 'person_outline',
+            name: 'Benutzer',
+            grant: [1, 2],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/user-add', {
+            templateUrl: 'templates/window.html',
+            controller: 'userAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/user-edit/:id', {
+            templateUrl: 'templates/window.html',
+            controller: 'userEditController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/help', {
+            templateUrl: 'templates/window.html',
+            controller: 'helpController',
+            icon: 'help_outline',
+            name: 'Hilfe'
+        })
+        .when('/help-add', {
+            templateUrl: 'templates/window.html',
+            controller: 'helpAddController'
+        })
+        .when('/help-feedback-add', {
+            templateUrl: 'templates/window.html',
+            controller: 'helpFeedbackAddController'
+        })
+        .otherwise({
+            redirectTo: "/"
         });
-        break;
-    case 2:
-        myApp.config(function ($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    templateUrl: 'templates/empty.html',
-                    controller: 'dashboardController',
-                    icon: 'dashboard',
-                    name: 'Dashboard'
-                })
-                .when('/app-control', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'appControlController',
-                    icon: 'phonelink_setup',
-                    name: 'App-Wartung'
-                })
-                .when('/users', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'usersController',
-                    icon: 'person_outline',
-                    name: 'Benutzer'
-                })
-                .when('/user-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'userAddController'
-                })
-                .when('/user-edit/:id', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'userEditController'
-                })
-                .when('/help', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpController',
-                    icon: 'help_outline',
-                    name: 'Hilfe'
-                })
-                .when('/help-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpAddController'
-                })
-                .when('/help-feedback-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpFeedbackAddController'
-                })
-                .otherwise({
-                    redirectTo: "/"
-                });
-        });
-        break;
-    case 3:
-        myApp.config(function ($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    templateUrl: 'templates/empty.html',
-                    controller: 'dashboardController',
-                    icon: 'dashboard',
-                    name: 'Dashboard'
-                })
-                .when('/food', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'foodController',
-                    icon: 'local_dining',
-                    name: 'Mahlzeiten'
-                })
-                .when('/food-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'foodAddController'
-                })
-                .when('/feedback', {
-                    templateUrl: 'templates/switch.html',
-                    controller: 'feedbackController',
-                    icon: 'thumbs_up_down',
-                    name: 'Feedback'
-                })
-                .when('/page', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'pagesController',
-                    icon: 'home',
-                    name: 'Restaurantseite'
-                })
-                .when('/help', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpController',
-                    icon: 'help_outline',
-                    name: 'Hilfe'
-                })
-                .when('/help-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpAddController'
-                })
-                .when('/help-feedback-add', {
-                    templateUrl: 'templates/window.html',
-                    controller: 'helpFeedbackAddController'
-                })
-                .otherwise({
-                    redirectTo: "/"
-                });
-        });
-        break;
-}
+});
 
-myApp.run(function($http) {
-    $http.defaults.headers.common['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDgzMTExODM1LCJleHAiOjE0OTE3NTE4MzV9.WPfiNR3ffUnZu4ojeUiXKWvA8qOoziaKZ2HDzfUCRQQ';
+myApp.service('loginHandler', function ($route, $rootScope, $http, $cookies) {
+    this.checkLogin = function () {
+        var userdata = $cookies.get('userdata');
+        if (userdata) {
+            var userdata = JSON.parse(userdata);
+            console.log(userdata);
+            if (userdata) {
+                userType = userdata.user.type;
+                $http.defaults.headers.common['x-access-token'] = userdata.token;
+                $rootScope.loggedIn = true;
+                this.getUsername();
+                this.buildNavbar();
+            }
+        }
+    }
+    this.login = function (data) {
+        $http.defaults.headers.common['x-access-token'] = data.token;
+        user = data.user.id;
+        userType = data.user.type;
+        $cookies.put('userdata', JSON.stringify(data));
+        $rootScope.loggedIn = true;
+        this.getUsername();
+        this.buildNavbar();
+    }
+    this.logout = function () {
+        $cookies.remove('userdata');
+        $rootScope.loggedIn = false;
+    }
+    this.getUsername = function () {
+        $http.get(URL + '/users?get=firstname&id=' + user)
+            .then(function (response) {
+                $rootScope.username = response.data[0].firstname;
+            });
+    }
+    this.buildNavbar = function () {
+        $rootScope.routes = [];
+        angular.forEach($route.routes, function (route, path) {
+            if (route.name) {
+                if (route.grant) {
+                    for (var i = 0; i < route.grant.length; i++) {
+                        if (route.grant[i] == userType) {
+                            $rootScope.routes.push({
+                                path: path,
+                                icon: route.icon,
+                                name: route.name
+                            });
+                        }
+                    }
+                }
+                else {
+                    $rootScope.routes.push({
+                        path: path,
+                        icon: route.icon,
+                        name: route.name
+                    });
+                }
+            }
+        });
+    }
+});
+
+$.ajaxSetup({
+    headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJjbGVpdHpsZXJzIiwidHlwZSI6MywiaWF0IjoxNDgzMzU5MDg3LCJleHAiOjE0OTE5OTkwODd9.oNS7Y7Q4wVlz18DsX33RhnA5rcbQ3jmcfG8iFUjv8yM'}
 });
 
 var serverLost;
@@ -203,11 +223,11 @@ myApp.service('LoadingInterceptor',
                 },
                 responseError: function (rejection) {
                     $rootScope.loading = false;
-                    if(rejection.status.toString().substr(0,1) != 4) {
+                    if (rejection.status.toString().substr(0, 1) != 4) {
                         serverConnection('disconnected');
                         serverConnection('check');
                     }
-                    if(rejection.status == 401) {
+                    if (rejection.status == 401) {
                         alert('No Grants');
                     }
                     $log.error('Response error:', rejection);
@@ -251,7 +271,8 @@ function serverConnection(job) {
                 $('.serverConnected').removeClass('active');
             }, 4000);
             var username = $('.user .username').html();
-            if(!username){
+            console.log(username);
+            if (!username) {
                 $.get(URL + '/users?get=firstname&id=' + user, function (data) {
                     username = data[0].firstname;
                     $('.user .username').html(username);

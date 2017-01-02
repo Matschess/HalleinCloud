@@ -55,7 +55,7 @@ myApp.controller('pagesController', function ($scope, $http) {
             var dateTo = stringToDate($scope.input.restDayTo);
             var diff = Math.abs(dateTo.getTime() - date.getTime());
             var diff = Math.ceil(diff / (1000 * 3600 * 24));
-            if(diff < 7) {
+            if (diff < 7) {
                 for (var i = 0; i < diff; i++) {
                     date.setDate(date.getDate() + 1);
                     var dateFormatted = dateToString(date);

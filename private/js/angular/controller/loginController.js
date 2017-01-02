@@ -1,4 +1,5 @@
-myApp.controller('loginController', function ($scope, $route, $routeParams, $http, $cookies) {
+myApp.controller('loginController', function ($scope, $route, $http, loginHandler) {
+    $route.routes['/planer'] = {templateUrl: 'templates/switch.html'};
     var routes = {
         login: {
             title: 'Hallein App - Verwaltung',
@@ -26,9 +27,26 @@ myApp.controller('loginController', function ($scope, $route, $routeParams, $htt
 
     $scope.input = {}
 
-    $scope.logIn = function (ur, action) {
-        $scope.route = routes.setup.restaurant.basicData;
-        $('.wrapper').addClass('background');
+    $scope.login = function () {
+        $('.loginwrapper').removeClass('shake');
+        /*
+         $scope.route = routes.setup.restaurant.basicData;
+         $('.wrapper').addClass('background');
+         */
+        var data = {
+            username: $scope.input.username,
+            password: $scope.input.password
+        }
+        data = prepareUpload(data);
+        $http({
+            url: URL + '/authenticate',
+            method: 'GET',
+            params: data
+        }).then(function (response) {
+            loginHandler.login(response.data);
+        }, function(){
+            $('.loginwrapper').addClass('animated shake');
+        });
     }
     $scope.complete = function (src) {
         switch (src) {

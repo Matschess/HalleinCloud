@@ -1,4 +1,7 @@
-myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, $cookies) {
+myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, loginHandler) {
+    // Check for existing login
+    loginHandler.checkLogin();
+
     $scope.system = {
         version: '1.2.7',
         versionName: 'Fresh Water',
@@ -6,10 +9,6 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         copyright: '2016 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
     };
 
-    $http.get(URL + '/users?get=firstname&id=' + user)
-        .then(function (response) {
-            $rootScope.username = response.data[0].firstname;
-        });
     /*$scope.loading = {
      status: '',
      text: ''
@@ -33,23 +32,12 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         animationDuration: 200
     });
 
-    // Login
-    $scope.loggedIn = true;
+    $scope.logout = function () {
+        loginHandler.logout();
+    }
 
     // Save routes in an array for navigation
-    $scope.routes = [];
-    angular.forEach($route.routes, function (route, path) {
-        if (!route.icon) {
-            route.icon = 'help.png';
-        }
-        if (route.name) {
-            $scope.routes.push({
-                path: path,
-                icon: route.icon,
-                name: route.name
-            });
-        }
-    });
+
 
     $scope.$on('$routeChangeStart', function ($rootScope) {
         $rootScope.loading = false;
