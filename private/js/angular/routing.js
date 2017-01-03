@@ -213,8 +213,8 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
 
 var serverLost;
 myApp.service('LoadingInterceptor',
-    ['$q', '$rootScope', '$log',
-        function ($q, $rootScope, $log) {
+    ['$q', '$rootScope', '$log', '$location', '$cookies',
+        function ($q, $rootScope, $log, $location, $cookies) {
             'use strict';
 
             return {
@@ -233,12 +233,19 @@ myApp.service('LoadingInterceptor',
                 },
                 responseError: function (rejection) {
                     $rootScope.loading = false;
+                    console.log(rejection);
                     if (rejection.status.toString().substr(0, 1) != 4) {
                         serverConnection('disconnected');
                         serverConnection('check');
                     }
                     if (rejection.status == 401) {
-                        alert('No Grants');
+                        $('.wrapper').addClass('animate');
+                        user = false;
+                        userType = false;
+                        $location.path('/');
+                        $cookies.remove('userdata');
+                        $rootScope.loggedIn = false;
+                        globalNotification('warning', 'Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.')
                     }
                     $log.error('Response error:', rejection);
                     return $q.reject(rejection);
