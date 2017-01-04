@@ -10,27 +10,36 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
         var date = new Date();
         date.setDate(date.getDate() - 1);
 
-    $scope.days = [];
+        // So that time is 0 when comparing with menu dates
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+
+        $scope.days = [];
         var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
         for (var i = 0; i < 7; i++) {
             var day = {};
             date.setDate(date.getDate() + 1)
             day.weekday = date.getDay();
             day.name = weekdays[date.getDay()];
+            console.log(date);
             day.date = date
-                $scope.days.push(day);
+            $scope.days.push(day);
         }
 
         console.log($scope.days);
 
         $http.get(URL + '/menus?restaurant=' + restaurant)
             .then(function (response) {
-                console.log(response.data);
-                for (var i = 0; i <= $scope.days.length; i++) {
-                    console.log(response.data[i]);
-                    if (response.data[i]) {
-                        $scope.days[i].menu = response.data[i];
-                        console.log('done');
+                var menus = response.data;
+                var menuDate;
+                for (var i = 0; i <= menus.length; i++) {
+                    menuDate = new Date(menus[i].date);
+                    console.log(menuDate);
+                    console.log($scope.days);
+                    if (menuDate == $scope.days[0].date) {
+                        alert('ok');
+                        break;
                     }
                 }
                 console.log($scope.days);

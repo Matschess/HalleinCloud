@@ -7,9 +7,9 @@ myApp.controller('usersController', function ($scope, $http) {
         content: 'content/users.html'
     }
 
-    $http.get(URL + '/users?get=id,username,typename,lastActive&orderBy=typename')
+    $http.get(URL + '/users?get=id,username,type,lastActive')
         .then(function (response) {
-            $scope.users = response.data
+            $scope.users = response.data;
         });
 
     $scope.sort = function (property) {
