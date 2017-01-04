@@ -4,6 +4,26 @@
   }
 }
 
+@media screen and (max-height: 800px), screen and (max-width: 800px) {
+  .wrapper {
+    bottom: -100%;
+    &.animate {
+      transition: none;
+    }
+    &.finished {
+      bottom: 0;
+    }
+    &.background {
+      bottom: -100%;
+    }
+  }
+  .loginwrapper{
+    width: 80%;
+    left: 10%;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .topbar .burgericon {
     display: inline;

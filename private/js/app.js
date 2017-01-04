@@ -36,7 +36,7 @@ function tooltipstln() {
         });
         $('.tooltipLight').tooltipster({
             theme: ['tooltipster-light', 'tooltipster-light-customized'],
-            side: 'right',
+            side: 'top',
             arrow: false,
             delay: 100,
             animationDuration: 200,

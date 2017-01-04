@@ -22,28 +22,27 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
             date.setDate(date.getDate() + 1)
             day.weekday = date.getDay();
             day.name = weekdays[date.getDay()];
-            console.log(date);
             day.date = date
             $scope.days.push(day);
         }
 
-        console.log($scope.days);
-
-        $http.get(URL + '/menus?restaurant=' + restaurant)
-            .then(function (response) {
-                var menus = response.data;
-                var menuDate;
-                for (var i = 0; i <= menus.length; i++) {
-                    menuDate = new Date(menus[i].date);
-                    console.log(menuDate);
-                    console.log($scope.days);
-                    if (menuDate == $scope.days[0].date) {
-                        alert('ok');
-                        break;
-                    }
-                }
-                console.log($scope.days);
-            });
+        /*
+         $http.get(URL + '/menus?restaurant=' + restaurant)
+         .then(function (response) {
+         var menus = response.data;
+         var menuDate;
+         for (var i = 0; i <= menus.length; i++) {
+         menuDate = new Date(menus[i].date);
+         console.log(menuDate);
+         console.log($scope.days);
+         if (menuDate == $scope.days[0].date) {
+         alert('ok');
+         break;
+         }
+         }
+         console.log($scope.days);
+         });
+         */
 
         $http.get(URL + '/meals?get=id,type,description,veggie&restaurant=' + restaurant)
             .then(function (response) {

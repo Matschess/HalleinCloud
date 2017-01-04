@@ -1,10 +1,10 @@
 myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, loginHandler) {
     // System-Infos
     $scope.system = {
-        version: '1.2.7',
-        versionName: 'Fresh Water',
+        version: '0.0.0',
+        versionName: 'Alpha',
         released: '',
-        copyright: '2016 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
+        copyright: '2017 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
     };
 
     $scope.checkKey = function ($event) {

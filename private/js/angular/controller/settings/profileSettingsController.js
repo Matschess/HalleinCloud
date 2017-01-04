@@ -5,24 +5,29 @@ myApp.controller('profileSettingsController', function ($scope, $rootScope, $htt
         });
 
     $scope.save = function () {
-        var firstname = $scope.input.firstname;
-        var lastname = $scope.input.lastname;
-        var data = {
-            id: user,
-            firstname: firstname,
-            lastname: lastname
+        if ($scope.input.firstname && $scope.input.lastname) {
+            var firstname = $scope.input.firstname;
+            var lastname = $scope.input.lastname;
+            var data = {
+                id: user,
+                firstname: firstname,
+                lastname: lastname
+            }
+            data = prepareUpload(data);
+            $http({
+                url: URL + '/users',
+                method: 'PUT',
+                params: data
+            }).then(function () {
+                    globalNotification('success', 'Die Daten wurden gespeichert.');
+                    $rootScope.username = firstname
+                },
+                function () {
+                    globalNotification('error')
+                });
         }
-        data = prepareUpload(data);
-        $http({
-            url: URL + '/users',
-            method: 'PUT',
-            params: data
-        }).then(function () {
-                globalNotification('success', 'Die Daten wurden gespeichert.');
-                $rootScope.username = firstname
-    },
-            function () {
-                globalNotification('error')
-            });
+        else {
+            globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
+        }
     }
 });

@@ -5,6 +5,13 @@ myApp.controller('dashboardController', function ($scope, $http) {
 
     $scope.notifications = [];
 
+    $scope.notifications.push({
+        type: 'info',
+        title: 'Wir wollen Feedback',
+        text: "Gefällt Ihnen das Dashboard oder gibt's Probleme? Geben Sie uns gerne Ihr Feedback.",
+        route: 'help-feedback-add'
+    })
+
     if (userType == 3) {
         $http.get(URL + '/feedback?get=id&status=1&restaurant=' + restaurant)
             .then(function (response) {
