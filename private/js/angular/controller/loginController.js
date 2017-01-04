@@ -35,20 +35,26 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
          $scope.route = routes.setup.restaurant.basicData;
          $('.wrapper').addClass('background');
          */
-        var data = {
-            username: $scope.input.username,
-            password: $scope.input.password
+        if (!$scope.input.username) {
+            $scope.route = routes.setup.restaurant.basicData;
+            $('.wrapper').addClass('background');
         }
-        data = prepareUpload(data);
-        $http({
-            url: URL + '/authenticate',
-            method: 'GET',
-            params: data
-        }).then(function (response) {
-            loginHandler.login(response.data);
-        }, function(){
-            $('.loginwrapper').addClass('animated shake');
-        });
+        else {
+            var data = {
+                username: $scope.input.username,
+                password: $scope.input.password
+            }
+            data = prepareUpload(data);
+            $http({
+                url: URL + '/authenticate',
+                method: 'GET',
+                params: data
+            }).then(function (response) {
+                loginHandler.login(response.data);
+            }, function () {
+                $('.loginwrapper').addClass('animated shake');
+            });
+        }
     }
     $scope.complete = function (src) {
         switch (src) {
@@ -64,6 +70,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         switch (src) {
             case 'basicData':
                 $scope.route = routes.login;
+                $('.wrapper').removeClass('background');
                 break;
             case 'address':
                 $scope.route = routes.setup.restaurant.basicData;
