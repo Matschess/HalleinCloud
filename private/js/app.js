@@ -147,7 +147,7 @@ $('.content').ready(function () {
 $('.topbar .burgericon').click(function(){
     $('.navbar').toggleClass('visible');
 });
-    $('.navbar ul a').click(function(){
+    $('.navbar ul a li').click(function(){
         $('.navbar').removeClass('visible');
     });
 });
