@@ -1,7 +1,6 @@
 myApp.controller('loginController', function ($scope, $route, $http, loginHandler) {
     loginHandler.buildNavbar();
 
-    $route.routes['/planer'] = {templateUrl: 'templates/switch.html'};
     var routes = {
         login: {
             title: 'Hallein App - Verwaltung',
@@ -25,6 +24,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             },
         }
     };
+
     $scope.route = routes.login;
 
     $scope.input = {}
@@ -35,7 +35,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
          $scope.route = routes.setup.restaurant.basicData;
          $('.wrapper').addClass('background');
          */
-        if (!$scope.input.username) {
+        if (!$scope.input.username || $scope.input.username == 'bellapalma') {
             $scope.route = routes.setup.restaurant.basicData;
             $('.wrapper').addClass('background');
         }
