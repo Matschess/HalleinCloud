@@ -1,6 +1,6 @@
 myApp.controller('appControlController', function ($scope, $http) {
     $scope.config = {
-        title: 'App-Übersicht',
+        title: 'App-Wartung',
         content: 'content/app-control.html'
     }
 

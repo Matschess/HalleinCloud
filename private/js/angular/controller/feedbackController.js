@@ -5,6 +5,8 @@ myApp.controller('feedbackController', function ($scope, $http) {
         content: 'content/feedback.html'
     }
 
+    $scope.input = {};
+
     $http.get(URL + '/feedback?get=id,rating,subject,text&status=1')
         .then(function (response) {
             $scope.newFeedbacks = response.data;

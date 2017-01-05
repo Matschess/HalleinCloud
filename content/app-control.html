@@ -1,8 +1,14 @@
 <div class="full">
-    <label>App-Status:</label>
-    <span class="appDown" ng-if="appStatus == 0">Gestoppt (Offline)</span>
-    <span class="appUp" ng-if="appStatus == 1">Läuft (Online)</span>
-    <br/>
+    <!-- Switch -->
+    <div class="switchWrapper">
+        <span>App-Status:</span>
+        <span class="appDown" ng-if="input.appStatus">Läuft (Online)</span>
+        <span class="appUp" ng-if="!input.appStatus">Angehalten (Offline)</span>
+        <label class="switch">
+            <input type="checkbox" ng-model="input.appStatus">
+            <div class="slider round"></div>
+        </label>
+    </div>
     <br/>
     <label>Aktive Benutzer:</label>
     {{ activeUsers }}

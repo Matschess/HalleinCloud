@@ -104,10 +104,10 @@ button {
   i {
     vertical-align: middle;
   }
-&:hover{
-  background-color: #e2e2e2;
-}
-  &.transparent{
+  &:hover {
+    background-color: #e2e2e2;
+  }
+  &.transparent {
     background: none;
   }
 }
@@ -288,11 +288,11 @@ input:checked + .slider:before {
 
 // jQuery-Datepicker
 
-.ui-datepicker{
+.ui-datepicker {
   font-family: 'Gravity Light';
   color: #fff;
   padding: 0;
-  .ui-datepicker-header{
+  .ui-datepicker-header {
     font-family: 'Gravity';
     background: $accent-color;
     color: #fff;
@@ -300,73 +300,116 @@ input:checked + .slider:before {
     border: 0;
     border-radius: 0;
   }
-  .ui-datepicker-prev-hover, .ui-datepicker-next-hover{
+  .ui-datepicker-prev-hover, .ui-datepicker-next-hover {
     top: 2px;
-    .ui-icon{
+    .ui-icon {
       opacity: 1;
     }
   }
-  .ui-icon{
+  .ui-icon {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: .8;
   }
-  .ui-datepicker-prev{
-    &.ui-datepicker-prev-hover{
+  .ui-datepicker-prev {
+    &.ui-datepicker-prev-hover {
       left: 2px;
     }
     .ui-icon {
       background-image: url(../../assets/icons/arrow_left.png);
     }
   }
-  .ui-datepicker-next{
-    &.ui-datepicker-next-hover{
+  .ui-datepicker-next {
+    &.ui-datepicker-next-hover {
       right: 2px;
     }
     .ui-icon {
       background-image: url(../../assets/icons/arrow_right.png);
     }
   }
-  .ui-state-hover{
+  .ui-state-hover {
     background: transparent;
     border: 0;
   }
-  table{
+  table {
     background: #e76557;
-    th{
+    th {
       font-family: 'Gravity';
       background: $accent-color;
       color: #e2e2e2;
     }
-    td{
+    td {
       padding: 0;
     }
   }
-  .ui-datepicker-week-col{
+  .ui-datepicker-week-col {
     font-family: 'Gravity';
     text-align: center;
   }
-  .ui-state-default{
+  .ui-state-default {
     background: none;
     color: #fff;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-   border: 0;
-    &.ui-state-highlight{
+    border: 0;
+    &.ui-state-highlight {
       color: $accent-color;
       font-family: 'Gravity';
-      &:hover{
+      &:hover {
         color: #fff;
       }
     }
-    &:hover, &.ui-state-active{
+    &:hover, &.ui-state-active {
       background-color: $accent-color;
     }
   }
 }
 
-.ui-widget.ui-widget-content{
+.ui-widget.ui-widget-content {
   border: 0;
+}
+
+// Switcher
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  vertical-align: middle;
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
 }

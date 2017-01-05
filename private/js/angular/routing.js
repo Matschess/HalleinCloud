@@ -117,19 +117,55 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
+        .when('/support', {
+            templateUrl: 'templates/window.html',
+            controller: 'supportController',
+            icon: 'phone',
+            name: 'Support',
+            grant: [1],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 1)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
         .when('/help', {
             templateUrl: 'templates/window.html',
             controller: 'helpController',
             icon: 'help_outline',
-            name: 'Hilfe'
+            name: 'Hilfe',
+            grant: [2, 3],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 3 && userType >= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
         })
         .when('/help-add', {
             templateUrl: 'templates/window.html',
-            controller: 'helpAddController'
+            controller: 'helpAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 3 && userType >= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
         })
         .when('/help-feedback-add', {
             templateUrl: 'templates/window.html',
-            controller: 'helpFeedbackAddController'
+            controller: 'helpFeedbackAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 3 && userType >= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
         })
         .otherwise({
             redirectTo: "/"

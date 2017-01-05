@@ -12,6 +12,16 @@ myApp.controller('dashboardController', function ($scope, $http) {
         route: 'help-feedback-add'
     })
 
+    /*
+    $scope.notifications.push({
+        type: 'version',
+        number: '0.0.0',
+        title: 'Neue Version',
+        text: 'Eine aktualisierte Version des Hallein Apps Dashboards wurde veröffentlicht. Sehen Sie hier die Änderungen.',
+        route: 'help-feedback-add'
+    })
+    */
+
     if (userType == 3) {
         $http.get(URL + '/feedback?get=id&status=1&restaurant=' + restaurant)
             .then(function (response) {

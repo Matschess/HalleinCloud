@@ -1,3 +1,12 @@
+<!-- Switch -->
+<div class="switchWrapper">
+    <span ng-if="input.autofeedback">Autom. Akzeptieren ein</span>
+    <span ng-if="!input.autofeedback">Autom. Akzeptieren aus</span>
+    <label class="switch">
+        <input type="checkbox" ng-model="input.autofeedback">
+        <div class="slider round"></div>
+    </label>
+</div>
 <div class="feedbackGroup" ng-if="config.switched == 1">
     <div class="feedbackBox" ng-if="newFeedbacks.length" ng-repeat="feedback in newFeedbacks">
         <div class="actions">

@@ -1,11 +1,10 @@
-myApp.controller('helpAddController', function ($scope, $location, $http) {
+myApp.controller('supportController', function ($scope, $location, $http) {
     $scope.config = {
-        title: 'Frage stellen',
+        title: 'Support',
         actions: [
-            {title: 'Abschicken', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/help'}
+            {title: 'Frage erstellen', icon: 'add', route: '/support-add'}
         ],
-        content: 'content/help-add.html',
+        content: 'content/support.html',
         return: function (index, e) {
             switch (index) {
                 case 0:
@@ -34,29 +33,8 @@ myApp.controller('helpAddController', function ($scope, $location, $http) {
         }
     }
 
-    $scope.input = {
-        veggie: 0
-    };
-
-    $scope.types = {
-        selected: {id: 2, name: 'Hauptspeise'},
-        options: [
-            {id: 1, name: 'Vorspeise'},
-            {id: 2, name: 'Hauptspeise'},
-            {id: 3, name: 'Nachspeise'}
-        ]
-    }
-
-    $scope.tags = [
-        {name: 'putenstreifensalat', class: 'red'},
-        {name: 'salat', class: 'yellow'},
-        {name: 'geflügel', class: 'orange'},
-    ];
-    $scope.removeTag = function (index) {
-        $scope.tags.splice(index, 1);
-    }
-
-    $scope.foodAdd = function () {
-        alert('oe')
-    }
+    $http.get(URL + '/help?get=id,question,answer')
+        .then(function (response) {
+            $scope.questions = response.data;
+        });
 });
