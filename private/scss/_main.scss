@@ -93,21 +93,21 @@ body {
   transform-origin: bottom;
   bottom: 0;
   transition: bottom .3s;
-  animation: slideUp .8s;
-  @keyframes slideUp {
-    0%{
-      bottom: -20%;
-    }
-    100%{
-      bottom: 0;
-    }
-  }
   &.animate {
     -webkit-transition: transform 1s;
     -moz-transition: transform 1s;
     -ms-transition: transform 1s;
     -o-transition: transform 1s;
     transition: transform 1s;
+    animation: slideUp .8s;
+    @keyframes slideUp {
+      0%{
+        bottom: -20%;
+      }
+      100%{
+        bottom: 0;
+      }
+    }
   }
   &.finished {
     -webkit-transform: rotateX(0deg) scale(1);

@@ -9,12 +9,14 @@
     bottom: -20%;
     -webkit-transform: rotateX(70deg) scale(0.6);
     transform: rotateX(70deg) scale(0.6);
-    @keyframes slideUp {
-      0%{
-        bottom: -40%;
-      }
-      100%{
-        bottom: -20%;
+    &.animate {
+      @keyframes slideUp {
+        0% {
+          bottom: -40%;
+        }
+        100% {
+          bottom: -20%;
+        }
       }
     }
     &.finished {
@@ -29,9 +31,9 @@
 @media screen and (max-height: 600px), screen and (max-width: 800px) {
   .wrapper {
     bottom: -100%;
-    animation: none;
     transition: none;
     &.animate {
+      animation: none;
       transition: none;
     }
     &.finished {
