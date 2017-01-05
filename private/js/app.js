@@ -49,7 +49,7 @@ function stringToDate(date) {
     var day = date.substr(0, 2);
     var month = date.substr(3, 2);
     var year = date.substr(6);
-    date = new Date(year,month-1,day);
+    date = new Date(year, month - 1, day);
     return date;
 }
 
@@ -144,10 +144,10 @@ function prepareUpload(data) {
 }
 
 $('.content').ready(function () {
-$('.topbar .burgericon').click(function(){
-    $('.navbar').toggleClass('visible');
-});
-    $('.navbar ul a li').click(function(){
+    $('.topbar .burgericon').click(function () {
+        $('.navbar').toggleClass('visible');
+    });
+    $('.navbar ul a li').click(function () {
         $('.navbar').removeClass('visible');
     });
 });
