@@ -167,13 +167,13 @@ body {
   }
   .close {
     font-size: 30px;
-    color: #999;
+    color: #a8a8a8;
     position: absolute;
     top: 20px;
     right: 20px;
     cursor: default;
     &:hover {
-      color: #000;
+      color: #333;
     }
   }
   h2 {
@@ -218,6 +218,9 @@ body {
       height: 60px;
       margin: 5px 0 5px 0;
     }
+    input{
+      width: 70%;
+    }
     button.done {
       display: block;
       float: right;
@@ -256,8 +259,8 @@ body {
   }
   .action {
     position: absolute;
-    right: 50px;
-    bottom: 30px;
+    right: 20px;
+    bottom: 20px;
     i {
       color: #666;
       text-align: center;

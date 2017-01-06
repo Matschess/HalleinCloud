@@ -50,8 +50,8 @@
 <div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
     <!-- Popup -->
     <div class="overlay" ng-class="{visible: popup}" ng-click="popupClose()"></div>
-    <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close"
-                                                                          ng-click="popupClose()">close</i>
+    <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close tooltipBottom"
+                                                                          ng-click="popupClose()" title="Schließen">close</i>
         <h2>{{ popup.title }}</h2>
         <navigation>
             <ul>

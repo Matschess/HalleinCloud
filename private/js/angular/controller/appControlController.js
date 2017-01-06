@@ -4,7 +4,10 @@ myApp.controller('appControlController', function ($scope, $http) {
         content: 'content/app-control.html'
     }
 
-    $scope.appStatus = 1;
+    $scope.input = {
+        appStatus: true
+    }
+
     $scope.activeUsers = 568;
     $scope.downloads = {
         android: 312,

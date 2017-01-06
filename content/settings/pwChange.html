@@ -2,16 +2,16 @@
     <form ng-submit="save()">
     <div class="pwChange">
         <div class="title">Legen Sie Ihr neues Passwort fest:</div>
-        <input type="password" class="longest" placeholder="Altes Passwort" ng-model="input.pwOld"/>
-        <input type="password" class="longest" placeholder="Neues Passwort" ng-model="input.pwNew" ng-keyup="pwValidate(input.pwNew)"/>
+        <input type="password" placeholder="Altes Passwort" ng-model="input.pwOld"/>
+        <input type="password" placeholder="Neues Passwort" ng-model="input.pwNew" ng-keyup="pwValidate(input.pwNew)"/>
         <div class="pwValidation">
             <div ng-class="{'active':pwSafety>=1}"></div>
             <div ng-class="{'active':pwSafety>=2}"></div>
             <div ng-class="{'active':pwSafety>=3}"></div>
             <div ng-class="{'active':pwSafety==4}"></div>
         </div>
-        <input type="password" class="longest" placeholder="Wiederholung" ng-model="input.pwRepeat"/>
+        <input type="password" placeholder="Wiederholung" ng-model="input.pwRepeat"/>
     </div>
-        <button type="submit" class="transparent action"><i class="material-icons" ng-click="save()">done</i></button>
+        <button type="submit" class="transparent action tooltipTop" title="Speichern"><i class="material-icons" ng-click="save()">done</i></button>
     </form>
 </div>

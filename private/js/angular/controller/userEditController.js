@@ -47,10 +47,6 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
     $scope.input = {};
     $scope.resetPassword = false;
 
-    $scope.showResetPassword = function() {
-        $scope.resetPassword = true;
-    }
-
     $http.get(URL + '/users?get=type,email,firstname,lastname,username&id=' + id)
         .then(function (response) {
             $scope.input = response.data[0];

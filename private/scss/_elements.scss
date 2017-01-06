@@ -226,18 +226,18 @@ input:checked + .slider:before {
 
 // Password-Validation
 .pwChange {
-  width: 80%;
-  input[type=password] {
-    width: calc(100% - 16px);
+  input[type=password]{
+    width: 70%;
   }
   .pwValidation {
+    width: calc(70% + 16px);
     font-size: 0;
     height: 2px;
     margin-bottom: 5px;
     div {
       display: inline-block;
       background-color: #e8e8e8;
-      width: calc(22.75%);
+      width: calc(100% / 4 - 9% / 4);
       height: 2px;
       vertical-align: top;
       margin-right: 3%;
