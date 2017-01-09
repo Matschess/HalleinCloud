@@ -8,8 +8,9 @@ myApp.controller('helpController', function ($scope, $http) {
         content: 'content/help.html'
     }
 
-    $http.get(URL + '/help?get=question,answer')
+    $http.get(URL + '/help')
         .then(function (response) {
-            $scope.questions = response.data;
+            $scope.questions = response.data
+            console.log($scope.questions);
         });
 });

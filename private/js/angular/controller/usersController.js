@@ -9,7 +9,13 @@ myApp.controller('usersController', function ($scope, $http) {
 
     $http.get(URL + '/users?get=id,username,type,lastActive')
         .then(function (response) {
-            $scope.users = response.data;
+            var data = response.data;
+            for (var i = 0; i < data.length; i++) {
+                if (userType != 1 && data[i].type == 1) continue;
+                if (data[i].id == user) continue;
+                data[i].actions = true;
+            }
+            $scope.users = data;
         });
 
     $scope.sort = function (property) {
@@ -27,11 +33,11 @@ myApp.controller('usersController', function ($scope, $http) {
         var params = "?id=" + id;
         $http.delete(URL + '/users' + params)
             .then(function () {
-                $scope.users.splice(index, 1);
-                globalNotification('success', 'Der Benutzer wurde gelöscht.')
-            },
-            function () {
-                globalNotification('error')
-            });
+                    $scope.users.splice(index, 1);
+                    globalNotification('success', 'Der Benutzer wurde gelöscht.')
+                },
+                function () {
+                    globalNotification('error')
+                });
     }
 });

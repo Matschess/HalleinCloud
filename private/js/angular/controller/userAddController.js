@@ -43,13 +43,24 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
         pwTemp: 1
     };
 
-    $scope.types = {
-        selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
-        options: [
-            {id: 1, name: 'Superuser', group: 'superuser'},
-            {id: 2, name: 'Administrator', group: 'admins'},
-            {id: 3, name: 'Restaurant', group: 'restaurants'}
-        ]
+    if (userType == 1) {
+        $scope.types = {
+            selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
+            options: [
+                {id: 1, name: 'Superuser', group: 'superuser'},
+                {id: 2, name: 'Administrator', group: 'admins'},
+                {id: 3, name: 'Restaurant', group: 'restaurants'}
+            ]
+        }
+    }
+    else{
+        $scope.types = {
+            selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
+            options: [
+                {id: 2, name: 'Administrator', group: 'admins'},
+                {id: 3, name: 'Restaurant', group: 'restaurants'}
+            ]
+        }
     }
 
     $scope.restaurantname = '';
