@@ -1,6 +1,6 @@
 myApp.controller('pagesController', function ($scope, $http) {
     $scope.config = {
-        title: 'Mahlzeiten',
+        title: 'Restaurantseite',
         actions: [
             {title: 'Speichern', icon: 'done', route: '/page'},
             {title: 'Verwerfen', icon: 'close', route: '/'}

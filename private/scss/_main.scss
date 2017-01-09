@@ -101,10 +101,10 @@ body {
     transition: transform 1s;
     animation: slideUp .8s;
     @keyframes slideUp {
-      0%{
+      0% {
         bottom: -20%;
       }
-      100%{
+      100% {
         bottom: 0;
       }
     }
@@ -140,6 +140,10 @@ body {
   &.visible {
     visibility: visible;
     opacity: .5;
+  }
+  &.blocker {
+    z-index: 9999;
+    visibility: visible;
   }
 }
 
@@ -218,7 +222,7 @@ body {
       height: 60px;
       margin: 5px 0 5px 0;
     }
-    input{
+    input {
       width: 70%;
     }
     button.done {
@@ -491,9 +495,9 @@ body {
         }
       }
     }
-    .switchWrapper{
+    .switchWrapper {
       float: right;
-      span{
+      span {
         display: inline-block;
         vertical-align: middle;
         margin-right: 10px;
@@ -506,7 +510,7 @@ body {
       }
     }
   }
-  .feedbackGroup{
+  .feedbackGroup {
     padding-top: 60px;
   }
   .dashboardBox, .feedbackBox {
@@ -791,15 +795,15 @@ body {
       .appDown {
         color: #62C462;
       }
-      .switchWrapper{
-        span{
+      .switchWrapper {
+        span {
           display: inline-block;
           vertical-align: middle;
           margin-right: 10px;
         }
         label {
           vertical-align: middle;
-          .slider{
+          .slider {
             background-color: #e74c3c;
           }
           input:checked + .slider {

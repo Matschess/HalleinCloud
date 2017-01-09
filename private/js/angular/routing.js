@@ -189,6 +189,9 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         }
     }
     this.login = function (data) {
+        setTimeout(function () {
+            $route.reload();
+        }, 500);
         $('.wrapper').addClass('animate');
         $http.defaults.headers.common['x-access-token'] = data.token;
         $.ajaxSetup({
@@ -212,6 +215,9 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         $location.path('/');
         $cookies.remove('userdata');
         $rootScope.loggedIn = false;
+        setTimeout(function () {
+            $route.reload();
+        }, 1000);
     }
     this.getUsername = function () {
         $http.get(URL + '/users?get=firstname&id=' + user)

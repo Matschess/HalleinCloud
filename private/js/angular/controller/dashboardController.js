@@ -5,23 +5,6 @@ myApp.controller('dashboardController', function ($scope, $http) {
 
     $scope.notifications = [];
 
-    $scope.notifications.push({
-        type: 'info',
-        title: 'Wir wollen Feedback',
-        text: "Gefällt Ihnen das Dashboard oder gibt's Probleme? Geben Sie uns gerne Ihr Feedback.",
-        route: 'help-feedback-add'
-    })
-
-    /*
-    $scope.notifications.push({
-        type: 'version',
-        number: '0.0.0',
-        title: 'Neue Version',
-        text: 'Eine aktualisierte Version des Hallein Apps Dashboards wurde veröffentlicht. Sehen Sie hier die Änderungen.',
-        route: 'help-feedback-add'
-    })
-    */
-
     if (userType == 3) {
         $http.get(URL + '/feedback?get=id&status=1&restaurant=' + restaurant)
             .then(function (response) {
@@ -69,7 +52,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 }
             });
     }
-    else if (userType <= 2) {
+    else if (userType == 1 || userType == 2) {
         $scope.notifications.push({
             type: 'success',
             title: 'App online',
@@ -85,5 +68,21 @@ myApp.controller('dashboardController', function ($scope, $http) {
             route: 'app-control'
         })
         */
+    }
+    if (userType == 2 || userType == 3) {
+        $scope.notifications.push({
+            type: 'info',
+            title: 'Wir wollen Feedback',
+            text: "Gefällt Ihnen das Dashboard oder gibt's Probleme? Geben Sie uns gerne Ihr Feedback.",
+            route: 'help-feedback-add'
+        })
+
+        $scope.notifications.push({
+            type: 'version',
+            number: '0.0.0',
+            title: 'Neue Version',
+            text: 'Eine aktualisierte Version des Hallein App Dashboards wurde veröffentlicht. Sehen Sie sich hier die Änderungen an.',
+            route: 'help-feedback-add'
+        })
     }
 });
