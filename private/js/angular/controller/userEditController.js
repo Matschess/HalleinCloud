@@ -63,6 +63,25 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
 
     $scope.restaurantname = '';
 
+    $scope.generateUsername = function () {
+        var firstname = $scope.input.firstname;
+        var lastname = $scope.input.lastname;
+        if(firstname && lastname) {
+            var data = {
+                firstname: firstname,
+                lastname: lastname
+            }
+            $http({
+                url: URL + '/username',
+                method: 'GET',
+                params: data
+            }).then(function (response) {
+                console.log(response.data);
+                $scope.input.username = response.data;
+            });
+        }
+    }
+
     $scope.input.password = generateRandom(6);
 
     $scope.generatePassword = function () {

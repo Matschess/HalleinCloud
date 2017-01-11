@@ -11,7 +11,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
                 case 0:
                     if ($scope.input.firstname && $scope.input.lastname) {
                         var data = {
-                            username: ($scope.input.firstname.substr(0, 2) + $scope.input.lastname).toLowerCase(),
+                            username: $scope.input.username,
                             firstname: $scope.input.firstname,
                             lastname: $scope.input.lastname,
                             email: $scope.input.email,
@@ -53,7 +53,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
             ]
         }
     }
-    else{
+    else {
         $scope.types = {
             selected: {id: 3, name: 'Restaurant', group: 'restaurants'},
             options: [
@@ -64,6 +64,25 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
     }
 
     $scope.restaurantname = '';
+
+    $scope.generateUsername = function () {
+        var firstname = $scope.input.firstname;
+        var lastname = $scope.input.lastname;
+        if(firstname && lastname) {
+            var data = {
+                firstname: firstname,
+                lastname: lastname
+            }
+            $http({
+                url: URL + '/username',
+                method: 'GET',
+                params: data
+            }).then(function (response) {
+                console.log(response.data);
+                $scope.input.username = response.data;
+            });
+        }
+    }
 
     $scope.input.password = generateRandom(6);
 
