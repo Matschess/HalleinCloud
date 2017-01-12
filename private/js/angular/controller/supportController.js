@@ -33,8 +33,37 @@ myApp.controller('supportController', function ($scope, $location, $http) {
         }
     }
 
-    $http.get(URL + '/help?get=id,question,answer')
+    $http.get(URL + '/help?get=id,question,lastEdited&unreplied=true')
         .then(function (response) {
-            $scope.questions = response.data;
+            $scope.unreplied = response.data;
+        });
+
+    $http.get(URL + '/help?get=id,question,answer,category,lastEdited')
+        .then(function (response) {
+            var data = response.data;
+            for(var i = 0; i < data.length; i++){
+                var category;
+                switch(data[i].category){
+                    case 1:
+                        category = 'Allgemein';
+                        break;
+                    case 2:
+                        category = 'Login';
+                        break;
+                    case 3:
+                        category = 'Mahlzeiten';
+                        break;
+                    case 4:
+                        category = 'Feedback';
+                        break;
+                    case 5:
+                        category = 'Restaurantseite';
+                        break;
+                    case 6:
+                        category = 'Benutzer';
+                }
+                data[i].category = category;
+            }
+            $scope.replied = data;
         });
 });

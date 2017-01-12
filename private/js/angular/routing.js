@@ -125,7 +125,18 @@ myApp.config(function ($routeProvider) {
             grant: [1],
             resolve: {
                 'authenticate': function ($location) {
-                    if (!(userType <= 1)) {
+                    if (!(userType == 1)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/support-add', {
+            templateUrl: 'templates/window.html',
+            controller: 'supportAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType == 1)) {
                         $location.path('/');
                     }
                 }

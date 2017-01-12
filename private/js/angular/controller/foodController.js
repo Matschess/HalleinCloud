@@ -16,15 +16,50 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
         date.setSeconds(0);
 
         $scope.days = [];
-        var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-        for (var i = 0; i < 7; i++) {
-            var day = {};
-            date.setDate(date.getDate() + 1)
-            day.weekday = date.getDay();
-            day.name = weekdays[date.getDay()];
-            day.date = date
-            $scope.days.push(day);
-        }
+
+    var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+
+
+
+    $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
+        .then(function (response) {
+            var response = response.data;
+            var data = [];
+
+            for(var i = 0; i < response.length; i++){
+                data.push({
+                    name: weekdays[response[i].weekday],
+                    weekday: response[i].weekday
+                });
+            }
+
+            for (var i = 0; i < data.length; i++) {
+                var day = {};
+                var today = new Date();
+                today.setHours(0,0,0,0);
+                data[i].date = new Date();
+                data[i].date.setHours(0,0,0,0);
+                data[i].date.setDate(today.getDate() + data[i].weekday)
+            }
+
+            $http.get(URL + '/menus?get=date,appetizer,mainCourse,dessert&days=7&restaurant=' + restaurant)
+                .then(function (response) {
+                    var response = response.data;
+                    for(var i = 0; i < response.length; i++){
+                        for(var j = 0; j < data.length; j++) {
+                            console.log(new Date(response[i].date));
+                            console.log(data[j].date);
+                            if(new Date(response[i].date).getTime() == data[j].date.getTime()){
+                                data[j].menu = {meals: {}};
+                                data[j].menu.meals.mainCourse = response[i].mainCourse;
+                            }
+                        }
+                    }
+                });
+
+            $scope.days = data;
+        });
 
         /*
          $http.get(URL + '/menus?restaurant=' + restaurant)
