@@ -142,6 +142,17 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
+        .when('/support-edit/:id', {
+            templateUrl: 'templates/window.html',
+            controller: 'supportEditController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType == 1)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
         .when('/help', {
             templateUrl: 'templates/window.html',
             controller: 'helpController',

@@ -9,18 +9,19 @@ myApp.controller('supportAddController', function ($scope, $location, $http) {
         return: function (index, e) {
             switch (index) {
                 case 0:
-                    if ($scope.input.question) {
+                    if ($scope.input.category.selected && $scope.input.question && $scope.input.answer) {
                         var data = {
-                            user: restaurant,
-                            question: $scope.input.question
+                            category: $scope.input.category.selected.id,
+                            question: $scope.input.question,
+                            anwer: $scope.input.answer
                         }
                         $http({
                             url: URL + '/help',
                             method: 'POST',
                             params: data
                         }).then(function () {
-                                $location.path('/help');
-                                globalNotification('success', 'Die Frage wurde abgeschickt.')
+                                $location.path('/support');
+                                globalNotification('success', 'Die Frage wurde erstellt.')
                             },
                             function () {
                                 globalNotification('error')
@@ -28,13 +29,15 @@ myApp.controller('supportAddController', function ($scope, $location, $http) {
                     }
                     else {
                         globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
-                    }5
+                    }
                     break;
             }
         }
     }
 
-    $scope.categories = {
+    $scope.input = {};
+
+    $scope.input.category = {
         selected: {id: 1, name: 'Allgemein'},
         options: [
             {id: 1, name: 'Allgemein'},

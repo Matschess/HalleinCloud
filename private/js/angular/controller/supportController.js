@@ -41,9 +41,9 @@ myApp.controller('supportController', function ($scope, $location, $http) {
     $http.get(URL + '/help?get=id,question,answer,category,lastEdited')
         .then(function (response) {
             var data = response.data;
-            for(var i = 0; i < data.length; i++){
+            for (var i = 0; i < data.length; i++) {
                 var category;
-                switch(data[i].category){
+                switch (data[i].category) {
                     case 1:
                         category = 'Allgemein';
                         break;
@@ -66,4 +66,32 @@ myApp.controller('supportController', function ($scope, $location, $http) {
             }
             $scope.replied = data;
         });
+
+    $scope.sort = function (object, property) {
+        $scope[object].sort(dynamicSort(property));
+    }
+
+    function dynamicSort(property) {
+        return function (a, b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result;
+        }
+    }
+
+    $scope.delete = function (id, object, index) {
+        var data = {
+            id: id
+        }
+        $http({
+            url: URL + '/help',
+            method: 'DELETE',
+            params: data
+        }).then(function () {
+                $scope[object].splice(index, 1);
+                globalNotification('success', 'Die Frage wurde gelöscht.')
+            },
+            function () {
+                globalNotification('error')
+            });
+    }
 });
