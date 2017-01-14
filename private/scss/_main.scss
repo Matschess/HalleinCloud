@@ -100,7 +100,7 @@ body {
     -o-transition: transform 1s;
     transition: transform 1s;
   }
-  &.slideUp{
+  &.slideUp {
     animation: slideUp .8s;
     @keyframes slideUp {
       0% {
@@ -978,6 +978,7 @@ body {
       }
       .days {
         width: 100%;
+        text-align: center;
         .day {
           opacity: 0;
           display: inline-block;
@@ -1059,6 +1060,14 @@ body {
               color: #333;
             }
           }
+          .text {
+            display: inline-block;
+            line-height: normal;
+            vertical-align: middle;
+            .date {
+              font-size: 14px;
+            }
+          }
           .menu {
             font-size: 14px;
             height: 40px;
@@ -1119,7 +1128,7 @@ body {
         font-size: 16px;
         color: #000;
         text-align: right;
-        margin-top: 30px;
+        margin-top: 40px;
         @include animate-slideIn(.25s);
         span {
           border-left: 3px solid;
@@ -1167,6 +1176,17 @@ body {
             text-align: center;
             width: 100%;
             text-transform: uppercase;
+            .searchbox {
+              background-color: transparent;
+              color: #fff;
+              border-bottom: 1px solid #fff;
+              margin: 0;
+              padding: 0;
+            }
+            .search {
+              position: absolute;
+              right: 10px;
+            }
           }
           .menuWrapper {
             height: 300px;
@@ -1204,7 +1224,7 @@ body {
   }
 
   .helpWrapper {
-    .category{
+    .category {
       background-color: #f2f2f2;
       width: 70%;
       margin-left: 15%;

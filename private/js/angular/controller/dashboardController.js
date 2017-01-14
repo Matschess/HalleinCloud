@@ -39,6 +39,38 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 }
             });
 
+        // Restdays
+        var today = new Date();
+        var todayFormatted = dateToString(today);
+        $http.get(URL + '/restDays?get=id&date=' + todayFormatted + '&restaurant=' + restaurant)
+            .then(function (response) {
+                console.log(response);
+                if(response.data[0].id){
+                    $scope.notifications.push({
+                        type: 'info',
+                        title: 'Heute geschlossen',
+                        text: 'Für heute ist ein Ruhetag eingetragen.',
+                        route: 'page'
+                    })
+                }
+            });
+
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+        var tomorrowFormatted = dateToString(tomorrow);
+        $http.get(URL + '/restDays?get=id&date=' + tomorrowFormatted + '&restaurant=' + restaurant)
+            .then(function (response) {
+                console.log(response);
+                if(response.data[0].id){
+                    $scope.notifications.push({
+                        type: 'info',
+                        title: 'Morgen geschlossen',
+                        text: 'Für morgen ist ein Ruhetag eingetragen.',
+                        route: 'page'
+                    })
+                }
+            });
+
         $http.get(URL + '/restaurants?get=street,countryCode,country&id=' + restaurant)
             .then(function (response) {
                 var data = response.data[0];

@@ -17,49 +17,59 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
 
         $scope.days = [];
 
-    var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
 
+        $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
+            .then(function (response) {
+                var response = response.data;
+                var data = [];
 
+                for (var i = 0; i < response.length; i++) {
+                    data.push({
+                        name: weekdays[response[i].weekday],
+                        weekday: response[i].weekday
+                    });
+                }
 
-    $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
-        .then(function (response) {
-            var response = response.data;
-            var data = [];
+                for (var i = 0; i < data.length; i++) {
+                    var day = {};
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    data[i].date = new Date();
+                    data[i].date.setHours(0, 0, 0, 0);
+                    data[i].date.setDate(today.getDate() + data[i].weekday)
+                }
 
-            for(var i = 0; i < response.length; i++){
-                data.push({
-                    name: weekdays[response[i].weekday],
-                    weekday: response[i].weekday
-                });
-            }
-
-            for (var i = 0; i < data.length; i++) {
-                var day = {};
-                var today = new Date();
-                today.setHours(0,0,0,0);
-                data[i].date = new Date();
-                data[i].date.setHours(0,0,0,0);
-                data[i].date.setDate(today.getDate() + data[i].weekday)
-            }
-
-            $http.get(URL + '/menus?get=date,appetizer,mainCourse,dessert&days=7&restaurant=' + restaurant)
-                .then(function (response) {
-                    var response = response.data;
-                    for(var i = 0; i < response.length; i++){
-                        for(var j = 0; j < data.length; j++) {
-                            console.log(new Date(response[i].date));
-                            console.log(data[j].date);
-                            if(new Date(response[i].date).getTime() == data[j].date.getTime()){
-                                data[j].menu = {meals: {}};
-                                data[j].menu.meals.mainCourse = response[i].mainCourse;
+                $http.get(URL + '/restDays?get=id,date,description&restaurant=' + restaurant)
+                    .then(function (response) {
+                        var response = response.data;
+                        for (var i = 0; i < response.length; i++) {
+                            for (var j = 0; j < data.length; j++) {
+                                if (new Date(response[i].date).getTime() == data[j].date.getTime()) {
+                                    data[j].restDay = response[i];
+                                }
                             }
                         }
-                    }
-                });
+                    });
 
-            $scope.days = data;
-        });
+                $http.get(URL + '/menus?get=date,appetizer,mainCourse,dessert&days=7&restaurant=' + restaurant)
+                    .then(function (response) {
+                        var response = response.data;
+                        for (var i = 0; i < response.length; i++) {
+                            for (var j = 0; j < data.length; j++) {
+                                console.log(new Date(response[i].date));
+                                console.log(data[j].date);
+                                if (new Date(response[i].date).getTime() == data[j].date.getTime()) {
+                                    data[j].menu = {meals: {}};
+                                    data[j].menu.meals.mainCourse = response[i].mainCourse;
+                                }
+                            }
+                        }
+                    });
+
+                $scope.days = data;
+            });
 
         /*
          $http.get(URL + '/menus?restaurant=' + restaurant)
@@ -83,11 +93,46 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
             .then(function (response) {
                 $scope.menus = response.data;
             })
-        $scope.closeToggle = function (index) {
-            if (!$scope.days[index].closed) {
-                $scope.days[index].closed = true;
+
+        $scope.restDayToggle = function (index) {
+            if (!$scope.days[index].restDay) {
+                var dateFormatted = dateToString($scope.days[index].date);
+                var data = {
+                    restaurant: restaurant,
+                    date: dateFormatted,
+                }
+                data = prepareUpload(data);
+                $http({
+                    url: URL + '/restDays',
+                    method: 'POST',
+                    params: data
+                }).then(function (response) {
+                    var id = response.data.id;
+                        globalNotification('success', 'Der Ruhetag wurde eingetragen.');
+                        $scope.days[index].restDay = id;
+                    },
+                    function () {
+                        globalNotification('alert')
+                    });
+
             }
-            else $scope.days[index].closed = false;
+            else {
+                var data = {
+                    id: $scope.days[index].restDay.id
+                }
+                data = prepareUpload(data);
+                $http({
+                    url: URL + '/restDays',
+                    method: 'DELETE',
+                    params: data
+                }).then(function () {
+                        globalNotification('success', 'Der Ruhetag wurde entfernt.');
+                        delete $scope.days[index].restDay;
+                    },
+                    function () {
+                        globalNotification('error')
+                    });
+            }
         }
         $scope.assignMenu = function (index, data) {
             if (!$scope.days[index].menu) {

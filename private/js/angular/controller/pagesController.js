@@ -60,7 +60,6 @@ myApp.controller('pagesController', function ($scope, $http) {
                     date.setDate(date.getDate() + 1);
                     var dateFormatted = dateToString(date);
                     var data = {
-                        id: user,
                         restaurant: restaurant,
                         date: dateFormatted,
                         description: $scope.input.restDayDescription

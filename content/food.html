@@ -1,5 +1,5 @@
 <div class="days">
-    <div class="day" ng-class="{'closed':day.closed}" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
+    <div class="day" ng-class="{'closed':day.restDay}" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
         <div class="done" ng-if="day.menu.meals">
             <div class="menu yellow" ng-if="day.menu.meals.appetizer" ng-click="removeMenu('appetizer', $index)">
                 <span ng-if="day.menu.meals.appetizer.description.length >= 15">{{ day.menu.meals.appetizer.description | limitTo:12  }}...</span>
@@ -17,18 +17,25 @@
                 <i class='material-icons remove tooltipBottom' title="{{ day.menu.meals.dessert.description }}">close</i>
             </div>
         </div>
-        <div ng-if="!day.menu.meals">{{ day.name | limitTo : 2 }}</div>
-        <i ng-if="!day.menu.meals" ng-click="closeToggle($index)" class='material-icons closed tooltipBottom' title="Geschlossen">block</i>
-        <img ng-if="day.closed" class="closedTag" src="assets/imgs/closedTag.png"/>
+        <div class="text" ng-if="!day.menu.meals">
+            {{ day.name | limitTo : 2 }}
+            <div class="date">{{ day.date | date:"dd.MM" }}</div>
+        </div>
+        <i ng-if="!day.menu.meals" ng-click="restDayToggle($index)" class='material-icons closed tooltipBottom' title="Ruhetag ein/aus">beach_access</i>
+        <img ng-if="day.restDay" class="closedTag" src="assets/imgs/closedTag.png"/>
     </div>
 </div>
 <div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>
 <div class="menunames">
     <div class="menutype appetizer">
-        <label>Vorspeisen</label>
+        <label>
+            <span ng-if="!appetizer.search">Vorspeisen</span>
+            <input class="searchbox" type="text" ng-if="appetizer.search" ng-model="appetizer.searchbox"/>
+            <i class='material-icons search' ng-click="appetizer.search = !appetizer.search">search</i>
+        </label>
         <div class="menuWrapper">
-            <div ng-repeat="menu in menus track by $index">
-                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 1" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+            <div ng-repeat="menu in menus | filter: { type:1 } | filter:appetizer.searchbox">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
                     {{ menu.description }}
                     <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
                 </div>
@@ -36,10 +43,14 @@
         </div>
     </div>
     <div class="menutype mainCourse">
-        <label>Hauptspeisen</label>
+        <label>
+            <span ng-if="!mainCourse.search">Hauptspeisen</span>
+            <input class="searchbox" type="text" ng-if="mainCourse.search" ng-model="mainCourse.searchbox"/>
+            <i class='material-icons search' ng-click="mainCourse.search = !mainCourse.search">search</i>
+        </label>
         <div class="menuWrapper">
-            <div ng-repeat="menu in menus track by $index">
-                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 2" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+            <div ng-repeat="menu in menus | filter: { type:2 } | filter:mainCourse.searchbox">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
                     {{ menu.description }}
                     <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
                 </div>
@@ -47,10 +58,14 @@
         </div>
     </div>
     <div class="menutype desert">
-        <label>Nachspeisen</label>
+        <label>
+            <span ng-if="!dessert.search">Nachspeisen</span>
+            <input class="searchbox" type="text" ng-if="dessert.search" ng-model="dessert.searchbox"/>
+            <i class='material-icons search' ng-click="dessert.search = !dessert.search">search</i>
+        </label>
         <div class="menuWrapper">
-            <div ng-repeat="menu in menus track by $index">
-                <div class="menu" ng-drag="true" ng-drag-data="$index" ng-if="menu.type == 3" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+            <div ng-repeat="menu in menus | filter: { type:3 } | filter:dessert.searchbox">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
                     {{ menu.description }}
                     <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
                 </div>
