@@ -12,8 +12,16 @@ myApp.controller('usersController', function ($scope, $http) {
             var data = response.data;
             for (var i = 0; i < data.length; i++) {
                 if (userType != 1 && data[i].type == 1) continue;
-                if (data[i].id == user) continue;
-                data[i].actions = true;
+                if (data[i].id == user) {
+                    data[i].actions = {
+                        edit: true
+                    };
+                    continue;
+                }
+                data[i].actions = {
+                    edit: true,
+                    delete: true
+                };
             }
             $scope.users = data;
         });

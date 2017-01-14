@@ -94,14 +94,14 @@ body {
   bottom: 0;
   transition: bottom .3s;
   &.animate {
-    /*
     -webkit-transition: transform 1s;
     -moz-transition: transform 1s;
     -ms-transition: transform 1s;
     -o-transition: transform 1s;
     transition: transform 1s;
+  }
+  &.slideUp{
     animation: slideUp .8s;
-    */
     @keyframes slideUp {
       0% {
         bottom: -20%;
@@ -833,6 +833,7 @@ body {
             }
             .actions {
               div, a {
+                float: right;
                 background-color: #e2e2e2;
                 display: inline-block;
                 cursor: default;

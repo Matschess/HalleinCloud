@@ -220,6 +220,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
     this.checkLogin = function () {
         var userdata = $cookies.get('userdata');
         if (userdata) {
+            $('.wrapper').removeClass('slideUp');
             var userdata = JSON.parse(userdata);
             user = userdata.user.id;
             userType = userdata.user.type;
@@ -233,10 +234,10 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         }
     }
     this.login = function (data) {
+        $('.wrapper').addClass('animate');
         setTimeout(function () {
             $route.reload();
         }, 500);
-        $('.wrapper').addClass('animate');
         $http.defaults.headers.common['x-access-token'] = data.token;
         $.ajaxSetup({
             headers: {'x-access-token': data.token}

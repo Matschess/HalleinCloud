@@ -70,6 +70,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
          */
     }
     if (userType == 2 || userType == 3) {
+        /*
         $scope.notifications.push({
             type: 'info',
             title: 'Wir wollen Feedback',
@@ -84,6 +85,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
             text: 'Eine aktualisierte Version des Hallein App Dashboards wurde veröffentlicht. Sehen Sie sich hier die Änderungen an.',
             route: 'help-feedback-add'
         })
+        */
     }
     if (userType == 1) {
         $http.get(URL + '/help?get=id&answer=false')

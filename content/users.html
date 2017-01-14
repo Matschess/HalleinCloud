@@ -18,10 +18,11 @@
                 <ng-if ng-if="!user.lastActive">Keine</ng-if>
             </td>
             <td class="actions">
-                <a href="#user-edit/{{user.id}}" class="tooltipTop" title="Bearbeiten" ng-if="user.actions"><i
-                        class="material-icons">edit</i></a>
-                <div ng-click="deleteUser(user.id, $index)" class="tooltipTop" title="Löschen" ng-if="user.actions"><i
+                <div ng-click="deleteUser(user.id, $index)" class="tooltipTop" title="Löschen"
+                     ng-if="user.actions.delete"><i
                         class="material-icons">close</i></div>
+                <a href="#user-edit/{{user.id}}" class="tooltipTop" title="Bearbeiten" ng-if="user.actions.edit"><i
+                        class="material-icons">edit</i></a>
             </td>
         </tr>
     </table>

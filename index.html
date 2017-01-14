@@ -47,7 +47,7 @@
         <div class="loginwrapper" ng-include="route.content"></div>
     </div>
 </div>
-<div class="wrapper" ng-class="{true:'finished'}[loggedIn]">
+<div class="wrapper slideUp" ng-class="{true:'finished'}[loggedIn]">
     <!-- Popup -->
     <div class="overlay" ng-class="{visible: popup, blocker: !loggedIn}" ng-click="popupClose()"></div>
     <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close tooltipBottom"
