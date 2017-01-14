@@ -33,39 +33,32 @@ myApp.controller('supportController', function ($scope, $location, $http) {
         }
     }
 
-    $http.get(URL + '/help?get=id,question,lastEdited&unreplied=true')
+    $http.get(URL + '/help?get=id,question,lastEdited&answer=false')
         .then(function (response) {
             $scope.unreplied = response.data;
         });
 
-    $http.get(URL + '/help?get=id,question,answer,category,lastEdited')
+    $http.get(URL + '/help?get=id,question,category,lastEdited&answer=true')
         .then(function (response) {
-            var data = response.data;
-            for (var i = 0; i < data.length; i++) {
-                var category;
-                switch (data[i].category) {
-                    case 1:
-                        category = 'Allgemein';
-                        break;
-                    case 2:
-                        category = 'Login';
-                        break;
-                    case 3:
-                        category = 'Mahlzeiten';
-                        break;
-                    case 4:
-                        category = 'Feedback';
-                        break;
-                    case 5:
-                        category = 'Restaurantseite';
-                        break;
-                    case 6:
-                        category = 'Benutzer';
-                }
-                data[i].category = category;
-            }
-            $scope.replied = data;
+            $scope.replied = response.data;
         });
+
+    $http.get(URL + '/bugreport')
+        .then(function (response) {
+            $scope.bugs = response.data;
+        });
+
+    $scope.category = {
+        selected: {id: 1, name: 'Allgemein'},
+        options: [
+            {id: 1, name: 'Allgemein'},
+            {id: 2, name: 'Login'},
+            {id: 3, name: 'Mahlzeiten'},
+            {id: 4, name: 'Feedback'},
+            {id: 5, name: 'Restaurantseite'},
+            {id: 6, name: 'Benutzer'}
+        ]
+    }
 
     $scope.sort = function (object, property) {
         $scope[object].sort(dynamicSort(property));
@@ -79,19 +72,37 @@ myApp.controller('supportController', function ($scope, $location, $http) {
     }
 
     $scope.delete = function (id, object, index) {
-        var data = {
-            id: id
+        if (object == 'bugs') {
+            var data = {
+                id: id
+            }
+            $http({
+                url: URL + '/bugreport',
+                method: 'DELETE',
+                params: data
+            }).then(function () {
+                    $scope[object].splice(index, 1);
+                    globalNotification('success', 'Der Bugreport wurde gelöscht.')
+                },
+                function () {
+                    globalNotification('error')
+                });
         }
-        $http({
-            url: URL + '/help',
-            method: 'DELETE',
-            params: data
-        }).then(function () {
-                $scope[object].splice(index, 1);
-                globalNotification('success', 'Die Frage wurde gelöscht.')
-            },
-            function () {
-                globalNotification('error')
-            });
+        else {
+            var data = {
+                id: id
+            }
+            $http({
+                url: URL + '/help',
+                method: 'DELETE',
+                params: data
+            }).then(function () {
+                    $scope[object].splice(index, 1);
+                    globalNotification('success', 'Die Frage wurde gelöscht.')
+                },
+                function () {
+                    globalNotification('error')
+                });
+        }
     }
 });

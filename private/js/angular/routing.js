@@ -153,6 +153,17 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
+        .when('/support/bug/:id', {
+            templateUrl: 'templates/window.html',
+            controller: 'bugReportDetailsController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType == 1)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
         .when('/help', {
             templateUrl: 'templates/window.html',
             controller: 'helpController',
@@ -181,6 +192,17 @@ myApp.config(function ($routeProvider) {
         .when('/help-feedback-add', {
             templateUrl: 'templates/window.html',
             controller: 'helpFeedbackAddController',
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 3 && userType >= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/bugreport', {
+            templateUrl: 'templates/window.html',
+            controller: 'bugReportController',
             resolve: {
                 'authenticate': function ($location) {
                     if (!(userType <= 3 && userType >= 2)) {

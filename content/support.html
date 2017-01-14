@@ -1,49 +1,101 @@
-<label ng-if="unreplied.length">Neue Fragen</label><br/>
-<br/>
-<table class="users" ng-if="unreplied.length">
-    <tr>
-        <th class="sortable" ng-click="sort('unreplied', 'question')">Frage</th>
-        <th class="sortable" ng-click="sort('unreplied', 'lastEdited')">Letzte Bearbeitung</th>
-        <th></th>
-    </tr>
-    <tr ng-repeat="question in unreplied">
-        <td>
-            {{ question.question }}
-        </td>
-        <td>
-            {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
-        </td>
-        <td class="actions">
-            <a href="#support-edit/{{question.id}}" class="tooltipTop" title="Bearbeiten"><i
-                    class="material-icons">edit</i></a>
-            <div ng-click="delete(question.id, 'unreplied', $index)" class="tooltipTop" title="Löschen"><i class="material-icons">close</i>
-            </div>
-        </td>
-    </tr>
-</table>
-
-<br/>
-<br/>
-<label>Beantwortete Fragen</label><br/>
-<br/>
-<table class="users" ng-if="replied.length">
-    <tr>
-        <th class="sortable" ng-click="sort('replied', 'question')">Frage</th>
-        <th class="sortable" ng-click="sort('replied', 'category')">Kategorie</th>
-        <th></th>
-    </tr>
-    <tr ng-repeat="question in replied">
-        <td>
-            {{ question.question }}
-        </td>
-        <td>
-            {{ question.category }}
-        </td>
-        <td class="actions">
-            <a href="#support-edit/{{question.id}}" class="tooltipTop" title="Bearbeiten"><i
-                    class="material-icons">edit</i></a>
-            <div ng-click="delete(question.id, 'replied', $index)" class="tooltipTop" title="Löschen"><i class="material-icons">close</i>
-            </div>
-        </td>
-    </tr>
-</table>
+<div class="full">
+    <label>Offene Fragen ({{ unreplied.length }})</label><br/>
+    <ng-if ng-if="unreplied.length">
+        <br/>
+        <table class="users">
+            <tr>
+                <th class="sortable" ng-click="sort('unreplied', 'question')">Frage</th>
+                <th class="sortable" ng-click="sort('unreplied', 'lastEdited')">Letzte Bearbeitung</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="question in unreplied">
+                <td>
+                    <ng-if ng-if="question.question.length > 34">
+                        {{ question.question | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="question.question.length <= 34">
+                        {{ question.question }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <a href="#support-edit/{{question.id}}" class="tooltipTop" title="Beantworten"><i
+                            class="material-icons">reply</i></a>
+                    <div ng-click="delete(question.id, 'unreplied', $index)" class="tooltipTop" title="Löschen"><i
+                            class="material-icons">close</i>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </ng-if>
+    <br/>
+    <label>Beantwortete Fragen ({{ replied.length }})</label><br/>
+    <ng-if ng-show="replied.length">
+        <br/>
+        <label>Sortieren nach:</label>
+        <select ng-model="category.selected" ng-options="option.name for option in category.options track by option.id"></select>
+        <br/>
+        <br/>
+        <table class="users" ng-if="replied.length">
+            <tr>
+                <th class="sortable" ng-click="sort('replied', 'question')">Frage</th>
+                <th class="sortable" ng-click="sort('replied', 'lastEdited')">Letzte Bearbeitung</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="question in replied" ng-show="question.category == category.selected.id">
+                <td>
+                    <ng-if ng-if="question.question.length > 34">
+                        {{ question.question | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="question.question.length <= 34">
+                        {{ question.question }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <a href="#support-edit/{{question.id}}" class="tooltipTop" title="Bearbeiten"><i
+                            class="material-icons">edit</i></a>
+                    <div ng-click="delete(question.id, 'replied', $index)" class="tooltipTop" title="Löschen"><i
+                            class="material-icons">close</i>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </ng-if>
+    <br/>
+    <label>Gemeldete Bugs ({{ bugs.length }})</label><br/>
+    <ng-if ng-if="bugs.length">
+        <br/>
+        <table class="users">
+            <tr>
+                <th>Fehlerbeschreibung</th>
+                <th>Erstellt am</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="bug in bugs">
+                <td>
+                    <ng-if ng-if="bug.description.length > 34">
+                        {{ bug.description | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="bug.description.length <= 34">
+                        {{ bug.description }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ bug.created | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <a href="#support/bug/{{bug.id}}" class="tooltipTop" title="Ansehen"><i class="material-icons">visibility</i></a>
+                    <div ng-click="delete(bug.id, 'bugs', $index)" class="tooltipTop" title="Löschen"><i
+                            class="material-icons">close</i></div>
+                </td>
+            </tr>
+        </table>
+    </ng-if>
+</div>

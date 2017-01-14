@@ -11,11 +11,11 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
                 case 0:
                     if ($scope.input.firstname && $scope.input.lastname) {
                         var data = {
+                            id: id,
                             username: ($scope.input.firstname.substr(0, 2) + $scope.input.lastname).toLowerCase(),
                             firstname: $scope.input.firstname,
                             lastname: $scope.input.lastname,
-                            email: $scope.input.email,
-                            id: id
+                            email: $scope.input.email
                         }
                         if($scope.resetPassword){
                             data.password = $scope.input.password;

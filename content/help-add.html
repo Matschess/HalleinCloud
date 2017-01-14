@@ -1,9 +1,11 @@
 <div class="full">
-    <label>Sie werden per Email benachrichtigt, wenn Ihre Frage beantwortet wurde.</label>
-    <br/>
+    <label>Die Beantwortung Ihrer Frage kann mehrere Tage dauern.</label><br/>
     <br/>
     <label>Frage:</label><br/>
-    <div>
-        <textarea class="short" placeholder="z.B. Wie ändere ich mein Passwort?" ng-model="input.question"></textarea>
-    </div>
+    <textarea class="short" placeholder="z.B. Wie ändere ich mein Passwort?" ng-model="input.question"></textarea><br/>
+    <label>
+        <input type="checkbox" ng-model="input.emailReply">
+        Email-Benachrichtigung bei Antwort
+        <i class="material-icons tooltipRight" title="Falls eine Email-Adresse hinterlegt ist, können Sie sich benachrichtigen lassen.">help_outline</i>
+    </label>
 </div>

@@ -5,7 +5,7 @@ myApp.controller('profileSettingsController', function ($scope, $rootScope, $htt
         });
 
     $scope.save = function () {
-        if ($scope.input.firstname && $scope.input.lastname) {
+        if ($scope.input.firstname && $scope.input.lastname && $scope.input.email) {
             var data = {
                 id: user,
                 firstname: $scope.input.firstname,

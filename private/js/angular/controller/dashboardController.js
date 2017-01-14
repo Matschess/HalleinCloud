@@ -60,14 +60,14 @@ myApp.controller('dashboardController', function ($scope, $http) {
             route: 'app-control'
         })
         /*
-        $scope.notifications.push({
-            type: 'alert',
-            number: 1,
-            title: 'App offline',
-            text: 'Die App ist heruntergefahren. Klicken für Fehlerbehebung.',
-            route: 'app-control'
-        })
-        */
+         $scope.notifications.push({
+         type: 'alert',
+         number: 1,
+         title: 'App offline',
+         text: 'Die App ist heruntergefahren. Klicken für Fehlerbehebung.',
+         route: 'app-control'
+         })
+         */
     }
     if (userType == 2 || userType == 3) {
         $scope.notifications.push({
@@ -84,5 +84,55 @@ myApp.controller('dashboardController', function ($scope, $http) {
             text: 'Eine aktualisierte Version des Hallein App Dashboards wurde veröffentlicht. Sehen Sie sich hier die Änderungen an.',
             route: 'help-feedback-add'
         })
+    }
+    if (userType == 1) {
+        $http.get(URL + '/help?get=id&answer=false')
+            .then(function (response) {
+                var help = response.data;
+                if (help.length) {
+                    if (help.length == 1) {
+                        $scope.notifications.push({
+                            type: 'alert',
+                            number: help.length,
+                            title: 'Neue Supportanfrage',
+                            text: 'Sie haben eine neue Supportanfrage.',
+                            route: 'support'
+                        })
+                    }
+                   else{
+                        $scope.notifications.push({
+                            type: 'alert',
+                            number: help.length,
+                            title: 'Neue Supportanfragen',
+                            text: 'Sie haben neue Supportanfragen.',
+                            route: 'support'
+                        })
+                    }
+                }
+            });
+        $http.get(URL + '/bugreport?get=id')
+            .then(function (response) {
+                var bugs = response.data;
+                if (bugs.length) {
+                    if (bugs.length == 1) {
+                        $scope.notifications.push({
+                            type: 'alert',
+                            number: bugs.length,
+                            title: 'Bug gemeldet',
+                            text: 'Es wurde ein Bug gemeldet.',
+                            route: 'support'
+                        })
+                    }
+                    else{
+                        $scope.notifications.push({
+                            type: 'alert',
+                            number: bugs.length,
+                            title: 'Bugs gemeldet',
+                            text: 'Es wurden Bugs gemeldet.',
+                            route: 'support'
+                        })
+                    }
+                }
+            });
     }
 });

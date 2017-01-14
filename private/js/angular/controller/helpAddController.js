@@ -10,9 +10,17 @@ myApp.controller('helpAddController', function ($scope, $location, $http) {
             switch (index) {
                 case 0:
                     if ($scope.input.question) {
-                        var data = {
-                            user: restaurant,
-                            question: $scope.input.question
+                        console.log($scope.input.emailReply);
+                        if ($scope.input.emailReply) {
+                            var data = {
+                                user: user,
+                                question: $scope.input.question
+                            }
+                        }
+                        else {
+                            var data = {
+                                question: $scope.input.question
+                            }
                         }
                         $http({
                             url: URL + '/help',
@@ -33,4 +41,8 @@ myApp.controller('helpAddController', function ($scope, $location, $http) {
             }
         }
     }
+
+    $scope.input = {
+        emailReply: true
+    };
 });

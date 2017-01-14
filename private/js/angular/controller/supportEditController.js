@@ -1,27 +1,28 @@
-myApp.controller('supportAddController', function ($scope, $location, $http) {
+myApp.controller('supportEditController', function ($scope, $routeParams, $location, $http) {
     $scope.config = {
-        title: 'Frage erstellen',
+        title: 'Frage bearbeiten',
         actions: [
-            {title: 'Erstellen', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/support'}
+            {title: 'Speichern', icon: 'done'},
+            {title: 'Verwerfen', icon: 'close', route: '/support'}
         ],
-        content: 'content/support-add.html',
+        content: 'content/support-edit.html',
         return: function (index, e) {
             switch (index) {
                 case 0:
                     if ($scope.input.category.selected && $scope.input.question && $scope.input.answer) {
                         var data = {
+                            id: id,
                             category: $scope.input.category.selected.id,
                             question: $scope.input.question,
                             answer: $scope.input.answer
                         }
                         $http({
                             url: URL + '/help',
-                            method: 'POST',
+                            method: 'PUT',
                             params: data
                         }).then(function () {
                                 $location.path('/support');
-                                globalNotification('success', 'Die Frage wurde erstellt.')
+                                globalNotification('success', 'Die Frage wurde gespeichert.')
                             },
                             function () {
                                 globalNotification('error')
@@ -35,10 +36,12 @@ myApp.controller('supportAddController', function ($scope, $location, $http) {
         }
     }
 
-    $scope.input = {};
+    var id = $routeParams.id;
+
+    $scope.input = {name: 'sdd'};
 
     $scope.input.category = {
-        selected: {id: 1, name: 'Allgemein'},
+        selected: {},
         options: [
             {id: 1, name: 'Allgemein'},
             {id: 2, name: 'Login'},
@@ -48,4 +51,15 @@ myApp.controller('supportAddController', function ($scope, $location, $http) {
             {id: 6, name: 'Benutzer'}
         ]
     }
+
+    $http.get(URL + '/help?get=question,answer,category&id=' + id)
+        .then(function (response) {
+            var data = response.data[0];
+
+            $scope.input.question = data.question;
+            $scope.input.answer = data.answer;
+            if(data.category) {
+                $scope.input.category.selected.id = data.category;
+            }
+        });
 });
