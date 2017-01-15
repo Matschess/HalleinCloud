@@ -53,16 +53,18 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                         }
                     });
 
-                $http.get(URL + '/menus?get=date,appetizer,mainCourse,dessert&days=7&restaurant=' + restaurant)
+                $http.get(URL + '/menus?get=date&days=7&restaurant=' + restaurant)
                     .then(function (response) {
                         var response = response.data;
                         for (var i = 0; i < response.length; i++) {
                             for (var j = 0; j < data.length; j++) {
-                                console.log(new Date(response[i].date));
-                                console.log(data[j].date);
                                 if (new Date(response[i].date).getTime() == data[j].date.getTime()) {
-                                    data[j].menu = {meals: {}};
-                                    data[j].menu.meals.mainCourse = response[i].mainCourse;
+                                    data[j].id = response[i].id;
+                                    data[j].menu = {meals: {
+                                        appetizer: response[i].appetizer,
+                                        mainCourse: response[i].mainCourse,
+                                        dessert: response[i].dessert
+                                    }};
                                 }
                             }
                         }
@@ -155,6 +157,28 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
             tooltipstln();
         }
         $scope.removeMenu = function (type, index) {
+            var data = {
+                id: $scope.days[index].id,
+                type: type
+            }
+            console.log(data);
+            $http({
+                url: URL + '/menus',
+                method: 'DELETE',
+                params: data
+            }).then(function () {
+                    globalNotification('success', 'Mahlzeit entfernt.');
+                    delete $scope.days[index].menu.meals[type];
+                    if ($.isEmptyObject($scope.days[index].menu.meals)) {
+                        delete $scope.days[index].menu;
+                    }
+                    console.log($scope.days);
+                },
+                function () {
+                    globalNotification('error')
+                });
+
+            /*
             switch (type) {
                 case 'appetizer':
                     delete $scope.days[index].menu.meals.appetizer;
@@ -166,10 +190,9 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                     delete $scope.days[index].menu.meals.dessert;
                     break;
             }
-            if ($.isEmptyObject($scope.days[index].menu.meals)) {
-                delete $scope.days[index].menu;
-            }
+
             console.log($scope.days);
+            */
         }
 
         $scope.removeMeal = function (id, index) {
