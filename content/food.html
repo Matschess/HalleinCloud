@@ -35,9 +35,9 @@
         </label>
         <div class="menuWrapper">
             <div ng-repeat="menu in menus | filter: { type:1 } | filter:appetizer.searchbox">
-                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}">
                     {{ menu.description }}
-                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                 </div>
             </div>
         </div>
@@ -50,9 +50,9 @@
         </label>
         <div class="menuWrapper">
             <div ng-repeat="menu in menus | filter: { type:2 } | filter:mainCourse.searchbox">
-                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}">
                     {{ menu.description }}
-                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                 </div>
             </div>
         </div>
@@ -65,9 +65,9 @@
         </label>
         <div class="menuWrapper">
             <div ng-repeat="menu in menus | filter: { type:3 } | filter:dessert.searchbox">
-                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}" ng-click="pushMenu($index)">
+                <div class="menu" ng-drag="true" ng-drag-data="menus.indexOf(menu)" ng-class="{'veggie':menu.veggie}">
                     {{ menu.description }}
-                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, $index)" title="Löschen">close</i>
+                    <i class='material-icons remove tooltipBottom' ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                 </div>
             </div>
         </div>
