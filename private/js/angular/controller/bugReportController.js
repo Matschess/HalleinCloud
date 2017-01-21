@@ -5,7 +5,7 @@ myApp.controller('bugReportController', function ($scope, $location, $http) {
             {title: 'Melden', icon: 'done'},
             {title: 'Verwefen', icon: 'close', route: '/help'}
         ],
-        content: 'content/bugreport-add.html',
+        content: 'content/help-bugreport.html',
         return: function (index, e) {
             switch (index) {
                 case 0:

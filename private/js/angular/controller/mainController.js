@@ -1,4 +1,4 @@
-myApp.controller('mainController', function ($scope, $rootScope, $route, $routeParams, $http, loginHandler) {
+myApp.controller('mainController', function ($scope, $rootScope, $route, $location, $routeParams, $http, loginHandler) {
     // System-Infos
     $scope.system = {
         version: '0.0.0',
@@ -49,6 +49,12 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $routeP
         }
         $rootScope.loading = false;
     });
+
+    // Active links in navbar
+    $scope.isActive = function (location) {
+        var active = (location === '/' + $location.path().split('/')[1]);
+        return active;
+    };
 
     // Popup
     var settingsLinks = [

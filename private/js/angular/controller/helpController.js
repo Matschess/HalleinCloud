@@ -2,9 +2,9 @@ myApp.controller('helpController', function ($scope, $http) {
     $scope.config = {
         title: 'Hilfe',
         actions: [
-            {title: 'Fehler melden', icon: 'build', route: '/bugreport'},
-            {title: 'Feedback geben', icon: 'thumbs_up_down', route: '/help-feedback-add'},
-            {title: 'Frage stellen', icon: 'add', route: '/help-add'}
+            {title: 'Fehler melden', icon: 'build', route: '/help/bugreport'},
+            {title: 'Feedback geben', icon: 'thumbs_up_down', route: '/help/feedback'},
+            {title: 'Frage stellen', icon: 'add', route: '/help/add'}
         ],
         content: 'content/help.html'
     }

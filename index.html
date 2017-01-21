@@ -36,7 +36,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="public/css/style.css" media="screen">
 </head>
-<body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)">
+<body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)" ng-cloak>
 <div>
     <!-- Notification -->
     <div class="globalNotification"></div>
@@ -89,7 +89,7 @@
     <div class="navbar">
         <ul>
             <a href="#{{ route.path }}" ng-repeat="route in routes">
-                <li><i class="material-icons">{{route.icon}}</i>{{ route.name }}</li>
+                <li ng-class="{active: isActive(route.path)}"><i class="material-icons">{{ route.icon }}</i>{{ route.name }}</li>
             </a>
         </ul>
         <div class="copyright">

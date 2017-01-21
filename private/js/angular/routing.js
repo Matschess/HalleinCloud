@@ -14,7 +14,7 @@ myApp.config(function ($routeProvider) {
             icon: 'dashboard',
             name: 'Dashboard'
         })
-        .when('/food', {
+        .when('/meal', {
             templateUrl: 'templates/window.html',
             controller: 'foodController',
             icon: 'local_dining',
@@ -28,7 +28,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/food-add', {
+        .when('/meal/add', {
             templateUrl: 'templates/window.html',
             controller: 'foodAddController',
             resolve: {
@@ -81,7 +81,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/users', {
+        .when('/user', {
             templateUrl: 'templates/window.html',
             controller: 'usersController',
             icon: 'person_outline',
@@ -95,7 +95,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/user-add', {
+        .when('/user/add', {
             templateUrl: 'templates/window.html',
             controller: 'userAddController',
             resolve: {
@@ -106,7 +106,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/user-edit/:id', {
+        .when('/user/edit/:id', {
             templateUrl: 'templates/window.html',
             controller: 'userEditController',
             resolve: {
@@ -131,7 +131,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/support-add', {
+        .when('/support/add', {
             templateUrl: 'templates/window.html',
             controller: 'supportAddController',
             resolve: {
@@ -142,7 +142,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/support-edit/:id', {
+        .when('/support/edit/:id', {
             templateUrl: 'templates/window.html',
             controller: 'supportEditController',
             resolve: {
@@ -178,7 +178,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/help-add', {
+        .when('/help/add', {
             templateUrl: 'templates/window.html',
             controller: 'helpAddController',
             resolve: {
@@ -189,7 +189,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/help-feedback-add', {
+        .when('/help/feedback', {
             templateUrl: 'templates/window.html',
             controller: 'helpFeedbackAddController',
             resolve: {
@@ -200,7 +200,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/bugreport', {
+        .when('/help/bugreport', {
             templateUrl: 'templates/window.html',
             controller: 'bugReportController',
             resolve: {

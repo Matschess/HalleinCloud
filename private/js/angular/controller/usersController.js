@@ -2,9 +2,9 @@ myApp.controller('usersController', function ($scope, $http) {
     $scope.config = {
         title: 'Benutzer',
         actions: [
-            {title: 'Hinzufügen', icon: 'add', route: '/user-add'}
+            {title: 'Hinzufügen', icon: 'add', route: '/user/add'}
         ],
-        content: 'content/users.html'
+        content: 'content/user.html'
     }
 
     $http.get(URL + '/users?get=id,username,type,lastActive')

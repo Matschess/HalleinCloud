@@ -5,7 +5,7 @@ myApp.controller('helpFeedbackAddController', function ($scope, $location, $http
             {title: 'Abschicken', icon: 'done'},
             {title: 'Verwefen', icon: 'close', route: '/help'}
         ],
-        content: 'content/help-feedback-add.html',
+        content: 'content/help-feedback.html',
         return: function (index, e) {
             switch (index) {
                 case 0:

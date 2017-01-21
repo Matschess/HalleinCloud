@@ -3,9 +3,9 @@ myApp.controller('foodAddController', function ($scope, $location, $http) {
         title: 'Mahlzeit hinzufügen',
         actions: [
             {title: 'Speichern', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/food'}
+            {title: 'Verwefen', icon: 'close', route: '/meal'}
         ],
-        content: 'content/food-add.html',
+        content: 'content/meal-add.html',
         return: function (index, e) {
             switch (index) {
                 case 0:

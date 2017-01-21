@@ -3,7 +3,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
         title: 'Benutzer hinzufügen',
         actions: [
             {title: 'Speichern', icon: 'done'},
-            {title: 'Verwerfen', icon: 'close', route: '/users'}
+            {title: 'Verwerfen', icon: 'close', route: '/user'}
         ],
         content: 'content/user-add.html',
         return: function (index, e) {

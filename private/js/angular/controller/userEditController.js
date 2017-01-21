@@ -3,7 +3,7 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
         title: 'Benutzer bearbeiten',
         actions: [
             {title: 'Speichern', icon: 'done'},
-            {title: 'Verwerfen', icon: 'close', route: '/users'}
+            {title: 'Verwerfen', icon: 'close', route: '/user'}
         ],
         content: 'content/user-edit.html',
         return: function (index, e) {

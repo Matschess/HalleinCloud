@@ -2,9 +2,9 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
         $scope.config = {
             title: 'Mahlzeiten',
             actions: [
-                {title: 'Hinzufügen', icon: 'add', route: '/food-add'}
+                {title: 'Hinzufügen', icon: 'add', route: '/meal/add'}
             ],
-            content: 'content/food.html'
+            content: 'content/meal.html'
         }
 
         var date = new Date();

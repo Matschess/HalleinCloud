@@ -406,7 +406,10 @@ body {
       li {
         list-style: none;
         padding: 40px 30px;
-        &:hover, &.active {
+        &:hover {
+          background-color: #21262f;
+        }
+        &.active {
           background-color: #21262f;
         }
         i {
