@@ -6,7 +6,7 @@ var user;
 var userType;
 var restaurant = 2;
 
-myApp.config(function ($routeProvider, $locationProvider) {
+myApp.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'templates/empty.html',
@@ -214,9 +214,6 @@ myApp.config(function ($routeProvider, $locationProvider) {
         .otherwise({
             redirectTo: "/"
         });
-
-    // use the HTML5 History API
-    $locationProvider.html5Mode(true);
 });
 
 myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $cookies) {
