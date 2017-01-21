@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="public/css/style.css" media="screen">
-    <base href="/">
+    <base href="/halleinApp/">
 </head>
 <body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)" ng-cloak>
 <div>
@@ -89,7 +89,7 @@
     <!-- Navbar -->
     <div class="navbar">
         <ul>
-            <a href="#{{ route.path }}" ng-repeat="route in routes">
+            <a href="{{ route.path }}" ng-repeat="route in routes">
                 <li><i class="material-icons">{{route.icon}}</i>{{ route.name }}</li>
             </a>
         </ul>
