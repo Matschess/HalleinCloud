@@ -21,7 +21,7 @@ myApp.controller('foodAddController', function ($scope, $location, $http) {
                             method: 'POST',
                             params: data
                         }).then(function () {
-                                $location.path('/food');
+                                $location.path('/meal');
                                 globalNotification('success', 'Die Mahlzeit wurde hinzugefügt.')
                             },
                             function () {

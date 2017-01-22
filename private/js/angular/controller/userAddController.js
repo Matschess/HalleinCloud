@@ -24,7 +24,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
                             method: 'POST',
                             params: data
                         }).then(function () {
-                                $location.path('/users');
+                                $location.path('/user');
                                 globalNotification('success', 'Der Benutzer wurde erstellt.')
                             },
                             function () {

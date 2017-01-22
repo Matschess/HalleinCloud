@@ -27,7 +27,7 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
                             method: 'PUT',
                             params: data
                         }).then(function () {
-                                $location.path('/users');
+                                $location.path('/user');
                                 globalNotification('success', 'Änderungen gespeichert.')
                             },
                             function () {

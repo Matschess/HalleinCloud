@@ -60,16 +60,16 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                             for (var j = 0; j < data.length; j++) {
                                 if (new Date(response[i].date).getTime() == data[j].date.getTime()) {
                                     data[j].id = response[i].id;
-                                    data[j].menu = {meals: {
-                                        appetizer: response[i].appetizer,
-                                        mainCourse: response[i].mainCourse,
-                                        dessert: response[i].dessert
-                                    }};
+                                    if ((response[i].appetizer || response[i].mainCourse || response[i].dessert) && !data[j].restDay){
+                                        data[j].menu = {meals: {}};
+                                        if (response[i].appetizer) data[j].menu.meals.appetizer = response[i].appetizer;
+                                        if (response[i].mainCourse) data[j].menu.meals.mainCourse = response[i].mainCourse;
+                                        if (response[i].dessert) data[j].menu.meals.dessert = response[i].dessert;
+                                    }
                                 }
                             }
                         }
                     });
-
                 $scope.days = data;
             });
 
@@ -109,9 +109,10 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                     method: 'POST',
                     params: data
                 }).then(function (response) {
-                    var id = response.data.id;
+                        var id = response.data.id;
                         globalNotification('success', 'Der Ruhetag wurde eingetragen.');
-                        $scope.days[index].restDay = id;
+                        $scope.days[index].restDay = {id: id};
+                        console.log( $scope.days[index]);
                     },
                     function () {
                         globalNotification('alert')
@@ -136,23 +137,42 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                     });
             }
         }
-        $scope.assignMenu = function (index, data) {
+        $scope.assignMenu = function (index, menu) {
             if (!$scope.days[index].menu) {
                 $scope.days[index].menu = {};
                 $scope.days[index].menu.meals = {};
             }
-            console.log($scope.menus[data]);
-            switch ($scope.menus[data].type) {
-                case 1:
-                    $scope.days[index].menu.meals.appetizer = $scope.menus[data]; // Because a 0 would be a bug
-                    return;
-                case 2:
-                    $scope.days[index].menu.meals.mainCourse = $scope.menus[data];
-                    return;
-                case 3:
-                    $scope.days[index].menu.meals.dessert = $scope.menus[data];
-                    return;
+
+            var data = {
+                restaurant: restaurant,
+                date: dateToString($scope.days[index].date)
             }
+            console.log($scope.menus[menu].id);
+            switch ($scope.menus[menu].type) {
+                case 1:
+                    data.appetizer = $scope.menus[menu].id;
+                    $scope.days[index].menu.meals.appetizer = $scope.menus[menu]; // Because a 0 would be a bug
+                    break;
+                case 2:
+                    data.mainCourse = $scope.menus[menu].id;
+                    $scope.days[index].menu.meals.mainCourse = $scope.menus[menu];
+                    break;
+                case 3:
+                    data.dessert = $scope.menus[menu].id;
+                    $scope.days[index].menu.meals.dessert = $scope.menus[menu];
+            }
+
+            $http({
+                url: URL + '/menus',
+                method: 'POST',
+                params: data
+            }).then(function (response) {
+                    $scope.days[index].id = response.data.id;
+                },
+                function () {
+                    globalNotification('error')
+                });
+
             console.log($scope.days);
             tooltipstln();
         }
@@ -161,13 +181,12 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                 id: $scope.days[index].id,
                 type: type
             }
-            console.log(data);
+            console.log($scope.days[index]);
             $http({
                 url: URL + '/menus',
                 method: 'DELETE',
                 params: data
             }).then(function () {
-                    globalNotification('success', 'Mahlzeit entfernt.');
                     delete $scope.days[index].menu.meals[type];
                     if ($.isEmptyObject($scope.days[index].menu.meals)) {
                         delete $scope.days[index].menu;
@@ -179,20 +198,20 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                 });
 
             /*
-            switch (type) {
-                case 'appetizer':
-                    delete $scope.days[index].menu.meals.appetizer;
-                    break;
-                case 'mainCourse':
-                    delete $scope.days[index].menu.meals.mainCourse;
-                    break;
-                case 'dessert':
-                    delete $scope.days[index].menu.meals.dessert;
-                    break;
-            }
+             switch (type) {
+             case 'appetizer':
+             delete $scope.days[index].menu.meals.appetizer;
+             break;
+             case 'mainCourse':
+             delete $scope.days[index].menu.meals.mainCourse;
+             break;
+             case 'dessert':
+             delete $scope.days[index].menu.meals.dessert;
+             break;
+             }
 
-            console.log($scope.days);
-            */
+             console.log($scope.days);
+             */
         }
 
         $scope.removeMeal = function (id, index) {
