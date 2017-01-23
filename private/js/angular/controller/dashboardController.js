@@ -44,8 +44,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
         var todayFormatted = dateToString(today);
         $http.get(URL + '/restDays?get=id&date=' + todayFormatted + '&restaurant=' + restaurant)
             .then(function (response) {
-                console.log(response);
-                if(response.data[0].id){
+                if (response.data[0].id) {
                     $scope.notifications.push({
                         type: 'info',
                         title: 'Heute geschlossen',
@@ -60,14 +59,62 @@ myApp.controller('dashboardController', function ($scope, $http) {
         var tomorrowFormatted = dateToString(tomorrow);
         $http.get(URL + '/restDays?get=id&date=' + tomorrowFormatted + '&restaurant=' + restaurant)
             .then(function (response) {
-                console.log(response);
-                if(response.data[0].id){
+                if (response.data[0].id) {
                     $scope.notifications.push({
                         type: 'info',
                         title: 'Morgen geschlossen',
                         text: 'Für morgen ist ein Ruhetag eingetragen.',
                         route: 'page'
                     })
+                }
+            });
+
+        // Meals
+        // Today
+        var todayWeekday = today.getDay();
+        $http.get(URL + '/openingTimes?get=id&weekday=' + todayWeekday + '&restaurant=' + restaurant)
+            .then(function (response) {
+                if (response.data) {
+                    $http.get(URL + '/restDays?get=id&date=' + todayFormatted + '&restaurant=' + restaurant)
+                        .then(function (response) {
+                            if (!response.data.length) {
+                                $http.get(URL + '/menus?get=id&date=' + todayFormatted + '&restaurant=' + restaurant)
+                                    .then(function (response) {
+                                        if (!response.data.length) {
+                                            $scope.notifications.push({
+                                                type: 'warning',
+                                                title: 'Kein Menü für heute',
+                                                text: 'Für heute ist kein Menü eingetragen.',
+                                                route: 'meal'
+                                            })
+                                        }
+                                    });
+                            }
+                        });
+                }
+            });
+
+        // Tomorrow
+        var tomorrowWeekday = tomorrow.getDay();
+        $http.get(URL + '/openingTimes?get=id&weekday=' + tomorrowWeekday + '&restaurant=' + restaurant)
+            .then(function (response) {
+                if (response.data) {
+                    $http.get(URL + '/restDays?get=id&date=' + tomorrowFormatted + '&restaurant=' + restaurant)
+                        .then(function (response) {
+                            if (!response.data.length) {
+                                $http.get(URL + '/menus?get=id&date=' + tomorrowFormatted + '&restaurant=' + restaurant)
+                                    .then(function (response) {
+                                        if (!response.data.length) {
+                                            $scope.notifications.push({
+                                                type: 'warning',
+                                                title: 'Kein Menü für morgen',
+                                                text: 'Für morgen ist kein Menü eingetragen.',
+                                                route: 'meal'
+                                            })
+                                        }
+                                    });
+                            }
+                        });
                 }
             });
 
@@ -103,21 +150,21 @@ myApp.controller('dashboardController', function ($scope, $http) {
     }
     if (userType == 2 || userType == 3) {
         /*
-        $scope.notifications.push({
-            type: 'info',
-            title: 'Wir wollen Feedback',
-            text: "Gefällt Ihnen das Dashboard oder gibt's Probleme? Geben Sie uns gerne Ihr Feedback.",
-            route: 'help-feedback-add'
-        })
+         $scope.notifications.push({
+         type: 'info',
+         title: 'Wir wollen Feedback',
+         text: "Gefällt Ihnen das Dashboard oder gibt's Probleme? Geben Sie uns gerne Ihr Feedback.",
+         route: 'help-feedback-add'
+         })
 
-        $scope.notifications.push({
-            type: 'version',
-            number: '0.0.0',
-            title: 'Neue Version',
-            text: 'Eine aktualisierte Version des Hallein App Dashboards wurde veröffentlicht. Sehen Sie sich hier die Änderungen an.',
-            route: 'help-feedback-add'
-        })
-        */
+         $scope.notifications.push({
+         type: 'version',
+         number: '0.0.0',
+         title: 'Neue Version',
+         text: 'Eine aktualisierte Version des Hallein App Dashboards wurde veröffentlicht. Sehen Sie sich hier die Änderungen an.',
+         route: 'help-feedback-add'
+         })
+         */
     }
     if (userType == 1) {
         $http.get(URL + '/help?get=id&answer=false')
@@ -133,7 +180,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                             route: 'support'
                         })
                     }
-                   else{
+                    else {
                         $scope.notifications.push({
                             type: 'alert',
                             number: help.length,
@@ -157,7 +204,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                             route: 'support'
                         })
                     }
-                    else{
+                    else {
                         $scope.notifications.push({
                             type: 'alert',
                             number: bugs.length,
