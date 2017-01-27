@@ -22,23 +22,27 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
 
         $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
             .then(function (response) {
-                var response = response.data;
+                var openingTimes = response.data;
+
+                // The next days
+                var day = new Date();
+                day.setHours(0, 0, 0, 0);
+                // Because day get added one
+                day.setDate(day.getDate() - 1);
+
                 var data = [];
-
-                for (var i = 0; i < response.length; i++) {
-                    data.push({
-                        name: weekdays[response[i].weekday],
-                        weekday: response[i].weekday
-                    });
-                }
-
-                for (var i = 0; i < data.length; i++) {
-                    var day = {};
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    data[i].date = new Date();
-                    data[i].date.setHours(0, 0, 0, 0);
-                    data[i].date.setDate(today.getDate() + data[i].weekday)
+                for (var i = 0; i < 7; i++) {
+                    day.setDate(day.getDate() + 1);
+                    for (var j = 0; j < openingTimes.length; j++) {
+                        if (day.getDay() == openingTimes[j].weekday) {
+                            data.push({
+                                weekday: openingTimes[j].weekday,
+                                name: weekdays[openingTimes[j].weekday],
+                                date: new Date(day)
+                            });
+                            break;
+                        }
+                    }
                 }
 
                 $http.get(URL + '/restDays?get=id,date,description&restaurant=' + restaurant)
@@ -60,7 +64,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                             for (var j = 0; j < data.length; j++) {
                                 if (new Date(response[i].date).getTime() == data[j].date.getTime()) {
                                     data[j].id = response[i].id;
-                                    if ((response[i].appetizer || response[i].mainCourse || response[i].dessert) && !data[j].restDay){
+                                    if ((response[i].appetizer || response[i].mainCourse || response[i].dessert) && !data[j].restDay) {
                                         data[j].menu = {meals: {}};
                                         if (response[i].appetizer) data[j].menu.meals.appetizer = response[i].appetizer;
                                         if (response[i].mainCourse) data[j].menu.meals.mainCourse = response[i].mainCourse;
@@ -112,7 +116,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                         var id = response.data.id;
                         globalNotification('success', 'Der Ruhetag wurde eingetragen.');
                         $scope.days[index].restDay = {id: id};
-                        console.log( $scope.days[index]);
+                        console.log($scope.days[index]);
                     },
                     function () {
                         globalNotification('alert')
