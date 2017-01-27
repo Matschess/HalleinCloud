@@ -70,6 +70,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         switch (src) {
             case 'basicData':
                 $scope.route = routes.login;
+                $('document').ready(function () {
+                    $('.username').focus();
+                });
                 $('.wrapper').removeClass('background');
                 break;
             case 'address':

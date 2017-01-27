@@ -232,6 +232,12 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
             this.getUsername();
             this.buildNavbar();
         }
+        else {
+            $('document').ready(function () {
+                $('.username').focus();
+            });
+        }
+
     }
     this.login = function (data) {
         $('.wrapper').addClass('animate');
@@ -260,6 +266,9 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         $location.path('/');
         $cookies.remove('userdata');
         $rootScope.loggedIn = false;
+        $('document').ready(function () {
+            $('.username').focus();
+        });
         setTimeout(function () {
             $route.reload();
         }, 1000);
