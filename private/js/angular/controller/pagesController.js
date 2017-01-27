@@ -11,7 +11,7 @@ myApp.controller('pagesController', function ($scope, $http) {
                 case 0:
                     if ($scope.input.restaurantname) {
                         var data = {
-                            id: user,
+                            user: user,
                             restaurantname: $scope.input.restaurantname,
                             description: $scope.input.description,
                             studentMeals: $scope.input.studentMeals,

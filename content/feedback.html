@@ -1,9 +1,9 @@
 <!-- Switch -->
 <div class="switchWrapper">
-    <span ng-if="input.autofeedback">Autom. Akzeptieren ein</span>
-    <span ng-if="!input.autofeedback">Autom. Akzeptieren aus</span>
+    <span ng-if="input.autoAccept">Autom. Akzeptieren ein</span>
+    <span ng-if="!input.autoAccept">Autom. Akzeptieren aus</span>
     <label class="switch">
-        <input type="checkbox" ng-model="input.autofeedback">
+        <input type="checkbox" ng-model="input.autoAccept" ng-change="changeAutoAccept(input.autoAccept)" ng-true-value="1" ng-false-value="0">
         <div class="slider round"></div>
     </label>
 </div>

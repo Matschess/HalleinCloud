@@ -7,6 +7,12 @@ myApp.controller('feedbackController', function ($scope, $http) {
 
     $scope.input = {};
 
+    $http.get(URL + '/restaurants?get=autoAcceptFeedback&user=' + user)
+        .then(function (response) {
+            var data = response.data[0];
+            $scope.input.autoAccept = data.autoAcceptFeedback;
+        });
+
     $http.get(URL + '/feedback?get=id,rating,subject,text&status=1')
         .then(function (response) {
             $scope.newFeedbacks = response.data;
@@ -48,6 +54,22 @@ myApp.controller('feedbackController', function ($scope, $http) {
             .then(function () {
                 $scope.acceptedFeedbacks.push($scope.declinedFeedbacks[index]);
                 $scope.declinedFeedbacks.splice(index, 1);
+            });
+    }
+
+    $scope.changeAutoAccept = function (value) {
+        var data = {
+            id: restaurant,
+            autoAcceptFeedback: value
+        }
+        $http({
+            url: URL + '/restaurants',
+            method: 'PUT',
+            params: data
+        }).then(function () {
+            },
+            function () {
+                globalNotification('error')
             });
     }
 });
