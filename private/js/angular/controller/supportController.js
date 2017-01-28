@@ -1,4 +1,4 @@
-myApp.controller('supportController', function ($scope, $location, $http) {
+myApp.controller('supportController', function ($scope, $location, $http, ngDialog) {
     $scope.config = {
         title: 'Support',
         actions: [
@@ -73,36 +73,60 @@ myApp.controller('supportController', function ($scope, $location, $http) {
 
     $scope.delete = function (id, object, index) {
         if (object == 'bugs') {
-            var data = {
-                id: id
-            }
-            $http({
-                url: URL + '/bugreport',
-                method: 'DELETE',
-                params: data
+            ngDialog.openConfirm({
+                controller: ['$scope', function ($scope) {
+                    $scope.dialog = {
+                        content: 'Bugreport löschen?',
+                        options: {
+                            confirm: 'Löschen',
+                            abort: 'Abbrechen'
+                        }
+                    }
+                }]
             }).then(function () {
-                    $scope[object].splice(index, 1);
-                    globalNotification('success', 'Der Bugreport wurde gelöscht.')
-                },
-                function () {
-                    globalNotification('error')
-                });
+                var data = {
+                    id: id
+                }
+                $http({
+                    url: URL + '/bugreport',
+                    method: 'DELETE',
+                    params: data
+                }).then(function () {
+                        $scope[object].splice(index, 1);
+                        globalNotification('success', 'Der Bugreport wurde gelöscht.')
+                    },
+                    function () {
+                        globalNotification('error')
+                    });
+            });
         }
         else {
-            var data = {
-                id: id
-            }
-            $http({
-                url: URL + '/help',
-                method: 'DELETE',
-                params: data
+            ngDialog.openConfirm({
+                controller: ['$scope', function ($scope) {
+                    $scope.dialog = {
+                        content: 'Frage löschen?',
+                        options: {
+                            confirm: 'Löschen',
+                            abort: 'Abbrechen'
+                        }
+                    }
+                }]
             }).then(function () {
-                    $scope[object].splice(index, 1);
-                    globalNotification('success', 'Die Frage wurde gelöscht.')
-                },
-                function () {
-                    globalNotification('error')
-                });
+                var data = {
+                    id: id
+                }
+                $http({
+                    url: URL + '/help',
+                    method: 'DELETE',
+                    params: data
+                }).then(function () {
+                        $scope[object].splice(index, 1);
+                        globalNotification('success', 'Die Frage wurde gelöscht.')
+                    },
+                    function () {
+                        globalNotification('error')
+                    });
+            });
         }
     }
 });

@@ -149,6 +149,60 @@ body {
   }
 }
 
+.ngdialog {
+  &.ngdialog-theme-plain {
+    top: 30%;
+    padding: 0;
+    z-index: 997;
+    .ngdialog-overlay {
+      background-color: rgba(0, 0, 0, .5);
+      animation-duration: .3s;
+    }
+    .ngdialog-content {
+      padding-top: 10px;
+      padding-left: 30px;
+      font-family: 'Gravity';
+      color: #444;
+      animation-duration: .4s;
+      .close {
+        font-size: 30px;
+        color: #a8a8a8;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: default;
+        &:hover {
+          color: #333;
+        }
+      }
+      h2 {
+        font-weight: normal;
+        margin-top: 0;
+      }
+      .actions {
+        margin-top: 35px;
+        text-align: right;
+        button {
+          background: none;
+          color: #444;
+          text-transform: uppercase;
+          padding: 10px 15px;
+          &:hover {
+            color: #000;
+          }
+          &.highlighted {
+            background-color: #e74c3c;
+            color: #fff;
+            &:hover {
+              background-color: #dc4a3a;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .popup {
   background-color: #fff;
   position: absolute;
@@ -168,7 +222,7 @@ body {
   &.large {
     width: 600px;
     height: 300px;
-    margin-left: -300px;
+    margin-left: calc((300px + 30px) * -1);
     margin-top: calc((150px + 30px * 2) * -1); // plus padding top and bottom
   }
   .close {
@@ -1349,6 +1403,53 @@ body {
   &.error {
     background-color: #e74c3c;
     background-image: url('../../assets/icons/close.png');
+  }
+}
+
+.globalDialog {
+  background-color: #3498db;
+  background-size: 30px;
+  background-position: center left 20px;
+  background-repeat: no-repeat;
+  position: fixed;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  color: #fff;
+  font-size: 0;
+  text-align: center;
+  top: 0;
+  opacity: 0;
+  z-index: 999;
+  transform: scale(0);
+  transition: top .4s ease, transform .2s ease, opacity .4s ease;
+  cursor: default;
+  &.visible {
+    opacity: .8;
+    top: 20px;
+    transform: scale(1);
+  }
+  div {
+    background-color: transparent;
+    .text {
+      font-size: 18px;
+      display: inline-block;
+      padding: 0 60px;
+      vertical-align: middle;
+    }
+    .action {
+      text-transform: uppercase;
+      background-color: darken(#3498db, 8%);
+      color: #fff;
+      width: 80px;
+      height: 60px;
+      &:first-of-type {
+        background-color: darken(#3498db, 5%);
+      }
+      &:hover {
+        background-color: darken(#3498db, 10%);
+      }
+    }
   }
 }
 

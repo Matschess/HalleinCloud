@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog']);
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
@@ -215,6 +215,17 @@ myApp.config(function ($routeProvider) {
             redirectTo: "/"
         });
 });
+
+// Dialog
+myApp.config(['ngDialogProvider', function (ngDialogProvider) {
+    ngDialogProvider.setDefaults({
+        template: 'templates/dialog.html',
+        className: 'ngdialog-theme-plain',
+        appendTo: '.wrapper',
+        showClose: false,
+        closeByNavigation: true
+    });
+}]);
 
 myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $cookies) {
     this.checkLogin = function () {

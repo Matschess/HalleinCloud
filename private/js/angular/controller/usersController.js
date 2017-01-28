@@ -1,4 +1,4 @@
-myApp.controller('usersController', function ($scope, $http) {
+myApp.controller('usersController', function ($scope, $http, ngDialog) {
     $scope.config = {
         title: 'Benutzer',
         actions: [
@@ -38,14 +38,26 @@ myApp.controller('usersController', function ($scope, $http) {
     }
 
     $scope.deleteUser = function (id, index) {
-        var params = "?id=" + id;
-        $http.delete(URL + '/users' + params)
-            .then(function () {
-                    $scope.users.splice(index, 1);
-                    globalNotification('success', 'Der Benutzer wurde gelöscht.')
-                },
-                function () {
-                    globalNotification('error')
-                });
+        ngDialog.openConfirm({
+            controller: ['$scope', function ($scope) {
+                $scope.dialog = {
+                    content: 'Wollen Sie den Benutzer löschen?',
+                    options: {
+                        confirm: 'Löschen',
+                        abort: 'Abbrechen'
+                    }
+                }
+            }]
+        }).then(function () {
+            var params = "?id=" + id;
+            $http.delete(URL + '/users' + params)
+                .then(function () {
+                        $scope.users.splice(index, 1);
+                        globalNotification('success', 'Der Benutzer wurde gelöscht.')
+                    },
+                    function () {
+                        globalNotification('error')
+                    });
+        });
     }
 });
