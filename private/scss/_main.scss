@@ -815,6 +815,12 @@ body {
         line-height: 50px;
         padding: 0 20px;
         margin: 0;
+        &.tab{
+          cursor: pointer;
+          &.active{
+            background-color: #393f48;
+        }
+        }
       }
       .actions {
         float: right;

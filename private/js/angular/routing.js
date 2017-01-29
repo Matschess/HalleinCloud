@@ -54,7 +54,7 @@ myApp.config(function ($routeProvider) {
             }
         })
         .when('/page', {
-            templateUrl: 'templates/window.html',
+            templateUrl: 'templates/tabs.html',
             controller: 'pagesController',
             icon: 'home',
             name: 'Restaurantseite',

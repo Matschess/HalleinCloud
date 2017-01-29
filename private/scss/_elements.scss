@@ -24,6 +24,11 @@ label {
   i {
     vertical-align: middle;
   }
+  img{
+    vertical-align: middle;
+    height: 30px;
+    margin-left: 10px;
+  }
 }
 
 label.checkLabel {
@@ -405,8 +410,6 @@ input:checked + .slider:before {
   -webkit-transition: .4s;
   transition: .4s;
 }
-
-
 
 input:checked + .slider:before {
   -webkit-transform: translateX(24px);

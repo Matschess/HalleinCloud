@@ -1,11 +1,15 @@
 myApp.controller('pagesController', function ($scope, $http) {
     $scope.config = {
-        title: 'Restaurantseite',
+        activeTab: 0,
+        tabs: [
+            {title: 'Allgemein', content: 'content/restaurant/general.html'},
+            {title: 'Zahlungsmethoden', content: 'content/restaurant/payments.html'},
+            {title: 'Öffnungszeiten', content: 'content/restaurant/times.html'}
+        ],
         actions: [
             {title: 'Speichern', icon: 'done', route: '/page'},
             {title: 'Verwerfen', icon: 'close', route: '/'}
         ],
-        content: 'content/page.html',
         return: function (index) {
             switch (index) {
                 case 0:
