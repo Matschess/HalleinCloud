@@ -1,4 +1,9 @@
 myApp.controller('mainController', function ($scope, $rootScope, $route, $location, $routeParams, $http, loginHandler) {
+    $scope.$on('$viewContentLoaded', function(){
+        console.log('loaded');
+    });
+
+
     // System-Infos
     $scope.system = {
         version: '0.0.0',

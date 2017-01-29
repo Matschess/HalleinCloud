@@ -33,6 +33,19 @@ myApp.controller('supportController', function ($scope, $location, $http, ngDial
         }
     }
 
+    $scope.category = {
+        selected: {id: 1, name: 'Allgemein'},
+        options: [
+            {id: 1, name: 'Allgemein'},
+            {id: 2, name: 'Login'},
+            {id: 3, name: 'Mahlzeiten'},
+            {id: 4, name: 'Feedback'},
+            {id: 5, name: 'Restaurantseite'},
+            {id: 6, name: 'Benutzer'}
+        ]
+
+    }
+
     $http.get(URL + '/help?get=id,question,lastEdited&answer=false')
         .then(function (response) {
             $scope.unreplied = response.data;
@@ -47,18 +60,6 @@ myApp.controller('supportController', function ($scope, $location, $http, ngDial
         .then(function (response) {
             $scope.bugs = response.data;
         });
-
-    $scope.category = {
-        selected: {id: 1, name: 'Allgemein'},
-        options: [
-            {id: 1, name: 'Allgemein'},
-            {id: 2, name: 'Login'},
-            {id: 3, name: 'Mahlzeiten'},
-            {id: 4, name: 'Feedback'},
-            {id: 5, name: 'Restaurantseite'},
-            {id: 6, name: 'Benutzer'}
-        ]
-    }
 
     $scope.sort = function (object, property) {
         $scope[object].sort(dynamicSort(property));

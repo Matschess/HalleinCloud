@@ -35,8 +35,8 @@
     <label>Beantwortete Fragen ({{ replied.length }})</label><br/>
     <ng-if ng-show="replied.length">
         <br/>
-        <label>Sortieren nach:</label>
-        <select ng-model="category.selected" ng-options="option.name for option in category.options track by option.id"></select>
+        <label>Kategorie:</label>
+        <select ng-model="category.selected" ng-options="option.name + (option.number) for option in category.options track by option.id"></select>
         <br/>
         <br/>
         <table class="users" ng-if="replied.length">
