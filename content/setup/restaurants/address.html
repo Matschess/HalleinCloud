@@ -6,7 +6,7 @@
     <br/>
     <input type="text" class="short" placeholder="PLZ"/>
     <br>
-    <input type="text" placeholder="Ort"/>
+    <input id="placelabel" type="text" placeholder="Ort"/><i id="addressmap" class="material-icons">map</i>
     <br>
     <i class="material-icons backicon" ng-click="back('address')">arrow_back</i>
 </div>
@@ -14,7 +14,7 @@
 <h3>Kontaktdaten:</h3>
 <input type="text" placeholder="Email-Adresse"/><br/>
 <input type="text" placeholder="Telefonnummer"/><br/>
-<input type="text" placeholder="Website"/><br/>
+<input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/> <a class="" href="{{input.website}}" target="_blank" title="Link testen"><i id="websitelink" class="material-icons" href="{{input.website}}" >link</i> <br/>
 
     <i class="material-icons doneicon" ng-click="complete('address')">done</i>
 </div>
