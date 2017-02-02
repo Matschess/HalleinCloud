@@ -1,3 +1,4 @@
+<label>Tragen Sie ein Menü für jeden Tag ein.<br/><br/></label>
 <div class="days">
     <div class="day" ng-class="{'closed':day.restDay}" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
         <div class="done" ng-if="day.menu.meals">

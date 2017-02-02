@@ -1,15 +1,14 @@
 myApp.controller('foodController', function ($scope, $http, $routeParams) {
         $scope.config = {
+            activeTab: 0,
+            tabs: [
+                {title: 'Täglich', content: 'content/meal/dailymeal.html'},
+                {title: 'Dauerhaft', content: 'content/meal/constantmeal.html'}
 
+            ],
             actions: [
                 {title: 'Hinzufügen', icon: 'add', route: '/meal/add'}
-            ],
-
-            tabs: [
-                {title: 'Mahlzeiten', content: 'content/meal.html'},
-                {title: 'Dauermenue', content: 'content/constantmeal.html'}
-
-            ],
+            ]
         }
 
         var date = new Date();

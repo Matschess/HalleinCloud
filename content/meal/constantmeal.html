@@ -1,5 +1,6 @@
+<label>Tragen Sie einmalig ein Menü ein, dass für jeden Tag gilt.<br/><br/></label>
 <div class="days">
-    <div class="day" ng-class="{'closed':day.restDay}" ng-drop="true" ng-drop-success="assignMenu($index, $data)" ng-repeat="day in days">
+    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)">
         <div class="done" ng-if="day.menu.meals">
             <div class="menu yellow" ng-if="day.menu.meals.appetizer" ng-click="removeMenu('appetizer', $index)">
                 <span ng-if="day.menu.meals.appetizer.description.length >= 15">{{ day.menu.meals.appetizer.description | limitTo:12  }}...</span>
@@ -18,11 +19,9 @@
             </div>
         </div>
         <div class="text" ng-if="!day.menu.meals">
-            {{ day.name | limitTo : 2 }}
+            Jeden Tag
             <div class="date">{{ day.date | date:"dd.MM" }}</div>
         </div>
-        <i ng-if="!day.menu.meals" ng-click="restDayToggle($index)" class='material-icons closed tooltipBottom' title="Ruhetag ein/aus">beach_access</i>
-        <img ng-if="day.restDay" class="closedTag" src="assets/imgs/closedTag.png"/>
     </div>
 </div>
 <div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>

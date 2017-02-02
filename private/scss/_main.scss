@@ -812,13 +812,15 @@ body {
         display: inline-block;
         font-size: 20px;
         font-weight: normal;
-        line-height: 50px;
+        line-height: 45px;
         padding: 0 20px;
         margin: 0;
         &.tab{
+          border-top: 5px solid #2b2f38;
           cursor: pointer;
           &.active{
-            background-color: #393f48;
+            background-color: #fff;
+            color: #333;
         }
         }
       }
