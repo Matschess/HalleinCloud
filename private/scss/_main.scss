@@ -815,11 +815,14 @@ body {
         line-height: 50px;
         padding: 0 20px;
         margin: 0;
-        &.tab{
+        &.tab {
+          line-height: 47px;
+          border-top: 3px solid #2b2f38;
           cursor: pointer;
-          &.active{
-            background-color: #393f48;
-        }
+          &.active {
+            background-color: #fff;
+            color: #333;
+          }
         }
       }
       .actions {

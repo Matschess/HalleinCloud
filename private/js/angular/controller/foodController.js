@@ -1,10 +1,14 @@
 myApp.controller('foodController', function ($scope, $http, $routeParams) {
         $scope.config = {
-            title: 'Mahlzeiten',
+            activeTab: 0,
+            tabs: [
+                {title: 'Täglich', content: 'content/meal/dailymeal.html'},
+                {title: 'Dauerhaft', content: 'content/meal/constantmeal.html'}
+
+            ],
             actions: [
                 {title: 'Hinzufügen', icon: 'add', route: '/meal/add'}
-            ],
-            content: 'content/meal.html'
+            ]
         }
 
         var date = new Date();
@@ -76,6 +80,8 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                     });
                 $scope.days = data;
             });
+
+        $scope.everyday = {menu:{meals:{}}};
 
         /*
          $http.get(URL + '/menus?restaurant=' + restaurant)
@@ -216,6 +222,24 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
 
              console.log($scope.days);
              */
+        }
+
+        $scope.assignConstantMeal = function (meal) {
+
+            switch ($scope.menus[meal].type) {
+                case 1:
+                    //data.appetizer = $scope.menus[meal].id;
+                    $scope.everyday.menu.meals.appetizer = $scope.menus[meal]; // Because a 0 would be a bug
+                    break;
+                case 2:
+                    //data.mainCourse = $scope.menus[meal].id;
+                    $scope.everyday.menu.meals.mainCourse = $scope.menus[meal];
+                    break;
+                case 3:
+                    //data.dessert = $scope.menus[meal].id;
+                    $scope.everyday.menu.meals.dessert = $scope.menus[meal];
+            }
+            tooltipstln();
         }
 
         $scope.removeMeal = function (id, index) {
