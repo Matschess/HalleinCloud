@@ -15,7 +15,7 @@ myApp.config(function ($routeProvider) {
             name: 'Dashboard'
         })
         .when('/meal', {
-            templateUrl: 'templates/window.html',
+            templateUrl: 'templates/tabs.html',
             controller: 'foodController',
             icon: 'local_dining',
             name: 'Mahlzeiten',
