@@ -311,4 +311,98 @@ h3 {
   }
 }
 
+.optionswrapper{
+
+  .doneicon {
+
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 40px;
+    float: right;
+    margin-right: 15px;
+  }
+  .backicon {
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    float: left;
+    margin-top: 40px;
+  }
+.optionlabels{
+  height: 100px;
+  width: 100%;
+  margin-top: 20px;
+  label {
+    float: left;
+    margin-top: 2px;
+    margin-left: 60px;
+    font-size: 18px;
+
+
+  }
+  }
+
+
+
+  }
+  input[type=checkbox]:after {
+    background-color: #e0e0e0;
+    margin-top:-3px;
+  }
+
+
+
+.paymentswrapper{
+
+  position: absolute;
+  left: 100px;
+.paymenticons{
+  .doneicon {
+
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 50px;
+    float: right;
+    margin-right: 15px;
+
+  }
+  .backicon {
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    float: left;
+    margin-top: 50px;
+
+  }
+
+}
+.paybar{
+  width: 120px;
+  height: 100px;
+
+  label {
+    float: left;
+    margin-top: 5px;
+  }
+  input[type=checkbox]:after {
+    background-color: #e0e0e0;
+  }
+}
+  .paycard{
+    display: inline;
+    width: 120px;
+    height: 100px;
+    label {
+      float: left;
+
+    }
+    input[type=checkbox]:after {
+      background-color: #e0e0e0;
+    }
+  }
+
+}
+
 

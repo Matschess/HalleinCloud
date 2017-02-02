@@ -10,23 +10,23 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         setup: {
             restaurant: {
                 basicData: {
-                    title: 'Einrichtung - Schritt 1',
+                    title: 'Allgemein',
                     content: 'content/setup/restaurants/basicData.html'
                 },
                 address: {
-                    title: 'Einrichtung - Schritt 2',
+                    title: 'Adresse',
                     content: 'content/setup/restaurants/address.html'
                 },
                 openingTimes: {
-                    title: 'Einrichtung - Schritt 3',
+                    title: 'Öffnungszeiten',
                     content: 'content/setup/restaurants/openingTimes.html'
                 },
                 options: {
-                    title: 'Einrichtung - Schritt 4',
+                    title: 'Weiteres',
                     content: 'content/setup/restaurants/options.html'
                 },
                 payments: {
-                    title: 'Einrichtung - Schritt 5',
+                    title: 'Zahlungsmethoden',
                     content: 'content/setup/restaurants/payments.html'
                 }
             },

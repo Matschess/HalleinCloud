@@ -1,4 +1,37 @@
-<div class="optionswrapper">
+<div class="paymentswrapper">
+
+    <div class="paybar">
+        <h3>Bar:</h3>
+        <label>
+            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+            Bargeld
+        </label>
+        <br/>
+        <label>
+            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+            Kelteneuro
+        </label>
+    </div>
+    <br/>
+<div class="paycard">
+        <h3>Karte:</h3>
+        <label>
+            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+            Mastercard
+            <img src="assets/icons/mastercard.png"/>
+        </label>
+        <br/>
+    <br/>
+        <label>
+            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+            Visa
+            <img src="assets/icons/visa.png"/>
+        </label>
+</div>
+
+<div class="paymenticons">
+
     <i class="material-icons doneicon" ng-click="complete('options')">done</i>
     <i class="material-icons backicon" ng-click="back('payments')">arrow_back</i>
+</div>
 </div>
