@@ -42,23 +42,19 @@ h1 {
   margin-bottom: 0;
 }
 
-h2 {
-  font-size: 20px;
-  color: #666;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-label {
-  text-align: center;
-}
-
 .loginwrapper {
   position: absolute;
   width: 350px;
   left: 50%;
   margin-left: -165px;
   text-align: right;
+
+  h2 {
+    font-size: 20px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 40px;
+  }
 
   p {
     text-align: center;
@@ -434,17 +430,17 @@ input[type=checkbox]:after {
     &.wait {
       background-color: #f39c12;
       margin-right: 10px;
-      &:hover{
+      &:hover {
         background-color: #e67e22;
       }
     }
     &.publish {
       background-color: #2ecc71;
-      &:hover{
+      &:hover {
         background-color: #27ae60;
       }
     }
-    i{
+    i {
       font-size: 16px;
       vertical-align: middle;
     }
