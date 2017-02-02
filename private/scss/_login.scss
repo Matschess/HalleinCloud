@@ -39,6 +39,18 @@ h1 {
   font-size: 55px;
   text-align: center;
   margin-top: 180px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+label {
+  text-align: center;
 }
 
 .loginwrapper {
@@ -47,6 +59,10 @@ h1 {
   left: 50%;
   margin-left: -165px;
   text-align: right;
+
+  p {
+    text-align: center;
+  }
 
   .icon {
     display: inline-block;
@@ -61,11 +77,14 @@ h1 {
     width: calc(100% - 86px);
     height: 35px;
     margin: 0;
-    margin-top: 20px;
     padding: 5px 20px 5px 40px;
     border: solid 1px #000;
     border-radius: 90px;
     outline: 0;
+  }
+
+  input[type=password] {
+    margin-top: 20px;
   }
 
   .passwordlostbox {
@@ -226,7 +245,7 @@ h3 {
     border-radius: 90px;
     outline: 0;
   }
-  #placelabel{
+  #placelabel {
     background-color: transparent;
     width: 150px;
     height: 35px;
@@ -242,7 +261,7 @@ h3 {
 
   .backicon {
     position: absolute;
-    left:0;
+    left: 0;
     border: solid 1px #000;
     border-radius: 100px;
     padding: 5px;
@@ -251,9 +270,9 @@ h3 {
 
   }
 
-  #addressmap{
+  #addressmap {
     position: absolute;
-    left:215px;
+    left: 215px;
     margin-top: 10px;
 
   }
@@ -284,7 +303,7 @@ h3 {
     margin-top: 106px;
 
   }
-  #websitelabel{
+  #websitelabel {
     background-color: transparent;
     width: 150px;
     height: 35px;
@@ -296,9 +315,9 @@ h3 {
     outline: 0;
     float: left;
   }
-  #websitelink{
+  #websitelink {
     position: absolute;
-    left:215px;
+    left: 215px;
     margin-top: 10px;
   }
 }
@@ -311,7 +330,7 @@ h3 {
   }
 }
 
-.optionswrapper{
+.optionswrapper {
 
   .doneicon {
 
@@ -329,68 +348,64 @@ h3 {
     float: left;
     margin-top: 40px;
   }
-.optionlabels{
-  height: 100px;
-  width: 100%;
-  margin-top: 20px;
-  label {
-    float: left;
-    margin-top: 2px;
-    margin-left: 60px;
-    font-size: 18px;
+  .optionlabels {
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    label {
+      float: left;
+      margin-top: 2px;
+      margin-left: 60px;
+      font-size: 18px;
 
-
-  }
-  }
-
-
-
-  }
-  input[type=checkbox]:after {
-    background-color: #e0e0e0;
-    margin-top:-3px;
+    }
   }
 
+}
 
+input[type=checkbox]:after {
+  background-color: #e0e0e0;
+  margin-top: -3px;
+}
 
-.paymentswrapper{
+.paymentswrapper {
 
   position: absolute;
   left: 100px;
-.paymenticons{
-  .doneicon {
+  .paymenticons {
+    .doneicon {
 
-    border: solid 1px #000;
-    border-radius: 100px;
-    padding: 5px;
-    margin-top: 50px;
-    float: right;
-    margin-right: 15px;
+      border: solid 1px #000;
+      border-radius: 100px;
+      padding: 5px;
+      margin-top: 50px;
+      float: right;
+      margin-right: 15px;
+
+    }
+    .backicon {
+      border: solid 1px #000;
+      border-radius: 100px;
+      padding: 5px;
+      float: left;
+      margin-top: 50px;
+
+    }
 
   }
-  .backicon {
-    border: solid 1px #000;
-    border-radius: 100px;
-    padding: 5px;
-    float: left;
-    margin-top: 50px;
+  .paybar {
+    width: 120px;
+    height: 100px;
 
+    label {
+      float: left;
+      margin-top: 5px;
+    }
+    input[type=checkbox]:after {
+      background-color: #e0e0e0;
+    }
   }
-
-}
-.paybar{
-  width: 120px;
-  height: 100px;
-
-  label {
-    float: left;
-    margin-top: 5px;
-  }
-  input[type=checkbox]:after {
-    background-color: #e0e0e0;
-  }
-}
-  .paycard{
+  .paycard {
     display: inline;
     width: 120px;
     height: 100px;
@@ -405,4 +420,34 @@ h3 {
 
 }
 
+.completedWrapper {
+  width: 120%;
+  text-align: center;
+  .button {
+    display: inline;
+    font-family: 'Gravity';
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    &.wait {
+      background-color: #f39c12;
+      margin-right: 10px;
+      &:hover{
+        background-color: #e67e22;
+      }
+    }
+    &.publish {
+      background-color: #2ecc71;
+      &:hover{
+        background-color: #27ae60;
+      }
+    }
+    i{
+      font-size: 16px;
+      vertical-align: middle;
+    }
+  }
+}
 

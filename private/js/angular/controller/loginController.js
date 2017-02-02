@@ -4,30 +4,40 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     var routes = {
         login: {
             title: 'Hallein App - Verwaltung',
+            subtitle: 'Anmelden',
             aboutUs: true,
             content: 'content/login.html'
         },
         setup: {
             restaurant: {
                 basicData: {
-                    title: 'Allgemein',
+                    title: 'Einrichtung',
+                    subtitle: 'Allgemein',
                     content: 'content/setup/restaurants/basicData.html'
                 },
                 address: {
-                    title: 'Adresse',
+                    title: 'Einrichtung',
+                    subtitle: 'Adress- & Kontaktdaten',
                     content: 'content/setup/restaurants/address.html'
                 },
                 openingTimes: {
-                    title: 'Öffnungszeiten',
+                    title: 'Einrichtung',
+                    subtitle: 'Öffnungszeiten',
                     content: 'content/setup/restaurants/openingTimes.html'
                 },
                 options: {
-                    title: 'Weiteres',
+                    title: 'Einrichtung',
+                    subtitle: 'Weiteres',
                     content: 'content/setup/restaurants/options.html'
                 },
                 payments: {
-                    title: 'Zahlungsmethoden',
+                    title: 'Einrichtung',
+                    subtitle: 'Zahlungsmethoden',
                     content: 'content/setup/restaurants/payments.html'
+                },
+                completed: {
+                    title: "We're ready!",
+                    content: 'content/setup/restaurants/completed.html'
                 }
             },
 
@@ -78,6 +88,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 break;
             case 'options':
                 $scope.route = routes.setup.restaurant.payments;
+                break;
+            case 'payments':
+                $scope.route = routes.setup.restaurant.completed;
                 break;
         }
     }

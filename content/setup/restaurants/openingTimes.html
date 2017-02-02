@@ -1,4 +1,3 @@
-<h3>Öffnungszeiten:</h3>
 <div class="openingtimeswrapper" ng-repeat="day in days" ng-class="{'sleep':day.sleep}"><label class="inline shorter">{{ day.shorthand }}</label><input type=   "text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
 
 
