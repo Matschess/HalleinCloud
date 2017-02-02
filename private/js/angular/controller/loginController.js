@@ -20,8 +20,17 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 openingTimes: {
                     title: 'Einrichtung - Schritt 3',
                     content: 'content/setup/restaurants/openingTimes.html'
+                },
+                options: {
+                    title: 'Einrichtung - Schritt 4',
+                    content: 'content/setup/restaurants/options.html'
+                },
+                payments: {
+                    title: 'Einrichtung - Schritt 5',
+                    content: 'content/setup/restaurants/payments.html'
                 }
             },
+
         }
     };
 
@@ -64,6 +73,12 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             case 'address':
                 $scope.route = routes.setup.restaurant.openingTimes;
                 break;
+            case 'openingTimes':
+                $scope.route = routes.setup.restaurant.options;
+                break;
+            case 'options':
+                $scope.route = routes.setup.restaurant.payments;
+                break;
         }
     }
     $scope.back = function (src) {
@@ -81,6 +96,13 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             case 'openingTimes':
                 $scope.route = routes.setup.restaurant.address;
                 break;
+            case 'options':
+                $scope.route = routes.setup.restaurant.openingTimes;
+                break;
+            case 'payments':
+                $scope.route = routes.setup.restaurant.options;
+                break;
+
         }
     }
 
