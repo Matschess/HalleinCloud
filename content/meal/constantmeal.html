@@ -1,26 +1,25 @@
 <label>Tragen Sie einmalig ein Menü ein, dass für jeden Tag gilt.<br/><br/></label>
 <div class="days">
-    <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)">
-        <div class="done" ng-if="day.menu.meals">
-            <div class="menu yellow" ng-if="day.menu.meals.appetizer" ng-click="removeMenu('appetizer', $index)">
-                <span ng-if="day.menu.meals.appetizer.description.length >= 15">{{ day.menu.meals.appetizer.description | limitTo:12  }}...</span>
-                <span ng-if="day.menu.meals.appetizer.description.length < 15">{{ day.menu.meals.appetizer.description }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ day.menu.meals.appetizer.description }}">close</i>
+    <div class="day" ng-drop="true" ng-drop-success="assignConstantMeal($data)">
+        <div class="done" ng-if="everyday.menu.meals">
+            <div class="menu yellow" ng-if="everyday.menu.meals.appetizer" ng-click="removeMenu('appetizer', $index)">
+                <span ng-if="everyday.menu.meals.appetizer.description.length >= 15">{{ everyday.menu.meals.appetizer.description | limitTo:12  }}...</span>
+                <span ng-if="everyday.menu.meals.appetizer.description.length < 15">{{ everyday.menu.meals.appetizer.description }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ everyday.menu.meals.appetizer.description }}">close</i>
             </div>
-            <div class="menu red" ng-if="day.menu.meals.mainCourse" ng-click="removeMenu('mainCourse', $index)">
-                <span ng-if="day.menu.meals.mainCourse.description.length >= 15">{{ day.menu.meals.mainCourse.description | limitTo:12  }}...</span>
-                <span ng-if="day.menu.meals.mainCourse.description.length < 15">{{ day.menu.meals.mainCourse.description }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ day.menu.meals.mainCourse.description }}">close</i>
+            <div class="menu red" ng-if="everyday.menu.meals.mainCourse" ng-click="removeMenu('mainCourse', $index)">
+                <span ng-if="everyday.menu.meals.mainCourse.description.length >= 15">{{ everyday.menu.meals.mainCourse.description | limitTo:12  }}...</span>
+                <span ng-if="everyday.menu.meals.mainCourse.description.length < 15">{{ everyday.menu.meals.mainCourse.description }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ everyday.menu.meals.mainCourse.description }}">close</i>
             </div>
-            <div class="menu brown" ng-if="day.menu.meals.dessert" ng-click="removeMenu('dessert', $index)">
-                <span ng-if="day.menu.meals.dessert.description.length >= 15">{{ day.menu.meals.dessert.description | limitTo:12  }}...</span>
-                <span ng-if="day.menu.meals.dessert.description.length < 15">{{ day.menu.meals.dessert.description }}</span>
-                <i class='material-icons remove tooltipBottom' title="{{ day.menu.meals.dessert.description }}">close</i>
+            <div class="menu brown" ng-if="everyday.menu.meals.dessert" ng-click="removeMenu('dessert', $index)">
+                <span ng-if="everyday.menu.meals.dessert.description.length >= 15">{{ everyday.menu.meals.dessert.description | limitTo:12  }}...</span>
+                <span ng-if="everyday.menu.meals.dessert.description.length < 15">{{ everyday.menu.meals.dessert.description }}</span>
+                <i class='material-icons remove tooltipBottom' title="{{ everyday.menu.meals.dessert.description }}">close</i>
             </div>
         </div>
-        <div class="text" ng-if="!day.menu.meals">
+        <div class="text" ng-if="!everyday.menu.meals">
             Jeden Tag
-            <div class="date">{{ day.date | date:"dd.MM" }}</div>
         </div>
     </div>
 </div>
