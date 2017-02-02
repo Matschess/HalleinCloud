@@ -1,12 +1,12 @@
 <div class="addresswrapper">
 <h3>Adresse:</h3>
-    <input type="text" placeholder="Straße"/>
+    <input type="text" placeholder="Straße" ng-model="input.street"/>
     <br>
-    <input type="text" class="short" placeholder="Hausnummer"/>
+    <input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/>
     <br/>
-    <input type="text" class="short" placeholder="PLZ"/>
+    <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/>
     <br>
-    <input id="placelabel" type="text" placeholder="Ort"/><i id="addressmap" class="material-icons">map</i>
+    <input id="placelabel" type="text" placeholder="Ort" ng-model="input.country"/>    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i id="addressmap" class="material-icons">map</i>
     <br>
     <i class="material-icons backicon" ng-click="back('address')">arrow_back</i>
 </div>
