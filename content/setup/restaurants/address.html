@@ -6,7 +6,7 @@
     <br/>
     <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/>
     <br>
-    <input id="placelabel" type="text" placeholder="Ort" ng-model="input.country"/>    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i id="addressmap" class="material-icons">map</i>
+    <input id="placelabel" type="text" placeholder="Ort" ng-model="input.country"/>    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i id="addressmap" class="material-icons">map</i></a>
     <br>
     <i class="material-icons backicon" ng-click="back('address')">arrow_back</i>
 </div>
@@ -14,7 +14,7 @@
 <h3>Kontaktdaten:</h3>
 <input type="text" placeholder="Email-Adresse"/><br/>
 <input type="text" placeholder="Telefonnummer"/><br/>
-<input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/> <a class="" href="{{input.website}}" target="_blank" title="Link testen"><i id="websitelink" class="material-icons" href="{{input.website}}" >link</i> <br/>
+<input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/> <a class="" href="{{input.website}}" target="_blank" title="Link testen"><i id="websitelink" class="material-icons" href="{{input.website}}" >link</i></a> <br/>
 
     <i class="material-icons doneicon" ng-click="complete('address')">done</i>
 </div>
