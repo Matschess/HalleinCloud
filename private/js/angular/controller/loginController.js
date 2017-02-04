@@ -9,6 +9,13 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             content: 'content/login.html'
         },
         setup: {
+            everyone: {
+                password: {
+                    title: 'Einrichtung',
+                    subtitle: 'Sicherheit',
+                    content: 'content/setup/password.html'
+                },
+            },
             restaurant: {
                 basicData: {
                     title: 'Einrichtung',
@@ -55,7 +62,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
          $('.wrapper').addClass('background');
          */
         if (!$scope.input.username || $scope.input.username == 'bellapalma') {
-            $scope.route = routes.setup.restaurant.basicData;
+            $scope.route = routes.setup.everyone.password;
             $('.wrapper').addClass('background');
         }
         else {
@@ -77,6 +84,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     }
     $scope.complete = function (src) {
         switch (src) {
+            case 'password':
+                $scope.route = routes.setup.restaurant.basicData;
+                break;
             case 'basicData':
                 $scope.route = routes.setup.restaurant.address;
                 break;
@@ -96,12 +106,15 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     }
     $scope.back = function (src) {
         switch (src) {
-            case 'basicData':
+            case 'password':
                 $scope.route = routes.login;
                 $('document').ready(function () {
                     $('.username').focus();
                 });
                 $('.wrapper').removeClass('background');
+                break;
+            case 'basicData':
+                $scope.route = routes.setup.everyone.password;
                 break;
             case 'address':
                 $scope.route = routes.setup.restaurant.basicData;

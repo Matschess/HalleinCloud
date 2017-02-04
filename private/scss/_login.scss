@@ -109,6 +109,75 @@ h1 {
   }
 }
 
+.passwordWrapper {
+  width: 300px;
+  height: 200px;
+
+  input[type=name] {
+    background-color: transparent;
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 5px 20px 5px 20px;
+    border: solid 1px #000;
+    border-radius: 90px;
+    outline: 0;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 8px 20px 5px 20px;
+    background: none;
+    background-color: transparent;
+    font-family: 'Gravity';
+    margin-top: 10px;
+    height: 80px;
+    border-radius: 18px;
+    border: solid 1px #000;
+    background-position: right 8px top 8px;
+
+  }
+
+  input {
+    margin-top: 10px;
+
+  }
+  label {
+    position: absolute;
+    right: 0;
+  }
+  input[type=checkbox]:after {
+    background-color: #e0e0e0;
+  }
+
+  i {
+    position: absolute;
+    margin-top: 15px;
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    margin-left: 10px;
+  }
+
+  .doneicon {
+
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 10px;
+    float: right;
+    margin-right: 15px;
+
+  }
+  .backicon {
+    border: solid 1px #000;
+    border-radius: 100px;
+    padding: 5px;
+    float: left;
+    margin-top: 10px;
+  }
+}
+
 .basicDatawrapper {
   width: 300px;
   height: 200px;
