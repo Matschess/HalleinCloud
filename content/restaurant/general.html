@@ -2,34 +2,46 @@
     <h3>Grunddaten:</h3>
     <input type="text" placeholder="Restaurantname" ng-model="input.restaurantname"><br/>
     <textarea placeholder="Beschreibung" ng-model="input.description"></textarea>
-    <label>
+    <label class="checkbox">
         <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Anbieter von Schülermahlzeit
+        <div></div>
+        <span>Anbieter von Schülermahlzeit</span>
     </label>
     <br/>
-    <label>
+    <label class="checkbox">
         <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Gruppen erwünscht
+        <div></div>
+        <span>Gruppen erwünscht</span>
     </label>
     <br/>
-    <label>
+    <label class="checkbox">
         <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Reservierung möglich
+        <div></div>
+        <span>Reservierung möglich</span>
     </label>
     <br/>
-    <label>
+    <label class="checkbox">
         <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Haustiere erlaubt
+        <div></div>
+        <span>Haustiere erlaubt</span>
+    </label>
+    <br/>
+    <label class="checkbox">
+        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <div></div>
+        <span>Vollkornküche</span>
     </label>
     <h3>Adresse:</h3>
     <input type="text" placeholder="Straße" ng-model="input.street"/><input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/><br/>
     <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/><input type="text" placeholder="Ort" ng-model="input.country"/>
     <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
     <br/>
-    <label>
+    <label class="checkbox">
         <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Parkmöglichkeit in der Nähe
+        <div></div>
+        <span>Parkmöglichkeit in der Nähe</span>
     </label>
+
     <h3>Kontaktdaten:</h3>
     <input type="text" placeholder="Email-Adresse" ng-model="input.email"/><br/>
     <input type="text" placeholder="Telefonnummer" ng-model="input.tel"/><br/>

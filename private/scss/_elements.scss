@@ -24,7 +24,7 @@ label {
   i {
     vertical-align: middle;
   }
-  img{
+  img {
     vertical-align: middle;
     height: 30px;
     margin-left: 10px;
@@ -82,23 +82,30 @@ input[type=radio]:checked + label {
   }
 }
 
-input[type=checkbox] {
-  visibility: hidden;
-  &:after {
+.checkbox {
+  input {
+    display: none;
+  }
+  span {
+    padding-left: 22px;
+  }
+  div:before {
     visibility: visible;
     content: '';
     position: absolute;
+
     width: 16px;
     height: 16px;
     background-color: #f2f2f2;
 
   }
-  &:checked {
-    &:after {
-      background-image: url('../../assets/icons/done.png');
-      background-size: cover;
-    }
+  input:checked + div:before {
+
+    background-image: url('../../assets/icons/done.png');
+    background-size: cover;
+
   }
+
 }
 
 button {
@@ -231,7 +238,7 @@ input:checked + .slider:before {
 
 // Password-Validation
 .pwChange {
-  input[type=password]{
+  input[type=password] {
     width: 70%;
   }
   .pwValidation {

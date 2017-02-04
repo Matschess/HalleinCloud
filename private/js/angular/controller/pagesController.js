@@ -3,8 +3,9 @@ myApp.controller('pagesController', function ($scope, $http) {
         activeTab: 0,
         tabs: [
             {title: 'Allgemein', content: 'content/restaurant/general.html'},
-            {title: 'Zahlungsmethoden', content: 'content/restaurant/payments.html'},
-            {title: 'Öffnungszeiten', content: 'content/restaurant/times.html'}
+            {title: 'Öffnungszeiten', content: 'content/restaurant/times.html'},
+            {title: 'Zahlung', content: 'content/restaurant/payments.html'}
+
         ],
         actions: [
             {title: 'Speichern', icon: 'done', route: '/page'},
