@@ -7,7 +7,7 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $locati
     // System-Infos
     $scope.system = {
         version: '0.0.0',
-        versionName: 'Alpha',
+        versionName: "Ain't nobody got time for that",
         released: '',
         copyright: '2017 by Matthias Lang, Maximilian Hölzl, Thomas Steiner'
     };

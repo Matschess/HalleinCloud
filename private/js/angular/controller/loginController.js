@@ -8,6 +8,18 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             aboutUs: true,
             content: 'content/login.html'
         },
+        pwForgot: {
+            request: {
+                title: 'Passwort zurücksetzen',
+                subtitle: 'Email eingeben',
+                content: 'content/pwForgot/request.html'
+            },
+            success: {
+                title: 'Passwort zurücksetzen',
+                subtitle: "Das war's",
+                content: 'content/pwForgot/success.html'
+            }
+        },
         setup: {
             everyone: {
                 password: {
@@ -82,8 +94,24 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             });
         }
     }
+
+    $scope.pwForgot = function () {
+        $scope.route = routes.pwForgot.request;
+    }
+
     $scope.complete = function (src) {
         switch (src) {
+            case 'pwForgot':
+                $scope.route = routes.pwForgot.success;
+                var data = {
+                    email: $scope.pwForgot.input.email
+                }
+                $http({
+                    url: URL + '/pwforgot',
+                    method: 'PUT',
+                    params: data
+                }).then();
+                break;
             case 'password':
                 $scope.route = routes.setup.restaurant.basicData;
                 break;
@@ -106,6 +134,13 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     }
     $scope.back = function (src) {
         switch (src) {
+            case 'pwForgot':
+                $scope.route = routes.login;
+                $('document').ready(function () {
+                    $('.username').focus();
+                });
+                $('.wrapper').removeClass('background');
+                break;
             case 'password':
                 $scope.route = routes.login;
                 $('document').ready(function () {
