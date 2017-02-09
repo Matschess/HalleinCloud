@@ -14,6 +14,16 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 subtitle: 'Email eingeben',
                 content: 'content/pwForgot/request.html'
             },
+            confirm: {
+                title: 'Passwort zurücksetzen',
+                subtitle: 'PIN eingeben',
+                content: 'content/pwForgot/confirm.html'
+            },
+            password: {
+                title: 'Passwort zurücksetzen',
+                subtitle: 'Neues Passwort festlegen',
+                content: 'content/pwForgot/password.html'
+            },
             success: {
                 title: 'Passwort zurücksetzen',
                 subtitle: "Das war's",
@@ -97,11 +107,37 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     $scope.pwForgot = function () {
         $scope.route = routes.pwForgot.request;
+        $scope.pwForgot = {input: {}};
     }
 
     $scope.complete = function (src) {
         switch (src) {
-            case 'pwForgot':
+            case 'pwForgot/request':
+                $scope.route = routes.pwForgot.confirm;
+                var email = $scope.pwForgot.input.email;
+                if(email) {
+                    var data = {
+                        email: $scope.pwForgot.input.email
+                    }
+                    $http({
+                        url: URL + '/pwforgot',
+                        method: 'PUT',
+                        params: data
+                    }).then();
+                }
+                break;
+            case 'pwForgot/confirm':
+                $scope.route = routes.pwForgot.password;
+                var data = {
+                    email: $scope.pwForgot.input.email
+                }
+                $http({
+                    url: URL + '/pwforgot',
+                    method: 'PUT',
+                    params: data
+                }).then();
+                break;
+            case 'pwForgot/password':
                 $scope.route = routes.pwForgot.success;
                 var data = {
                     email: $scope.pwForgot.input.email
