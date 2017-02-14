@@ -83,26 +83,26 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
          $scope.route = routes.setup.restaurant.basicData;
          $('.wrapper').addClass('background');
          */
-        if (!$scope.input.username || $scope.input.username == 'bellapalma') {
-            $scope.route = routes.setup.everyone.password;
-            $('.wrapper').addClass('background');
+        var data = {
+            username: $scope.input.username,
+            password: $scope.input.password
         }
-        else {
-            var data = {
-                username: $scope.input.username,
-                password: $scope.input.password
+        data = prepareUpload(data);
+        $http({
+            url: URL + '/authenticate',
+            method: 'GET',
+            params: data
+        }).then(function (response) {
+            var response = response.data;
+            if (response.initialLogin) {
+                $scope.route = routes.setup.everyone.password;
+                $('.wrapper').addClass('background');
+            } else {
+                loginHandler.login(response);
             }
-            data = prepareUpload(data);
-            $http({
-                url: URL + '/authenticate',
-                method: 'GET',
-                params: data
-            }).then(function (response) {
-                loginHandler.login(response.data);
-            }, function () {
-                $('.loginwrapper').addClass('animated shake');
-            });
-        }
+        }, function () {
+            $('.loginwrapper').addClass('animated shake');
+        });
     }
 
     $scope.pwForgot = function () {
@@ -115,7 +115,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             case 'pwForgot/request':
                 $scope.route = routes.pwForgot.confirm;
                 var email = $scope.pwForgot.input.email;
-                if(email) {
+                if (email) {
                     var data = {
                         email: $scope.pwForgot.input.email
                     }
