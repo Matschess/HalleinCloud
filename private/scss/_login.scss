@@ -48,65 +48,67 @@ h1 {
   margin-bottom: 0;
 }
 
-.loginwrapper {
-  cursor: pointer;
+.loginWrapper {
   position: absolute;
   width: 350px;
   left: 50%;
-  margin-left: -165px;
+  margin-left: calc(350px / 2 * -1);
   text-align: right;
-
   p {
+
     text-align: center;
   }
-
   .icon {
     display: inline-block;
-    position: relative;
     font-size: 24px;
+    position: relative;
     left: 35px;
     vertical-align: middle;
-    cursor: pointer;
   }
-
   input[type=text], input[type=password] {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: transparent;
     width: calc(100% - 86px);
     height: 35px;
     margin: 0;
+    margin-bottom: 20px;
     padding: 5px 20px 5px 40px;
     border: solid 1px #000;
     border-radius: 90px;
     outline: 0;
   }
-
-  input[type=password] {
-    margin-top: 20px;
-  }
-
-  .passwordlostbox {
-    margin-top: 30px;
-    .passwordlost {
+  .actions {
+    margin-top: 5px;
+    a {
       font-size: 18px;
       color: #333;
-      text-decoration: none;
       margin-right: 30px;
+      text-decoration: none;
       vertical-align: middle;
+      cursor: pointer;
       &:hover {
         color: #000;
       }
     }
-    .doneicon {
-
-      font-size: 30px;
-      border: solid 1px #333;
-      border-radius: 100px;
-      padding: 5px;
-      vertical-align: middle;
-      cursor: pointer;
-      &:hover {
+    button {
+      background: none;
+      padding: 0;
+      i {
+        font-size: 25px;
         color: #333;
-        border-color: #333;
+        border: solid 1px #333;
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+          border-color: #000;
+        }
+      }
+      &:first-of-type{
+        float: right;
+      }
+      &:nth-of-type(2){
+        float: left;
       }
     }
   }

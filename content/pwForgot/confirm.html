@@ -1,7 +1,8 @@
-<div class="pwForgotWrapper">
+<form class="pwForgotWrapper" ng-submit="complete('pwForgot/confirm')">
     <p>Geben Sie die PIN ein, die sie gerade per Email erhalten haben</p>
-    <input type="text" placeholder="PIN" ng-model="pwForgot.input.pin"/><br/>
-
-    <i class="material-icons backicon" ng-click="back('pwForgot/confirm')">arrow_back</i>
-    <i class="material-icons doneicon" ng-click="complete('pwForgot/confirm')">done</i>
-</div>
+    <i class="material-icons icon">fiber_pin</i><input type="text" ng-model="pwForgot.input.pin"/>
+    <div class="actions">
+        <button type="submit"><i class="material-icons" ng-click="back('pwForgot/confirm')">arrow_back</i></button>
+        <button type="submit"><i class="material-icons">done</i></button>
+    </div>
+</form>
