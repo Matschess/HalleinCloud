@@ -1,14 +1,14 @@
-# halleinApp
+# halleinAppDashboard
 ## Setup
 ### Gulp
 Install [Node.js](https://nodejs.org/en/download/) and [Yarn](https://yarnpkg.com/en/docs/install)
 
-Open commandline in halleinApp/
+Open commandline in halleinAppDashboard/
 ```
 $ npm install --global gulp-cli
 $ yarn
 ```
-In commandline or PhpStorm (just press [CTRL]+[SHIFT]+[X]) type
+In commandline type
 ```
 $ gulp
 ```
