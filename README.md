@@ -8,7 +8,7 @@ Open commandline in halleinAppDashboard/
 $ npm install --global gulp-cli
 $ yarn
 ```
-In commandline type
+Then type
 ```
 $ gulp
 ```
