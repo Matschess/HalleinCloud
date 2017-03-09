@@ -1,10 +1,11 @@
-myApp.controller('pagesController', function ($scope, $http) {
+myApp.controller('pagesController', function ($scope, $http, ngDialog) {
     $scope.config = {
         activeTab: 0,
         tabs: [
             {title: 'Allgemein', content: 'content/restaurant/general.html'},
             {title: 'Öffnungszeiten', content: 'content/restaurant/times.html'},
-            {title: 'Zahlung', content: 'content/restaurant/payments.html'}
+            {title: 'Zahlung', content: 'content/restaurant/payments.html'},
+            {title: 'Design', content: 'content/restaurant/design.html'}
 
         ],
         actions: [
@@ -146,5 +147,50 @@ myApp.controller('pagesController', function ($scope, $http) {
             function () {
                 globalNotification('error')
             });
+    }
+
+    $('.filepicker').change(function () {
+        alert("hola");
+    });
+
+    $scope.setMainImg = function (index) {
+        var data = {
+            id: $scope.input.imgs[index].id,
+            main: 1
+        }
+        $http({
+            url: URL + '/upload',
+            method: 'PUT',
+            params: data
+        }).then(function () {
+            for (var i = 0; i < $scope.input.imgs.length; i++) {
+                delete $scope.input.imgs[i].main
+            }
+            $scope.input.imgs[index].main = true;
+        });
+    }
+    $scope.deleteImg = function (index) {
+        ngDialog.openConfirm({
+            controller: ['$scope', function ($scope) {
+                $scope.dialog = {
+                    content: 'Wollen Sie das Bild löschen?',
+                    options: {
+                        confirm: 'Löschen',
+                        abort: 'Abbrechen'
+                    }
+                }
+            }]
+        }).then(function () {
+            var data = {
+                id: $scope.input.imgs[index].id
+            }
+            $http({
+                url: URL + '/upload',
+                method: 'DELETE',
+                params: data
+            }).then(function () {
+                delete $scope.input.imgs[index];
+            });
+        });
     }
 });

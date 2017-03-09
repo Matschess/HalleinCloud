@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog', 'ngImgCrop']);
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
@@ -72,6 +72,20 @@ myApp.config(function ($routeProvider) {
             controller: 'appControlController',
             icon: 'phonelink_setup',
             name: 'App-Wartung',
+            grant: [1, 2],
+            resolve: {
+                'authenticate': function ($location) {
+                    if (!(userType <= 2)) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/statistics', {
+            templateUrl: 'templates/window.html',
+            controller: 'statisticsController',
+            icon: 'show_chart',
+            name: 'Statistiken',
             grant: [1, 2],
             resolve: {
                 'authenticate': function ($location) {
