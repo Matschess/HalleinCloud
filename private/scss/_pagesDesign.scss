@@ -1,25 +1,62 @@
 .pagesDesignWrapper {
+  p{
+    font-size: 14px;
+  }
   .mainImg {
-    width: 280px;
-    height: 240px;
+    display: inline-block;
     background-size: cover;
+    width: 380px;
+    height: 249px;
     margin-right: 10px;
   }
   .imgs {
     display: inline-block;
-    width: calc(2 * 150px + 5px + 20px);
-    height: 240px;
+    width: calc(2 * 200px + 5px + 20px);
+    height: 254px;
     margin-right: 10px;
     vertical-align: top;
     overflow: auto;
+    .filepicker{
+      display: none;
+    }
+    label {
+      &.uploader {
+        display: inline-block;
+        position: relative;
+        background-image: url('../../assets/icons/upload.png');
+        background-size: 20%;
+        background-position: center 20px;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 120px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        border: 1px dashed #cbcbcb;
+        vertical-align: top;
+        cursor: pointer;
+        div {
+          position: absolute;
+          font-size: 14px;
+          color: #b3b3b3;
+          bottom: 20px;
+          text-align: center;
+          span {
+            color: #2980b9;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
     .img {
       display: inline-block;
-      width: 150px;
-      height: 120px;
+      width: 202px;
+      height: 122px;
       background-size: cover;
       margin-right: 5px;
       margin-bottom: 5px;
-      &:nth-of-type(2n) {
+      &:nth-of-type(2n + 1) {
         margin-right: 0;
       }
       &:nth-of-type(-n + 1) {
@@ -47,34 +84,6 @@
       }
       &:hover .actions {
         opacity: 1;
-      }
-    }
-  }
-  .filepicker{
-
-  }
-  .uploader {
-    display: inline-block;
-    position: relative;
-    background-image: url('../../assets/icons/upload.png');
-    background-size: 70%;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 240px;
-    border: 1px dashed #a2a2a2;
-    vertical-align: top;
-    div {
-      position: absolute;
-      font-size: 14px;
-      color: #a2a2a2;
-      bottom: 20px;
-      text-align: center;
-      span{
-        color: #2980b9;
-        &:hover{
-          text-decoration: underline;
-        }
       }
     }
   }

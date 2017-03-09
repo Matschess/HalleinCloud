@@ -1,0 +1,16 @@
+<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="Schließen">close</i>
+<content>
+    Bild zuschneiden
+    <div class="cropper">
+        <img-crop image="myImage" area-type="rectangle" result-blob="croppedImg"></img-crop>
+    </div>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="mainImg" ng-true-value="1">
+        <div></div>
+        <span>Als Hauptbild einstellen</span>
+    </label>
+</content><br/>
+<div class="actions">
+    <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
+    <button class="action highlighted" ng-click="uploadImg(croppedImg, mainImg); closeThisDialog()">Zuschneiden</button>
+</div>

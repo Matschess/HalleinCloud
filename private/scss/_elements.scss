@@ -93,19 +93,14 @@ input[type=radio]:checked + label {
     visibility: visible;
     content: '';
     position: absolute;
-
     width: 16px;
     height: 16px;
     background-color: #f2f2f2;
-
   }
   input:checked + div:before {
-
     background-image: url('../../assets/icons/done.png');
     background-size: cover;
-
   }
-
 }
 
 button {

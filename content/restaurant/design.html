@@ -1,8 +1,13 @@
-<div class="pagesDesignWrapper">
+<div class="pagesDesignWrapper" ng-controller="pageDesignController">
     <h3>Bilder</h3>
-    <img class="mainImg" ng-if="img.main" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs">
+    <p>Wählen Sie für einen guten Auftritt hochwertige Bilder.
+    Vermeiden Sie Text in den Fotos.</p>
+    <div class="mainImg" ng-if="img.main" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs"></div>
     <div class="imgs">
-        <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+        <input id="filepicker" class="filepicker" type="file" accept="image/*"/>
+        <label class="uploader" for="filepicker">
+            <div>Bild hier ablegen oder <span>auswählen</span></div>
+        </label>
         <div class="img" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs">
             <div class="actions">
                 <div ng-click="setMainImg($index)"><i class="material-icons">done</i>Als Hauptbild</div>
@@ -11,11 +16,8 @@
             </div>
         </div>
     </div>
-    <input type="file" id="filepicker" class="filepicker"/>
-    <label class="uploader" for="filepicker">
-        <div>Bild hier ablegen oder <span>auswählen</span></div>
-    </label>
     <h3>Farbe</h3>
+    <p>Wählen Sie eine Farbe, die zu Ihrem Restaurant oder Ihrer Corporate Identity passt.</p>
     <div class="color">
         <div class="currentColor" ng-click="colorpicker = !colorpicker" ng-style="{'background-color': input.color}"></div>
         <div class="colorpicker" ng-class="{visible: colorpicker}">

@@ -201,6 +201,37 @@ body {
       }
     }
   }
+  &.ngdialog-theme-cropper {
+    top: 20%;
+    .ngdialog-content {
+      padding-top: 40px;
+      .cropper {
+        padding-right: 20px;
+        img-crop {
+          font-size: 30px;
+          height: 300px;
+          z-index: 999;
+        }
+      }
+      .checkbox{
+        vertical-align: middle;
+        span{
+          vertical-align: middle;
+        }
+      }
+      .actions {
+        button {
+          &.highlighted {
+            background-color: #27bf71;
+            color: #fff;
+            &:hover {
+              background-color: #27ae60;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .popup {
