@@ -93,11 +93,11 @@
       width: 30px;
       height: 30px;
       background-color: #3498db;
-      border: 3px solid #fff;
+      border: 3px solid #e9e9e9;
       border-radius: 50%;
       vertical-align: middle;
       &:hover {
-        border-color: #e2e2e2;
+        border-color: #d2d2d2;
       }
     }
     .colorpicker {
@@ -126,6 +126,16 @@
         &:hover .subcolorpicker {
           opacity: 1;
           transform: translateY(0);
+        }
+        &.custom{
+          background-color: #d2d2d2;
+          background-image: url(../../assets/icons/palette.png);
+          background-size: 60%;
+          background-position: center;
+          background-repeat: no-repeat;
+          &:hover {
+            border-color: #c2c2c2;
+          }
         }
       }
       &:after {

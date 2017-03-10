@@ -21,7 +21,7 @@
     <div class="color">
         <div class="currentColor" ng-click="colorpicker = !colorpicker" ng-style="{'background-color': input.color}"></div>
         <div class="colorpicker" ng-class="{visible: colorpicker}">
-            <div class="color" ng-click="input.color = '#e67e22', colorpicker = false" style="background-color: #e67e22">
+            <div class="color" ng-click="input.color = '#e67e22'; colorpicker = false" style="background-color: #e67e22">
                 <div class="subcolorpicker">
                     <div class="color" ng-click="input.color = '#e6b42e'; colorpicker = false" style="background-color: #e6b42e"></div>
                     <div class="color" ng-click="input.color = '#e67e22'; colorpicker = false" style="background-color: #e67e22"></div>
@@ -63,6 +63,7 @@
                     <div class="color" ng-click="input.color = '#1ca143'; colorpicker = false" style="background-color: #1ca143"></div>
                 </div>
             </div>
+            <div class="color custom" ng-click="pickColor()"></div>
         </div>
     </div>
 </div>

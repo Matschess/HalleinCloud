@@ -1,4 +1,22 @@
 myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
+    $scope.pickColor = function(){
+        ngDialog.open({
+            template: 'content/dialogs/color.html',
+            appendClassName: 'ngdialog-theme-cropper',
+            scope: $scope
+        });
+    };
+
+    $scope.isHex = function(color){
+        var pattern = new RegExp(/^#([0-9a-f]{6}|[0-9a-f]{3})$/i);
+        $scope.hexValid = pattern.test(color);
+    }
+
+    $scope.setColor = function(color){
+        $scope.input.color = color;
+        $scope.colorpicker = false;
+    }
+
     $scope.myImage = '';
     $scope.mainImg = false;
     $scope.croppedImg = '';

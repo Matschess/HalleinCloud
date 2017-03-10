@@ -193,8 +193,11 @@ body {
           &.highlighted {
             background-color: #e74c3c;
             color: #fff;
-            &:hover {
+            &:hover:not([disabled]) {
               background-color: #dc4a3a;
+            }
+            &:disabled{
+              opacity: .5;
             }
           }
         }
@@ -219,12 +222,20 @@ body {
           vertical-align: middle;
         }
       }
+      .color{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #d2d2d2;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
       .actions {
         button {
           &.highlighted {
             background-color: #27bf71;
             color: #fff;
-            &:hover {
+            &:hover:not([disabled]) {
               background-color: #27ae60;
             }
           }
