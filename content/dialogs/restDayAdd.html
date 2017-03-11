@@ -1,0 +1,19 @@
+<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="Schließen">close</i>
+<content>
+    Ruhetag eintragen
+    <br/>
+    <br/>
+    <div class="restDays">
+        <input type="text" class="datepicker" placeholder="von" ng-model="input.restDayFrom" ng-change="restDayDateAssume()"/>
+        <input type="text" class="datepicker" placeholder="bis" ng-model="input.restDayTo"/>
+        <br/>
+        <textarea placeholder="Grund (optional)" ng-model="input.restDayDescription"></textarea>
+    </div>
+</content><br/>
+<div class="actions">
+    <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
+    <button class="action highlighted" ng-click="restDayAdd(); closeThisDialog()">Eintragen</button>
+</div>
+<script>
+    datepicker();
+</script>

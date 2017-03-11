@@ -50,6 +50,14 @@ myApp.controller('pageController', function ($scope, $http, ngDialog) {
         }
     }
 
+    $scope.showRestDayAdd = function() {
+        ngDialog.open({
+            template: 'content/dialogs/restDayAdd.html',
+            appendClassName: 'ngdialog-theme-cropper',
+            scope: $scope
+        });
+    }
+
     $scope.restDayShow = false;
     $scope.restDayDateAssume = function () {
         $scope.input.restDayTo = $scope.input.restDayFrom;

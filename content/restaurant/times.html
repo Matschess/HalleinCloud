@@ -4,17 +4,7 @@
     <h3>Ruhetage:</h3>
     <div class="restDay" ng-repeat="restDay in restDays"><div><span>{{ restDay.date }}</span> <span>{{ restDay.description }}</span></div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove(restDay.id, $index)">delete_outline</i></div>
     <div ng-if="!restDays.length">Keine geplanten Ruhetage</div><br/>
-    <button ng-show="!restDayShow" ng-click="restDayShow = true"><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
-    <div class="restDays" ng-show="restDayShow">
-        <input type="text" class="datepicker short" placeholder="von" ng-model="input.restDayFrom" ng-change="restDayDateAssume()"/>
-        <input type="text" class="datepicker short" placeholder="bis" ng-model="input.restDayTo"/>
-        <br/>
-        <textarea class="low" placeholder="Grund (optional)" ng-model="input.restDayDescription"></textarea>
-        <br/>
-        <button ng-click="restDayAdd()"><i class="material-icons">done</i> Eintragen</button>
-        <button ng-click="restDayShow = false"><i class="material-icons">close</i> Abbrechen</button>
-
-    </div>
+    <button ng-click="showRestDayAdd()"><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
 </div>
     <div class="right">
         <h3>Warme Küche von bis:</h3>

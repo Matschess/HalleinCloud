@@ -129,6 +129,22 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         route: 'page'
                     })
                 }
+                if (!data.imgs) {
+                    $scope.notifications.push({
+                        type: 'warning',
+                        title: 'Keine Bilder',
+                        text: 'Sie haben keine Bilder hochgeladen.',
+                        route: 'page'
+                    })
+                }
+                if (data.imgs && !data.mainImg) {
+                    $scope.notifications.push({
+                        type: 'warning',
+                        title: 'Keine Hauptbild',
+                        text: 'Sie haben kein Hauptbild gesetzt.',
+                        route: 'page'
+                    })
+                }
             });
     }
     else if (userType == 1 || userType == 2) {
