@@ -1,14 +1,14 @@
 <div class="fullBox">
     <div class="title">
-        <h2 class="tab" ng-repeat="tab in config.tabs" ng-class="{'active':$index == config.activeTab}" ng-click="config.activeTab = $index">{{ tab.title }}</h2>
-        <div class="actions">
-            <span ng-repeat="action in config.actions" ng-click="config.return($index)">
-                <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}"
-                   title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
-                <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title }}"><i
-                        class="material-icons">{{ action.icon }}</i></a>
-            </span>
-        </div>
+            <a ng-href="#{{tab.link}}" class="tab" ng-class="{'active':$index == config.activeTab}" ng-click="config.activeTab = $index" ng-repeat="tab in config.tabs">{{ tab.title }}</a>
+            <div class="actions">
+                <span ng-repeat="action in config.tabs[config.activeTab].actions" ng-click="action.returnFunction()">
+                    <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}"
+                       title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
+                    <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title }}"><i
+                            class="material-icons">{{ action.icon }}</i></a>
+                </span>
+            </div>
     </div>
     <div class="content">
         <div ng-include="config.tabs[config.activeTab].content"></div>

@@ -868,13 +868,15 @@ body {
         background-color: #e74c3c;
         text-transform: uppercase;
       }
-      h2 {
+      a {
         display: inline-block;
         font-size: 20px;
         font-weight: normal;
+        color: #fff;
         line-height: 50px;
         padding: 0 20px;
         margin: 0;
+        text-decoration: none;
         &.tab {
           line-height: 47px;
           border-top: 3px solid #2b2f38;

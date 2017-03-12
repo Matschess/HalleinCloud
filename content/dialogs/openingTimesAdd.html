@@ -3,7 +3,7 @@
     Öffnungszeit eintragen
     <br/>
     <br/>
-    <select ng-model="weekdays.selected" ng-options="option.name for option in weekdays.options track by option.id"></select>
+    <label class="long">Tag:</label><select ng-model="weekdays.selected" ng-options="option.name for option in weekdays.options track by option.id"></select>
     <br/>
     <br/>
     <label class="long">Von:</label><input type="text" class="short" placeholder="00:00" ng-model="openingTimeFrom"/>
@@ -12,7 +12,7 @@
 </content><br/>
 <div class="actions">
     <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
-    <button class="action highlighted" ng-click="openingTimeAdd(openingTimeFrom, openingTimeTo); closeThisDialog()">Eintragen</button>
+    <button class="action highlighted" ng-click="openingTimeAdd(weekdays.selected.id, openingTimeFrom, openingTimeTo) && closeThisDialog()">Eintragen</button>
 </div>
 <script>
     selectln()

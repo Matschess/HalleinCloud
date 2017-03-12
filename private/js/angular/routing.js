@@ -53,7 +53,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/page', {
+        .when('/page/:subpage', {
             templateUrl: 'templates/tabs.html',
             controller: 'pageController',
             icon: 'home',

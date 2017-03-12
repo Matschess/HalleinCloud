@@ -1,9 +1,7 @@
-<div class="left">
+<div class="left" ng-controller="pageTimesController">
     <h3>Öffnungszeiten:</h3>
+    <div class="openingHours" ng-repeat="day in input.openingTimes | orderBy: day.weekday">{{ weekdays.options[day.weekday].name }}: {{day.opens}} - {{day.closes}}</div>
     <button ng-click="showOpeningTimesAdd()"><i class="material-icons">schedule</i> Öffnungszeit eintragen</button>
-    <!--
-    <div class="openingHours" ng-repeat="day in days" ng-class="{'sleep':!day.data}"><label class="inline shorter">{{ day.shorthand }}</label><input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="!day.data" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
-    -->
     <h3>Ruhetage:</h3>
     <div class="restDay" ng-repeat="restDay in restDays"><div><span>{{ restDay.date }}</span> <span>{{ restDay.description }}</span></div><i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove(restDay.id, $index)">delete_outline</i></div>
     <div ng-if="!restDays.length">Keine geplanten Ruhetage</div><br/>

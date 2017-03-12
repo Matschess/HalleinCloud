@@ -1,65 +1,65 @@
-<div class="full">
+<div class="full" ng-controller="pageGeneralController">
     <h3>Grunddaten:</h3>
-    <input type="text" placeholder="Restaurantname" ng-model="input.restaurantname"><br/>
-    <textarea pl6aceholder="Beschreibung" ng-model="input.description"></textarea>
+    <input type="text" placeholder="Restaurantname" ng-model="input.general.restaurantname"><br/>
+    <textarea pl6aceholder="Beschreibung" ng-model="input.general.description"></textarea>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Anbieter von Schülermahlzeit</span>
     </label>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Gruppen erwünscht</span>
     </label>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Reservierung möglich</span>
     </label>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Haustiere erlaubt</span>
     </label>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Vollkornküche</span>
     </label>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" ng-model="input.general.studentMeals">
         <div></div>
         <span>Kelteneuro</span>
     </label>
     <br/>
     <label class="checkbox">
-    <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+    <input type="checkbox" ng-model="input.general.studentMeals">
     <div>
     </div>
     <span>Kartenzahlung</span>
 </label>
     <br/>
     <h3>Adresse:</h3>
-    <input type="text" placeholder="Straße" ng-model="input.street"/><input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/><br/>
-    <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/><input type="text" placeholder="Ort" ng-model="input.country"/>
-    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
+    <input type="text" placeholder="Straße" ng-model="input.general.street"/><input type="text" class="short" placeholder="Hausnummer" ng-model="input.general.houseNumber"/><br/>
+    <input type="text" class="short" placeholder="PLZ" ng-model="input.general.countryCode"/><input type="text" placeholder="Ort" ng-model="input.general.country"/>
+    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.general.street}}+{{input.general.houseNumber}}+{{input.general.countryCode}}+{{input.general.country}}" target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
     <br/>
     <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        <input type="checkbox" value="pupilMeal" ng-checked="input.general.studentMeals">
         <div></div>
         <span>Parkmöglichkeit in der Nähe</span>
     </label>
 
     <h3>Kontaktdaten:</h3>
-    <input type="text" placeholder="Email-Adresse" ng-model="input.email"/><br/>
-    <input type="text" placeholder="Telefonnummer" ng-model="input.tel"/><br/>
-    <input type="text" placeholder="Website" ng-model="input.website"/>
-    <a class="clean tooltipTop" href="{{input.website}}" target="_blank" title="Link testen"><i class="material-icons">link</i></a>
+    <input type="text" placeholder="Email-Adresse" ng-model="input.general.email"/><br/>
+    <input type="text" placeholder="Telefonnummer" ng-model="input.general.tel"/><br/>
+    <input type="text" placeholder="Website" ng-model="input.general.website"/>
+    <a class="clean tooltipTop" href="{{input.general.website}}" target="_blank" title="Link testen"><i class="material-icons">link</i></a>
     <br/>
 </div>

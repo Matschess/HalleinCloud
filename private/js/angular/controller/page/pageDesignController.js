@@ -1,4 +1,12 @@
 myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
+    load();
+    function load() {
+        $http.get(URL + '/restaurants?user=' + user)
+            .then(function (response) {
+                $scope.input = response.data[0];
+            });
+    }
+
     $scope.pickColor = function(){
         ngDialog.open({
             template: 'content/dialogs/color.html',
@@ -15,6 +23,22 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
     $scope.setColor = function(color){
         $scope.input.color = color;
         $scope.colorpicker = false;
+        var data = {
+            id: restaurant,
+            color: color
+        }
+        data = prepareUpload(data);
+        $http({
+            url: URL + '/restaurants',
+            method: 'PUT',
+            params: data
+        }).then(function () {
+                globalNotification('success', 'Farbe gespeichert.');
+                load();
+            },
+            function () {
+                globalNotification('error')
+            });
     }
 
     $scope.myImage = '';
@@ -54,7 +78,11 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
             if(main){
                 setMainImg(0);
             }
-        });
+                globalNotification('success', 'Hochgeladen.');
+            },
+            function () {
+                globalNotification('error')
+            });
     }
     $scope.setMainImg = function (index) {
         var data = {
@@ -96,8 +124,11 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
                 params: data
             }).then(function () {
                 $scope.input.imgs.splice(index, 1);
-                console.log($scope.input);
-            });
+                    globalNotification('success', 'Gelöscht.');
+                },
+                function () {
+                    globalNotification('error')
+                });
         });
     }
 });
