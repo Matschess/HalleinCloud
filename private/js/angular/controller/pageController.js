@@ -4,7 +4,6 @@ myApp.controller('pageController', function ($scope, $http, ngDialog) {
         tabs: [
             {title: 'Allgemein', content: 'content/restaurant/general.html'},
             {title: 'Öffnungszeiten', content: 'content/restaurant/times.html'},
-            {title: 'Zahlung', content: 'content/restaurant/payments.html'},
             {title: 'Design', content: 'content/restaurant/design.html'}
 
         ],
