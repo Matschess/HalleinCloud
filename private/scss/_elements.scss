@@ -17,17 +17,23 @@ input[type=radio] {
 }
 
 label {
-  font-size: 16px;
-  &.top {
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+  i {
     vertical-align: top;
   }
-  i {
-    vertical-align: middle;
+  &.shorter {
+    width: 20px;
   }
-  img {
-    vertical-align: middle;
-    height: 30px;
-    margin-left: 10px;
+  &.long {
+    width: 40px;
+  }
+  &.longer {
+    width: 100px;
+  }
+  &.distance {
+    margin-left: 30px;
   }
 }
 

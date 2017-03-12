@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog', 'ngImgCrop']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog', 'ngImgCrop', 'ngFlatDatepicker']);
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';

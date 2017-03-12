@@ -25,7 +25,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.6/css/ngDialog-theme-plain.min.css" rel="stylesheet">
     <!-- ngDraggable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngDraggable/0.1.11/ngDraggable.min.js"></script>
-    <script src="public/js/app.js"></script>
     <!-- ngImgCrop -->
     <link rel="stylesheet" type="text/css" href="assets/plugins/ngImgCropExtended/ng-img-crop-extended.css"/>
     <script src="assets/plugins/ngImgCropExtended/ng-img-crop-extended.min.js"></script>
@@ -40,6 +39,14 @@
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link rel="stylesheet" href="assets/plugins/select2/select2.css"/>
+    <!-- moment.js (required for datepicker) -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/de-at.js"></script>
+    <!-- ng-flat-datepicker -->
+    <script src="assets/plugins/ng-flat-datepicker/ng-flat-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/plugins/ng-flat-datepicker/ng-flat-datepicker.min.css"/>
+    <!-- JS -->
+    <script src="public/js/app.js"></script>
     <!-- animate-css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <!-- Stylesheet -->
@@ -50,7 +57,7 @@
     <!-- Notification -->
     <div class="globalNotification"></div>
     <!-- Login -->
-    <div class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
+    <div id="login" class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
         <h1>{{ route.title }}</h1>
         <h2>{{ route.subtitle }}</h2>
         <div class="devs" ng-if="route.aboutUs"><a href="#">Die Entwickler</a>|<a href="#">Über</a></div>
