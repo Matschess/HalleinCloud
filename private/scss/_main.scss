@@ -1071,7 +1071,7 @@ body {
           text-decoration: line-through;
         }
       }
-      .restDay {
+      .openingTimes, .restDays {
         margin-bottom: 5px;
         div {
           display: inline-block;
@@ -1083,6 +1083,11 @@ body {
             &:last-of-type {
               width: 150px;
             }
+          }
+        }
+        i{
+          &:hover{
+            color: #dc4a3a;
           }
         }
       }

@@ -7,22 +7,30 @@ myApp.controller('pageController', function ($scope, $routeParams, $http) {
                 actions: [
                     {title: 'Speichern', icon: 'done',
                     returnFunction: function(){
-                        if ($scope.input.general.restaurantname) {
-                            alert($scope.input.general.studentMeals)
+                        var input = $scope.input.general;
+                        if (input.restaurantname && input.street && input.houseNumber && input.countryCode && input.country) {
                             var data = {
                                 id: user,
-                                restaurantname: $scope.input.general.restaurantname,
-                                description: $scope.input.general.description,
-                                studentMeals: $scope.input.general.studentMeals,
-                                street: $scope.input.general.street,
-                                houseNumber: $scope.input.general.houseNumber,
-                                countryCode: $scope.input.general.countryCode,
-                                country: $scope.input.general.country,
-                                email: $scope.input.general.email,
-                                tel: $scope.input.general.tel,
-                                website: $scope.input.general.website
+                                restaurantname: input.restaurantname,
+                                description: input.description,
+                                studentMeals: input.studentMeals,
+                                reservation: input.reservation,
+                                groupsWelcome: input.groupsWelcome,
+                                petsWelcome: input.petsWelcome,
+                                cornKitchen: input.cornKitchen,
+                                acceptsKelteneuro: input.acceptsKelteneuro,
+                                acceptsCard: input.acceptsCard,
+                                street: input.street,
+                                houseNumber: input.houseNumber,
+                                countryCode: input.countryCode,
+                                country: input.country,
+                                parking: input.parking,
+                                email: input.email,
+                                tel: input.tel,
+                                website: input.website
                             }
                             data = prepareUpload(data);
+                            console.log(data);
                             $http({
                                 url: URL + '/restaurants',
                                 method: 'PUT',

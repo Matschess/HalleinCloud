@@ -33,8 +33,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                     $scope.notifications.push({
                         type: 'warning',
                         title: 'Keine Öffnungszeiten',
-                        text: 'Sie haben noch keine Öffnungszeiten eingetragen.',
-                        route: 'page'
+                        text: 'Sie haben keine Öffnungszeiten eingetragen.',
+                        route: 'page/times'
                     })
                 }
             });
@@ -118,17 +118,9 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 }
             });
 
-        $http.get(URL + '/restaurants?get=street,countryCode,country&id=' + restaurant)
+        $http.get(URL + '/restaurants?id=' + restaurant)
             .then(function (response) {
                 var data = response.data[0];
-                if (!(data.street && data.countryCode && data.country)) {
-                    $scope.notifications.push({
-                        type: 'warning',
-                        title: 'Adresse unvollständig',
-                        text: 'Ihre Adressdaten sind nicht vollständig.',
-                        route: 'page'
-                    })
-                }
                 if (!data.imgs) {
                     $scope.notifications.push({
                         type: 'warning',

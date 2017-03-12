@@ -1,65 +1,78 @@
-<div class="full" ng-controller="pageGeneralController">
-    <h3>Grunddaten:</h3>
-    <input type="text" placeholder="Restaurantname" ng-model="input.general.restaurantname"><br/>
-    <textarea pl6aceholder="Beschreibung" ng-model="input.general.description"></textarea>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Anbieter von Schülermahlzeit</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Gruppen erwünscht</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Reservierung möglich</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Haustiere erlaubt</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Vollkornküche</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="input.general.studentMeals">
-        <div></div>
-        <span>Kelteneuro</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-    <input type="checkbox" ng-model="input.general.studentMeals">
-    <div>
+<div ng-controller="pageGeneralController">
+    <div class="full">
+        <h3>Grunddaten:</h3>
+        <input type="text" class="shorter" placeholder="Restaurantname" ng-model="input.general.restaurantname"><br/>
+        <textarea pl6aceholder="Beschreibung" ng-model="input.general.description"></textarea>
     </div>
-    <span>Kartenzahlung</span>
-</label>
-    <br/>
-    <h3>Adresse:</h3>
-    <input type="text" placeholder="Straße" ng-model="input.general.street"/><input type="text" class="short" placeholder="Hausnummer" ng-model="input.general.houseNumber"/><br/>
-    <input type="text" class="short" placeholder="PLZ" ng-model="input.general.countryCode"/><input type="text" placeholder="Ort" ng-model="input.general.country"/>
-    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.general.street}}+{{input.general.houseNumber}}+{{input.general.countryCode}}+{{input.general.country}}" target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" value="pupilMeal" ng-checked="input.general.studentMeals">
-        <div></div>
-        <span>Parkmöglichkeit in der Nähe</span>
-    </label>
-
-    <h3>Kontaktdaten:</h3>
-    <input type="text" placeholder="Email-Adresse" ng-model="input.general.email"/><br/>
-    <input type="text" placeholder="Telefonnummer" ng-model="input.general.tel"/><br/>
-    <input type="text" placeholder="Website" ng-model="input.general.website"/>
-    <a class="clean tooltipTop" href="{{input.general.website}}" target="_blank" title="Link testen"><i class="material-icons">link</i></a>
-    <br/>
+    <div class="left">
+        <h3>Adresse:</h3>
+        <input type="text" class="shorter" placeholder="Straße" ng-model="input.general.street"/><input type="text"
+                                                                                                        class="short"
+                                                                                                        placeholder="Hausnummer"
+                                                                                                        ng-model="input.general.houseNumber"/><br/>
+        <input type="text" class="short" placeholder="PLZ" ng-model="input.general.countryCode"/><input type="text"
+                                                                                                        class="shorter"
+                                                                                                        placeholder="Ort"
+                                                                                                        ng-model="input.general.country"/>
+        <a class="clean tooltipTop"
+           href="http://maps.google.com/maps?q={{input.general.street}}+{{input.general.houseNumber}}+{{input.general.countryCode}}+{{input.general.country}}"
+           target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.parking">
+            <div></div>
+            <span>Parkmöglichkeit in der Nähe</span>
+        </label>
+        <h3>Kontaktdaten:</h3>
+        <input type="text" class="shorter" placeholder="Email-Adresse" ng-model="input.general.email"/><br/>
+        <input type="text" class="shorter" placeholder="Telefonnummer" ng-model="input.general.tel"/><br/>
+        <input type="text" class="shorter" placeholder="Website" ng-model="input.general.website"/>
+        <a class="clean tooltipTop" href="{{input.general.website}}" target="_blank" title="Link testen"><i
+                class="material-icons">link</i></a>
+    </div>
+    <div class="right">
+        <h3>Optionen:</h3>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.studentMeals">
+            <div></div>
+            <span>Anbieter von Schülermahlzeit</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.reservation">
+            <div></div>
+            <span>Reservierung möglich</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.groupsWelcome">
+            <div></div>
+            <span>Gruppen erwünscht</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.petsWelcome">
+            <div></div>
+            <span>Haustiere erlaubt</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.cornKitchen">
+            <div></div>
+            <span>Vollkornküche</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.acceptsKelteneuro">
+            <div></div>
+            <span>Zahlung mit Kelteneuro</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.acceptsCard">
+            <div>
+            </div>
+            <span>Zahlung mit Karte</span>
+        </label>
+    </div>
 </div>
