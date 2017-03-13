@@ -34,7 +34,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         type: 'warning',
                         title: 'Keine Öffnungszeiten',
                         text: 'Sie haben keine Öffnungszeiten eingetragen.',
-                        route: 'page/times'
+                        route: 'page#times'
                     })
                 }
             });
@@ -126,7 +126,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         type: 'warning',
                         title: 'Keine Bilder',
                         text: 'Sie haben keine Bilder hochgeladen.',
-                        route: 'page'
+                        route: 'page#design'
                     })
                 }
                 if (data.imgs && !data.mainImg) {
@@ -134,7 +134,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         type: 'warning',
                         title: 'Keine Hauptbild',
                         text: 'Sie haben kein Hauptbild gesetzt.',
-                        route: 'page'
+                        route: 'page#design'
                     })
                 }
             });

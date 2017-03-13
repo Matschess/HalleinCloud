@@ -1,4 +1,4 @@
-myApp.controller('foodAddController', function ($scope, $location, $http) {
+myApp.controller('foodAddController', function ($scope, $routeParams, $location, $http) {
     $scope.config = {
         title: 'Mahlzeit hinzufügen',
         actions: [
@@ -47,6 +47,14 @@ myApp.controller('foodAddController', function ($scope, $location, $http) {
             {id: 2, name: 'Hauptspeise'},
             {id: 3, name: 'Nachspeise'}
         ]
+    }
+
+    switch($routeParams.mealtype){
+        case 'appetizer':
+            $scope.types.selected = $scope.types.options[0];
+            break;
+        case 'dessert':
+            $scope.types.selected = $scope.types.options[2];
     }
 
     $scope.tags = [

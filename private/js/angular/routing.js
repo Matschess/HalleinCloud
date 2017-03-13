@@ -28,7 +28,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/meal/add', {
+        .when('/meal/add/:mealtype', {
             templateUrl: 'templates/window.html',
             controller: 'foodAddController',
             resolve: {
@@ -53,7 +53,7 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/page/:subpage', {
+        .when('/page', {
             templateUrl: 'templates/tabs.html',
             controller: 'pageController',
             icon: 'home',

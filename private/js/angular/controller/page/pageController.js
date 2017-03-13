@@ -1,9 +1,9 @@
-myApp.controller('pageController', function ($scope, $routeParams, $http) {
+myApp.controller('pageController', function ($scope, $location, $http) {
     $scope.input = {};
     $scope.config = {
         activeTab: 0,
         tabs: [
-            {title: 'Allgemein', link: 'page/general', content: 'content/restaurant/general.html',
+            {title: 'Allgemein', link: 'page#general', content: 'content/restaurant/general.html',
                 actions: [
                     {title: 'Speichern', icon: 'done',
                     returnFunction: function(){
@@ -49,18 +49,18 @@ myApp.controller('pageController', function ($scope, $routeParams, $http) {
                     }},
                     {title: 'Verwerfen', icon: 'close', route: '/'}
                 ],},
-            {title: 'Öffnungszeiten', link: 'page/times', content: 'content/restaurant/times.html',
+            {title: 'Öffnungszeiten', link: 'page#times', content: 'content/restaurant/times.html',
                 actions: [
                     {title: 'Schließen', icon: 'close', route: '/'}
                 ],},
-            {title: 'Design', link: 'page/design', content: 'content/restaurant/design.html',
+            {title: 'Design', link: 'page#design', content: 'content/restaurant/design.html',
                 actions: [
                     {title: 'Schließen', icon: 'close', route: '/'}
                 ],}
         ]
     }
 
-    switch($routeParams.subpage){
+    switch($location.hash()){
         case 'general':
             $scope.config.activeTab = '0'
             break;
@@ -72,9 +72,5 @@ myApp.controller('pageController', function ($scope, $routeParams, $http) {
             break;
         default:
             $scope.config.activeTab = '0'
-    }
-
-    function saveGeneral() {
-
     }
 });

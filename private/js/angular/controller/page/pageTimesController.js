@@ -1,8 +1,4 @@
 myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
-    $scope.datepickerConfig = {
-        dateFormat: 'DD.MM.YYYY'
-    };
-
     $scope.weekdays = {
         selected: {id: 1, name: 'Montag'},
         options: [
@@ -42,7 +38,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
                 method: 'POST',
                 params: data
             }).then(function (response) {
-                var id = response.data.id;
+                    var id = response.data.id;
                     globalNotification('success', 'Eingetragen.');
                     $scope.input.openingTimes.push({
                         id: id,
@@ -78,6 +74,11 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
             });
     }
 
+    $scope.datepickerConfig = {
+        dateFormat: 'DD.MM.YYYY',
+        minDate: new Date()
+    };
+
     $scope.showRestDayAdd = function () {
         ngDialog.open({
             template: 'content/dialogs/restDayAdd.html',
@@ -92,12 +93,12 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
 
     $scope.restDayAdd = function () {
         if ($scope.input.restDayFrom && $scope.input.restDayTo) {
-            var date = stringToDate($scope.input.restDayFrom);
-            date.setDate(date.getDate() - 1);
-            var dateTo = stringToDate($scope.input.restDayTo);
-            var diff = Math.abs(dateTo.getTime() - date.getTime());
-            var diff = Math.ceil(diff / (1000 * 3600 * 24));
-            if (diff < 7) {
+            if (stringToDate($scope.input.restDayFrom) >= new Date() && stringToDate($scope.input.restDayTo) >= new Date()) {
+                var date = stringToDate($scope.input.restDayFrom);
+                date.setDate(date.getDate() - 1);
+                var dateTo = stringToDate($scope.input.restDayTo);
+                var diff = Math.abs(dateTo.getTime() - date.getTime());
+                var diff = Math.ceil(diff / (1000 * 3600 * 24));
                 for (var i = 0; i < diff; i++) {
                     date.setDate(date.getDate() + 1);
                     var dateFormatted = dateToString(date);
@@ -113,15 +114,15 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
                         params: data
                     }).then(function () {
                             globalNotification('success', 'Der Ruhetag wurde gespeichert.');
-                            $scope.restDayShow = false;
                             load();
                         },
                         function () {
                             globalNotification('alert')
                         });
+                    return true;
                 }
             }
-            else globalNotification('error', 'Bitte geben Sie einen geringeren Zeitabstand ein.')
+            else globalNotification('warning', 'Datum liegt in der Vergangenheit.');
         }
         else {
             globalNotification('warning', 'Bitte geben Sie alle Daten ein.')

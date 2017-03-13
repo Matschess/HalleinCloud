@@ -1,14 +1,27 @@
-myApp.controller('foodController', function ($scope, $http, $routeParams) {
+myApp.controller('foodController', function ($scope, $location, $http) {
         $scope.config = {
             activeTab: 0,
             tabs: [
-                {title: 'Täglich', content: 'content/meal/dailymeal.html'},
-                {title: 'Dauerhaft', content: 'content/meal/constantmeal.html'}
-
-            ],
-            actions: [
-                {title: 'Hinzufügen', icon: 'add', route: '/meal/add'}
+                {title: 'Täglich', link: 'meal#daily', content: 'content/meal/dailymeal.html'},
+                {title: 'Dauerhaft', link: 'meal#constant', content: 'content/meal/constantmeal.html'}
             ]
+        }
+
+        switch ($location.hash()) {
+            case 'daily':
+                $scope.config.activeTab = '0'
+                break;
+            case 'constant':
+                $scope.config.activeTab = '1'
+                break;
+            default:
+                $scope.config.activeTab = '0'
+        }
+
+        $scope.escSearchbox = function ($event) {
+            if ($event.keyCode == 27) {
+                $scope.appetizer.searchbox = false;
+            }
         }
 
         var date = new Date();
@@ -81,7 +94,7 @@ myApp.controller('foodController', function ($scope, $http, $routeParams) {
                 $scope.days = data;
             });
 
-        $scope.everyday = {menu:{meals:{}}};
+        $scope.everyday = {menu: {meals: {}}};
 
         /*
          $http.get(URL + '/menus?restaurant=' + restaurant)
