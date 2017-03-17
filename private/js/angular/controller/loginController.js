@@ -32,6 +32,11 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         },
         setup: {
             everyone: {
+                welcome: {
+                    title: 'Hallo',
+                    subtitle: 'Willkommen bei der Ersteinrichtung',
+                    content: 'content/setup/welcome.html'
+                },
                 password: {
                     title: 'Einrichtung',
                     subtitle: 'Sicherheit',
@@ -95,7 +100,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         }).then(function (response) {
             var response = response.data;
             if (response.initialLogin) {
-                $scope.route = routes.setup.everyone.password;
+                $scope.route = routes.setup.everyone.welcome;
                 $('.wrapper').addClass('background');
             } else {
                 loginHandler.login(response);
@@ -148,6 +153,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                     params: data
                 }).then();
                 break;
+            case 'welcome':
+                $scope.route = routes.setup.everyone.password;
+                break;
             case 'password':
                 $scope.route = routes.setup.restaurant.basicData;
                 break;
@@ -183,6 +191,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                     $('.username').focus();
                 });
                 $('.wrapper').removeClass('background');
+                break;
+            case 'welcome':
+                $scope.route = routes.login;
                 break;
             case 'basicData':
                 $scope.route = routes.setup.everyone.password;

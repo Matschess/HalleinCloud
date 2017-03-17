@@ -1,7 +1,10 @@
-<div class="basicDatawrapper">
-    <input type="name" placeholder="Restaurantname"/><br/>
-    <textarea placeholder="Beschreibung"></textarea> <br>
-
-    <i class="material-icons backicon" ng-click="back('basicData')">arrow_back</i>
-    <i class="material-icons doneicon" ng-click="complete('basicData')">done</i>
+<div class="setupWrapper full">
+    <p>Tragen Sie Ihren Restaurantnamen ein und wählen Sie eine attraktive Beschreibung.</p>
+    <input type="text" placeholder="Restaurantname"/>
+    <br/>
+    <textarea placeholder="Beschreibung"></textarea>
+    <br/>
+    <br/>
+    <button ng-click="back('basicData')"><i class="material-icons">arrow_back</i></button>
+    <button ng-click="complete('basicData')"><i class="material-icons">arrow_forward</i></button>
 </div>

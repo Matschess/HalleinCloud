@@ -6,13 +6,13 @@
     <label class="long">Tag:</label><select ng-model="weekdays.selected" ng-options="option.name for option in weekdays.options track by option.id"></select>
     <br/>
     <br/>
-    <label class="long">Von:</label><input type="text" class="short" placeholder="00:00" ng-model="openingTimeFrom"/>
+    <label class="long">Von:</label><input type="text" class="short" placeholder="00:00" ng-model="openingTimeFrom" ng-change="validateOpeningTimes(openingTimeFrom, openingTimeTo)"/>
     <br/>
-    <label class="long">Bis:</label><input type="text" class="short" placeholder="00:00" ng-model="openingTimeTo"/>
+    <label class="long">Bis:</label><input type="text" class="short" placeholder="00:00" ng-model="openingTimeTo" ng-change="validateOpeningTimes(openingTimeFrom, openingTimeTo)"/>
 </content><br/>
 <div class="actions">
     <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
-    <button class="action highlighted" ng-click="openingTimeAdd(weekdays.selected.id, openingTimeFrom, openingTimeTo) && closeThisDialog()">Eintragen</button>
+    <button class="action highlighted" ng-click="openingTimeAdd(weekdays.selected.id, openingTimeFrom, openingTimeTo) && closeThisDialog()" ng-disabled="!validOpeningTimes">Eintragen</button>
 </div>
 <script>
     selectln()

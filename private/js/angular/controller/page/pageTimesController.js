@@ -13,11 +13,20 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
     }
 
     $scope.showOpeningTimesAdd = function () {
+        $scope.validOpeningTimes = false;
         ngDialog.open({
             template: 'content/dialogs/openingTimesAdd.html',
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });
+    }
+
+    $scope.validateOpeningTimes = function(opens, closes){
+        var pattern = new RegExp(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/i);
+       if(pattern.test(opens) && pattern.test(closes)) {
+           $scope.validOpeningTimes = true;
+       }
+       else $scope.validOpeningTimes = false;
     }
 
     $scope.input = {
@@ -52,9 +61,6 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
                 });
             return true;
         }
-        else {
-            globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
-        }
     }
 
     $scope.openingTimeRemove = function (id, index) {
@@ -80,6 +86,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
     };
 
     $scope.showRestDayAdd = function () {
+        $scope.validRestDays = false;
         ngDialog.open({
             template: 'content/dialogs/restDayAdd.html',
             appendClassName: 'ngdialog-theme-cropper',
@@ -87,16 +94,24 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
         });
     }
 
-    $scope.restDayDateAssume = function () {
-        $scope.input.restDayTo = $scope.input.restDayFrom;
+    $scope.restDayDateAssume = function (from) {
+        $scope.restDayTo = from;
     }
 
-    $scope.restDayAdd = function () {
-        if ($scope.input.restDayFrom && $scope.input.restDayTo) {
-            if (stringToDate($scope.input.restDayFrom) >= new Date() && stringToDate($scope.input.restDayTo) >= new Date()) {
-                var date = stringToDate($scope.input.restDayFrom);
+    $scope.validateRestDays = function(from, to){
+        var pattern = new RegExp(/^\d{2}[./-]\d{2}[./-]\d{4}$/i);
+        if(pattern.test(from) && pattern.test(to)) {
+            $scope.validRestDays = true;
+        }
+        else $scope.validRestDays = false;
+    }
+
+    $scope.restDayAdd = function (from, to, description) {
+        if (from && to) {
+            if (stringToDate(from) >= new Date() && stringToDate(to) >= new Date()) {
+                var date = stringToDate(from);
                 date.setDate(date.getDate() - 1);
-                var dateTo = stringToDate($scope.input.restDayTo);
+                var dateTo = stringToDate(to);
                 var diff = Math.abs(dateTo.getTime() - date.getTime());
                 var diff = Math.ceil(diff / (1000 * 3600 * 24));
                 for (var i = 0; i < diff; i++) {
@@ -105,7 +120,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
                     var data = {
                         restaurant: restaurant,
                         date: dateFormatted,
-                        description: $scope.input.restDayDescription
+                        description: description
                     }
                     data = prepareUpload(data);
                     $http({

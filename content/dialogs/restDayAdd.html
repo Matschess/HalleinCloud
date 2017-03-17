@@ -4,13 +4,13 @@
     <br/>
     <br/>
     <div class="restDays">
-        <input type="text" class="datepicker" placeholder="von" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="input.restDayFrom" ng-change="restDayDateAssume()"/>
-        <input type="text" class="datepicker" placeholder="bis" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="input.restDayTo"/>
+        <input type="text" class="datepicker" placeholder="von" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayFrom" ng-change="restDayDateAssume(restDayFrom); validateRestDays(restDayFrom, restDayTo)"/>
+        <input type="text" class="datepicker" placeholder="bis" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayTo" ng-change="validateRestDays(restDayFrom, restDayTo)"/>
         <br/>
-        <textarea placeholder="Grund (optional)" ng-model="input.restDayDescription"></textarea>
+        <textarea placeholder="Grund (optional)" ng-model="restDayDescription"></textarea>
     </div>
 </content><br/>
 <div class="actions">
     <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
-    <button class="action highlighted" ng-click="restDayAdd() && closeThisDialog()">Eintragen</button>
+    <button class="action highlighted" ng-click="restDayAdd(restDayFrom, restDayTo, restDayDescription) && closeThisDialog()" ng-disabled="!validRestDays">Eintragen</button>
 </div>

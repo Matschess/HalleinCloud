@@ -1,37 +1,14 @@
-<div class="paymentswrapper">
-
-    <div class="paybar">
-        <h3>Bar:</h3>
-        <label>
-            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-            Bargeld
-        </label>
-        <br/>
-        <label>
-            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-            Kelteneuro
-        </label>
-    </div>
+<div class="setupWrapper full">
+    <label>
+        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        Kelteneuro
+    </label>
+    <label>
+        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
+        Karten
+    </label>
     <br/>
-<div class="paycard">
-        <h3>Karte:</h3>
-        <label>
-            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-            Mastercard
-            <img src="assets/icons/mastercard.png"/>
-        </label>
-        <br/>
     <br/>
-        <label>
-            <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-            Visa
-            <img src="assets/icons/visa.png"/>
-        </label>
-</div>
-
-<div class="paymenticons">
-
-    <i class="material-icons doneicon" ng-click="complete('payments')">done</i>
-    <i class="material-icons backicon" ng-click="back('payments')">arrow_back</i>
-</div>
+    <button ng-click="back('payments')"><i class="material-icons">arrow_back</i></button>
+    <button ng-click="complete('payments')"><i class="material-icons">arrow_forward</i></button>
 </div>

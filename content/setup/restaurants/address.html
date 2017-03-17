@@ -1,20 +1,28 @@
-<div class="addresswrapper">
-<h3>Adresse:</h3>
-    <input type="text" placeholder="Straße" ng-model="input.street"/>
-    <br>
-    <input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/>
+<div class="setupWrapper">
+    <div class="left">
+        <h3>Adresse:</h3>
+        <input type="text" placeholder="Straße" ng-model="input.street"/>
+        <input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/>
+        <br/>
+        <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/>
+        <input type="text" placeholder="Ort" ng-model="input.country"/>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="input.general.parking">
+            <div></div>
+            <span>Parkmöglichkeit in der Nähe</span>
+        </label>
+    </div>
+    <div class="right">
+        <h3>Kontaktdaten:</h3>
+        <input type="text" placeholder="Email-Adresse"/>
+        <br/>
+        <input type="text" placeholder="Telefonnummer"/>
+        <br/>
+        <input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/>
+    </div>
     <br/>
-    <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/>
-    <br>
-    <input id="placelabel" type="text" placeholder="Ort" ng-model="input.country"/>    <a class="clean tooltipTop" href="http://maps.google.com/maps?q={{input.street}}+{{input.houseNumber}}+{{input.countryCode}}+{{input.country}}" target="_blank" title="Auf Karte ansehen"><i id="addressmap" class="material-icons">map</i></a>
-    <br>
-    <i class="material-icons backicon" ng-click="back('address')">arrow_back</i>
-</div>
-<div class="kontaktwrapper">
-<h3>Kontaktdaten:</h3>
-<input type="text" placeholder="Email-Adresse"/><br/>
-<input type="text" placeholder="Telefonnummer"/><br/>
-<input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/> <a class="" href="{{input.website}}" target="_blank" title="Link testen"><i id="websitelink" class="material-icons" href="{{input.website}}" >link</i></a> <br/>
-
-    <i class="material-icons doneicon" ng-click="complete('address')">done</i>
+    <br/>
+    <button ng-click="back('address')"><i class="material-icons">arrow_back</i></button>
+    <button ng-click="complete('address')"><i class="material-icons">arrow_forward</i></button>
 </div>

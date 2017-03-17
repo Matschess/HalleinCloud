@@ -8,6 +8,7 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
     }
 
     $scope.pickColor = function(){
+        $scope.hexValid = false;
         ngDialog.open({
             template: 'content/dialogs/color.html',
             appendClassName: 'ngdialog-theme-cropper',

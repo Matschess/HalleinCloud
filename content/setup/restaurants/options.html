@@ -1,26 +1,48 @@
-<div class="optionswrapper">
-<div class="optionlabels">
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Anbieter von Schülermahlzeit
+<div class="setupWrapper full">
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.studentMeals">
+        <div></div>
+        <span>Anbieter von Schülermahlzeit</span>
     </label>
     <br/>
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Gruppen erwünscht
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.reservation">
+        <div></div>
+        <span>Reservierung möglich</span>
     </label>
     <br/>
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Reservierung möglich
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.groupsWelcome">
+        <div></div>
+        <span>Gruppen erwünscht</span>
     </label>
     <br/>
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Haustiere erlaubt
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.petsWelcome">
+        <div></div>
+        <span>Haustiere erlaubt</span>
     </label>
-</div>
-
-<i class="material-icons doneicon" ng-click="complete('options')">done</i>
-<i class="material-icons backicon" ng-click="back('options')">arrow_back</i>
+    <br/>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.cornKitchen">
+        <div></div>
+        <span>Vollkornküche</span>
+    </label>
+    <br/>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.acceptsKelteneuro">
+        <div></div>
+        <span>Zahlung mit Kelteneuro</span>
+    </label>
+    <br/>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="input.general.acceptsCard">
+        <div>
+        </div>
+        <span>Zahlung mit Karte</span>
+    </label>
+    <br/>
+    <br/>
+    <button ng-click="back('options')"><i class="material-icons">arrow_back</i></button>
+    <button ng-click="complete('options')"><i class="material-icons">arrow_forward</i></button>
 </div>

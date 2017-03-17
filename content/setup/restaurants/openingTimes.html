@@ -1,9 +1,6 @@
-<div class="openingtimeswrapper" ng-repeat="day in days" ng-class="{'sleep':day.sleep}"><label class="inline shorter">{{ day.shorthand }}</label><input type=   "text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.opens | date:'HH:mm' }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.closesHalf }}"/> <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.opensHalf }}"/>- <input type="text" class="shorter" placeholder="00:00" ng-disabled="day.sleep" value="{{ day.data.closes }}"/><i class="material-icons tooltipRight" title="Geschlossen" ng-click="sleep($index)">block</i></div>
-
-
-</div>
-
-<div class="openingTimesIcons">
-<i class="material-icons doneicon" ng-click="complete('openingTimes')">done</i>
-<i class="material-icons backicon" ng-click="back('openingTimes')">arrow_back</i>
+<div class="setupWrapper full">
+    <br/>
+    <br/>
+    <button ng-click="back('openingTimes')"><i class="material-icons">arrow_back</i></button>
+    <button ng-click="complete('openingTimes')"><i class="material-icons">arrow_forward</i></button>
 </div>
