@@ -110,14 +110,13 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
         });
     }
 
-    $scope.pwForgot = function () {
-        $scope.route = routes.pwForgot.request;
-        $scope.pwForgot = {input: {}};
-    }
-
     $scope.complete = function (src) {
         switch (src) {
-            case 'pwForgot/request':
+            case 'pwReset':
+                $scope.route = routes.pwForgot.request;
+                $scope.pwForgot = {input: {}};
+                break;
+            case 'pwReset/request':
                 $scope.route = routes.pwForgot.confirm;
                 var email = $scope.pwForgot.input.email;
                 if (email) {
@@ -131,27 +130,54 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                     }).then();
                 }
                 break;
-            case 'pwForgot/confirm':
-                $scope.route = routes.pwForgot.password;
-                var data = {
-                    email: $scope.pwForgot.input.email
+            case 'pwReset/confirm':
+                var email = $scope.pwForgot.input.email;
+                var pin = $scope.pwForgot.input.pin;
+                if (email && pin) {
+                    var data = {
+                        email: $scope.pwForgot.input.email,
+                        pin: pin
+                    }
+                    $http({
+                        url: URL + '/pwforgot',
+                        method: 'GET',
+                        params: data
+                    }).then(function() {
+                        $scope.route = routes.pwForgot.password;
+                    }, function() {
+                        console.log('error');
+                    });
                 }
-                $http({
-                    url: URL + '/pwforgot',
-                    method: 'PUT',
-                    params: data
-                }).then();
                 break;
-            case 'pwForgot/password':
-                $scope.route = routes.pwForgot.success;
-                var data = {
-                    email: $scope.pwForgot.input.email
+            case 'pwReset/password':
+                var email = $scope.pwForgot.input.email;
+                var pin = $scope.pwForgot.input.pin;
+                var passwordNew = $scope.pwForgot.input.password;
+                var passwordRepeat = $scope.pwForgot.input.passwordRepeat;
+                if (email && pin && passwordNew) {
+                    if(passwordNew == passwordRepeat) {
+                        var data = {
+                            email: $scope.pwForgot.input.email,
+                            pin: pin,
+                            passwordNew: passwordNew
+                        }
+                        $http({
+                            url: URL + '/pwchange',
+                            method: 'PUT',
+                            params: data
+                        }).then(function () {
+                            $scope.route = routes.pwForgot.success;
+                        }, function () {
+                            console.log('error');
+                        });
+                    }
+                    else{
+                        console.log('stimmen nicht');
+                    }
                 }
-                $http({
-                    url: URL + '/pwforgot',
-                    method: 'PUT',
-                    params: data
-                }).then();
+                break;
+            case 'pwReset/success':
+                $scope.route = routes.login;
                 break;
             case 'welcome':
                 $scope.route = routes.setup.everyone.password;
@@ -174,23 +200,25 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             case 'payments':
                 $scope.route = routes.setup.restaurant.completed;
                 break;
+            case 'completed':
+                console.log($scope.input);
+                break;
         }
     }
     $scope.back = function (src) {
         switch (src) {
-            case 'pwForgot':
+            case 'pwReset/request':
                 $scope.route = routes.login;
                 $('document').ready(function () {
                     $('.username').focus();
                 });
                 $('.wrapper').removeClass('background');
                 break;
-            case 'password':
-                $scope.route = routes.login;
-                $('document').ready(function () {
-                    $('.username').focus();
-                });
-                $('.wrapper').removeClass('background');
+            case 'pwReset/confirm':
+                $scope.route = routes.pwForgot.request;
+                break;
+            case 'pwReset/password':
+                $scope.route = routes.pwForgot.confirm;
                 break;
             case 'welcome':
                 $scope.route = routes.login;

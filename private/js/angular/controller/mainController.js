@@ -3,7 +3,6 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $locati
         console.log('loaded');
     });
 
-
     // System-Infos
     $scope.system = {
         version: '0.0.0',
