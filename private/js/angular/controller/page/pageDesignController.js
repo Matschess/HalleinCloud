@@ -1,8 +1,16 @@
 myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
     load();
     function load() {
-        $http.get(URL + '/restaurants?user=' + user)
+        $http.get(URL + '/restaurants?restaurant=' + restaurant)
             .then(function (response) {
+                $scope.input = response.data[0];
+            });
+    }
+
+    function loadColor() {
+        $http.get(URL + '/restaurants?get=color&restaurant=' + restaurant)
+            .then(function (response) {
+                console.log(response);
                 $scope.input = response.data[0];
             });
     }
@@ -35,7 +43,7 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
             params: data
         }).then(function () {
                 globalNotification('success', 'Farbe gespeichert.');
-                load();
+                loadColor();
             },
             function () {
                 globalNotification('error')
@@ -63,7 +71,6 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
     };
     angular.element(document.querySelector('#filepicker')).on('change', handleFileSelect);
     $scope.uploadImg = function (image, main) {
-        console.log(main)
         var data = {
             restaurant: restaurant,
             main: main
@@ -72,17 +79,25 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
         fd.append('img', image);
         $http.post(URL + '/upload', fd, {
             params: data,
+            uploadEventHandlers: {
+                progress: function(e) {
+                    $scope.progress = e.loaded * 100 / e.total;
+                }
+            },
             headers: {'Content-Type': undefined}
         }).then(function (result) {
             var data = result.data;
+            if(!$scope.input.imgs) $scope.input.imgs = [];
             $scope.input.imgs.unshift(data);
             if(main){
                 setMainImg(0);
             }
                 globalNotification('success', 'Hochgeladen.');
+                $scope.progress = 0;
             },
             function () {
-                globalNotification('error')
+                globalNotification('error');
+                $scope.progress = 0;
             });
     }
     $scope.setMainImg = function (index) {

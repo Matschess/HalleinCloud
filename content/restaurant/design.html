@@ -7,6 +7,9 @@
         <input id="filepicker" class="filepicker" type="file" accept="image/*"/>
         <label class="uploader" for="filepicker">
             <div>Bild hier ablegen oder <span>auswählen</span></div>
+            <div class="progress" ng-if="progress">
+                <div ng-style="{'width': + progress + '%'}">{{progress | number: 0}}%</div>
+            </div>
         </label>
         <div class="img" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs">
             <div class="actions">
