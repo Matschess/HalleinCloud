@@ -10,6 +10,7 @@ myApp.controller('usersController', function ($scope, $http, ngDialog) {
     $http.get(URL + '/users?get=id,username,type,lastActive')
         .then(function (response) {
             var data = response.data;
+            console.log(data);
             for (var i = 0; i < data.length; i++) {
                 if (userType != 1 && data[i].type == 1) continue;
                 if (data[i].id == user) {

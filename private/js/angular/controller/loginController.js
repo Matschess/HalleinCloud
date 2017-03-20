@@ -99,8 +99,28 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             params: data
         }).then(function (response) {
             var response = response.data;
-            if (response.initialLogin) {
+            if (response.user.initialLogin) {
+                console.log(response);
                 $scope.route = routes.setup.everyone.welcome;
+                // Token
+                $http.defaults.headers.common['x-access-token'] = response.token;
+                $.ajaxSetup({
+                    headers: {'x-access-token': response.token}
+                });
+                // User
+                user = response.user.id;
+                userType = response.user.type;
+                // Get restaurants
+                var data = {
+                    user: user
+                }
+                $http({
+                    url: URL + '/restaurants',
+                    method: 'GET',
+                    params: data
+                }).then(function(response) {
+                    $scope.setup = {input: response.data[0]};
+                });
                 $('.wrapper').addClass('background');
             } else {
                 loginHandler.login(response);
@@ -142,9 +162,9 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                         url: URL + '/pwforgot',
                         method: 'GET',
                         params: data
-                    }).then(function() {
+                    }).then(function () {
                         $scope.route = routes.pwForgot.password;
-                    }, function() {
+                    }, function () {
                         console.log('error');
                     });
                 }
@@ -155,7 +175,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 var passwordNew = $scope.pwForgot.input.password;
                 var passwordRepeat = $scope.pwForgot.input.passwordRepeat;
                 if (email && pin && passwordNew) {
-                    if(passwordNew == passwordRepeat) {
+                    if (passwordNew == passwordRepeat) {
                         var data = {
                             email: $scope.pwForgot.input.email,
                             pin: pin,
@@ -171,7 +191,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                             console.log('error');
                         });
                     }
-                    else{
+                    else {
                         console.log('stimmen nicht');
                     }
                 }
@@ -201,12 +221,37 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 $scope.route = routes.setup.restaurant.completed;
                 break;
             case 'completed':
-                console.log($scope.input);
+                var input = $scope.setup.input;
+                if (input) {
+                    var data = {
+                        id: input.id,
+                        restaurantname: input.restaurantname,
+                        description: input.description,
+                        street: input.street,
+                        houseNumber: input.houseNumber,
+                        countryCode: input.countryCode,
+                        country: input.country,
+                        email: input.email,
+                        tel: input.tel,
+                        website: input.website
+                    }
+                    console.log(data);
+                    $http({
+                        url: URL + '/restaurants',
+                        method: 'PUT',
+                        params: data
+                    }).then(function () {
+                        $scope.route = routes.login;
+                    });
+                }
                 break;
         }
     }
     $scope.back = function (src) {
         switch (src) {
+            case 'password':
+                $scope.route = routes.setup.everyone.welcome;
+                break;
             case 'pwReset/request':
                 $scope.route = routes.login;
                 $('document').ready(function () {
@@ -238,7 +283,6 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
             case 'payments':
                 $scope.route = routes.setup.restaurant.options;
                 break;
-
         }
     }
 

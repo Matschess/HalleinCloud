@@ -1,8 +1,8 @@
 <div class="setupWrapper full">
     <p>Tragen Sie Ihren Restaurantnamen ein und wählen Sie eine attraktive Beschreibung.</p>
-    <input type="text" placeholder="Restaurantname"/>
+    <input type="text" placeholder="Restaurantname" ng-model="setup.input.restaurantname"/>
     <br/>
-    <textarea placeholder="Beschreibung"></textarea>
+    <textarea placeholder="Beschreibung" ng-model="setup.input.description"></textarea>
     <br/>
     <br/>
     <button ng-click="back('basicData')"><i class="material-icons">arrow_back</i></button>

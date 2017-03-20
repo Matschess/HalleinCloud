@@ -130,21 +130,27 @@ h1 {
   .right{
     margin-left: 2%;
   }
-  i{
-    vertical-align: middle;
-    margin-right: 10px;
+  h2{
+    font-family: 'Gravity';
+    font-weight: normal;
+  }
+  p{
+    font-family: 'Gravity';
   }
   input[type=text], input[type=password]{
+    display: inline-block;
     width: 80%;
-    .short {
-      width: 50%;
+    &.short {
+      width: 30%;
     }
   }
   textarea{
-    width: 100%;
+    font-family: 'Gravity';
+    width: 80%;
+    padding: 8px;
   }
-  h3{
-    font-size: 20px;
+  .checkbox{
+    text-align: left;
   }
   button {
     background-color: #d2d2d2;
@@ -152,13 +158,20 @@ h1 {
     width: 40px;
     height: 40px;
     padding: 0;
-    text-align: right;
+    text-align: center;
     text-transform: uppercase;
     border-radius: 50%;
     cursor: pointer;
     vertical-align: middle;
     &:hover {
       background-color: #c2c2c2;
+    }
+    &.long{
+      width: auto;
+      height: auto;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 20px;
     }
     &.blue {
       background-color: #3498db;
@@ -183,6 +196,10 @@ h1 {
       font-size: 16px;
       vertical-align: middle;
     }
+  }
+  .pwChange .pwValidation{
+    width: 80%;
+    margin-left: 10%;
   }
 }
 

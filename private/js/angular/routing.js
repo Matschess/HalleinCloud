@@ -81,20 +81,6 @@ myApp.config(function ($routeProvider) {
                 }
             }
         })
-        .when('/statistics', {
-            templateUrl: 'templates/window.html',
-            controller: 'statisticsController',
-            icon: 'show_chart',
-            name: 'Statistiken',
-            grant: [1, 2],
-            resolve: {
-                'authenticate': function ($location) {
-                    if (!(userType <= 2)) {
-                        $location.path('/');
-                    }
-                }
-            }
-        })
         .when('/user', {
             templateUrl: 'templates/window.html',
             controller: 'usersController',
@@ -266,9 +252,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
     }
     this.login = function (data) {
         $('.wrapper').addClass('animate');
-        setTimeout(function () {
-            $route.reload();
-        }, 500);
+
         $http.defaults.headers.common['x-access-token'] = data.token;
         $.ajaxSetup({
             headers: {'x-access-token': data.token}

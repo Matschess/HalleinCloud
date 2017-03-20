@@ -17,11 +17,10 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
                             lastname: $scope.input.lastname,
                             email: $scope.input.email
                         }
-                        if($scope.resetPassword){
+                        if($scope.input.password){
                             data.password = $scope.input.password;
                             data.pwTemp = $scope.input.pwTemp;
                         }
-                        console.log(data);
                         $http({
                             url: URL + '/users',
                             method: 'PUT',

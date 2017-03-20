@@ -1,11 +1,15 @@
 <div class="setupWrapper full">
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Kelteneuro
+    <p>Welche Zahlungsmöglichkeiten bieten Sie an?</p>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="setup.input.acceptsKelteneuro">
+        <div></div>
+        <span>Kelteneuro</span>
     </label>
-    <label>
-        <input type="checkbox" value="pupilMeal" ng-checked="input.studentMeals">
-        Karten
+    <br/>
+    <label class="checkbox">
+        <input type="checkbox" ng-model="setup.input.acceptsCard">
+        <div></div>
+        <span>Karte</span>
     </label>
     <br/>
     <br/>

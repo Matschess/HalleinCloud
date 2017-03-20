@@ -10,29 +10,35 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
             switch (index) {
                 case 0:
                     if ($scope.input.firstname && $scope.input.lastname) {
-                        var data = {
-                            username: $scope.input.username,
-                            firstname: $scope.input.firstname,
-                            lastname: $scope.input.lastname,
-                            email: $scope.input.email,
-                            type: $scope.types.selected.id,
-                            password: $scope.input.password,
-                            pwTemp: $scope.input.pwTemp
+                        if (($scope.types.selected.id == 3 && $scope.input.restaurantname) || $scope.types.selected.id != 3) {
+                            var data = {
+                                username: $scope.input.username,
+                                firstname: $scope.input.firstname,
+                                lastname: $scope.input.lastname,
+                                restaurantname: $scope.input.restaurantname,
+                                email: $scope.input.email,
+                                type: $scope.types.selected.id,
+                                password: $scope.input.password,
+                                pwTemp: $scope.input.pwTemp
+                            }
+                            $http({
+                                url: URL + '/users',
+                                method: 'POST',
+                                params: data
+                            }).then(function () {
+                                    $location.path('/user');
+                                    globalNotification('success', 'Der Benutzer wurde erstellt.')
+                                },
+                                function () {
+                                    globalNotification('error')
+                                });
                         }
-                        $http({
-                            url: URL + '/users',
-                            method: 'POST',
-                            params: data
-                        }).then(function () {
-                                $location.path('/user');
-                                globalNotification('success', 'Der Benutzer wurde erstellt.')
-                            },
-                            function () {
-                                globalNotification('error')
-                            });
+                        else {
+                            globalNotification('warning', 'Bitte geben Sie alle Daten ein.');
+                        }
                     }
                     else {
-                        globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
+                        globalNotification('warning', 'Bitte geben Sie alle Daten ein.');
                     }
                     break;
             }
@@ -68,7 +74,7 @@ myApp.controller('userAddController', function ($scope, $location, $http) {
     $scope.generateUsername = function () {
         var firstname = $scope.input.firstname;
         var lastname = $scope.input.lastname;
-        if(firstname && lastname) {
+        if (firstname && lastname) {
             var data = {
                 firstname: firstname,
                 lastname: lastname

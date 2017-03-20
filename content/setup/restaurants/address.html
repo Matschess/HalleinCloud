@@ -1,25 +1,26 @@
-<div class="setupWrapper">
+<div class="setupWrapper full">
     <div class="left">
         <h3>Adresse:</h3>
-        <input type="text" placeholder="Straße" ng-model="input.street"/>
-        <input type="text" class="short" placeholder="Hausnummer" ng-model="input.houseNumber"/>
+        <input type="text" placeholder="Straße" ng-model="setup.input.street"/>
         <br/>
-        <input type="text" class="short" placeholder="PLZ" ng-model="input.countryCode"/>
-        <input type="text" placeholder="Ort" ng-model="input.country"/>
+        <input type="text" class="short" placeholder="Nr" ng-model="setup.input.houseNumber"/>
+        <input type="text" class="short" placeholder="PLZ" ng-model="setup.input.countryCode"/>
+        <br/>
+        <input type="text" placeholder="Ort" ng-model="setup.input.country"/>
         <br/>
         <label class="checkbox">
-            <input type="checkbox" ng-model="input.general.parking">
+            <input type="checkbox" ng-model="setup.input.parking">
             <div></div>
             <span>Parkmöglichkeit in der Nähe</span>
         </label>
     </div>
     <div class="right">
         <h3>Kontaktdaten:</h3>
-        <input type="text" placeholder="Email-Adresse"/>
+        <input type="text" placeholder="Email-Adresse" ng-model="setup.input.email"/>
         <br/>
-        <input type="text" placeholder="Telefonnummer"/>
+        <input type="text" placeholder="Telefonnummer" ng-model="setup.input.tel"/>
         <br/>
-        <input  id="websitelabel" type="text" placeholder="Website" ng-model="input.website"/>
+        <input type="text" placeholder="Website" ng-model="setup.input.website"/>
     </div>
     <br/>
     <br/>
