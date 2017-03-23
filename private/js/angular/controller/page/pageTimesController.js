@@ -80,9 +80,11 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
             });
     }
 
+    var today = new Date();
+    today.setHours(0,0,0,0);
     $scope.datepickerConfig = {
         dateFormat: 'DD.MM.YYYY',
-        minDate: new Date()
+        minDate: today
     };
 
     $scope.showRestDayAdd = function () {
@@ -92,10 +94,6 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });
-    }
-
-    $scope.restDayDateAssume = function (from) {
-        $scope.restDayTo = from;
     }
 
     $scope.validateRestDays = function(from, to){
@@ -108,34 +106,37 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
 
     $scope.restDayAdd = function (from, to, description) {
         if (from && to) {
-            if (stringToDate(from) >= new Date() && stringToDate(to) >= new Date()) {
+            if (stringToDate(from) >= today && stringToDate(to) >= today) {
                 var date = stringToDate(from);
                 date.setDate(date.getDate() - 1);
                 var dateTo = stringToDate(to);
                 var diff = Math.abs(dateTo.getTime() - date.getTime());
                 var diff = Math.ceil(diff / (1000 * 3600 * 24));
-                for (var i = 0; i < diff; i++) {
-                    date.setDate(date.getDate() + 1);
-                    var dateFormatted = dateToString(date);
-                    var data = {
-                        restaurant: restaurant,
-                        date: dateFormatted,
-                        description: description
+                if(diff < 30) {
+                    for (var i = 0; i < diff; i++) {
+                        date.setDate(date.getDate() + 1);
+                        var dateFormatted = dateToString(date);
+                        var data = {
+                            restaurant: restaurant,
+                            date: dateFormatted,
+                            description: description
+                        }
+                        data = prepareUpload(data);
+                        $http({
+                            url: URL + '/restDays',
+                            method: 'POST',
+                            params: data
+                        }).then(function () {
+                                globalNotification('success', 'Der Ruhetag wurde gespeichert.');
+                                load();
+                            },
+                            function () {
+                                globalNotification('alert')
+                            });
                     }
-                    data = prepareUpload(data);
-                    $http({
-                        url: URL + '/restDays',
-                        method: 'POST',
-                        params: data
-                    }).then(function () {
-                            globalNotification('success', 'Der Ruhetag wurde gespeichert.');
-                            load();
-                        },
-                        function () {
-                            globalNotification('alert')
-                        });
                     return true;
                 }
+                else globalNotification('warning', 'Wählen Sie maximal 30 Tage.');
             }
             else globalNotification('warning', 'Datum liegt in der Vergangenheit.');
         }
