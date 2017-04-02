@@ -4,7 +4,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngR
 var URL = 'http://46.38.236.5:443';
 var user;
 var userType;
-var restaurant = 2;
+var restaurant;
 
 myApp.config(function ($routeProvider) {
     $routeProvider
@@ -15,7 +15,7 @@ myApp.config(function ($routeProvider) {
             name: 'Dashboard'
         })
         .when('/meal', {
-            templateUrl: 'templates/tabs.html',
+            templateUrl: 'templates/window.html',
             controller: 'foodController',
             icon: 'local_dining',
             name: 'Mahlzeiten',
@@ -235,6 +235,9 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
             var userdata = JSON.parse(userdata);
             user = userdata.user.id;
             userType = userdata.user.type;
+            if(userType == 3){
+                restaurant = userdata.restaurant.id;
+            }
             $http.defaults.headers.common['x-access-token'] = userdata.token;
             $.ajaxSetup({
                 headers: {'x-access-token': userdata.token}
@@ -259,6 +262,10 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         });
         user = data.user.id;
         userType = data.user.type;
+        if(userType == 3){
+            restaurant = data.restaurant.id;
+        }
+        console.log(restaurant);
         $cookies.put('userdata', JSON.stringify(data));
         $rootScope.loggedIn = true;
         this.getUsername();
@@ -272,6 +279,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         });
         user = false;
         userType = false;
+        restaurant = false;
         $location.path('/');
         $cookies.remove('userdata');
         $rootScope.loggedIn = false;

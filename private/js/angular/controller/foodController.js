@@ -1,10 +1,7 @@
 myApp.controller('foodController', function ($scope, $location, $http) {
         $scope.config = {
-            activeTab: 0,
-            tabs: [
-                {title: 'Täglich', link: 'meal#daily', content: 'content/meal/dailymeal.html'},
-                {title: 'Dauerhaft', link: 'meal#constant', content: 'content/meal/constantmeal.html'}
-            ]
+            title: 'Mahlzeiten',
+            content: 'content/meal.html'
         }
 
         switch ($location.hash()) {
@@ -37,6 +34,15 @@ myApp.controller('foodController', function ($scope, $location, $http) {
         var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
 
+    $scope.input = {};
+    var constantMenus = false;
+    $http.get(URL + '/restaurants?get=constantMenus&id=' + restaurant)
+        .then(function (response) {
+            var response = response.data[0];
+            $scope.input.constantMenus = response.constantMenus;
+            if(response.constantMenus == true){
+                constantMenus = true;
+            }
         $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closesHalf:noSeconds,opensHalf:noSeconds,closes:noSeconds&restaurant=' + restaurant)
             .then(function (response) {
                 var openingTimes = response.data;
@@ -91,8 +97,12 @@ myApp.controller('foodController', function ($scope, $location, $http) {
                             }
                         }
                     });
-                $scope.days = data;
+                if(constantMenus){
+                    $scope.everydays = data;
+                }
+                else $scope.days = data;
             });
+        });
 
         $scope.everyday = {menu: {meals: {}}};
 
@@ -236,6 +246,22 @@ myApp.controller('foodController', function ($scope, $location, $http) {
              console.log($scope.days);
              */
         }
+
+    $scope.changeConstantMenus = function (value) {
+        var data = {
+            id: restaurant,
+            constantMenus: value
+        }
+        $http({
+            url: URL + '/restaurants',
+            method: 'PUT',
+            params: data
+        }).then(function () {
+            },
+            function () {
+                globalNotification('error')
+            });
+    }
 
         $scope.assignConstantMeal = function (meal) {
 

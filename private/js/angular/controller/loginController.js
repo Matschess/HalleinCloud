@@ -3,8 +3,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     var routes = {
         login: {
-            title: 'Hallein App - Verwaltung',
-            subtitle: 'Anmelden',
+            title: 'Login',
             aboutUs: true,
             content: 'content/login.html'
         },
@@ -83,7 +82,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     $scope.input = {}
 
     $scope.login = function () {
-        $('.loginwrapper').removeClass('shake');
+        $('.loginWrapper').removeClass('shake');
         /*
          $scope.route = routes.setup.restaurant.basicData;
          $('.wrapper').addClass('background');
@@ -126,7 +125,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 loginHandler.login(response);
             }
         }, function () {
-            $('.loginwrapper').addClass('animated shake');
+            $('.loginWrapper').addClass('animated shake');
         });
     }
 

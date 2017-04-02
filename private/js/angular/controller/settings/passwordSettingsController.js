@@ -37,7 +37,7 @@ myApp.controller('passwordSettingsController', function ($scope, $http) {
                         $scope.pwSafety = 0;
                     },
                     function (response) {
-                        if (response.status == 400) {
+                        if (response.status == 404) {
                             globalNotification('error', 'Das alte Passwort ist nicht korrekt.');
                         }
                         else globalNotification('error');

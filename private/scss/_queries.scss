@@ -6,9 +6,11 @@
 
 @media screen and (max-height: 800px) {
   .wrapper {
+    /*
     bottom: -20%;
     -webkit-transform: rotateX(70deg) scale(0.6);
     transform: rotateX(70deg) scale(0.6);
+    */
     &.animate {
       @keyframes slideUp {
         0% {

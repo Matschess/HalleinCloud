@@ -10,7 +10,7 @@ myApp.controller('pageController', function ($scope, $location, $http) {
                         var input = $scope.input.general;
                         if (input.restaurantname && input.street && input.houseNumber && input.countryCode && input.country) {
                             var data = {
-                                id: user,
+                                id: restaurant,
                                 restaurantname: input.restaurantname,
                                 description: input.description,
                                 studentMeals: input.studentMeals,

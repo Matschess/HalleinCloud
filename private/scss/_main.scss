@@ -78,28 +78,38 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  /*
   -webkit-perspective: 500px;
-  /* Chrome, Safari, Opera */
   perspective: 500px;
+  */
 }
 
 .wrapper {
+  display: none;
   background-color: #f3f3f3;
   position: absolute;
   width: 100%;
   height: 100%;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: transform .3s ease;
+  /*
   -webkit-transform: rotateX(55deg) translateY(100%);
   transform: rotateX(55deg) translateY(100%);
   transform-origin: bottom;
-  bottom: 0;
+  top: 0;
   transition: bottom .3s;
+  */
   &.animate {
+    /*
     -webkit-transition: transform .5s;
     -moz-transition: transform 1s;
     -ms-transition: transform 1s;
     -o-transition: transform 1s;
     transition: transform .8s;
+    */
   }
+  /*
   &.slideUp {
     animation: slideUp .8s;
     @keyframes slideUp {
@@ -111,18 +121,32 @@ body {
       }
     }
   }
+  */
   &.finished {
+    display: block;
+    animation: zoomIn .8s forwards;
+    @keyframes zoomIn {
+      0% {
+        -webkit-transform: scale(.8);
+        transform: scale(.8);
+      }
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    /*
     -webkit-transform: rotateX(0deg) translateY(0);
-    /* Chrome, Safari, Opera  */
     transform: rotateX(0deg) translateY(0);
     -webkit-filter: blur(0);
     -moz-filter: blur(0);
     -o-filter: blur(0);
     -ms-filter: blur(0);
     filter: blur(0);
+    */
   }
   &.background {
-    bottom: -50%;
+    //bottom: -50%;
   }
 }
 
@@ -478,7 +502,7 @@ body {
 .navbar {
   display: inline-block;
   position: absolute;
-  font-family: 'Gravity Light';
+  font-family: $primary-font;
   font-size: 18px;
   background-color: #2b2f38;
   color: #fff;

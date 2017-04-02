@@ -7,23 +7,23 @@ myApp.controller('feedbackController', function ($scope, $http) {
 
     $scope.input = {};
 
-    $http.get(URL + '/restaurants?get=autoAcceptFeedback&user=' + user)
+    $http.get(URL + '/restaurants?get=autoAcceptFeedback&id=' + restaurant)
         .then(function (response) {
             var data = response.data[0];
             $scope.input.autoAccept = data.autoAcceptFeedback;
         });
 
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=1')
+    $http.get(URL + '/feedback?get=id,rating,subject,text&status=1&restaurant=' + restaurant)
         .then(function (response) {
             $scope.newFeedbacks = response.data;
         })
 
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=2')
+    $http.get(URL + '/feedback?get=id,rating,subject,text&status=2&restaurant=' + restaurant)
         .then(function (response) {
             $scope.acceptedFeedbacks = response.data;
         })
 
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=3')
+    $http.get(URL + '/feedback?get=id,rating,subject,text&status=3&restaurant=' + restaurant)
         .then(function (response) {
             $scope.declinedFeedbacks = response.data;
         })

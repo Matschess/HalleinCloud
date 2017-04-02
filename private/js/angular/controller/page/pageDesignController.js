@@ -1,14 +1,14 @@
 myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
     load();
     function load() {
-        $http.get(URL + '/restaurants?restaurant=' + restaurant)
+        $http.get(URL + '/restaurants?id=' + restaurant)
             .then(function (response) {
                 $scope.input = response.data[0];
             });
     }
 
     function loadColor() {
-        $http.get(URL + '/restaurants?get=color&restaurant=' + restaurant)
+        $http.get(URL + '/restaurants?get=color&id=' + restaurant)
             .then(function (response) {
                 console.log(response);
                 $scope.input = response.data[0];
