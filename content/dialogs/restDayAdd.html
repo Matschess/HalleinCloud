@@ -4,7 +4,7 @@
     <br/>
     <br/>
     <div class="restDays">
-        <input type="text" class="datepicker" placeholder="von" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayFrom" ng-change="restDayDateAssume(restDayFrom); validateRestDays(restDayFrom, restDayTo)"/>
+        <input type="text" class="datepicker" placeholder="von" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayFrom" ng-change="restDayTo = restDayFrom; validateRestDays(restDayFrom, restDayTo)"/>
         <input type="text" class="datepicker" placeholder="bis" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayTo" ng-change="validateRestDays(restDayFrom, restDayTo)"/>
         <br/>
         <textarea placeholder="Grund (optional)" ng-model="restDayDescription"></textarea>

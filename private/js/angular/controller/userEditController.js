@@ -21,6 +21,7 @@ myApp.controller('userEditController', function ($scope, $routeParams, $location
                             data.password = $scope.input.password;
                             data.pwTemp = $scope.input.pwTemp;
                         }
+                        data = prepareUpload(data);
                         $http({
                             url: URL + '/users',
                             method: 'PUT',

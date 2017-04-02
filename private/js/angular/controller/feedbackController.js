@@ -66,7 +66,7 @@ myApp.controller('feedbackController', function ($scope, $http) {
             url: URL + '/restaurants',
             method: 'PUT',
             params: data
-        }).then(function () {
+        }).then(function (result) {
             },
             function () {
                 globalNotification('error')

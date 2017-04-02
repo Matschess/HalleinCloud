@@ -1,25 +1,27 @@
 <div ng-controller="pageTimesController">
     <div class="left">
         <h3>Öffnungszeiten:</h3>
+        <div ng-if="!input.openingTimes.length">Keine Öffnungszeiten<br/><br/></div>
+        <button ng-click="showOpeningTimesAdd()"><i class="material-icons">schedule</i> Öffnungszeit eintragen</button>
+        <br/>
+        <br/>
         <div class="openingTimes" ng-repeat="openingTime in input.openingTimes | orderBy: openingTime.weekday">
             <div><span>{{ weekdays.options[openingTime.weekday].name }}</span><span>{{ openingTime.opens }} - {{ openingTime.closes }}</span>
             </div>
             <i class="material-icons tooltipRight" title="Entfernen"
                ng-click="openingTimeRemove(openingTime.id, $index)">delete_outline</i>
         </div>
-        <div ng-if="!openingTime.length">Keine Öffnungszeiten</div>
-        <br/>
-        <button ng-click="showOpeningTimesAdd()"><i class="material-icons">schedule</i> Öffnungszeit eintragen</button>
         <h3>Warme Küche von bis:</h3>
     </div>
     <div class="right">
         <h3>Ruhetage:</h3>
+        <div ng-if="!restDays.length">Keine geplanten Ruhetage<br/><br/></div>
+        <button ng-click="showRestDayAdd()"><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
+        <br/>
+        <br/>
         <div class="restDays" ng-repeat="restDay in restDays">
             <div><span>{{ restDay.date }}</span><span>{{ restDay.description }}</span></div>
             <i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove(restDay.id, $index)">delete_outline</i>
         </div>
-        <div ng-if="!restDays.length">Keine geplanten Ruhetage</div>
-        <br/>
-        <button ng-click="showRestDayAdd()"><i class="material-icons">beach_access</i> Ruhetag eintragen</button>
     </div>
 </div>

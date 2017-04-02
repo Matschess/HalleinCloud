@@ -138,7 +138,7 @@ function prepareUpload(data) {
     for (var propertyName in data) {
         value = String(data[propertyName]).trim();
         if (!value) value = 'null';
-        if(value == 'undefined') continue;
+        if (value == 'undefined') continue;
         result[propertyName] = value;
     }
     return result;
