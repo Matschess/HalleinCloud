@@ -33,6 +33,8 @@
                 {{ day.name | limitTo : 2 }}
                 <div class="date">{{ day.date | date:"dd.MM" }}</div>
             </div>
+            <i ng-click="setConstantMenu($index)" class='material-icons constant tooltipBottom' ng-class="{active: day.constant}"
+               title="Dauermenü ein/aus">priority_high</i>
             <i ng-if="!day.menu.meals" ng-click="restDayToggle($index)" class='material-icons closed tooltipBottom'
                title="Ruhetag ein/aus">beach_access</i>
             <img ng-if="day.restDay" class="closedTag" src="assets/imgs/closedTag.png"/>

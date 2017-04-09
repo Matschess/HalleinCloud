@@ -1,14 +1,14 @@
 myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
     $scope.weekdays = {
-        selected: {id: 1, name: 'Montag'},
+        selected: {id: 0, name: 'Sonntag'},
         options: [
+            {id: 0, name: 'Sonntag'},
             {id: 1, name: 'Montag'},
             {id: 2, name: 'Dienstag'},
             {id: 3, name: 'Mittwoch'},
             {id: 4, name: 'Donnerstag'},
             {id: 5, name: 'Freitag'},
-            {id: 6, name: 'Samstag'},
-            {id: 7, name: 'Sonntag'}
+            {id: 6, name: 'Samstag'}
         ]
     }
 
@@ -34,7 +34,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
     };
 
     $scope.openingTimeAdd = function (weekday, opens, closes) {
-        if (weekday && opens && closes) {
+        if (opens && closes) {
             var data = {
                 restaurant: restaurant,
                 weekday: weekday,

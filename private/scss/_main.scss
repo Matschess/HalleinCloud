@@ -1159,11 +1159,17 @@ body {
               text-decoration: line-through;
             }
           }
-          .closed {
+          .closed, .constant {
             position: absolute;
             right: 10px;
             top: 5px;
             color: #e2e2e2;
+          }
+          .constant {
+            right: 30px;
+            &.active{
+              color: #333;
+            }
           }
           .closedTag {
             position: absolute;
@@ -1192,7 +1198,7 @@ body {
             }
           }
           &:hover {
-            .closed {
+            .closed, .constant {
               color: #333;
             }
           }

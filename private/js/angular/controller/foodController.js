@@ -247,16 +247,19 @@ myApp.controller('foodController', function ($scope, $location, $http) {
              */
         }
 
-    $scope.changeConstantMenus = function (value) {
+    $scope.setConstantMenu = function (index) {
         var data = {
-            id: restaurant,
-            constantMenus: value
+            restaurant: restaurant,
+            constant: 1,
+            weekday: 1,
+            date: dateToString($scope.days[index].date)
         }
         $http({
-            url: URL + '/restaurants',
-            method: 'PUT',
+            url: URL + '/menus',
+            method: 'POST',
             params: data
-        }).then(function () {
+        }).then(function (response) {
+                $scope.days[index].constant = true;
             },
             function () {
                 globalNotification('error')
