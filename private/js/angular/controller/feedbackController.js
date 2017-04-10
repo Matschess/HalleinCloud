@@ -1,8 +1,47 @@
-myApp.controller('feedbackController', function ($scope, $http) {
+myApp.controller('feedbackController', function ($scope, $location, $http) {
     $scope.config = {
         title: 'Feedback',
-        switches: ['Neu', 'Akzeptiert', 'Abgelehnt'],
+        switches: [
+            {
+                name: 'Neu',
+                url: 'new'
+            },
+            {
+                name: 'Akzeptiert',
+                url: 'accepted'
+            },
+            {
+                name: 'Abgelehnt',
+                url: 'declined'
+            }
+        ],
         content: 'content/feedback.html'
+    }
+
+    switch ($location.hash()) {
+        case 'new':
+            $scope.config.switched = 1;
+            $http.get(URL + '/feedback?get=id,rating,subject,text&status=1&restaurant=' + restaurant)
+                .then(function (response) {
+                    $scope.newFeedbacks = response.data;
+                })
+            break;
+        case 'accepted':
+            $scope.config.switched = 2;
+            $http.get(URL + '/feedback?get=id,rating,subject,text&status=2&restaurant=' + restaurant)
+                .then(function (response) {
+                    $scope.acceptedFeedbacks = response.data;
+                })
+            break;
+        case 'declined':
+            $scope.config.switched = 3;
+            $http.get(URL + '/feedback?get=id,rating,subject,text&status=3&restaurant=' + restaurant)
+                .then(function (response) {
+                    $scope.declinedFeedbacks = response.data;
+                })
+            break;
+        default:
+            $scope.config.switched = 1;
     }
 
     $scope.input = {};
@@ -12,21 +51,6 @@ myApp.controller('feedbackController', function ($scope, $http) {
             var data = response.data[0];
             $scope.input.autoAccept = data.autoAcceptFeedback;
         });
-
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=1&restaurant=' + restaurant)
-        .then(function (response) {
-            $scope.newFeedbacks = response.data;
-        })
-
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=2&restaurant=' + restaurant)
-        .then(function (response) {
-            $scope.acceptedFeedbacks = response.data;
-        })
-
-    $http.get(URL + '/feedback?get=id,rating,subject,text&status=3&restaurant=' + restaurant)
-        .then(function (response) {
-            $scope.declinedFeedbacks = response.data;
-        })
 
     $scope.accept = function (id, index) {
         $http.put(URL + '/feedback?status=2&id=' + id)

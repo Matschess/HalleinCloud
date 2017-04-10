@@ -607,16 +607,20 @@ body {
       top: 35px;
       li {
         display: inline;
-        padding: 5px 8px;
-        margin-left: 8px;
-        border-radius: 20px;
-        cursor: pointer;
-        &:hover{
-          color: #000;
-        }
-        &.active {
-          background-color: #e74c3c;
-          color: #fff;
+        a{
+          color: #333;
+          padding: 6px 8px;
+          margin-left: 6px;
+          border-radius: 20px;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover{
+            color: #000;
+          }
+          &.active {
+            background-color: #e74c3c;
+            color: #fff;
+          }
         }
       }
     }
@@ -726,7 +730,7 @@ body {
       &.success {
         background-color: #01DF01;
         background-image: url('../../assets/icons/done_white.png');
-        background-size: 75%;
+        background-size: 60%;
         background-position: center;
         background-repeat: no-repeat;
       }
@@ -1339,8 +1343,16 @@ body {
             }
           }
           .menuWrapper {
-            height: 300px;
+            max-height: 300px;
             overflow-y: auto;
+            .empty{
+              text-align: center;
+              margin-top: 8px;
+              margin-bottom: 8px;
+              i, span{
+                vertical-align: middle;
+              }
+            }
             .menu {
               position: relative;
               display: inline-block;

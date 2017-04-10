@@ -37,6 +37,13 @@ label {
   }
 }
 
+a{
+  color: #666;
+  &:hover{
+    color: #333;
+  }
+}
+
 label.checkLabel {
   position: relative;
   &:before {

@@ -1,6 +1,8 @@
 <div class="switchBox">
-    <ul class="switcher" ng-init="config.switched = 1">
-        <li ng-repeat="switch in config.switches" ng-click="config.switched = $index + 1" ng-class="{true:'active'}[$index + 1 == config.switched]">{{ switch }}</li>
+    <ul class="switcher">
+        <li ng-repeat="switch in config.switches" ng-click="config.switched = $index + 1">
+            <a href="#feedback#{{switch.url}}" ng-class="{true:'active'}[$index + 1 == config.switched]">{{ switch.name }}</a>
+        </li>
     </ul>
     <h2>{{ config.title }}</h2>
     <div class="view" ng-include="config.content"></div>

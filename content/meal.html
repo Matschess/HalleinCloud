@@ -32,6 +32,7 @@
                title="Ruhetag ein/aus">beach_access</i>
             <img ng-if="day.restDay" class="closedTag" src="assets/imgs/closedTag.png"/>
         </div>
+        <label ng-if="!days.length"><i class="material-icons">schedule</i> Keine Öffnungszeiten. Tragen Sie unter der <a href="#page#times">Restaurantseite</a> welche ein.</label>
     </div>
     <div class="days" ng-if="input.constantMenus">
         <div class="day" ng-drop="true" ng-drop-success="assignMenu($index, $data)"
@@ -64,11 +65,11 @@
             <label>
                 <span ng-if="!appetizer.search">Vorspeisen</span>
                 <input class="searchbox" type="text" ng-if="appetizer.search" ng-keydown="escSearchbox($event)" ng-model="appetizer.searchbox"/>
-                <i class='material-icons search' ng-click="appetizer.search = true"
-                   ng-show="!appetizer.search">search</i>
+                <i class='material-icons search tooltipTop' ng-click="appetizer.search = true"
+                   ng-show="!appetizer.search" title="Suchen">search</i>
                 <i class='material-icons search' ng-click="appetizer.search = false"
                    ng-show="appetizer.search">close</i>
-                <a href="#meal/add/appetizer"><i class='material-icons add'>add</i></a>
+                <a href="#meal/add/appetizer"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:1 } | filter:appetizer.searchbox">
@@ -79,17 +80,23 @@
                            ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                     </div>
                 </div>
+                <div class="empty" ng-show="menus.length && !(menus | filter:appetizer.searchbox).length">
+                    <span>Keine Ergebnisse</span>
+                </div>
+                <div class="empty" ng-show="!(menus | filter: { type:1 }).length">
+                    <span>Fügen Sie mit</span> <i class="material-icons">add</i> <span>welche hinzu</span>
+                </div>
             </div>
         </div>
         <div class="menutype mainCourse">
             <label>
                 <span ng-if="!mainCourse.search">Hauptspeisen</span>
                 <input class="searchbox" type="text" ng-if="mainCourse.search" ng-model="mainCourse.searchbox"/>
-                <i class='material-icons search' ng-click="mainCourse.search = true"
-                   ng-show="!mainCourse.search">search</i>
+                <i class='material-icons search tooltipTop' ng-click="mainCourse.search = true"
+                   ng-show="!mainCourse.search" title="Suchen">search</i>
                 <i class='material-icons search' ng-click="mainCourse.search = false"
                    ng-show="mainCourse.search">close</i>
-                <a href="#meal/add/mainCourse"><i class='material-icons add'>add</i></a>
+                <a href="#meal/add/mainCourse"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:2 } | filter:mainCourse.searchbox">
@@ -100,15 +107,21 @@
                            ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                     </div>
                 </div>
+                <div class="empty" ng-show="menus.length && !(menus | filter:mainCourse.searchbox).length">
+                    <span>Keine Ergebnisse</span>
+                </div>
+                <div class="empty" ng-show="!(menus | filter: { type:2 }).length">
+                    <span>Fügen Sie mit</span> <i class="material-icons">add</i> <span>welche hinzu</span>
+                </div>
             </div>
         </div>
         <div class="menutype desert">
             <label>
                 <span ng-if="!dessert.search">Nachspeisen</span>
                 <input class="searchbox" type="text" ng-if="dessert.search" ng-model="dessert.searchbox"/>
-                <i class='material-icons search' ng-click="dessert.search = true" ng-show="!dessert.search">search</i>
+                <i class='material-icons search tooltipTop' ng-click="dessert.search = true" ng-show="!dessert.search" title="Suchen">search</i>
                 <i class='material-icons search' ng-click="dessert.search = false" ng-show="dessert.search">close</i>
-                <a href="#meal/add/dessert"><i class='material-icons add'>add</i></a>
+                <a href="#meal/add/dessert"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:3 } | filter:dessert.searchbox">
@@ -118,6 +131,12 @@
                         <i class='material-icons remove tooltipBottom'
                            ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
                     </div>
+                </div>
+                <div class="empty" ng-show="menus.length && !(menus | filter:dessert.searchbox).length">
+                    <span>Keine Ergebnisse</span>
+                </div>
+                <div class="empty" ng-show="!(menus | filter: { type:3 }).length">
+                    <span>Fügen Sie mit</span> <i class="material-icons">add</i> <span>welche hinzu</span>
                 </div>
             </div>
         </div>
