@@ -1,13 +1,6 @@
 <div class="full">
-    <div class="switchWrapper">
-        <span ng-if="!input.constantMenus">Dauermenü aus</span>
-        <span ng-if="input.constantMenus">Dauermenü ein</span>
-        <label class="switch">
-            <input type="checkbox" ng-model="input.constantMenus" ng-change="changeConstantMenus(input.constantMenus)" ng-true-value="1" ng-false-value="0">
-            <div class="slider round"></div>
-        </label>
-        <i class="material-icons tooltipRight" title="Das Dauermenü ermöglicht Ihnen, ein gleichbleibendes Menü für einen Tag zu fixieren.">help_outline</i>
-    </div>
+    <label>Ziehen Sie eine Mahlzeit auf den gewünschten Tag.</label>
+    <br/>
     <br/>
     <div class="days" ng-if="!input.constantMenus">
         <div class="day" ng-class="{'closed':day.restDay}" ng-drop="true" ng-drop-success="assignMenu($index, $data)"

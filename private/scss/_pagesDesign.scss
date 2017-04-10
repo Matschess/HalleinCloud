@@ -38,9 +38,15 @@
           position: absolute;
           font-size: 14px;
           color: #b3b3b3;
-          bottom: 20px;
+          width: 100%;
+          bottom: 15px;
           text-align: center;
+          &.text{
+            width: calc(100% - 40px);
+            padding: 0 20px;
+          }
           span {
+            text-align: center;
             color: #2980b9;
             &:hover {
               text-decoration: underline;
@@ -91,8 +97,11 @@
         text-transform: uppercase;
         div {
           color: #fff;
-          line-height: 40px;
+          line-height: 41px;
           cursor: pointer;
+          &:last-of-type{
+            line-height: 40px;
+          }
           i {
             font-size: 20px;
             margin-right: 5px;

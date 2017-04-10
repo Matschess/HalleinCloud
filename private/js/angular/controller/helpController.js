@@ -4,7 +4,7 @@ myApp.controller('helpController', function ($scope, $http) {
         actions: [
             {title: 'Fehler melden', icon: 'build', route: '/help/bugreport'},
             {title: 'Feedback geben', icon: 'thumbs_up_down', route: '/help/feedback'},
-            {title: 'Frage stellen', icon: 'add', route: '/help/add'}
+            {title: 'Frage stellen', icon: 'edit', route: '/help/add'}
         ],
         content: 'content/help.html'
     }

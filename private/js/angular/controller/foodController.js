@@ -251,7 +251,6 @@ myApp.controller('foodController', function ($scope, $location, $http) {
         var data = {
             restaurant: restaurant,
             constant: 1,
-            weekday: 1,
             date: dateToString($scope.days[index].date)
         }
         $http({

@@ -240,17 +240,10 @@ body {
           z-index: 999;
         }
       }
-      .checkbox{
-        vertical-align: middle;
-        span{
-          vertical-align: middle;
-        }
-      }
       .color{
         display: inline-block;
         width: 30px;
         height: 30px;
-        border: 2px solid #d2d2d2;
         border-radius: 50%;
         vertical-align: middle;
       }
@@ -618,6 +611,9 @@ body {
         margin-left: 8px;
         border-radius: 20px;
         cursor: pointer;
+        &:hover{
+          color: #000;
+        }
         &.active {
           background-color: #e74c3c;
           color: #fff;
@@ -911,10 +907,11 @@ body {
       }
       .actions {
         float: right;
-        line-height: 0;
+        cursor: pointer;
         a {
           display: inline-block;
           padding: 0 15px;
+          line-height: normal;
           color: #fff;
           i {
             line-height: 50px;
@@ -1271,9 +1268,9 @@ body {
         color: #000;
         text-align: right;
         margin-top: 40px;
-        @include animate-slideIn(.25s);
+        @include animate-slideIn(.35s);
         span {
-          border-left: 3px solid;
+          border-left: 2px solid;
           padding-left: 4px;
           &.veggie {
             border-color: #69c800;
@@ -1319,6 +1316,9 @@ body {
             text-align: center;
             width: 100%;
             text-transform: uppercase;
+            i{
+              cursor: pointer;
+            }
             .searchbox {
               background-color: transparent;
               color: #fff;
@@ -1354,7 +1354,7 @@ body {
               cursor: move;
               z-index: 1;
               &.veggie {
-                border-left: 3px solid #69c800;
+                border-left: 2px solid #69c800;
               }
               &:hover {
                 background-color: #e8e8e8;

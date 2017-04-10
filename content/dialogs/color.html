@@ -3,7 +3,7 @@
     Hex-Code
     <br/>
     <input class="hexColor" type="text" placeholder="#RRGGBB" ng-model="color" ng-keyup="isHex(color)"/>
-    <div class="color" ng-style="{'background-color': color}"></div>
+    <div class="color" ng-show="hexValid" ng-style="{'background-color': color}"></div>
 </content><br/>
 <div class="actions">
     <button class="action" ng-click="closeThisDialog()">Abbrechen</button>

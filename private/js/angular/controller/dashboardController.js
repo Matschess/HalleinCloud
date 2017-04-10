@@ -49,7 +49,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         type: 'info',
                         title: 'Heute geschlossen',
                         text: 'Für heute ist ein Ruhetag eingetragen.',
-                        route: 'page'
+                        route: 'page#times'
                     })
                 }
             });
@@ -64,7 +64,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         type: 'info',
                         title: 'Morgen geschlossen',
                         text: 'Für morgen ist ein Ruhetag eingetragen.',
-                        route: 'page'
+                        route: 'page#times'
                     })
                 }
             });
