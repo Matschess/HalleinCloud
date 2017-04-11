@@ -82,7 +82,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     $scope.input = {}
 
     $scope.login = function () {
-        $('.loginWrapper').removeClass('shake');
+        $('.login').removeClass('shake');
         /*
          $scope.route = routes.setup.restaurant.basicData;
          $('.wrapper').addClass('background');
@@ -125,7 +125,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 loginHandler.login(response);
             }
         }, function () {
-            $('.loginWrapper').addClass('animated shake');
+            $('.login').addClass('animated shake');
         });
     }
 

@@ -57,21 +57,7 @@
     <!-- Notification -->
     <div class="globalNotification"></div>
     <!-- Login -->
-    <div class="loginBackground">
-        <div class="title">
-            <h2>Systemverwaltung</h2>
-            <br/>
-            <h2>Hallein-App</h2>
-            <div class="links">
-                <a href="#">Mehr</a>
-                <a href="#" class="transparent">Die Entwickler</a>
-            </div>
-        </div>
-    </div>
-    <div class="loginBackgroundBlur"></div>
     <div id="login" class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
-        <h1>{{ route.title }}</h1>
-        <h2>{{ route.subtitle }}</h2>
         <div ng-include="route.content"></div>
     </div>
 
