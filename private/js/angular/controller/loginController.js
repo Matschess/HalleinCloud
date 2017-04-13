@@ -113,7 +113,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                         user: user
                     }
                     $http({
-                        url: URL + '/restaurants?get=restaurantname',
+                        url: URL + '/restaurants?get=id,restaurantname',
                         method: 'GET',
                         params: data
                     }).then(function (response) {
@@ -237,7 +237,6 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                         tel: input.tel,
                         website: input.website
                     }
-                    console.log(data);
                     $http({
                         url: URL + '/restaurants',
                         method: 'PUT',
