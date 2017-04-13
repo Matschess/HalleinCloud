@@ -19,7 +19,7 @@
         <br/>
         <br/>
         <div class="restDays" ng-repeat="restDay in restDays">
-            <div><span>{{ restDay.date }}</span><span>{{ restDay.description }}</span></div>
+            <div><span>{{ restDay.date | date: 'dd.MM.y' }}</span><span>{{ restDay.description }}</span></div>
             <i class="material-icons tooltipRight" title="Entfernen" ng-click="restDayRemove(restDay.id, $index)">delete_outline</i>
         </div>
     </div>
