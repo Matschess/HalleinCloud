@@ -3,7 +3,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     var routes = {
         login: {
-            title: 'Anmelden',
+            title: 'Dashboard',
             aboutUs: true,
             content: 'content/login.html'
         },
@@ -83,50 +83,53 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     $scope.login = function () {
         $('.login').removeClass('shake');
-        /*
-         $scope.route = routes.setup.restaurant.basicData;
-         $('.wrapper').addClass('background');
-         */
-        var data = {
-            username: $scope.input.username,
-            password: $scope.input.password
-        }
-        data = prepareUpload(data);
-        $http({
-            url: URL + '/authenticate',
-            method: 'GET',
-            params: data
-        }).then(function (response) {
-            var response = response.data;
-            if (response.user.initialLogin) {
-                console.log(response);
-                $scope.route = routes.setup.everyone.welcome;
-                // Token
-                $http.defaults.headers.common['x-access-token'] = response.token;
-                $.ajaxSetup({
-                    headers: {'x-access-token': response.token}
-                });
-                // User
-                user = response.user.id;
-                userType = response.user.type;
-                // Get restaurants
-                var data = {
-                    user: user
-                }
-                $http({
-                    url: URL + '/restaurants',
-                    method: 'GET',
-                    params: data
-                }).then(function(response) {
-                    $scope.setup = {input: response.data[0]};
-                });
-                $('.wrapper').addClass('background');
-            } else {
-                loginHandler.login(response);
+        var username = $scope.input.username;
+        var password = $scope.input.password;
+        if(username && password) {
+            var data = {
+                username: $scope.input.username,
+                password: $scope.input.password
             }
-        }, function () {
+            data = prepareUpload(data);
+            $http({
+                url: URL + '/authenticate',
+                method: 'GET',
+                params: data
+            }).then(function (response) {
+                var response = response.data;
+                if (response.user.initialLogin) {
+                    console.log(response);
+                    $scope.route = routes.setup.everyone.welcome;
+                    // Token
+                    $http.defaults.headers.common['x-access-token'] = response.token;
+                    $.ajaxSetup({
+                        headers: {'x-access-token': response.token}
+                    });
+                    // User
+                    user = response.user.id;
+                    userType = response.user.type;
+                    // Get restaurants
+                    var data = {
+                        user: user
+                    }
+                    $http({
+                        url: URL + '/restaurants?get=restaurantname',
+                        method: 'GET',
+                        params: data
+                    }).then(function (response) {
+                        $scope.setup = {input: response.data[0]};
+                    });
+                    $('.wrapper').addClass('background');
+                } else {
+                    loginHandler.login(response);
+                }
+            }, function () {
+                $('.login').addClass('animated shake');
+            });
+        }
+        else {
             $('.login').addClass('animated shake');
-        });
+        }
     }
 
     $scope.complete = function (src) {

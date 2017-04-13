@@ -1,16 +1,17 @@
 $primary-font: "Gravity Light";
 
 .login {
-  position: absolute;
   font-family: $primary-font;
   background: #fff;
   background-image: url(../../assets/imgs/splash.png);
-  background-size: auto 100%;
+  background-size: 20%;
+  background-position: center left;
   background-repeat: no-repeat;
-  width: 30%;
-  height: 50%;
-  left: 35%;
-  top: 25%;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 0;
+  margin-top: 25vh;
   text-align: center;
   border-radius: 20px;
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,.5);
@@ -23,14 +24,19 @@ $primary-font: "Gravity Light";
   h1{
     font-family: $primary-font;
     font-size: 40px;
-    margin-top: 80px;
     text-transform: uppercase;
+    margin-bottom: 0;
   }
   h2 {
-    font-size: 20px;
-    color: #666;
+    font-size: 25px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 18px;
+    text-align: center;
   }
 }
 
@@ -60,10 +66,8 @@ $primary-font: "Gravity Light";
 }
 
 .loginWrapper {
-  position: absolute;
   width: calc(100% - 100px);
-  height: 100%;
-  padding-left: 100px;
+  margin-left: 20%;
   .logo{
     position: absolute;
     top: 0;
@@ -88,7 +92,7 @@ $primary-font: "Gravity Light";
   }
   input[type=text], input[type=password] {
     background-color: transparent;
-    width: calc(70% - 86px);
+    width: calc(75% - 86px);
     height: 35px;
     margin: 0;
     margin-bottom: 20px;
@@ -101,28 +105,17 @@ $primary-font: "Gravity Light";
     }
   }
   .actions {
-    position: absolute;
-    width: 85%;
-    bottom: 20px;
-    span {
-      font-size: 18px;
-      color: #333;
-      margin-right: 30px;
-      text-decoration: none;
-      vertical-align: middle;
-      cursor: pointer;
-      &:hover {
-        color: #000;
-      }
-    }
-    button {
+    width: 100%;
+    margin-top: 50px;
+    button, input[type=button] {
       font-family: 'Gravity';
       font-size: 12px;
-      background: #333;
+      background-color: #333;
       color: #fff;
       text-transform: uppercase;
       margin-left: 10px;
-      padding: 14px 25px;
+      padding: 14px 20px;
+      border: none;
       border-radius: 20px;
       &:hover{
         background: #000;
@@ -133,18 +126,14 @@ $primary-font: "Gravity Light";
           background-color: #469794;
         }
       }
-      &:first-of-type{
-        margin-left: 0;
-      }
     }
   }
 }
 
 .setupWrapper, .pwResetWrapper {
-  font-size: 0;
-  width: 30%;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 100px - 60px);
+  margin-left: 20%;
+  padding: 0 30px;
   &.full{
     font-size: 16px;
     text-align: center;
@@ -157,16 +146,17 @@ $primary-font: "Gravity Light";
   .right{
     margin-left: 2%;
   }
-  h2{
-    font-family: 'Gravity';
-    font-weight: normal;
-  }
   p{
     font-family: 'Gravity';
+  }
+  .icon{
+    vertical-align: middle;
+    margin-right: 10px;
   }
   input[type=text], input[type=password]{
     display: inline-block;
     width: 80%;
+    vertical-align: middle;
     &.short {
       width: 30%;
     }
@@ -232,6 +222,7 @@ $primary-font: "Gravity Light";
 
 .pwResetWrapper{
   .pwChange .pwValidation{
+    width: 80%;
     margin-left: 45px;
   }
 }
