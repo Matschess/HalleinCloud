@@ -13,6 +13,7 @@ myApp.controller('pageController', function ($scope, $location, $http) {
                                 id: restaurant,
                                 restaurantname: input.restaurantname,
                                 description: input.description,
+                                description_en: input.description_en,
                                 studentMeals: input.studentMeals,
                                 reservation: input.reservation,
                                 groupsWelcome: input.groupsWelcome,

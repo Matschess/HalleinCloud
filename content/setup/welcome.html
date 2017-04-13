@@ -1,8 +1,11 @@
 <div class="setupWrapper full">
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
-    <p>Es ist notwendig, dass Sie einige Daten einrichten. Starten Sie jetzt mit der Einrichtung.</p>
-    <br/>
-    <button ng-click="back('welcome')"><i class="material-icons">arrow_back</i></button>
-    <button class="long blue" ng-click="complete('welcome')">Starten <i class="material-icons">arrow_forward</i></button>
+    <form ng-submit="complete('welcome')">
+        <p>Es ist notwendig, dass Sie einige Daten eingeben. Starten Sie jetzt mit der Einrichtung.</p>
+        <div class="actions">
+            <input type="button" class="back" ng-click="back('welcome')"/>
+            <button type="submit" class="primary forward"></button>
+        </div>
+    </form>
 </div>

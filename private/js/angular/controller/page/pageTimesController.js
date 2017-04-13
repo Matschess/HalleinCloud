@@ -169,7 +169,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
                 $scope.input.openingTimes = response.data;
             });
 
-        $http.get(URL + '/restDays?get=id,date,description&orderBy=date&restaurant=' + restaurant)
+        $http.get(URL + '/restDays?get=id,date,description,description_en&orderBy=date&restaurant=' + restaurant)
             .then(function (response) {
                 $scope.restDays = response.data;
             });

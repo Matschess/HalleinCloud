@@ -1,38 +1,40 @@
 <div class="setupWrapper full">
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
-    <p>Wählen Sie optionale Möglichkeiten:</p>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.studentMeals">
-        <div></div>
-        <span>Anbieter von Schülermahlzeit</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.reservation">
-        <div></div>
-        <span>Reservierung möglich</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.groupsWelcome">
-        <div></div>
-        <span>Gruppen erwünscht</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.petsWelcome">
-        <div></div>
-        <span>Haustiere erlaubt</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.cornKitchen">
-        <div></div>
-        <span>Vollkornküche</span>
-    </label>
-    <br/>
-    <br/>
-    <button ng-click="back('options')"><i class="material-icons">arrow_back</i></button>
-    <button ng-click="complete('options')"><i class="material-icons">arrow_forward</i></button>
+    <form ng-submit="complete('options')">
+        <p>Wählen Sie optionale Möglichkeiten:</p>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.studentMeals">
+            <div></div>
+            <span>Anbieter von Schülermahlzeit</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.reservation">
+            <div></div>
+            <span>Reservierung möglich</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.groupsWelcome">
+            <div></div>
+            <span>Gruppen erwünscht</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.petsWelcome">
+            <div></div>
+            <span>Haustiere erlaubt</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.cornKitchen">
+            <div></div>
+            <span>Vollkornküche</span>
+        </label>
+        <div class="actions">
+            <input type="button" class="back" ng-click="back('options')"/>
+            <button type="submit" class="primary forward"></button>
+        </div>
+    </form>
 </div>

@@ -1,12 +1,14 @@
 <div class="setupWrapper full">
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
-    <p>Tragen Sie Ihren Restaurantnamen ein und wählen Sie eine attraktive Beschreibung.</p>
-    <input type="text" placeholder="Restaurantname" ng-model="setup.input.restaurantname"/>
-    <br/>
-    <textarea placeholder="Beschreibung" ng-model="setup.input.description"></textarea>
-    <br/>
-    <br/>
-    <button ng-click="back('basicData')"><i class="material-icons">arrow_back</i></button>
-    <button ng-click="complete('basicData')"><i class="material-icons">arrow_forward</i></button>
+    <form ng-submit="complete('basicData')">
+        <p>Tragen Sie Ihren Restaurantnamen ein und wählen Sie eine attraktive Beschreibung.</p>
+        <input type="text" placeholder="Restaurantname" ng-model="setup.input.restaurantname"/>
+        <textarea placeholder="Beschreibung" ng-model="setup.input.description"></textarea>
+        <textarea placeholder="Beschreibung (Englisch)" ng-model="setup.input.description_en"></textarea>
+        <div class="actions">
+            <input type="button" class="back" ng-click="back('basicData')"/>
+            <button type="submit" class="primary forward"></button>
+        </div>
+    </form>
 </div>

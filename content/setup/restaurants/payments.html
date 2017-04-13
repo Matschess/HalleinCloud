@@ -2,19 +2,21 @@
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
     <p>Welche Zahlungsmöglichkeiten bieten Sie an?</p>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.acceptsKelteneuro">
-        <div></div>
-        <span>Kelteneuro</span>
-    </label>
-    <br/>
-    <label class="checkbox">
-        <input type="checkbox" ng-model="setup.input.acceptsCard">
-        <div></div>
-        <span>Karte</span>
-    </label>
-    <br/>
-    <br/>
-    <button ng-click="back('payments')"><i class="material-icons">arrow_back</i></button>
-    <button ng-click="complete('payments')"><i class="material-icons">arrow_forward</i></button>
+    <form ng-submit="complete('payments')">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.acceptsKelteneuro">
+            <div></div>
+            <span>Kelteneuro</span>
+        </label>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" ng-model="setup.input.acceptsCard">
+            <div></div>
+            <span>Karte</span>
+        </label>
+        <div class="actions">
+            <input type="button" class="back" ng-click="back('payments')"/>
+            <button type="submit" class="primary forward"></button>
+        </div>
+    </form>
 </div>

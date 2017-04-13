@@ -1066,6 +1066,23 @@ body {
           margin-top: 5px;
         }
       }
+      .langLinks {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .langLink {
+          font-size: 14px;
+          padding: 4px 10px;
+          border-radius: 20px;
+          cursor: pointer;
+          &:hover {
+            color: #000;
+          }
+          &.active {
+            background-color: #3498db;
+            color: #fff;
+          }
+        }
+      }
       i {
         font-size: 20px;
         vertical-align: middle;

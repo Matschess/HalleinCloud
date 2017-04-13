@@ -131,9 +131,10 @@ $primary-font: "Gravity Light";
 }
 
 .setupWrapper, .pwResetWrapper {
+  position: relative;
   width: calc(100% - 100px - 60px);
   margin-left: 20%;
-  padding: 0 30px;
+  padding: 0 30px 40px 30px;
   &.full{
     font-size: 16px;
     text-align: center;
@@ -158,7 +159,7 @@ $primary-font: "Gravity Light";
     width: 80%;
     vertical-align: middle;
     &.short {
-      width: 30%;
+      width: 33%;
     }
   }
   textarea{
@@ -166,52 +167,67 @@ $primary-font: "Gravity Light";
     width: 80%;
     padding: 8px;
   }
-  .checkbox{
+  label.checkbox{
     text-align: left;
   }
-  button {
-    background-color: #d2d2d2;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 50%;
-    cursor: pointer;
-    vertical-align: middle;
-    &:hover {
-      background-color: #c2c2c2;
-    }
-    &.long{
-      width: auto;
-      height: auto;
-      padding: 10px 20px;
+  .actions {
+    width: 100%;
+    margin-top: 50px;
+    button, input[type=button] {
+      position: absolute;
+      background-color: #d2d2d2;
+      color: #fff;
+      width: 50%;
+      bottom: -40px;
+      left: 0;
+      padding: 15px 0;
       text-align: center;
-      border-radius: 20px;
-    }
-    &.blue {
-      background-color: #3498db;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
       &:hover {
-        background-color: #2980b9;
+        background-color: #c9c9c9;
       }
-    }
-    &.orange {
-      background-color: #f39c12;
-      margin-right: 10px;
-      &:hover {
-        background-color: #e67e22;
+      &.primary {
+        background-color: #49a5a2;
+        left: auto;
+        right: 0;
+        border-radius: 0 0 20px 0;
+        &:hover {
+          background-color: #469794;
+        }
       }
-    }
-    &.green {
-      background-color: #2ecc71;
-      &:hover {
-        background-color: #27ae60;
+      &.back{
+        background-image: url('../../assets/icons/arrow_left.png');
+        background-size: 10%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 50px;
       }
-    }
-    i {
-      font-size: 16px;
-      vertical-align: middle;
+      &.forward{
+        background-image: url('../../assets/icons/arrow_right.png');
+        background-size: 10%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 50px;
+      }
+      &.orange {
+        background-color: #f39c12;
+        margin-right: 10px;
+        &:hover {
+          background-color: #e67e22;
+        }
+      }
+      &.green {
+        background-color: #2ecc71;
+        &:hover {
+          background-color: #27ae60;
+        }
+      }
+      i {
+        font-size: 16px;
+        vertical-align: middle;
+      }
     }
   }
   .pwChange .pwValidation{

@@ -118,6 +118,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                         params: data
                     }).then(function (response) {
                         $scope.setup = {input: response.data[0]};
+                        console.log($scope.setup);
                     });
                     $('.wrapper').addClass('background');
                 } else {
@@ -229,6 +230,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                         id: input.id,
                         restaurantname: input.restaurantname,
                         description: input.description,
+                        description_en: input.description_en,
                         street: input.street,
                         houseNumber: input.houseNumber,
                         countryCode: input.countryCode,

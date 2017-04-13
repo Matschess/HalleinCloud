@@ -33,7 +33,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
                     $scope.notifications.push({
                         type: 'warning',
                         title: 'Keine Öffnungszeiten',
-                        text: 'Sie haben keine Öffnungszeiten eingetragen.',
+                        text: 'Tragen Sie Öffnungszeiten ein.',
                         route: 'page#times'
                     })
                 }
@@ -118,14 +118,14 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 }
             });
 
-        $http.get(URL + '/restaurants?id=' + restaurant)
+        $http.get(URL + '/restaurants?get=description,description_en&id=' + restaurant)
             .then(function (response) {
                 var data = response.data[0];
                 if (!data.imgs) {
                     $scope.notifications.push({
                         type: 'warning',
                         title: 'Keine Bilder',
-                        text: 'Sie haben keine Bilder hochgeladen.',
+                        text: 'Laden Sie Bilder für einen attraktiven Auftritt hoch.',
                         route: 'page#design'
                     })
                 }
@@ -133,8 +133,16 @@ myApp.controller('dashboardController', function ($scope, $http) {
                     $scope.notifications.push({
                         type: 'warning',
                         title: 'Keine Hauptbild',
-                        text: 'Sie haben kein Hauptbild gesetzt.',
+                        text: 'Setzen Sie ein Hauptbild.',
                         route: 'page#design'
+                    })
+                }
+                if (data.description && !data.description_en) {
+                    $scope.notifications.push({
+                        type: 'warning',
+                        title: 'Keine Übersetzung',
+                        text: 'Tragen Sie eine englische Restaurantbeschreibung ein.',
+                        route: 'page'
                     })
                 }
             });
@@ -151,7 +159,7 @@ myApp.controller('dashboardController', function ($scope, $http) {
          type: 'alert',
          number: 1,
          title: 'App offline',
-         text: 'Die App ist heruntergefahren. Klicken für Fehlerbehebung.',
+         text: 'Die App ist heruntergefahren. Klicken für Behebung.',
          route: 'app-control'
          })
          */

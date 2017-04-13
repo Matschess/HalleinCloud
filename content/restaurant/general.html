@@ -1,8 +1,14 @@
 <div ng-controller="pageGeneralController">
     <div class="full">
-        <h3>Grunddaten:</h3>
+        <h3>Restaurantname:</h3>
         <input type="text" class="shorter" placeholder="Restaurantname" ng-model="input.general.restaurantname"><br/>
-        <textarea placeholder="Beschreibung" ng-model="input.general.description"></textarea>
+        <h3>Beschreibung:</h3>
+        <div class="langLinks">
+            <span class="langLink" ng-class="{'active': lang == 0}" ng-init="lang = 0" ng-click="lang=0">Deutsch</span>
+            <span class="langLink" ng-class="{'active': lang == 1}" ng-click="lang=1">Englisch</span>
+        </div>
+        <textarea placeholder="Beschreibung" ng-show="lang == 0" ng-model="input.general.description"></textarea>
+        <textarea placeholder="Description" ng-show="lang == 1" ng-model="input.general.description_en"></textarea>
     </div>
     <div class="left">
         <h3>Adresse:</h3>
