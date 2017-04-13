@@ -164,7 +164,7 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
 
     load();
     function load() {
-        $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closes:noSeconds&restaurant=' + restaurant)
+        $http.get(URL + '/openingTimes?get=id,weekday,opens:noSeconds,closes:noSeconds&orderBy=weekday&restaurant=' + restaurant)
             .then(function (response) {
                 $scope.input.openingTimes = response.data;
             });
