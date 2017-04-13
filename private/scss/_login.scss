@@ -4,6 +4,9 @@ $primary-font: "Gravity Light";
   position: absolute;
   font-family: $primary-font;
   background: #fff;
+  background-image: url(../../assets/imgs/splash.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
   width: 30%;
   height: 50%;
   left: 35%;
@@ -20,8 +23,7 @@ $primary-font: "Gravity Light";
   h1{
     font-family: $primary-font;
     font-size: 40px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 80px;
     text-transform: uppercase;
   }
   h2 {
@@ -57,13 +59,21 @@ $primary-font: "Gravity Light";
   }
 }
 
-
 .loginWrapper {
   position: absolute;
-  width: 100%;
+  width: calc(100% - 100px);
   height: 100%;
+  padding-left: 100px;
+  .logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px 0 0 0;
+    width: 120px;
+    height: 120px;
+  }
   form{
-    margin-top: 20px;
+    margin-top: 60px;
   }
   p {
     text-align: center;
@@ -78,7 +88,7 @@ $primary-font: "Gravity Light";
   }
   input[type=text], input[type=password] {
     background-color: transparent;
-    width: calc(80% - 86px);
+    width: calc(70% - 86px);
     height: 35px;
     margin: 0;
     margin-bottom: 20px;
@@ -92,7 +102,7 @@ $primary-font: "Gravity Light";
   }
   .actions {
     position: absolute;
-    width: 100%;
+    width: 85%;
     bottom: 20px;
     span {
       font-size: 18px;
@@ -106,21 +116,21 @@ $primary-font: "Gravity Light";
       }
     }
     button {
-      font-family: 'Gravity Regular';
+      font-family: 'Gravity';
       font-size: 12px;
       background: #333;
       color: #fff;
       text-transform: uppercase;
       margin-left: 10px;
-      padding: 12px 22px;
+      padding: 14px 25px;
       border-radius: 20px;
       &:hover{
         background: #000;
       }
       &.primary{
-        background-color: #1dce70;
+        background-color: #49a5a2;
         &:hover{
-          background-color: #1dc466;
+          background-color: #469794;
         }
       }
       &:first-of-type{

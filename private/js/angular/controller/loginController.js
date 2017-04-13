@@ -3,7 +3,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     var routes = {
         login: {
-            title: 'Login',
+            title: 'Anmelden',
             aboutUs: true,
             content: 'content/login.html'
         },
