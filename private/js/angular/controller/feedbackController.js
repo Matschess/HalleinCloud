@@ -42,6 +42,10 @@ myApp.controller('feedbackController', function ($scope, $location, $http) {
             break;
         default:
             $scope.config.switched = 1;
+            $http.get(URL + '/feedback?get=id,rating,subject,text&status=1&restaurant=' + restaurant)
+                .then(function (response) {
+                    $scope.newFeedbacks = response.data;
+                })
     }
 
     $scope.input = {};
@@ -55,28 +59,24 @@ myApp.controller('feedbackController', function ($scope, $location, $http) {
     $scope.accept = function (id, index) {
         $http.put(URL + '/feedback?status=2&id=' + id)
             .then(function () {
-                $scope.acceptedFeedbacks.push($scope.newFeedbacks[index]);
                 $scope.newFeedbacks.splice(index, 1);
             });
     }
     $scope.decline = function (id, index) {
         $http.put(URL + '/feedback?status=3&id=' + id)
             .then(function () {
-                $scope.declinedFeedbacks.push($scope.newFeedbacks[index]);
                 $scope.newFeedbacks.splice(index, 1);
             });
     }
     $scope.reDecline = function (id, index) {
         $http.put(URL + '/feedback?status=3&id=' + id)
             .then(function () {
-                $scope.declinedFeedbacks.push($scope.acceptedFeedbacks[index]);
                 $scope.acceptedFeedbacks.splice(index, 1);
             });
     }
     $scope.reAccept = function (id, index) {
         $http.put(URL + '/feedback?status=2&id=' + id)
             .then(function () {
-                $scope.acceptedFeedbacks.push($scope.declinedFeedbacks[index]);
                 $scope.declinedFeedbacks.splice(index, 1);
             });
     }
