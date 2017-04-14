@@ -3,22 +3,23 @@
     <h3>{{ route.subtitle }}</h3>
     <form ng-submit="complete('address')">
         <div class="left">
-            <h3>Adresse:</h3>
+            <p>Adresse:</p>
             <input type="text" placeholder="Straße" ng-model="setup.input.street"/>
             <input type="text" class="short" placeholder="Nr" ng-model="setup.input.houseNumber"/>
             <input type="text" class="short" placeholder="PLZ" ng-model="setup.input.countryCode"/>
             <input type="text" placeholder="Ort" ng-model="setup.input.country"/>
         </div>
         <div class="right">
-            <h3>Kontaktdaten:</h3>
+            <p>Kontaktdaten:</p>
             <input type="text" placeholder="Email-Adresse" ng-model="setup.input.email"/>
             <br/>
             <input type="text" placeholder="Telefonnummer" ng-model="setup.input.tel"/>
             <br/>
             <input type="text" placeholder="Website" ng-model="setup.input.website"/>
         </div>
+        <br/>
+        <br/>
         <div class="full">
-            <br/>
             <label class="checkbox">
                 <input type="checkbox" ng-model="setup.input.parking">
                 <div></div>

@@ -1,4 +1,4 @@
-$primary-font: "Gravity Light";
+$primary-font: "Gravity Book";
 
 .login {
   font-family: $primary-font;
@@ -24,18 +24,21 @@ $primary-font: "Gravity Light";
   h1{
     font-family: $primary-font;
     font-size: 40px;
+    font-weight: normal;
     text-transform: uppercase;
     margin-bottom: 0;
   }
   h2 {
     font-size: 25px;
-    text-align: center;
+    font-weight: normal;
+    margin-bottom: 10px;
     margin-top: 0;
     padding: 0;
-    margin-bottom: 10px;
+    text-align: center;
   }
   h3 {
     font-size: 18px;
+    font-weight: normal;
     text-align: center;
   }
 }
@@ -172,7 +175,7 @@ $primary-font: "Gravity Light";
   }
   .actions {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 30px;
     button, input[type=button] {
       position: absolute;
       background-color: #d2d2d2;
@@ -197,6 +200,13 @@ $primary-font: "Gravity Light";
           background-color: #469794;
         }
       }
+      &.light{
+        background-color: #3a8582;
+        border-radius: 0 0 20px 0;
+        &:hover {
+          background-color: #41817e;
+        }
+      }
       &.back{
         background-image: url('../../assets/icons/arrow_left.png');
         background-size: 10%;
@@ -211,15 +221,18 @@ $primary-font: "Gravity Light";
         background-repeat: no-repeat;
         height: 50px;
       }
+      &.long{
+        width: 100%;
+      }
       &.orange {
-        background-color: #f39c12;
+        background-color: #f3ae44;
         margin-right: 10px;
         &:hover {
-          background-color: #e67e22;
+          background-color: #f3943e;
         }
       }
       &.green {
-        background-color: #2ecc71;
+        background-color: #5ccc83;
         &:hover {
           background-color: #27ae60;
         }

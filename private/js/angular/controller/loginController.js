@@ -60,7 +60,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 },
                 options: {
                     title: 'Einrichtung',
-                    subtitle: 'Weiteres',
+                    subtitle: 'Weitere Optionen',
                     content: 'content/setup/restaurants/options.html'
                 },
                 payments: {
@@ -154,6 +154,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                 }
                 break;
             case 'pwReset/confirm':
+                $('.login').removeClass('shake');
                 var email = $scope.pwForgot.input.email;
                 var pin = $scope.pwForgot.input.pin;
                 if (email && pin) {
@@ -168,8 +169,11 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
                     }).then(function () {
                         $scope.route = routes.pwForgot.password;
                     }, function () {
-                        console.log('error');
+                        $('.login').addClass('animated shake');
                     });
+                }
+                else {
+                    $('.login').addClass('animated shake');
                 }
                 break;
             case 'pwReset/password':

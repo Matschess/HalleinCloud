@@ -1,13 +1,16 @@
 <div class="pwResetWrapper full">
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
-    <form ng-submit="complete('pwForgot/confirm')">
-        <p>Sie haben gerade eine Email erhalten.</p>
-        <p>Geben Sie bitte die PIN ein, die Ihnen zugeschickt wurde.</p>
-        <i class="material-icons icon">fiber_pin</i><input type="text" ng-model="pwForgot.input.pin"/>
+    <form ng-submit="complete('pwReset/confirm')">
+        <p>
+            Sie haben gerade eine Email erhalten.
+            <br/>
+            Geben Sie bitte die PIN ein, die Ihnen zugeschickt wurde.
+        </p>
+        <i class="material-icons icon">fiber_pin</i><input type="text" placeholder="PIN" ng-model="pwForgot.input.pin"/>
         <div class="actions">
-            <button ng-click="back('pwReset/confirm')"><i class="material-icons">arrow_back</i></button>
-            <button ng-click="complete('pwReset/confirm')"><i class="material-icons">arrow_forward</i></button>
+            <input type="button" class="back" ng-click="back('pwReset/confirm')"/>
+            <button type="submit" class="primary forward"></button>
         </div>
     </form>
 </div>
