@@ -123,10 +123,10 @@ myApp.controller('pageDesignController', function ($scope, $http, ngDialog) {
         ngDialog.openConfirm({
             controller: ['$scope', function ($scope) {
                 $scope.dialog = {
-                    content: 'Wollen Sie das Bild löschen?',
+                    content: 'CONF-DEL-IMG',
                     options: {
-                        confirm: 'Löschen',
-                        abort: 'Abbrechen'
+                        confirm: 'DELETE',
+                        abort: 'CANCEL'
                     }
                 }
             }]

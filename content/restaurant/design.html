@@ -1,7 +1,6 @@
 <div class="pagesDesignWrapper" ng-controller="pageDesignController">
-    <h3>Bilder</h3>
-    <p>Wählen Sie für einen guten Auftritt hochwertige Bilder.
-    Vermeiden Sie Text in den Fotos.</p>
+    <h3>{{ 'PICTURES' | translate }}</h3>
+    <p>{{ 'PICTURES-TEXT' | translate }}</p>
     <div class="mainImg" ng-if="img.main" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs"></div>
     <div class="imgs">
         <input id="filepicker" class="filepicker" type="file" accept="image/*"/>
@@ -13,14 +12,14 @@
         </label>
         <div class="img" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs">
             <div class="actions">
-                <div ng-click="setMainImg($index)"><i class="material-icons">done</i>Als Hauptbild</div>
-                <div><i class="material-icons">crop</i>Zuschneiden</div>
-                <div ng-click="deleteImg($index)"><i class="material-icons">delete_outline</i>Löschen</div>
+                <div ng-click="setMainImg($index)"><i class="material-icons">done</i>{{ 'PRIMARY-IMG' | translate }}</div>
+                <div><i class="material-icons">crop</i>{{ 'CROP' | translate }}</div>
+                <div ng-click="deleteImg($index)"><i class="material-icons">delete_outline</i>{{ 'DELETE' | translate }}</div>
             </div>
         </div>
     </div>
-    <h3>Farbe</h3>
-    <p>Wählen Sie eine Farbe, die zu Ihrem Restaurant oder Ihrer Corporate Identity passt.</p>
+    <h3>{{ 'COLOR' | translate }}</h3>
+    <p>{{ 'COLOR-TEXT' | translate }}</p>
     <div class="color">
         <div class="currentColor" ng-click="colorpicker = !colorpicker" ng-style="{'background-color': input.color}"></div>
         <div class="colorpicker" ng-class="{visible: colorpicker}">

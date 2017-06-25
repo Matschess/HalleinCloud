@@ -4,13 +4,20 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 
 gulp.task('default', function () {
-    gulp.start('copy', 'css', 'scss', 'js');
+    gulp.start('copy', 'lang', 'css', 'scss', 'js');
 });
 
 gulp.task('copy', function () {
     return watch('private/assets/**/*', { ignoreInitial: false }, function() {
         gulp.src('private/assets/**/*')
             .pipe(gulp.dest('assets/'));
+    })
+});
+
+gulp.task('lang', function () {
+    return watch('private/lang/*', { ignoreInitial: false }, function() {
+        gulp.src('private/lang/*')
+            .pipe(gulp.dest('lang/'));
     })
 });
 

@@ -3,15 +3,15 @@ myApp.controller('feedbackController', function ($scope, $location, $http) {
         title: 'Feedback',
         switches: [
             {
-                name: 'Neu',
+                name: 'NEW',
                 url: 'new'
             },
             {
-                name: 'Akzeptiert',
+                name: 'ACCEPTED',
                 url: 'accepted'
             },
             {
-                name: 'Abgelehnt',
+                name: 'DECLINED',
                 url: 'declined'
             }
         ],

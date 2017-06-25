@@ -3,9 +3,9 @@ myApp.controller('pageController', function ($scope, $location, $http) {
     $scope.config = {
         activeTab: 0,
         tabs: [
-            {title: 'Allgemein', link: 'page#general', content: 'content/restaurant/general.html',
+            {title: 'GENERAL', link: 'page#general', content: 'content/restaurant/general.html',
                 actions: [
-                    {title: 'Speichern', icon: 'done',
+                    {title: 'SAVE', icon: 'done',
                     returnFunction: function(){
                         var input = $scope.input.general;
                         if (input.restaurantname && input.street && input.houseNumber && input.countryCode && input.country) {
@@ -48,15 +48,15 @@ myApp.controller('pageController', function ($scope, $location, $http) {
                             globalNotification('warning', 'Bitte geben Sie alle Daten ein.')
                         }
                     }},
-                    {title: 'Verwerfen', icon: 'close', route: '/'}
+                    {title: 'DISCARD', icon: 'close', route: '/'}
                 ],},
-            {title: 'Öffnungszeiten', link: 'page#times', content: 'content/restaurant/times.html',
+            {title: 'OPENINGTIMES', link: 'page#times', content: 'content/restaurant/times.html',
                 actions: [
-                    {title: 'Schließen', icon: 'close', route: '/'}
+                    {title: 'CLOSE', icon: 'close', route: '/'}
                 ],},
-            {title: 'Design', link: 'page#design', content: 'content/restaurant/design.html',
+            {title: 'DESIGN', link: 'page#design', content: 'content/restaurant/design.html',
                 actions: [
-                    {title: 'Schließen', icon: 'close', route: '/'}
+                    {title: 'CLOSE', icon: 'close', route: '/'}
                 ],}
         ]
     }

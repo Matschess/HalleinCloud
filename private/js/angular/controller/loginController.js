@@ -3,7 +3,7 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
 
     var routes = {
         login: {
-            title: 'Dashboard',
+            title: 'Cloud',
             aboutUs: true,
             content: 'content/login.html'
         },

@@ -1,4 +1,4 @@
-<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="Schließen">close</i>
+<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="{{ 'CLOSE' | translate }}">close</i>
 <content>
     Bild zuschneiden
     <br/>
@@ -14,6 +14,6 @@
     </label>
 </content><br/>
 <div class="actions">
-    <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
-    <button class="action highlighted" ng-click="uploadImg(croppedImg, mainImg); closeThisDialog()">Zuschneiden</button>
+    <button class="action" ng-click="closeThisDialog()">{{ 'CANCEL' | translate }}</button>
+    <button class="action highlighted" ng-click="uploadImg(croppedImg, mainImg); closeThisDialog()">{{ 'CROP' | translate }}</button>
 </div>

@@ -1,65 +1,65 @@
 <div ng-controller="pageGeneralController">
     <div class="full">
-        <h3>Restaurantname:</h3>
-        <input type="text" class="shorter" placeholder="Restaurantname" ng-model="input.general.restaurantname"><br/>
-        <h3>Beschreibung:</h3>
+        <h3>{{ 'RESTAURANTNAME' | translate }}:</h3>
+        <input type="text" class="shorter" placeholder="{{ 'RESTAURANTNAME' | translate }}" ng-model="input.general.restaurantname"><br/>
+        <h3>{{ 'DESCRIPTION' | translate }}:</h3>
         <div class="langLinks">
-            <span class="langLink" ng-class="{'active': lang == 0}" ng-init="lang = 0" ng-click="lang=0">Deutsch</span>
-            <span class="langLink" ng-class="{'active': lang == 1}" ng-click="lang=1">Englisch</span>
+            <span class="langLink" ng-class="{'active': lang == 0}" ng-init="lang = 0" ng-click="lang=0">{{ 'GERMAN' | translate }}</span>
+            <span class="langLink" ng-class="{'active': lang == 1}" ng-click="lang=1">{{ 'ENGLISH' | translate }}</span>
         </div>
-        <textarea placeholder="Beschreibung" ng-show="lang == 0" ng-model="input.general.description"></textarea>
-        <textarea placeholder="Description" ng-show="lang == 1" ng-model="input.general.description_en"></textarea>
+        <textarea placeholder="{{ 'DESCRIPTION' | translate }}" ng-show="lang == 0" ng-model="input.general.description"></textarea>
+        <textarea placeholder="{{ 'DESCRIPTION' | translate }}" ng-show="lang == 1" ng-model="input.general.description_en"></textarea>
     </div>
     <div class="left">
-        <h3>Adresse:</h3>
-        <input type="text" class="shorter" placeholder="Straße" ng-model="input.general.street"/><input type="text"
+        <h3>{{ 'ADDRESS' | translate }}:</h3>
+        <input type="text" class="shorter" placeholder="{{ 'STREET' | translate }}" ng-model="input.general.street"/><input type="text"
                                                                                                         class="short"
-                                                                                                        placeholder="Hausnummer"
+                                                                                                        placeholder="{{ 'HOUSENUMBER' | translate }}"
                                                                                                         ng-model="input.general.houseNumber"/><br/>
-        <input type="text" class="short" placeholder="PLZ" ng-model="input.general.countryCode"/><input type="text"
+        <input type="text" class="short" placeholder="{{ 'COUNTRYCODE' | translate }}" ng-model="input.general.countryCode"/><input type="text"
                                                                                                         class="shorter"
-                                                                                                        placeholder="Ort"
+                                                                                                        placeholder="{{ 'COUNTRY' | translate }}"
                                                                                                         ng-model="input.general.country"/>
         <a class="clean tooltipTop"
            href="http://maps.google.com/maps?q={{input.general.street}}+{{input.general.houseNumber}}+{{input.general.countryCode}}+{{input.general.country}}"
-           target="_blank" title="Auf Karte ansehen"><i class="material-icons">map</i></a>
+           target="_blank" title="{{ 'OPEN-MAP' | translate }}"><i class="material-icons">map</i></a>
         <br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.parking" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Parkmöglichkeit in der Nähe</span>
+            <span>{{ 'NEAR-PARKING' | translate }}</span>
         </label>
-        <h3>Kontaktdaten:</h3>
-        <input type="text" class="shorter" placeholder="Email-Adresse" ng-model="input.general.email"/><br/>
-        <input type="text" class="shorter" placeholder="Telefonnummer" ng-model="input.general.tel"/><br/>
-        <input type="text" class="shorter" placeholder="Website" ng-model="input.general.website"/>
-        <a class="clean tooltipTop" href="{{input.general.website}}" target="_blank" title="Link testen"><i
+        <h3>{{ 'CONTACT-DATA' | translate }}:</h3>
+        <input type="text" class="shorter" placeholder="{{ 'EMAIL-ADDRESS' | translate }}" ng-model="input.general.email"/><br/>
+        <input type="text" class="shorter" placeholder="{{ 'TEL' | translate }}" ng-model="input.general.tel"/><br/>
+        <input type="text" class="shorter" placeholder="{{ 'WEBSITE' | translate }}" ng-model="input.general.website"/>
+        <a class="clean tooltipTop" href="{{input.general.website}}" target="_blank" title="{{ 'OPEN-LINK' | translate }}"><i
                 class="material-icons">link</i></a>
     </div>
     <div class="right">
-        <h3>Optionen:</h3>
+        <h3>{{ 'OPTIONS' | translate }}:</h3>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.studentMeals" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Anbieter von Schülermahlzeit</span>
+            <span>{{ 'PROVIDES-STUDENT-MEAL' | translate }}</span>
         </label>
         <br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.reservation" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Reservierung möglich</span>
+            <span>{{ 'RESERVATION-POSSIBLE' | translate }}</span>
         </label>
         <br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.groupsWelcome" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Gruppen erwünscht</span>
+            <span>{{ 'GROUPS-WELCOME' | translate }}</span>
         </label>
         <br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.petsWelcome" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Haustiere erlaubt</span>
+            <span>{{ 'PETS-WELCOME' | translate }}</span>
         </label>
         <br/>
         <label class="checkbox">
@@ -71,13 +71,13 @@
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.acceptsKelteneuro" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Zahlung mit Kelteneuro</span>
+            <span>{{ 'ACCEPTS-KELTENEURO' | translate }}</span>
         </label>
         <br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.general.acceptsCard" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Zahlung mit Karte</span>
+            <span>{{ 'ACCEPTS-CARD' | translate }}</span>
         </label>
     </div>
 </div>

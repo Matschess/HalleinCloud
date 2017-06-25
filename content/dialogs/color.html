@@ -1,4 +1,4 @@
-<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="Schließen">close</i>
+<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="{{ 'CLOSE' | translate }}">close</i>
 <content>
     Hex-Code
     <br/>
@@ -6,6 +6,6 @@
     <div class="color" ng-show="hexValid" ng-style="{'background-color': color}"></div>
 </content><br/>
 <div class="actions">
-    <button class="action" ng-click="closeThisDialog()">Abbrechen</button>
-    <button class="action highlighted" ng-click="setColor(color); closeThisDialog()" ng-disabled="!hexValid">Ok</button>
+    <button class="action" ng-click="closeThisDialog()">{{ 'CANCEL' | translate }}</button>
+    <button class="action highlighted" ng-click="setColor(color); closeThisDialog()" ng-disabled="!hexValid">{{ 'OK' | translate }}</button>
 </div>

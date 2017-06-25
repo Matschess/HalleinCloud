@@ -1,9 +1,9 @@
 <div ng-controller="profileSettingsController">
     <form ng-submit="save()">
-        <div class="title">Profileinstellungen:</div>
-        <input type="text" placeholder="Vorname" ng-model="input.firstname"/>
-        <input type="text" placeholder="Nachname" ng-model="input.lastname"/>
-        <input type="text" placeholder="Email-Adresse" ng-model="input.email"/>
-        <button type="submit" class="transparent action tooltipTop" title="Speichern"><i class="material-icons" ng-click="save()">done</i></button>
+        <div class="title">{{ 'PROFILE-SETTINGS' | translate }}:</div>
+        <input type="text" placeholder="{{ 'FIRSTNAME' | translate }}" ng-model="input.firstname"/>
+        <input type="text" placeholder="{{ 'LASTNAME' | translate }}" ng-model="input.lastname"/>
+        <input type="text" placeholder="{{ 'EMAIL-ADDRESS' | translate }}" ng-model="input.email"/>
+        <button type="submit" class="transparent action tooltipTop" title="{{ 'SAVE' | translate }}"><i class="material-icons" ng-click="save()">done</i></button>
     </form>
 </div>

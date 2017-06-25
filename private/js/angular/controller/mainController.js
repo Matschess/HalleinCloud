@@ -62,12 +62,13 @@ myApp.controller('mainController', function ($scope, $rootScope, $route, $locati
 
     // Popup
     var settingsLinks = [
-        {name: 'Profil', icon: 'person_outline', url: 'settings/profileSettings.html'},
-        {name: 'Passwort ändern', icon: 'lock_outline', url: 'settings/pwChange.html'}
+        {name: 'PROFILE', icon: 'person_outline', url: 'settings/profileSettings.html'},
+        {name: 'CHANGE-PASS', icon: 'lock_outline', url: 'settings/pwChange.html'},
+        {name: 'LANGUAGE', icon: 'language', url: 'settings/language.html'}
     ];
     $scope.openSettings = function () {
         $scope.popup = {
-            title: 'Einstellungen',
+            title: 'SETTINGS',
             links: settingsLinks,
             content: 'content/' + settingsLinks[0].url,
             actions: settingsLinks[0].actions

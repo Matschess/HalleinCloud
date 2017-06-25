@@ -1,11 +1,11 @@
 <div class="fullBox">
     <div class="title">
-            <a ng-href="#{{tab.link}}" class="tab" ng-class="{'active':$index == config.activeTab}" ng-click="config.activeTab = $index" ng-repeat="tab in config.tabs">{{ tab.title }}</a>
+            <a ng-href="#{{tab.link}}" class="tab" ng-class="{'active':$index == config.activeTab}" ng-click="config.activeTab = $index" ng-repeat="tab in config.tabs">{{ tab.title | translate }}</a>
             <div class="actions">
                 <span ng-repeat="action in config.tabs[config.activeTab].actions" ng-click="action.returnFunction()">
                     <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}"
-                       title="{{ action.title }}"><i class="material-icons">{{ action.icon }}</i></a>
-                    <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title }}"><i
+                       title="{{ action.title | translate }}"><i class="material-icons">{{ action.icon }}</i></a>
+                    <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title | translate }}"><i
                             class="material-icons">{{ action.icon }}</i></a>
                 </span>
             </div>

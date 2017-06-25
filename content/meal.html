@@ -66,10 +66,10 @@
                 <span ng-if="!appetizer.search">Vorspeisen</span>
                 <input class="searchbox" type="text" ng-if="appetizer.search" ng-keydown="escSearchbox($event)" ng-model="appetizer.searchbox"/>
                 <i class='material-icons search tooltipTop' ng-click="appetizer.search = true"
-                   ng-show="!appetizer.search" title="Suchen">search</i>
+                   ng-show="!appetizer.search" title="{{ 'SEARCH' | translate }}">search</i>
                 <i class='material-icons search' ng-click="appetizer.search = false"
                    ng-show="appetizer.search">close</i>
-                <a href="#meal/add/appetizer"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
+                <a href="#meal/add/appetizer"><i class='material-icons add tooltipTop' title="{{ 'ADD' | translate }}">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:1 } | filter:appetizer.searchbox">
@@ -77,7 +77,7 @@
                          ng-class="{'veggie':menu.veggie}">
                         {{ menu.description }}
                         <i class='material-icons remove tooltipBottom'
-                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
+                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="{{ 'DELETE' | translate }}">close</i>
                     </div>
                 </div>
                 <div class="empty" ng-show="menus.length && !(menus | filter:appetizer.searchbox).length">
@@ -93,10 +93,10 @@
                 <span ng-if="!mainCourse.search">Hauptspeisen</span>
                 <input class="searchbox" type="text" ng-if="mainCourse.search" ng-model="mainCourse.searchbox"/>
                 <i class='material-icons search tooltipTop' ng-click="mainCourse.search = true"
-                   ng-show="!mainCourse.search" title="Suchen">search</i>
+                   ng-show="!mainCourse.search" title="{{ 'SEARCH' | translate }}">search</i>
                 <i class='material-icons search' ng-click="mainCourse.search = false"
                    ng-show="mainCourse.search">close</i>
-                <a href="#meal/add/mainCourse"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
+                <a href="#meal/add/mainCourse"><i class='material-icons add tooltipTop' title="{{ 'ADD' | translate }}">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:2 } | filter:mainCourse.searchbox">
@@ -104,7 +104,7 @@
                          ng-class="{'veggie':menu.veggie}">
                         {{ menu.description }}
                         <i class='material-icons remove tooltipBottom'
-                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
+                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="{{ 'DELETE' | translate }}">close</i>
                     </div>
                 </div>
                 <div class="empty" ng-show="menus.length && !(menus | filter:mainCourse.searchbox).length">
@@ -119,9 +119,9 @@
             <label>
                 <span ng-if="!dessert.search">Nachspeisen</span>
                 <input class="searchbox" type="text" ng-if="dessert.search" ng-model="dessert.searchbox"/>
-                <i class='material-icons search tooltipTop' ng-click="dessert.search = true" ng-show="!dessert.search" title="Suchen">search</i>
+                <i class='material-icons search tooltipTop' ng-click="dessert.search = true" ng-show="!dessert.search" title="{{ 'SEARCH' | translate }}">search</i>
                 <i class='material-icons search' ng-click="dessert.search = false" ng-show="dessert.search">close</i>
-                <a href="#meal/add/dessert"><i class='material-icons add tooltipTop' title="Hinzufügen">add</i></a>
+                <a href="#meal/add/dessert"><i class='material-icons add tooltipTop' title="{{ 'ADD' | translate }}">add</i></a>
             </label>
             <div class="menuWrapper">
                 <div ng-repeat="menu in menus | filter: { type:3 } | filter:dessert.searchbox">
@@ -129,7 +129,7 @@
                          ng-class="{'veggie':menu.veggie}">
                         {{ menu.description }}
                         <i class='material-icons remove tooltipBottom'
-                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="Löschen">close</i>
+                           ng-click="removeMeal(menu.id, menus.indexOf(menu))" title="{{ 'DELETE' | translate }}">close</i>
                     </div>
                 </div>
                 <div class="empty" ng-show="menus.length && !(menus | filter:dessert.searchbox).length">

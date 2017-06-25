@@ -19,6 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
+    <!-- angular-translate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.2/angular-translate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/2.15.2/angular-translate-loader-static-files.min.js"></script>
     <!-- ngDialog -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.6/js/ngDialog.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.6/css/ngDialog.min.css" rel="stylesheet">
@@ -65,12 +68,12 @@
     <!-- Popup -->
     <div class="overlay" ng-class="{visible: popup, blocker: !loggedIn}" ng-click="popupClose()"></div>
     <div class="popup large" ng-if="popup" ng-class="{visible: popup}"><i class="material-icons close tooltipBottom"
-                                                                          ng-click="popupClose()" title="Schließen">close</i>
-        <h2>{{ popup.title }}</h2>
+                                                                          ng-click="popupClose()" title="{{ 'CLOSE' | translate }}">close</i>
+        <h2>{{ popup.title | translate }}</h2>
         <navigation>
             <ul>
                 <li ng-repeat="link in popup.links" ng-click="popupLoad($index)"><i
-                        class="material-icons">{{link.icon}}</i>{{ link.name }}
+                        class="material-icons">{{link.icon}}</i>{{ link.name | translate }}
                 </li>
             </ul>
         </navigation>
@@ -79,7 +82,7 @@
     <!-- Topbar -->
     <div class="topbar">
         <i class="material-icons burgericon">menu</i>
-        <h1 class="headline">Verwaltungsdashboard</h1>
+        <h1 class="headline">Hallein-App-Cloud</h1>
         <div class="user">
             <div class="loadingSpinner" ng-if="loading">
                 <div class="loading"></div>
@@ -94,8 +97,8 @@
         </div>
         <div class="options">
             <ul>
-                <li ng-click="openSettings()">Einstellungen</li>
-                <li id="logout" ng-click="logout()">Ausloggen</li>
+                <li ng-click="openSettings()">{{ 'SETTINGS' | translate }}</li>
+                <li id="logout" ng-click="logout()">{{ 'SIGNOUT' | translate }}</li>
             </ul>
         </div>
     </div>
@@ -103,7 +106,7 @@
     <div class="navbar">
         <ul>
             <a href="#{{ route.path }}" ng-repeat="route in routes">
-                <li ng-class="{active: isActive(route.path)}"><i class="material-icons">{{ route.icon }}</i>{{ route.name }}</li>
+                <li ng-class="{active: isActive(route.path)}"><i class="material-icons">{{ route.icon }}</i>{{ route.name | translate }}</li>
             </a>
         </ul>
         <div class="copyright">

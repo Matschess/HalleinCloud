@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog', 'ngImgCrop', 'ngFlatDatepicker']);
+var myApp = angular.module('myApp', ['ngRoute', 'pascalprecht.translate', 'ngCookies', 'ngDraggable', 'ngResource', 'ngSanitize', 'ngDialog', 'ngImgCrop', 'ngFlatDatepicker']);
 
 //var URL = 'http://46.38.236.5:443';
 var URL = 'http://46.38.236.5:443';
@@ -12,13 +12,13 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/empty.html',
             controller: 'dashboardController',
             icon: 'dashboard',
-            name: 'Dashboard'
+            name: 'DASHBOARD'
         })
         .when('/meal', {
             templateUrl: 'templates/window.html',
             controller: 'foodController',
             icon: 'local_dining',
-            name: 'Mahlzeiten',
+            name: 'MEALS',
             grant: [3],
             resolve: {
                 'authenticate': function ($location) {
@@ -43,7 +43,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/switch.html',
             controller: 'feedbackController',
             icon: 'thumbs_up_down',
-            name: 'Feedback',
+            name: 'FEEDBACK',
             grant: [3],
             resolve: {
                 'authenticate': function ($location) {
@@ -57,7 +57,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/tabs.html',
             controller: 'pageController',
             icon: 'home',
-            name: 'Restaurantseite',
+            name: 'RESTAURANTPAGE',
             grant: [3],
             resolve: {
                 'authenticate': function ($location) {
@@ -71,7 +71,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'appControlController',
             icon: 'phonelink_setup',
-            name: 'App-Wartung',
+            name: 'APP-MAINTENANCE',
             grant: [1, 2],
             resolve: {
                 'authenticate': function ($location) {
@@ -85,7 +85,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'usersController',
             icon: 'person_outline',
-            name: 'Benutzer',
+            name: 'USER',
             grant: [1, 2],
             resolve: {
                 'authenticate': function ($location) {
@@ -121,7 +121,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'supportController',
             icon: 'phone',
-            name: 'Support',
+            name: 'SUPPORT',
             grant: [1],
             resolve: {
                 'authenticate': function ($location) {
@@ -168,7 +168,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'helpController',
             icon: 'help_outline',
-            name: 'Hilfe',
+            name: 'HELP',
             grant: [2, 3],
             resolve: {
                 'authenticate': function ($location) {
@@ -419,6 +419,15 @@ function serverConnection(job) {
         })
     }
 }
+
+// Translations
+myApp.config(['$translateProvider', function ($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'lang/',
+        suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en_US');
+}]);
 
 // Check internet connection
 window.addEventListener("offline", function (e) {
