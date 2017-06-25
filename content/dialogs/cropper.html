@@ -1,6 +1,6 @@
 <i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="{{ 'CLOSE' | translate }}">close</i>
 <content>
-    Bild zuschneiden
+    {{ 'CROP-IMG' | translate }}
     <br/>
     <br/>
     <div class="cropper">
@@ -10,7 +10,7 @@
     <label class="checkbox">
         <input type="checkbox" ng-model="mainImg" ng-true-value="1">
         <div></div>
-        <span>Als Hauptbild einstellen</span>
+        <span>{{ 'SET-AS-PRIMARY-IMG' | translate }}</span>
     </label>
 </content><br/>
 <div class="actions">

@@ -2,8 +2,8 @@ myApp.controller('bugReportController', function ($scope, $location, $http) {
     $scope.config = {
         title: 'Fehler melden',
         actions: [
-            {title: 'Melden', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/help'}
+            {title: 'REPORT', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/help'}
         ],
         content: 'content/help-bugreport.html',
         return: function (index, e) {

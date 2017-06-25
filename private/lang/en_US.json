@@ -25,6 +25,8 @@
   "SIGNOUT": "Sign out",
   "CLOSE": "Close",
   "CANCEL": "Cancel",
+  "YES": "Yes",
+  "NO": "No",
   "OK": "Ok",
   "SAVE": "Save",
   "CROP": "Crop",
@@ -48,6 +50,14 @@
   "NEW-PASS": "New password",
   "REPETITION": "Repetition",
   "CHANGE-LANGUAGE": "Change the language",
+
+  "MEALS": "Meals",
+  "VEGGIE": "Vegetarian",
+  "APPETIZER": "Appetizer",
+  "MAIN-COURSE": "Main course",
+  "DESSERT": "Dessert",
+  "ADD-MEAL": "Add meal",
+  "TYPE": "Type",
 
   "NEW": "New",
   "ACCEPTED": "Accepted",
@@ -85,6 +95,14 @@
 
   "OPENINGTIMES": "Opening times",
   "NO-OPENINGTIMES": "No opening times yet",
+  "DAY": "Day",
+  "SUNDAY": "Sunday",
+  "MONDAY": "Monday",
+  "TUESDAY": "Tuesday",
+  "WEDNESDAY": "Wednesday",
+  "THURSDAY": "Thursday",
+  "FRIDAY": "Friday",
+  "SATURDAY": "Saturday",
   "ENTER-OPENINGTIMES": "Enter opening times",
   "RESTDAYS": "Rest days",
   "NO-RESTDAYS": "No rest days planned",
@@ -93,7 +111,18 @@
 
   "PICTURES": "Pictures",
   "PICTURES-TEXT": "Choose valuable pictures to present from your best side. Avoid text in the images.",
-  "PRIMARY-IMG": "Primary Image",
+  "SELECT-IMG-AND-UPLOAD": "Select picture and upload",
+  "CROP-IMG": "Crop picture",
+  "SET-AS-PRIMARY-IMG": "Set as primary picture",
+  "PRIMARY-IMG": "Primary picture",
   "COLOR": "Color",
-  "COLOR-TEXT": "Select a color that fits to your restaurant or Corporate Idendity."
+  "COLOR-TEXT": "Select a color that fits to your restaurant or Corporate Idendity.",
+
+  "REPORT-A-BUG": "Report a bug",
+  "GIVE-FEEDBACK": "Give us Feedback",
+  "ASK-A-QUESTION": "Ask a question",
+  "LOGIN": "Login",
+  "BUGREPORT-TEXT": "We are working hard on the Hallein App Cloud. However, we are thankful if you let us know when you find a bug",
+  "BUG-DESCRIPTION": "Bug description",
+  "REPORT": "Report"
 }

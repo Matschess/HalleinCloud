@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="text" ng-if="!day.menu.meals">
-                {{ day.name | limitTo : 2 }}
+                {{ day.name | translate | limitTo : 2 }}
                 <div class="date">{{ day.date | date:"dd.MM" }}</div>
             </div>
             <i ng-click="setConstantMenu($index)" class='material-icons constant tooltipBottom' ng-class="{active: day.constant}"
@@ -59,11 +59,11 @@
             </div>
         </div>
     </div>
-    <div class="mealIndicator"><span class="veggie">Vegetarisch</span></div>
+    <div class="mealIndicator"><span class="veggie">{{ 'VEGGIE' | translate }}</span></div>
     <div class="menunames">
         <div class="menutype appetizer">
             <label>
-                <span ng-if="!appetizer.search">Vorspeisen</span>
+                <span ng-if="!appetizer.search">{{ 'APPETIZER' | translate }}</span>
                 <input class="searchbox" type="text" ng-if="appetizer.search" ng-keydown="escSearchbox($event)" ng-model="appetizer.searchbox"/>
                 <i class='material-icons search tooltipTop' ng-click="appetizer.search = true"
                    ng-show="!appetizer.search" title="{{ 'SEARCH' | translate }}">search</i>
@@ -90,7 +90,7 @@
         </div>
         <div class="menutype mainCourse">
             <label>
-                <span ng-if="!mainCourse.search">Hauptspeisen</span>
+                <span ng-if="!mainCourse.search">{{ 'MAIN-COURSE' | translate }}</span>
                 <input class="searchbox" type="text" ng-if="mainCourse.search" ng-model="mainCourse.searchbox"/>
                 <i class='material-icons search tooltipTop' ng-click="mainCourse.search = true"
                    ng-show="!mainCourse.search" title="{{ 'SEARCH' | translate }}">search</i>
@@ -117,7 +117,7 @@
         </div>
         <div class="menutype desert">
             <label>
-                <span ng-if="!dessert.search">Nachspeisen</span>
+                <span ng-if="!dessert.search">{{ 'DESSERT' | translate }}</span>
                 <input class="searchbox" type="text" ng-if="dessert.search" ng-model="dessert.searchbox"/>
                 <i class='material-icons search tooltipTop' ng-click="dessert.search = true" ng-show="!dessert.search" title="{{ 'SEARCH' | translate }}">search</i>
                 <i class='material-icons search' ng-click="dessert.search = false" ng-show="dessert.search">close</i>

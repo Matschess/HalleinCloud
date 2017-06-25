@@ -5,7 +5,7 @@
     <div class="imgs">
         <input id="filepicker" class="filepicker" type="file" accept="image/*"/>
         <label class="uploader" for="filepicker">
-            <div class="text">Bild <span>auswählen</span> und hochladen</div>
+            <div class="text">{{ 'SELECT-IMG-AND-UPLOAD' | translate }}</div>
             <div class="progress" ng-if="progress">
                 <div ng-style="{'width': + progress + '%'}">{{progress | number: 0}}%</div>
             </div>

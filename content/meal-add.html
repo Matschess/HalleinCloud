@@ -1,6 +1,6 @@
 <div class="full">
-    <label>Typ:</label>
-    <select ng-model="types.selected" ng-options="option.name for option in types.options track by option.id"></select>
+    <label>{{ 'TYPE' | translate }}:</label>
+    <select ng-model="types.selected" ng-options="option.name | translate for option in types.options track by option.id"></select>
     <br/>
     <br/>
     <!--
@@ -14,16 +14,16 @@
     </div>
     <br/>
     -->
-    <label>Beschreibung:</label><br/>
+    <label>{{ 'DESCRIPTION' | translate }}:</label><br/>
     <div>
         <textarea class="short" ng-model="input.description"></textarea>
         <div class="veggieWrapper">
-            <label class="longer smaller">Vegetarisch?</label>
+            <label class="longer smaller">{{ 'VEGGIE' | translate }}?</label>
             <br/>
             <input type="radio" id="y" name="veggie" value="1" ng-model="input.veggie">
-            <label class="checkLabel" for="y">Ja</label>
+            <label class="checkLabel" for="y">{{ 'YES' | translate }}</label>
             <input type="radio" id="n" name="veggie" value="0" ng-model="input.veggie">
-            <label class="checkLabel" for="n">Nein</label>
+            <label class="checkLabel" for="n">{{ 'NO' | translate }}</label>
         </div>
     </div>
 </div>

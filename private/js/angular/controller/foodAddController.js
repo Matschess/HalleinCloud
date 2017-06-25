@@ -1,9 +1,9 @@
 myApp.controller('foodAddController', function ($scope, $routeParams, $location, $http) {
     $scope.config = {
-        title: 'Mahlzeit hinzufügen',
+        title: 'ADD-MEAL',
         actions: [
-            {title: 'Speichern', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/meal'}
+            {title: 'SAVE', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/meal'}
         ],
         content: 'content/meal-add.html',
         return: function (index, e) {
@@ -41,11 +41,11 @@ myApp.controller('foodAddController', function ($scope, $routeParams, $location,
     };
 
     $scope.types = {
-        selected: {id: 2, name: 'Hauptspeise'},
+        selected: {id: 2, name: 'MAIN-COURSE'},
         options: [
-            {id: 1, name: 'Vorspeise'},
-            {id: 2, name: 'Hauptspeise'},
-            {id: 3, name: 'Nachspeise'}
+            {id: 1, name: 'APPETIZER'},
+            {id: 2, name: 'MAIN-COURSE'},
+            {id: 3, name: 'DESSERT'}
         ]
     }
 

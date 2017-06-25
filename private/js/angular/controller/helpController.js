@@ -1,10 +1,10 @@
 myApp.controller('helpController', function ($scope, $http) {
     $scope.config = {
-        title: 'Hilfe',
+        title: 'HELP',
         actions: [
-            {title: 'Fehler melden', icon: 'build', route: '/help/bugreport'},
-            {title: 'Feedback geben', icon: 'thumbs_up_down', route: '/help/feedback'},
-            {title: 'Frage stellen', icon: 'edit', route: '/help/add'}
+            {title: 'REPORT-A-BUG', icon: 'build', route: '/help/bugreport'},
+            {title: 'GIVE-FEEDBACK', icon: 'thumbs_up_down', route: '/help/feedback'},
+            {title: 'ASK-A-QUESTION', icon: 'edit', route: '/help/add'}
         ],
         content: 'content/help.html'
     }
@@ -14,18 +14,18 @@ myApp.controller('helpController', function ($scope, $http) {
     switch (userType) {
         case 2:
             var categories = [
-                {id: 1, name: 'Allgemein'},
-                {id: 2, name: 'Login'},
-                {id: 6, name: 'Benutzer'}
+                {id: 1, name: 'GENERAL'},
+                {id: 2, name: 'LOGIN'},
+                {id: 6, name: 'USER'}
             ]
             break;
         case 3:
             var categories = [
-                {id: 1, name: 'Allgemein'},
-                {id: 2, name: 'Login'},
-                {id: 3, name: 'Mahlzeiten'},
-                {id: 4, name: 'Feedback'},
-                {id: 5, name: 'Restaurantseite'},
+                {id: 1, name: 'GENERAL'},
+                {id: 2, name: 'LOGIN'},
+                {id: 3, name: 'MEALS'},
+                {id: 4, name: 'FEEDBACK'},
+                {id: 5, name: 'RESTAURANTPAGE'},
             ]
             break;
     }

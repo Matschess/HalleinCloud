@@ -1,7 +1,7 @@
 <div class="full">
     <div class="helpWrapper">
         <div ng-repeat="category in categories">
-            <div class="category" ng-if="(faqs | filter: { category:category.id }).length">{{ category.name }}</div>
+            <div class="category" ng-if="(faqs | filter: { category:category.id }).length">{{ category.name | translate }}</div>
             <div class="help" ng-repeat="faq in faqs | filter: { category:category.id }" ng-click="faq.show=!faq.show">
                 <div class="question" ng-class="{'opened':faq.show}">
                     {{faq.question}}

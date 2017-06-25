@@ -25,6 +25,8 @@
   "SIGNOUT": "Ausloggen",
   "CLOSE": "Schließen",
   "CANCEL": "Abbrechen",
+  "YES": "Ja",
+  "NO": "Nein",
   "OK": "Ok",
   "SAVE": "Speichern",
   "CROP": "Zuschneiden",
@@ -48,6 +50,14 @@
   "NEW-PASS": "Neues Password",
   "REPETITION": "Wiederholung",
   "CHANGE-LANGUAGE": "Legen Sie die Sprache fest",
+
+  "MEALS": "Mahlzeiten",
+  "VEGGIE": "Vegetarisch",
+  "APPETIZER": "Vorspeise",
+  "MAIN-COURSE": "Hauptspeise",
+  "DESSERT": "Nachspeise",
+  "ADD-MEAL": "Mahlzeit hinzufügen",
+  "TYPE": "Typ",
 
   "NEW": "Neu",
   "ACCEPTED": "Akzeptiert",
@@ -85,6 +95,14 @@
 
   "OPENINGTIMES": "Öffnungszeiten",
   "NO-OPENINGTIMES": "Keine Öffnungszeiten",
+  "DAY": "Tag",
+  "SUNDAY": "Sonntag",
+  "MONDAY": "Montag",
+  "TUESDAY": "Dienstag",
+  "WEDNESDAY": "Mittwoch",
+  "THURSDAY": "Donnerstag",
+  "FRIDAY": "Freitag",
+  "SATURDAY": "Samstag",
   "ENTER-OPENINGTIMES": "Öffnungszeiten eintragen",
   "RESTDAYS": "Ruhetage",
   "NO-RESTDAYS": "Keine Ruhetage geplant",
@@ -93,8 +111,17 @@
 
   "PICTURES": "Bilder",
   "PICTURES-TEXT": "Wählen Sie für einen guten Auftritt hochwertige Bilder. Vermeiden Sie Text in den Fotos.",
+  "SELECT-IMG-AND-UPLOAD": "Bild auswählen und hochladen",
+  "CROP-IMG": "Bild zuschneiden",
+  "SET-AS-PRIMARY-IMG": "Als Hauptbild einstellen",
   "PRIMARY-IMG": "Als Hauptbild",
-
   "COLOR": "Farbe",
-  "COLOR-TEXT": "Wählen Sie eine Farbe, die zu Ihrem Restaurant oder Ihrer Corporate Identity passt."
+  "COLOR-TEXT": "Wählen Sie eine Farbe, die zu Ihrem Restaurant oder Ihrer Corporate Identity passt.",
+
+  "REPORT-A-BUG": "Einen Fehler melden",
+  "GIVE-FEEDBACK": "Feedback an uns",
+  "ASK-A-QUESTION": "Eine Frage stellen",
+  "BUGREPORT-TEXT": "Wir verbessern die Hallein-App-Cloud laufend. Helfen Sie uns gerne, wenn Sie einen Fehler finden.",
+  "BUG-DESCRIPTION": "Fehlerbeschreibung",
+  "REPORT": "Melden"
 }

@@ -1,4 +1,4 @@
-myApp.controller('languageSettingsController', function ($scope, $translate) {
+myApp.controller('languageSettingsController', function ($scope, $translate, translateService) {
     $scope.languages = {
         selected: {},
         options: [
@@ -12,8 +12,7 @@ myApp.controller('languageSettingsController', function ($scope, $translate) {
     })[0];
 
     $scope.save = function () {
-        var newLang = $scope.languages.selected.id;
-        $translate.use(newLang);
+        translateService.setLang($scope.languages.selected.id)
         globalNotification('success', 'SUCC-CHANGED-LANG');
     }
 });

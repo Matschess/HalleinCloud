@@ -235,7 +235,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
             var userdata = JSON.parse(userdata);
             user = userdata.user.id;
             userType = userdata.user.type;
-            if(userType == 3){
+            if (userType == 3) {
                 restaurant = userdata.restaurant.id;
             }
             $http.defaults.headers.common['x-access-token'] = userdata.token;
@@ -262,7 +262,7 @@ myApp.service('loginHandler', function ($route, $rootScope, $location, $http, $c
         });
         user = data.user.id;
         userType = data.user.type;
-        if(userType == 3){
+        if (userType == 3) {
             restaurant = data.restaurant.id;
         }
         console.log(restaurant);
@@ -426,8 +426,32 @@ myApp.config(['$translateProvider', function ($translateProvider) {
         prefix: 'lang/',
         suffix: '.json'
     });
-    $translateProvider.preferredLanguage('en_US');
+    $translateProvider.preferredLanguage('de_AT');
 }]);
+
+myApp.service('translateService', function ($translate, $cookies) {
+    this.translate = function () {
+        var id = $cookies.get('lang');
+        $translate.use(id);
+        if(id) $translate.use(id);
+        else {
+            $translate.use('de_AT');
+            var exp = new Date();
+            exp.setDate(exp.getDate() + 1825);
+            $cookies.put('lang', 'de_AT', {
+                expires: exp
+            });
+        }
+    }
+    this.setLang = function(id) {
+        $translate.use(id);
+        var exp = new Date();
+        exp.setDate(exp.getDate() + 1825);
+        $cookies.put('lang', id, {
+            expires: exp
+        });
+    }
+});
 
 // Check internet connection
 window.addEventListener("offline", function (e) {

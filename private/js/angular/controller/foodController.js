@@ -1,6 +1,6 @@
 myApp.controller('foodController', function ($scope, $location, $http) {
         $scope.config = {
-            title: 'Mahlzeiten',
+            title: 'MEALS',
             content: 'content/meal.html'
         }
 
@@ -31,7 +31,7 @@ myApp.controller('foodController', function ($scope, $location, $http) {
 
         $scope.days = [];
 
-        var weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        var weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 
 
     $scope.input = {};

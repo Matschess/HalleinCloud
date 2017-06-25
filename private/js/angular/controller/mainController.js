@@ -1,4 +1,6 @@
-myApp.controller('mainController', function ($scope, $rootScope, $route, $location, $routeParams, $http, loginHandler) {
+myApp.controller('mainController', function ($scope, $rootScope, $route, $location, $routeParams, $http, translateService, loginHandler) {
+    translateService.translate();
+
     $scope.$on('$viewContentLoaded', function(){
         console.log('loaded');
     });

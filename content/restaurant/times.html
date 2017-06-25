@@ -6,7 +6,7 @@
         <br/>
         <br/>
         <div class="openingTimes" ng-repeat="openingTime in input.openingTimes | orderBy: openingTime.weekday">
-            <div><span>{{ weekdays.options[openingTime.weekday].name }}</span><span>{{ openingTime.opens }} - {{ openingTime.closes }}</span>
+            <div><span>{{ weekdays.options[openingTime.weekday].name | translate }}</span><span>{{ openingTime.opens }} - {{ openingTime.closes }}</span>
             </div>
             <i class="material-icons tooltipRight" title="{{ 'REMOVE' | translate }}"
                ng-click="openingTimeRemove(openingTime.id, $index)">delete_outline</i>

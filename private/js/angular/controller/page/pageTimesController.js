@@ -2,13 +2,13 @@ myApp.controller('pageTimesController', function ($scope, $http, ngDialog) {
     $scope.weekdays = {
         selected: {id: 0, name: 'Sonntag'},
         options: [
-            {id: 0, name: 'Sonntag'},
-            {id: 1, name: 'Montag'},
-            {id: 2, name: 'Dienstag'},
-            {id: 3, name: 'Mittwoch'},
-            {id: 4, name: 'Donnerstag'},
-            {id: 5, name: 'Freitag'},
-            {id: 6, name: 'Samstag'}
+            {id: 0, name: 'SUNDAY'},
+            {id: 1, name: 'MONDAY'},
+            {id: 2, name: 'TUESDAY'},
+            {id: 3, name: 'WEDNESDAY'},
+            {id: 4, name: 'THURSDAY'},
+            {id: 5, name: 'FRIDAY'},
+            {id: 6, name: 'SATURDAY'}
         ]
     }
 
