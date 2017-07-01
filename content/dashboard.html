@@ -1,5 +1,5 @@
 <a href="#{{ notification.route }}" class="dashboardBox" ng-repeat="notification in notifications">
     <div class="notification" ng-class="notification.type">{{ notification.number }}</div>
-    <div class="title">{{ notification.title }}</div>
-    <div class="text">{{ notification.text }}</div>
+    <div class="title">{{ notification.title | translate }}</div>
+    <div class="text">{{ notification.text | translate }}</div>
 </a>

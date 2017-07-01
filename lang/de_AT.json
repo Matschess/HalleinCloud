@@ -23,12 +23,10 @@
 
   "SETTINGS": "Einstellungen",
   "SIGNOUT": "Ausloggen",
-  "CLOSE": "Schließen",
   "CANCEL": "Abbrechen",
   "YES": "Ja",
   "NO": "Nein",
   "OK": "Ok",
-  "SAVE": "Speichern",
   "CROP": "Zuschneiden",
   "ENTER": "Eintragen",
   "REMOVE": "Entfernen",
@@ -51,7 +49,6 @@
   "REPETITION": "Wiederholung",
   "CHANGE-LANGUAGE": "Legen Sie die Sprache fest",
 
-  "MEALS": "Mahlzeiten",
   "VEGGIE": "Vegetarisch",
   "APPETIZER": "Vorspeise",
   "MAIN-COURSE": "Hauptspeise",
@@ -93,7 +90,6 @@
   "ACCEPTS-KELTENEURO": "Zahlung mit Kelteneuro",
   "ACCEPTS-CARD": "Zahlung mit Karte",
 
-  "OPENINGTIMES": "Öffnungszeiten",
   "NO-OPENINGTIMES": "Keine Öffnungszeiten",
   "DAY": "Tag",
   "SUNDAY": "Sonntag",
@@ -123,5 +119,18 @@
   "ASK-A-QUESTION": "Eine Frage stellen",
   "BUGREPORT-TEXT": "Wir verbessern die Hallein-App-Cloud laufend. Helfen Sie uns gerne, wenn Sie einen Fehler finden.",
   "BUG-DESCRIPTION": "Fehlerbeschreibung",
-  "REPORT": "Melden"
+  "REPORT": "Melden",
+
+  "DB-FEEDBACK-DONE": "Feedback erledigt",
+  "DB-FEEDBACK-DONE-TEXT": "Sie haben ihr Feedback bearbeitet und archiviert.",
+  "DB-NO-IMGS": "Keine Bilder",
+  "DB-NO-IMGS-TEXT": "Laden Sie Bilder für einen attraktiven Auftritt hoch",
+  "DB-NO-MAINIMG": "Kein Hauptbild",
+  "DB-NO-MAINIMG-TEXT": "Setzen Sie ein Hauptbild",
+  "DB-NO-OPENINGTIMES": "Keine Öffnungszeiten",
+  "DB-NO-OPENINGTIMES-TEXT": "Tragen Sie Öffnungszeiten ein",
+  "DB-RESTDAY-TODAY": "Heute geschlossen",
+  "DB-RESTDAY-TODAY-TEXT": "Für heute ist ein Ruhetag eingetragen.",
+  "DB-RESTDAY-TOMORROW": "Morgen geschlossen",
+  "DB-RESTDAY-TOMORROW-TEXT": "Für morgen ist ein Ruhetag eingetragen"
 }

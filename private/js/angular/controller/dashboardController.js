@@ -13,15 +13,15 @@ myApp.controller('dashboardController', function ($scope, $http) {
                     $scope.notifications.push({
                         type: 'alert',
                         number: feedback.length,
-                        title: 'Neues Feedback',
-                        text: 'Sie haben neues Kundenfeedback.',
+                        title: 'DB-NEW-FEEDBACK',
+                        text: 'DB-NEW-FEEDBACK-TEXT',
                         route: 'feedback'
                     })
                 }
                 else $scope.notifications.push({
                     type: 'success',
-                    title: 'Feedback erledigt',
-                    text: 'Sie haben kein neues und offenes Feedback.',
+                    title: 'DB-FEEDBACK-DONE',
+                    text: 'DB-FEEDBACK-DONE-TEXT',
                     route: 'feedback'
                 })
             });
@@ -32,8 +32,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 if (!openingTimes.length) {
                     $scope.notifications.push({
                         type: 'warning',
-                        title: 'Keine Öffnungszeiten',
-                        text: 'Tragen Sie Öffnungszeiten ein.',
+                        title: 'DB-NO-OPENINGTIMES',
+                        text: 'DB-NO-OPENINGTIMES-TEXT',
                         route: 'page#times'
                     })
                 }
@@ -47,8 +47,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 if (response.data[0].id) {
                     $scope.notifications.push({
                         type: 'info',
-                        title: 'Heute geschlossen',
-                        text: 'Für heute ist ein Ruhetag eingetragen.',
+                        title: 'DB-RESTDAY-TODAY',
+                        text: 'DB-RESTDAY-TODAY-TEXT',
                         route: 'page#times'
                     })
                 }
@@ -62,8 +62,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 if (response.data[0].id) {
                     $scope.notifications.push({
                         type: 'info',
-                        title: 'Morgen geschlossen',
-                        text: 'Für morgen ist ein Ruhetag eingetragen.',
+                        title: 'DB-RESTDAY-TOMORROW',
+                        text: 'DB-RESTDAY-TOMORROW-TEXT',
                         route: 'page#times'
                     })
                 }
@@ -83,8 +83,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                                         if (!response.data.length) {
                                             $scope.notifications.push({
                                                 type: 'warning',
-                                                title: 'Kein Menü für heute',
-                                                text: 'Für heute ist kein Menü eingetragen.',
+                                                title: 'DB-NO-MENU-TODAY',
+                                                text: 'DB-NO-MENU-TODAY-TEXT',
                                                 route: 'meal'
                                             })
                                         }
@@ -107,8 +107,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                                         if (!response.data.length) {
                                             $scope.notifications.push({
                                                 type: 'warning',
-                                                title: 'Kein Menü für morgen',
-                                                text: 'Für morgen ist kein Menü eingetragen.',
+                                                title: 'DB-NO-MENU-TOMORROW',
+                                                text: 'DB-NO-MENU-TOMORROW-TEXT',
                                                 route: 'meal'
                                             })
                                         }
@@ -124,24 +124,24 @@ myApp.controller('dashboardController', function ($scope, $http) {
                 if (!data.imgs) {
                     $scope.notifications.push({
                         type: 'warning',
-                        title: 'Keine Bilder',
-                        text: 'Laden Sie Bilder für einen attraktiven Auftritt hoch.',
+                        title: 'DB-NO-IMGS',
+                        text: 'DB-NO-IMGS-TEXT',
                         route: 'page#design'
                     })
                 }
                 if (data.imgs && !data.mainImg) {
                     $scope.notifications.push({
                         type: 'warning',
-                        title: 'Keine Hauptbild',
-                        text: 'Setzen Sie ein Hauptbild.',
+                        title: 'DB-NO-MAINIMG',
+                        text: 'DB-NO-MAINIMG-TEXT',
                         route: 'page#design'
                     })
                 }
                 if (data.description && !data.description_en) {
                     $scope.notifications.push({
                         type: 'warning',
-                        title: 'Keine Übersetzung',
-                        text: 'Tragen Sie eine englische Restaurantbeschreibung ein.',
+                        title: 'DB-NO-TRANSLATIONS',
+                        text: 'DB-NO-TRANSLATIONS-TEXT',
                         route: 'page'
                     })
                 }
@@ -150,8 +150,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
     else if (userType == 1 || userType == 2) {
         $scope.notifications.push({
             type: 'success',
-            title: 'App online',
-            text: 'Die App ist aktiviert und online.',
+            title: 'DB-APP-ONLINE',
+            text: 'DB-APP-ONLINE-TEXT',
             route: 'app-control'
         })
         /*
@@ -191,8 +191,8 @@ myApp.controller('dashboardController', function ($scope, $http) {
                         $scope.notifications.push({
                             type: 'alert',
                             number: help.length,
-                            title: 'Neue Supportanfrage',
-                            text: 'Sie haben eine neue Supportanfrage.',
+                            title: 'DB-NEW-SUPPORT-ENQUIRY',
+                            text: 'DB-NEW-SUPPORT-ENQUIRY-TEXT',
                             route: 'support'
                         })
                     }
