@@ -121,16 +121,15 @@ body {
   */
   &.finished {
     display: block;
-    //animation: zoomIn .8s forwards;
-    /*
-    -webkit-transform: rotateX(0deg) translateY(0);
-    transform: rotateX(0deg) translateY(0);
-    -webkit-filter: blur(0);
-    -moz-filter: blur(0);
-    -o-filter: blur(0);
-    -ms-filter: blur(0);
-    filter: blur(0);
-    */
+    animation: fadeIn .5s ease;
+    @keyframes fadeIn {
+      0%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
   }
   &.background {
     //bottom: -50%;
