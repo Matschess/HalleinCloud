@@ -1,9 +1,9 @@
 myApp.controller('supportAddController', function ($scope, $location, $http) {
     $scope.config = {
-        title: 'Frage erstellen',
+        title: 'CREATE-QUESTION',
         actions: [
-            {title: 'Erstellen', icon: 'done'},
-            {title: 'Verwefen', icon: 'close', route: '/support'}
+            {title: 'CREATE', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/support'}
         ],
         content: 'content/support-add.html',
         return: function (index, e) {

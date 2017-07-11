@@ -1,4 +1,4 @@
-myApp.controller('loginController', function ($scope, $route, $http, loginHandler) {
+myApp.controller('loginController', function ($scope, $route, translateService, $http, loginHandler) {
     loginHandler.buildNavbar();
 
     var routes = {
@@ -80,6 +80,10 @@ myApp.controller('loginController', function ($scope, $route, $http, loginHandle
     $scope.route = routes.login;
 
     $scope.input = {}
+
+    $scope.changeLang = function (lang_id) {
+        translateService.setLang(lang_id)
+    }
 
     $scope.login = function () {
         $('.login').removeClass('shake');

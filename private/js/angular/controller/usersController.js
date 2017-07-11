@@ -1,8 +1,8 @@
 myApp.controller('usersController', function ($scope, $http, ngDialog) {
     $scope.config = {
-        title: 'Benutzer',
+        title: 'USERS',
         actions: [
-            {title: 'Hinzufügen', icon: 'add', route: '/user/add'}
+            {title: 'ADD', icon: 'add', route: '/user/add'}
         ],
         content: 'content/user.html'
     }

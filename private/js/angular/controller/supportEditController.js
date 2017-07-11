@@ -1,9 +1,9 @@
 myApp.controller('supportEditController', function ($scope, $routeParams, $location, $http) {
     $scope.config = {
-        title: 'Frage bearbeiten',
+        title: 'EDIT-QUESTION',
         actions: [
-            {title: 'Speichern', icon: 'done'},
-            {title: 'Verwerfen', icon: 'close', route: '/support'}
+            {title: 'SAVE', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/support'}
         ],
         content: 'content/support-edit.html',
         return: function (index, e) {

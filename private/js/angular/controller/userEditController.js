@@ -1,9 +1,9 @@
 myApp.controller('userEditController', function ($scope, $routeParams, $location, $http) {
     $scope.config = {
-        title: 'Benutzer bearbeiten',
+        title: 'EDIT-USER',
         actions: [
-            {title: 'Speichern', icon: 'done'},
-            {title: 'Verwerfen', icon: 'close', route: '/user'}
+            {title: 'SAVE', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/user'}
         ],
         content: 'content/user-edit.html',
         return: function (index, e) {

@@ -1,31 +1,61 @@
 $primary-font: "Gravity Book";
 
+//Tint and blur intensity
+//Set 1&2 to same color for uniform
+//Otherwise it's a gradient
+$menubg1: rgba(255,255,255,0.2);
+$menubg2: rgba(255,255,255,0.2);
+$blur: 5px;
+
+//Background image to be used
+@mixin background {
+  background: url("../../assets/imgs/login_background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  @include background;
+  overflow: hidden;
+}
+
 .login {
-  font-family: $primary-font;
-  background: #fff;
-  background-image: url(../../assets/imgs/splash.png);
-  background-size: 20%;
-  background-position: center left;
-  background-repeat: no-repeat;
-  width: 500px;
+  color: #fff;
+  position: relative;
+  width: 450px;
+  height: 50vh;
   margin-left: auto;
   margin-right: auto;
-  padding: 40px 0;
-  margin-top: 25vh;
-  text-align: center;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,.5);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,.5);
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,.5);
+  top: 27.5vh;
+  -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .25);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .25);
+  animation: zoomIn .8s ease;
+  @keyframes zoomIn {
+    0%{
+      transform: scale(.9);
+    }
+    100%{
+      transform: scale(1);
+    }
+  }
+  &::before {
+    z-index: -1;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    @include background;
+    filter: blur(20px);
+  }
   &.logout {
     opacity: 0;
     animation: showLogin .5s 1.5s forwards;
   }
-  h1{
+  h1 {
     font-family: $primary-font;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: normal;
-    text-transform: uppercase;
+    margin-top: 50px;
     margin-bottom: 0;
   }
   h2 {
@@ -52,34 +82,33 @@ $primary-font: "Gravity Book";
   }
 }
 
-.devs {
+.loginWrapper {
   position: absolute;
-  top: 50px;
-  right: 50px;
-  font-size: 20px;
-  a {
-    color: #333;
-    margin: 0 5px;
-    text-decoration: none;
-    &:hover {
-      color: #000;
-      border-bottom: 1px solid #444;
+  text-align: center;
+  background-color: rgba(255,255,255,.3);
+  width: 100%;
+  height: calc(50vh - 40px);
+  padding: 20px 0;
+  top: 0;
+  .langs{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    .lang {
+      opacity: .7;
+      cursor: pointer;
+      &.active{
+        opacity: 1;
+      }
+      &:hover{
+        opacity: 1;
+      }
+      &:last-of-type {
+        margin-left: 10px;
+      }
     }
   }
-}
-
-.loginWrapper {
-  width: calc(100% - 100px);
-  margin-left: 20%;
-  .logo{
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 20px 0 0 0;
-    width: 120px;
-    height: 120px;
-  }
-  form{
+  form {
     margin-top: 60px;
   }
   p {
@@ -94,39 +123,62 @@ $primary-font: "Gravity Book";
     vertical-align: middle;
   }
   input[type=text], input[type=password] {
-    background-color: transparent;
-    width: calc(75% - 86px);
-    height: 35px;
+    background-color: rgba(255,255,255,.3);
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    text-align: center;
     margin: 0;
-    margin-bottom: 20px;
-    padding: 5px 20px 5px 40px;
-    border: solid 1px #666;
-    border-radius: 50px;
+    margin-bottom: 10px;
+    padding: 0;
     outline: 0;
-    &:focus{
-      border-color: #000;
+    letter-spacing: 5px;
+    &::-webkit-input-placeholder { /* Chrome */
+      color: #fff;
+      text-transform: lowercase;
+      opacity: .8;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: #fff;
+      text-transform: lowercase;
+      opacity: .8;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: #fff;
+      text-transform: lowercase;
+      opacity: .8;
+    }
+    &:-moz-placeholder { /* Firefox 4 - 18 */
+      color: #fff;
+      text-transform: lowercase;
+      opacity: 1;
+    }
+    &:focus {
+      background-color: rgba(255,255,255,.2);
     }
   }
   .actions {
     width: 100%;
     margin-top: 50px;
+    font-size: 0;
+    position: absolute;
+    bottom: 0;
     button, input[type=button] {
-      font-family: 'Gravity';
-      font-size: 12px;
-      background-color: #333;
+      background-color: rgba(255,255,255,.3);
       color: #fff;
+      width: 50%;
+      height: 50px;
       text-transform: uppercase;
-      margin-left: 10px;
-      padding: 14px 20px;
       border: none;
-      border-radius: 20px;
-      &:hover{
-        background: #000;
+      letter-spacing: 5px;
+      &:hover {
+        background-color: rgba(255,255,255,.2);
       }
-      &.primary{
-        background-color: #49a5a2;
-        &:hover{
-          background-color: #469794;
+      &.primary {
+        background-color: rgba(255,255,255,.5);
+        color: #333;
+        &:hover {
+          background-color: rgba(255,255,255,.6);
         }
       }
     }
@@ -138,26 +190,26 @@ $primary-font: "Gravity Book";
   width: calc(100% - 100px - 60px);
   margin-left: 20%;
   padding: 0 30px 40px 30px;
-  &.full{
+  &.full {
     font-size: 16px;
     text-align: center;
   }
-  .left, .right{
+  .left, .right {
     display: inline-block;
     width: 48%;
     vertical-align: top;
   }
-  .right{
+  .right {
     margin-left: 2%;
   }
-  p{
+  p {
     font-family: 'Gravity';
   }
-  .icon{
+  .icon {
     vertical-align: middle;
     margin-right: 10px;
   }
-  input[type=text], input[type=password]{
+  input[type=text], input[type=password] {
     display: inline-block;
     width: 80%;
     vertical-align: middle;
@@ -165,12 +217,12 @@ $primary-font: "Gravity Book";
       width: 33%;
     }
   }
-  textarea{
+  textarea {
     font-family: 'Gravity';
     width: 80%;
     padding: 8px;
   }
-  label.checkbox{
+  label.checkbox {
     text-align: left;
   }
   .actions {
@@ -200,28 +252,28 @@ $primary-font: "Gravity Book";
           background-color: #469794;
         }
       }
-      &.light{
+      &.light {
         background-color: #3a8582;
         border-radius: 0 0 20px 0;
         &:hover {
           background-color: #41817e;
         }
       }
-      &.back{
+      &.back {
         background-image: url('../../assets/icons/arrow_left.png');
         background-size: 10%;
         background-position: center;
         background-repeat: no-repeat;
         height: 50px;
       }
-      &.forward{
+      &.forward {
         background-image: url('../../assets/icons/arrow_right.png');
         background-size: 10%;
         background-position: center;
         background-repeat: no-repeat;
         height: 50px;
       }
-      &.long{
+      &.long {
         width: 100%;
       }
       &.orange {
@@ -243,14 +295,14 @@ $primary-font: "Gravity Book";
       }
     }
   }
-  .pwChange .pwValidation{
+  .pwChange .pwValidation {
     width: 80%;
     margin-left: 10%;
   }
 }
 
-.pwResetWrapper{
-  .pwChange .pwValidation{
+.pwResetWrapper {
+  .pwChange .pwValidation {
     width: 80%;
     margin-left: 45px;
   }

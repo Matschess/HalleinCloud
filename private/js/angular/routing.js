@@ -85,7 +85,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: 'templates/window.html',
             controller: 'usersController',
             icon: 'person_outline',
-            name: 'USER',
+            name: 'USERS',
             grant: [1, 2],
             resolve: {
                 'authenticate': function ($location) {

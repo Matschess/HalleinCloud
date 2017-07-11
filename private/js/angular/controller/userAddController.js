@@ -1,9 +1,9 @@
 myApp.controller('userAddController', function ($scope, $location, $http) {
     $scope.config = {
-        title: 'Benutzer hinzufügen',
+        title: 'ADD-USER',
         actions: [
-            {title: 'Speichern', icon: 'done'},
-            {title: 'Verwerfen', icon: 'close', route: '/user'}
+            {title: 'SAVE', icon: 'done'},
+            {title: 'DISCARD', icon: 'close', route: '/user'}
         ],
         content: 'content/user-add.html',
         return: function (index, e) {

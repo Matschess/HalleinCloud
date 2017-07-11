@@ -2,7 +2,7 @@ myApp.controller('supportController', function ($scope, $location, $http, ngDial
     $scope.config = {
         title: 'Support',
         actions: [
-            {title: 'Frage erstellen', icon: 'add', route: '/support/add'}
+            {title: 'CREATE-QUESTION', icon: 'add', route: '/support/add'}
         ],
         content: 'content/support.html',
         return: function (index, e) {

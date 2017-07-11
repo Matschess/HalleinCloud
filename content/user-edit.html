@@ -1,29 +1,29 @@
 <div class="full">
-    <label>Kontotyp:</label>
+    <label>{{ 'ACCOUNT-TYPE' | translate }}:</label>
     <span ng-switch="input.type">
-        <span ng-switch-when="1">Superuser</span>
-        <span ng-switch-when="2">Administrator</span>
-        <span ng-switch-when="3">Restaurant</span>
+        <span ng-switch-when="1">{{ 'SUPERUSER' | translate }}</span>
+        <span ng-switch-when="2">{{ 'ADMINISTRATOR' | translate }}</span>
+        <span ng-switch-when="3">{{ 'RESTAURANT' | translate }}</span>
     </span><br/>
     <br/>
-    <label>Grunddaten:</label><br/>
-    <input type="text" placeholder="Email-Adresse (optional)" ng-model="input.email"/><br/>
-    <input type="text" placeholder="Vorname" ng-keyup="generateUsername()" ng-model="input.firstname"/><br/>
-    <input type="text" placeholder="Nachname" ng-keyup="generateUsername()" ng-model="input.lastname"/><br/>
+    <label>{{ 'BASIC-DATA' | translate }}:</label><br/>
+    <input type="text" placeholder="{{ 'EMAIL-ADDRESS' | translate }} (optional)" ng-model="input.email"/><br/>
+    <input type="text" placeholder="{{ 'FIRSTNAME' | translate }}" ng-keyup="generateUsername()" ng-model="input.firstname"/><br/>
+    <input type="text" placeholder="{{ 'LASTNAME' | translate }}" ng-keyup="generateUsername()" ng-model="input.lastname"/><br/>
     <br/>
-    <label>Benutzername:</label><br/>
-    <input type="text" ng-model="input.username" readonly/><i class="material-icons tooltipRight" title="Der Benutzername wird generiert.">help_outline</i><br/>
+    <label>{{ 'USERNAME' | translate }}:</label><br/>
+    <input type="text" ng-model="input.username" readonly/><i class="material-icons tooltipRight" title="{{ 'USER-ADD-USERNAME-TOOLTIP' | translate }}">help_outline</i><br/>
     <br/>
-    <button ng-show="!resetPassword" ng-click="resetPassword = true"><i class="material-icons">lock_outline</i> Passwort zurücksetzen</button>
+    <button ng-show="!resetPassword" ng-click="resetPassword = true"><i class="material-icons">lock_outline</i> {{ 'RESET-PASSWORD' | translate }}</button>
     <div ng-show="resetPassword">
-        <label>Neues Passwort:</label><br/>
+        <label>{{ 'NEW-PASSWORD' | translate }}:</label><br/>
         <input type="text" class="short" name=password" ng-model="input.password">
-        <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> Generieren</button>
-        <button ng-click="resetPassword = false"><i class="material-icons">close</i> Abbrechen</button><br/>
+        <button ng-click="generatePassword()"><i class="material-icons">autorenew</i> {{ 'GENERATE' | translate }}</button>
+        <button ng-click="resetPassword = false"><i class="material-icons">close</i> {{ 'CANCEL' | translate }}</button><br/>
         <label class="checkbox">
             <input type="checkbox" ng-model="input.pwTemp" ng-true-value="1" ng-false-value="0">
             <div></div>
-            <span>Passwort muss bei nächster Anmeldung geändert werden</span>
+            <span>{{ 'USER-EDIT-PASSWORD-TEMPORARY' | translate }}</span>
         </label>
     </div>
 </div>

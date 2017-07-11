@@ -1,11 +1,11 @@
 <div class="full">
-    <label>Offene Fragen ({{ unreplied.length }})</label><br/>
+    <label>{{ "OPEN-QUESTIONS" | translate }} ({{ unreplied.length }})</label><br/>
     <ng-if ng-if="unreplied.length">
         <br/>
         <table class="users">
             <tr>
-                <th class="sortable" ng-click="sort('unreplied', 'question')">Frage</th>
-                <th class="sortable" ng-click="sort('unreplied', 'lastEdited')">Letzte Bearbeitung</th>
+                <th class="sortable" ng-click="sort('unreplied', 'question')">{{ "QUESTION" | translate }}</th>
+                <th class="sortable" ng-click="sort('unreplied', 'lastEdited')">{{ "LAST-EDITED" | translate }}</th>
                 <th></th>
             </tr>
             <tr ng-repeat="question in unreplied">
@@ -32,7 +32,7 @@
         <br/>
     </ng-if>
     <br/>
-    <label>Beantwortete Fragen ({{ replied.length }})</label><br/>
+    <label>{{ "ANSWERED-QUESTIONS" | translate }} ({{ replied.length }})</label><br/>
     <ng-if ng-show="replied.length">
         <br/>
         <label>Kategorie:</label>
@@ -41,8 +41,8 @@
         <br/>
         <table class="users" ng-if="replied.length">
             <tr>
-                <th class="sortable" ng-click="sort('replied', 'question')">Frage</th>
-                <th class="sortable" ng-click="sort('replied', 'lastEdited')">Letzte Bearbeitung</th>
+                <th class="sortable" ng-click="sort('replied', 'question')">{{ "QUESTION" | translate }}</th>
+                <th class="sortable" ng-click="sort('replied', 'lastEdited')">{{ "LAST-EDITED" | translate }}</th>
                 <th></th>
             </tr>
             <tr ng-repeat="question in replied" ng-show="question.category == category.selected.id">
@@ -58,10 +58,10 @@
                     {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
                 </td>
                 <td class="actions">
-                    <div ng-click="delete(question.id, 'replied', $index)" class="tooltipTop" title="Löschen"><i
+                    <div ng-click="delete(question.id, 'replied', $index)" class="tooltipTop" title="{{ 'DELETE' | translate }}"><i
                             class="material-icons">close</i>
                     </div>
-                    <a href="#support/edit/{{question.id}}" class="tooltipTop" title="Bearbeiten"><i
+                    <a href="#support/edit/{{question.id}}" class="tooltipTop" title="{{ 'EDIT' | translate }}"><i
                             class="material-icons">edit</i></a>
                 </td>
             </tr>
@@ -69,7 +69,7 @@
         <br/>
     </ng-if>
     <br/>
-    <label>Gemeldete Bugs ({{ bugs.length }})</label><br/>
+    <label>{{ "REPORTED-BUGS" | translate }} ({{ bugs.length }})</label><br/>
     <ng-if ng-if="bugs.length">
         <br/>
         <table class="users">

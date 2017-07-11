@@ -1,18 +1,18 @@
 <div class="full">
-    <label>Kategorie:</label>
+    <label>{{ 'CATEGORY' | translate }}:</label>
     <select placeholder="sds" ng-model="input.category.selected"
             ng-options="option.name for option in input.category.options track by option.id"></select>
     <br/>
     <br/>
-    <label>Frage:</label><br/>
+    <label>{{ 'QUESTION' | translate }}:</label><br/>
     <textarea class="short" ng-model="input.question"></textarea>
     <br/>
     <br/>
-    <label>Antwort (html möglich):</label><br/>
+    <label>{{ 'ANSWER' | translate }} ({{ 'HTML-POSSIBLE' | translate }}):</label><br/>
     <textarea class="short" ng-model="input.answer"></textarea>
     <br/>
     <br/>
-    <label>Vorschau:</label>
+    <label>{{ 'PREVIEW' | translate }}:</label>
     <div class="helpWrapper">
         <div class="help" ng-click="question.show=!question.show">
             <div class="question" ng-init="question.show = true" ng-class="{'opened':question.show}">
