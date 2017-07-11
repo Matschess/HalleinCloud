@@ -86,7 +86,7 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
     }
 
     $scope.login = function () {
-        $('.login').removeClass('shake');
+        $('.loginWrapper').removeClass('shake');
         var username = $scope.input.username;
         var password = $scope.input.password;
         if(username && password) {
@@ -129,11 +129,11 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                     loginHandler.login(response);
                 }
             }, function () {
-                $('.login').addClass('animated shake');
+                $('.loginWrapper').addClass('animated shake');
             });
         }
         else {
-            $('.login').addClass('animated shake');
+            $('.loginWrapper').addClass('animated shake');
         }
     }
 

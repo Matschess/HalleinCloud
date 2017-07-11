@@ -429,7 +429,7 @@ myApp.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.preferredLanguage('de_AT');
 }]);
 
-myApp.service('translateService', function ($translate, $cookies) {
+myApp.service('translateService', function ($rootScope, $translate, $cookies) {
     this.translate = function () {
         var id = $cookies.get('lang');
         $translate.use(id);
@@ -442,6 +442,7 @@ myApp.service('translateService', function ($translate, $cookies) {
                 expires: exp
             });
         }
+        $rootScope.lang = id;
     }
     this.setLang = function(id) {
         $translate.use(id);
@@ -450,6 +451,7 @@ myApp.service('translateService', function ($translate, $cookies) {
         $cookies.put('lang', id, {
             expires: exp
         });
+        $rootScope.lang = id;
     }
 });
 
