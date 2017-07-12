@@ -53,23 +53,17 @@
   }
   .login {
     width: 100%;
-    height: 100%;
-    border-radius: 0;
-    margin-top: 0;
-    h1{
-      font-size: 30px;
-    }
-    .loginWrapper{
-      margin-top: 20%;
+    height: 100vh;
+    top: 0;
+    .loginWrapper {
+      height: calc(100% - 40px);
       input[type=text], input[type=password] {
-        width: calc(100% - 86px);
+        width: 80%;
       }
-      .actions{
-        margin-top: 20px;
-        button, input[type=button]{
-          width: calc(100% - 20px);
-          margin-left: 0;
-          margin-top: 10px;
+      .actions {
+
+        button, input[type=button] {
+
         }
       }
     }
@@ -158,6 +152,31 @@
     }
     .action {
       bottom: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) and (orientation: landscape) {
+  .login {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    .loginWrapper {
+      height: calc(100% - 40px);
+      width: calc(100% - 40px);
+      text-align: left;
+      padding-left: 40px;
+      input[type=text], input[type=password] {
+        width: 50%;
+      }
+      .actions {
+        right: 0;
+        width: 40%;
+        button, input[type=button] {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
     }
   }
 }

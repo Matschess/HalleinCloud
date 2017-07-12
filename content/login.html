@@ -1,7 +1,6 @@
 <div class="loginWrapper">
     <div class="langs"><span class="lang" ng-class="{'active': lang == 'en_US'}" ng-click="changeLang('en_US')">EN</span><span class="lang" ng-class="{'active': lang == 'de_AT'}" ng-click="changeLang('de_AT')">DE</span></div>
     <h1>{{ route.title | translate }}</h1>
-    <h2>{{ route.subtitle | translate }}</h2>
     <form ng-submit="login()">
         <input type="text" class="username" spellcheck="false" placeholder="{{ 'USERNAME' | translate }}" ng-model="input.username"/><br/>
         <input type="password" class="password" placeholder="{{ 'PASSWORD' | translate }}" ng-model="input.password"/>

@@ -1,11 +1,12 @@
-<div class="pwResetWrapper full">
+<div class="loginWrapper">
+    <div class="langs"><span class="lang" ng-class="{'active': lang == 'en_US'}" ng-click="changeLang('en_US')">EN</span><span class="lang" ng-class="{'active': lang == 'de_AT'}" ng-click="changeLang('de_AT')">DE</span></div>
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
     <form ng-submit="complete('pwReset/request')">
-        <i class="material-icons icon">mail_outline</i><input type="text" placeholder="Email-Adresse" ng-model="pwForgot.input.email"/>
+        <input type="text" class="username" spellcheck="false" placeholder="{{ 'EMAIL-ADDRESS' | translate }}" ng-model="pwForgot.input.email"/><br/>
         <div class="actions">
-            <input type="button" class="back" ng-click="back('pwReset/request')"/>
-            <button type="submit" class="primary forward"></button>
+            <input type="button" ng-click="back('pwReset/request')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
         </div>
     </form>
 </div>

@@ -10,7 +10,7 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
         pwForgot: {
             request: {
                 title: 'Passwort zurücksetzen',
-                subtitle: 'Email eingeben',
+                subtitle: 'Bitte geben Sie Ihre Email-Adresse ein',
                 content: 'content/pwForgot/request.html'
             },
             confirm: {
