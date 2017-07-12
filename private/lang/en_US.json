@@ -152,5 +152,19 @@
     "RESET-PASSWORD": "Reset password",
     "EDIT-USER": "Edit user",
     "NEW-PASSWORD": "New password",
-    "USER-EDIT-PASSWORD-TEMPORARY": "Require user to change password on next login"
+    "USER-EDIT-PASSWORD-TEMPORARY": "Require user to change password on next login",
+    "NEXT": "Next",
+    "BACK": "Back",
+    "_TITLE": "Hallein App Cloud",
+    "CONNECTION-RESTORED": "Reconnected successfully",
+    "HELLO": "Hello",
+    "SECURITY": "Security",
+    "RESTAURANTDATA": "Restaurant data",
+    "ADDRESS-AND-CONTACT": "Address & Contact",
+    "SU-WELCOME-SUBTITLE": "Welcome to the Setup.",
+    "SU-SECURITY-SUBTITLE": "Choose a password.",
+    "SU-RESTAURANTDATA-SUBTITLE": "Fill in your Restaurant name and description.",
+    "SU-ADDRESS-AND-CONTACT-SUBTITLE": "Enter your address and contact information.",
+    "SU-OPENINGTIMES-SUBTITLE": "Fill in your opening times.",
+    "SU-OPTIONS-SUBTITLE": "Choose options which apply to you."
 }
