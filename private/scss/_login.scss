@@ -56,7 +56,8 @@ body {
     margin-bottom: 0;
   }
   h2 {
-    font-size: 25px;
+    font-family: $primary-font;
+    font-size: 30px;
     font-weight: normal;
     margin-bottom: 10px;
     margin-top: 50px;
@@ -64,9 +65,14 @@ body {
     text-align: center;
   }
   h3 {
+    font-family: $primary-font;
     font-size: 18px;
     font-weight: normal;
     text-align: center;
+  }
+  p{
+    font-family: $primary-font;
+    padding: 10px 30px;
   }
 }
 
@@ -110,6 +116,10 @@ body {
   }
   form {
     margin-top: 60px;
+    font-size: 0;
+    &.close{
+      margin-top: 20px;
+    }
   }
   p {
     text-align: center;
@@ -122,7 +132,7 @@ body {
     margin-left: -35px;
     vertical-align: middle;
   }
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], textarea {
     background-color: rgba(255,255,255,.3);
     color: #fff;
     width: 100%;
@@ -133,6 +143,12 @@ body {
     padding: 0;
     outline: 0;
     letter-spacing: 5px;
+    &.short{
+      width: 48%;
+      &:nth-of-type(2){
+        margin-right: 4%;
+      }
+    }
     &::-webkit-input-placeholder { /* Chrome */
       color: #fff;
       text-transform: lowercase;
@@ -157,6 +173,14 @@ body {
       background-color: rgba(255,255,255,.2);
     }
   }
+  textarea{
+    width:calc(49% - 20px);
+    height: 100px;
+    padding: 10px;
+    &:last-of-type{
+      margin-left: 2%;
+    }
+  }
   .actions {
     width: 100%;
     margin-top: 50px;
@@ -175,6 +199,9 @@ body {
       &:hover {
         background-color: rgba(255,255,255,.2);
       }
+      &.long{
+        width: 100%;
+      }
       &.primary {
         background-color: rgba(255,255,255,.5);
         color: #333;
@@ -184,6 +211,39 @@ body {
       }
     }
   }
+}
+
+.pwChange .pwValidation {
+  width: 100%;
+  margin-bottom: 10px;
+  div{
+    opacity: .5;
+    transition: all .5s ease;
+    &.active{
+      opacity: 1;
+    }
+    &:nth-of-type(1).active{
+      background-color: #fff;
+    }
+    &:nth-of-type(2).active{
+      background-color: #fff;
+    }
+    &:nth-of-type(3).active{
+      background-color: #fff;
+    }
+    &:nth-of-type(4).active{
+      background-color: #fff;
+    }
+  }
+}
+
+.left, .right {
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+}
+.right {
+margin-left: 2%;
 }
 
 .setupWrapper, .pwResetWrapper {
@@ -217,11 +277,6 @@ body {
     &.short {
       width: 33%;
     }
-  }
-  textarea {
-    font-family: 'Gravity';
-    width: 80%;
-    padding: 8px;
   }
   label.checkbox {
     text-align: left;

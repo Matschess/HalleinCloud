@@ -1,6 +1,6 @@
-<div class="setupWrapper full">
-    <h2>{{ route.title }}</h2>
-    <h3>{{ route.subtitle }}</h3>
+<div class="loginWrapper">
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
     <p>Bieten Sie spezielle Zahlungsmethoden an?</p>
     <form ng-submit="complete('payments')">
         <label class="checkbox">
@@ -15,8 +15,8 @@
             <span>Karte</span>
         </label>
         <div class="actions">
-            <input type="button" class="back" ng-click="back('payments')"/>
-            <button type="submit" class="primary forward"></button>
+            <input type="button" ng-click="back('payments')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
         </div>
     </form>
 </div>

@@ -1,6 +1,6 @@
-<div class="setupWrapper full">
-    <h2>{{ route.title }}</h2>
-    <h3>{{ route.subtitle }}</h3>
+<div class="loginWrapper">
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
     <form ng-submit="complete('options')">
         <p>Was trifft auf Ihr Restaurant zu?</p>
         <label class="checkbox">
@@ -33,8 +33,8 @@
             <span>Vollkornküche</span>
         </label>
         <div class="actions">
-            <input type="button" class="back" ng-click="back('options')"/>
-            <button type="submit" class="primary forward"></button>
+            <input type="button" ng-click="back('options')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
         </div>
     </form>
 </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!-- Viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Hallein App - Verwaltung</title>
+    <title>Hallein App Cloud</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <!-- Icons -->
@@ -82,14 +82,14 @@
     <!-- Topbar -->
     <div class="topbar">
         <i class="material-icons burgericon">menu</i>
-        <h1 class="headline">Hallein-App-Cloud</h1>
+        <h1 class="headline">{{ '_TITLE' | translate }}</h1>
         <div class="user">
             <div class="loadingSpinner" ng-if="loading">
                 <div class="loading"></div>
             </div>
             <div class="serverLost"></div>
             <div class="serverConnected">
-                Verbindung wiederhergestellt
+                {{ 'CONNECTION-RESTORED' | translate }}
             </div>
             <span class="username">{{ username }}</span>
             <img src="assets/imgs/profile_default.png"/>

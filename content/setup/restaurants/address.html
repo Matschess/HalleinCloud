@@ -1,21 +1,21 @@
-<div class="setupWrapper full">
-    <h2>{{ route.title }}</h2>
-    <h3>{{ route.subtitle }}</h3>
-    <form ng-submit="complete('address')">
+<div class="loginWrapper">
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
+    <form class="close" ng-submit="complete('address')">
         <div class="left">
             <p>Adresse:</p>
-            <input type="text" placeholder="Straße" ng-model="setup.input.street"/>
-            <input type="text" class="short" placeholder="Nr" ng-model="setup.input.houseNumber"/>
-            <input type="text" class="short" placeholder="PLZ" ng-model="setup.input.countryCode"/>
-            <input type="text" placeholder="Ort" ng-model="setup.input.country"/>
+            <input type="text" placeholder="{{ 'STREET' | translate }}" ng-model="setup.input.street"/>
+            <input type="text" class="short" placeholder="{{ 'HOUSENUMBER' | translate }}" ng-model="setup.input.houseNumber"/>
+            <input type="text" class="short" placeholder="{{ 'COUNTRYCODE' | translate }}" ng-model="setup.input.countryCode"/>
+            <input type="text" placeholder="{{ 'COUNTRY' | translate }}" ng-model="setup.input.country"/>
         </div>
         <div class="right">
             <p>Kontaktdaten:</p>
-            <input type="text" placeholder="Email-Adresse" ng-model="setup.input.email"/>
+            <input type="text" placeholder="{{ 'EMAIL-ADDRESS' | translate }}" ng-model="setup.input.email"/>
             <br/>
-            <input type="text" placeholder="Telefonnummer" ng-model="setup.input.tel"/>
+            <input type="text" placeholder="{{ 'TEL' | translate }}" ng-model="setup.input.tel"/>
             <br/>
-            <input type="text" placeholder="Website" ng-model="setup.input.website"/>
+            <input type="text" placeholder="{{ 'WEBSITE' | translate }}" ng-model="setup.input.website"/>
         </div>
         <br/>
         <br/>
@@ -27,8 +27,8 @@
             </label>
         </div>
         <div class="actions">
-            <input type="button" class="back" ng-click="back('address')"/>
-            <button type="submit" class="primary forward"></button>
+            <input type="button" ng-click="back('address')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
         </div>
     </form>
 </div>

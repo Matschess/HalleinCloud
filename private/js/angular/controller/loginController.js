@@ -32,35 +32,35 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
         setup: {
             everyone: {
                 welcome: {
-                    title: 'Hallo',
-                    subtitle: 'Willkommen bei der Ersteinrichtung',
+                    title: 'HELLO',
+                    subtitle: 'SU-WELCOME-SUBTITLE',
                     content: 'content/setup/welcome.html'
                 },
                 password: {
-                    title: 'Einrichtung',
-                    subtitle: 'Sicherheit',
+                    title: 'SECURITY',
+                    subtitle: 'SU-SECURITY-SUBTITLE',
                     content: 'content/setup/password.html'
                 },
             },
             restaurant: {
                 basicData: {
-                    title: 'Einrichtung',
-                    subtitle: 'Allgemein',
+                    title: 'RESTAURANTDATA',
+                    subtitle: 'SU-RESTAURANTDATA-SUBTITLE',
                     content: 'content/setup/restaurants/basicData.html'
                 },
                 address: {
-                    title: 'Einrichtung',
-                    subtitle: 'Adress- & Kontaktdaten',
+                    title: 'ADDRESS-AND-CONTACT',
+                    subtitle: 'SU-ADDRESS-AND-CONTACT-SUBTITLE',
                     content: 'content/setup/restaurants/address.html'
                 },
                 openingTimes: {
-                    title: 'Einrichtung',
-                    subtitle: 'Öffnungszeiten',
+                    title: 'OPENINGTIMES',
+                    subtitle: 'SU-OPENINGTIMES-SUBTITLE',
                     content: 'content/setup/restaurants/openingTimes.html'
                 },
                 options: {
-                    title: 'Einrichtung',
-                    subtitle: 'Weitere Optionen',
+                    title: 'OPTIONS',
+                    subtitle: 'SU-OPTIONS-SUBTITLE',
                     content: 'content/setup/restaurants/options.html'
                 },
                 payments: {
@@ -69,7 +69,8 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                     content: 'content/setup/restaurants/payments.html'
                 },
                 completed: {
-                    title: "We're ready!",
+                    title: "Fertig!",
+                    subtitle: 'Die Einrichtung ist abgeschlossen.',
                     content: 'content/setup/restaurants/completed.html'
                 }
             },

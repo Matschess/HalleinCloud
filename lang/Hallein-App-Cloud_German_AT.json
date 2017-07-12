@@ -152,5 +152,19 @@
     "RESET-PASSWORD": "Passwort zurücksetzen",
     "EDIT-USER": "Benutzer bearbeiten",
     "NEW-PASSWORD": "Neues Passwort",
-    "USER-EDIT-PASSWORD-TEMPORARY": "Passwort muss bei nächster Anmeldung geändert werden"
+    "USER-EDIT-PASSWORD-TEMPORARY": "Passwort muss bei nächster Anmeldung geändert werden",
+    "NEXT": "Weiter",
+    "BACK": "Zurück",
+    "_TITLE": "Hallein-App-Cloud",
+    "CONNECTION-RESTORED": "Verbindung wiederhergestellt",
+    "HELLO": "Hallo",
+    "SECURITY": "Sicherheit",
+    "RESTAURANTDATA": "Restaurantdaten",
+    "ADDRESS-AND-CONTACT": "Adresse & Kontakt",
+    "SU-WELCOME-SUBTITLE": "Willkommen bei der Ersteinrichtung.",
+    "SU-SECURITY-SUBTITLE": "Legen Sie ein Passwort fest.",
+    "SU-RESTAURANTDATA-SUBTITLE": "Tragen Sie Restaurantnamen und -beschreibung ein.",
+    "SU-ADDRESS-AND-CONTACT-SUBTITLE": "Füllen Sie die Adress- und Kontaktfelder aus.",
+    "SU-OPENINGTIMES-SUBTITLE": "Tragen Sie Ihre Öffnungszeiten ein.",
+    "SU-OPTIONS-SUBTITLE": "Wählen Sie Optionen, die auf Sie zutreffen."
 }
