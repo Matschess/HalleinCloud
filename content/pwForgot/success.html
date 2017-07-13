@@ -1,14 +1,14 @@
-<div class="pwResetWrapper full">
+<div class="loginWrapper">
     <h2>{{ route.title }}</h2>
     <h3>{{ route.subtitle }}</h3>
+    <p>
+        Ihr Passwort wurde erfolgreich geändert.
+        <br/>
+        Sie können sich nun wieder einloggen.
+    </p>
     <form ng-submit="complete('pwReset/success')">
-        <p>
-            Ihr Passwort wurde erfolgreich geändert.
-            <br/>
-            Sie können sich nun wieder einloggen.
-        </p>
         <div class="actions">
-            <button type="submit" class="light long">Login</button>
+            <button type="submit" class="long">Login</button>
         </div>
     </form>
 </div>

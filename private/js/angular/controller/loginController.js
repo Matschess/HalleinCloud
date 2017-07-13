@@ -10,17 +10,17 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
         pwForgot: {
             request: {
                 title: 'Passwort zurücksetzen',
-                subtitle: 'Bitte geben Sie Ihre Email-Adresse ein',
+                subtitle: 'Bitte geben Sie Ihre Email-Adresse ein.',
                 content: 'content/pwForgot/request.html'
             },
             confirm: {
                 title: 'Passwort zurücksetzen',
-                subtitle: 'PIN eingeben',
+                subtitle: 'Sie haben gerade eine PIN per Email erhalten.',
                 content: 'content/pwForgot/confirm.html'
             },
             password: {
                 title: 'Passwort zurücksetzen',
-                subtitle: 'Neues Passwort festlegen',
+                subtitle: 'Legen Sie ein neues Passwort fest.',
                 content: 'content/pwForgot/password.html'
             },
             success: {
@@ -159,7 +159,7 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                 }
                 break;
             case 'pwReset/confirm':
-                $('.login').removeClass('shake');
+                $('.loginWrapper').removeClass('shake');
                 var email = $scope.pwForgot.input.email;
                 var pin = $scope.pwForgot.input.pin;
                 if (email && pin) {
@@ -174,11 +174,11 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                     }).then(function () {
                         $scope.route = routes.pwForgot.password;
                     }, function () {
-                        $('.login').addClass('animated shake');
+                        $('.loginWrapper').addClass('animated shake');
                     });
                 }
                 else {
-                    $('.login').addClass('animated shake');
+                    $('.loginWrapper').addClass('animated shake');
                 }
                 break;
             case 'pwReset/password':
