@@ -166,5 +166,10 @@
     "SU-RESTAURANTDATA-SUBTITLE": "Tragen Sie Restaurantnamen und -beschreibung ein.",
     "SU-ADDRESS-AND-CONTACT-SUBTITLE": "Füllen Sie die Adress- und Kontaktfelder aus.",
     "SU-OPENINGTIMES-SUBTITLE": "Tragen Sie Ihre Öffnungszeiten ein.",
-    "SU-OPTIONS-SUBTITLE": "Wählen Sie Optionen, die auf Sie zutreffen."
+    "SU-OPTIONS-SUBTITLE": "Wählen Sie Optionen, die auf Sie zutreffen.",
+    "SU-PASSWORD-RESET-REQUEST-SUBTITLE": "Bitte geben Sie Ihre Email-Adresse ein.",
+    "SU-PASSWORD-RESET-CONFIRM-SUBTITLE": "Sie haben gerade eine PIN per Email erhalten.",
+    "SU-PASSWORD-RESET-PASSWORD-SUBTITLE": "Legen Sie ein neues Passwort fest.",
+    "SU-PASSWORD-RESET-SUCCESS-SUBTITLE": "Das war's",
+    "SU-PASSWORD-RESET-SUCCESS-TEXT": "Ihr Passwort wurde erfolgreich geändert. Sie können sich nun wieder einloggen."
 }

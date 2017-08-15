@@ -48,8 +48,8 @@
 }
 
 @media screen and (max-width: 800px) {
-  .topbar .burgericon {
-    display: inline;
+  .topbar .hamburger {
+    display: inline-block;
   }
   .login {
     width: 100%;
@@ -58,6 +58,9 @@
     .loginWrapper {
       height: calc(100% - 40px);
       input[type=text], input[type=password] {
+        width: calc(80% - 20px);
+      }
+      .pwValidation{
         width: 80%;
       }
       .actions {
@@ -70,6 +73,7 @@
   }
   .navbar {
     position: absolute;
+    background-color: darken(#2b2f38, 10%);
     width: 80%;
     left: -80%;
     z-index: 999;
@@ -104,16 +108,26 @@
     width: calc(100% - 20px * 2);
     height: calc(100% - 70px - 40px);
     padding: 20px;
-    .fullBox .content {
-      .left, .right {
-        width: 100%;
-      }
-      .help {
-        width: calc(100% - 20px);
-        margin-left: 0;
+    .fullBox{
+      margin-left: -20px;
+      margin-top: -20px;
+      width: calc(100% + 40px);
+      min-height: calc(100% + 40px);
+      height: auto;
+      .content {
+        .left, .right {
+          width: 100%;
+        }
+        .help {
+          width: calc(100% - 20px);
+          margin-left: 0;
+        }
       }
     }
-
+    .helpWrapper .category{
+      width: calc(100% - 20px);
+      margin: 0;
+    }
     .dashboardBox, .feedbackBox {
       width: calc(50% - 20px - 30px);
       margin-top: 20px;
@@ -121,6 +135,12 @@
       margin-right: 20px;
       &:nth-of-type(2n+2) {
         margin-right: 0;
+      }
+      &:last-of-type{
+        margin-bottom: 20px;
+      }
+      .actions {
+        transform: scale(1);
       }
     }
   }
@@ -183,6 +203,28 @@
 
 @media screen and (max-width: 500px) {
   .container {
+    .fullBox .content{
+      input, textarea{
+        width: calc(100% - 16px);
+      }
+    }
+    .pagesDesignWrapper{
+      .mainImg{
+        width: 100%;
+      }
+      .imgs{
+        width: 100%;
+        height: auto;
+        .uploader{
+          width: calc(100% - 2px);
+          margin-right: 0;
+        }
+        .img{
+          width: 50%;
+          margin: 0;
+        }
+      }
+    }
     .dashboardBox {
       width: calc(100% - 30px - 20px);
 
@@ -194,14 +236,26 @@
       }
     }
     .switchBox {
+      position: relative;
+      .switcher{
+        text-align: center;
+        width: 100%;
+        right: auto;
+        margin: 0;
+        padding-left: 0;
+        line-height: 50px;
+      }
       h2 {
         display: none;
       }
     }
+    .switchWrapper{
+      width: 100%;
+      text-align: center;
+    }
     .fullBox .content {
       .days .day {
         width: calc(100% / 4 - 4px);
-        margin-bottom: 10px;
         &:last-of-type {
           width: calc(100% / 4 - 4px);
         }

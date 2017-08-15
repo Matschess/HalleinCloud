@@ -1480,6 +1480,9 @@ input {
     background-color: #f39c12;
     background-image: url('../../assets/icons/warning.png');
   }
+  &.loginWarn {
+    background-color: rgba(0,0,0,0.4);
+  }
   &.error {
     background-color: #e74c3c;
     background-image: url('../../assets/icons/close.png');

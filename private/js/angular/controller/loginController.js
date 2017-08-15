@@ -9,23 +9,23 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
         },
         pwForgot: {
             request: {
-                title: 'Passwort zurücksetzen',
-                subtitle: 'Bitte geben Sie Ihre Email-Adresse ein.',
+                title: 'RESET-PASSWORD',
+                subtitle: 'SU-PASSWORD-RESET-REQUEST-SUBTITLE',
                 content: 'content/pwForgot/request.html'
             },
             confirm: {
-                title: 'Passwort zurücksetzen',
-                subtitle: 'Sie haben gerade eine PIN per Email erhalten.',
+                title: 'RESET-PASSWORD',
+                subtitle: 'SU-PASSWORD-RESET-CONFIRM-SUBTITLE',
                 content: 'content/pwForgot/confirm.html'
             },
             password: {
-                title: 'Passwort zurücksetzen',
-                subtitle: 'Legen Sie ein neues Passwort fest.',
+                title: 'RESET-PASSWORD',
+                subtitle: 'SU-PASSWORD-RESET-PASSWORD-SUBTITLE',
                 content: 'content/pwForgot/password.html'
             },
             success: {
-                title: 'Passwort zurücksetzen',
-                subtitle: "Das war's",
+                title: 'RESET-PASSWORD',
+                subtitle: "SU-PASSWORD-RESET-SUCCESS-SUBTITLE",
                 content: 'content/pwForgot/success.html'
             }
         },
@@ -145,9 +145,11 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                 $scope.pwForgot = {input: {}};
                 break;
             case 'pwReset/request':
-                $scope.route = routes.pwForgot.confirm;
+
+
                 var email = $scope.pwForgot.input.email;
-                if (email) {
+                if (email && validateEmail(email)) {
+                    $scope.route = routes.pwForgot.confirm;
                     var data = {
                         email: $scope.pwForgot.input.email
                     }
@@ -157,9 +159,9 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                         params: data
                     }).then();
                 }
+                else globalNotification('warning', 'Bitte gültige Email eingeben')
                 break;
             case 'pwReset/confirm':
-                $('.loginWrapper').removeClass('shake');
                 var email = $scope.pwForgot.input.email;
                 var pin = $scope.pwForgot.input.pin;
                 if (email && pin) {
@@ -174,11 +176,8 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                     }).then(function () {
                         $scope.route = routes.pwForgot.password;
                     }, function () {
-                        $('.loginWrapper').addClass('animated shake');
+                        globalNotification('loginWarn', 'Die PIN ist leider nicht gültig')
                     });
-                }
-                else {
-                    $('.loginWrapper').addClass('animated shake');
                 }
                 break;
             case 'pwReset/password':
@@ -199,13 +198,14 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                             params: data
                         }).then(function () {
                             $scope.route = routes.pwForgot.success;
-                        }, function () {
-                            console.log('error');
                         });
                     }
                     else {
-                        console.log('stimmen nicht');
+                        globalNotification('loginWarn', 'Die Passwörter stimmen nicht überein')
                     }
+                }
+                else{
+                    globalNotification('loginWarn', 'Bitte vervollständigen Sie Ihre Daten')
                 }
                 break;
             case 'pwReset/success':
@@ -215,13 +215,21 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                 $scope.route = routes.setup.everyone.password;
                 break;
             case 'password':
-                $scope.route = routes.setup.restaurant.basicData;
+                if (!$scope.setup.input.password) globalNotification('loginWarn', 'Bitte geben Sie ein neues Passwort ein')
+                else if ($scope.setup.input.password != $scope.setup.input.passwordRepeat) globalNotification('loginWarn', 'Die Passwörter stimmen nicht überein')
+                else $scope.route = routes.setup.restaurant.basicData;
                 break;
             case 'basicData':
-                $scope.route = routes.setup.restaurant.address;
+                if (!$scope.setup.input.restaurantname || !$scope.setup.input.description || !$scope.setup.input.description_en) globalNotification('loginWarn', 'Bitte vervollständigen Sie Ihre Daten')
+                    else $scope.route = routes.setup.restaurant.address;
                 break;
             case 'address':
-                $scope.route = routes.setup.restaurant.openingTimes;
+                if(!$scope.setup.input.street || !$scope.setup.input.houseNumber || !$scope.setup.input.countryCode || !$scope.setup.input.country || !$scope.setup.input.email || !$scope.setup.input.tel) globalNotification('warning', 'Bitte vervollständigen Sie Ihre Daten')
+               else if (!isNumber($scope.setup.input.countryCode))  globalNotification('loginWarn', 'Bitte gültige PLZ eingeben')
+                    else if (!validateEmail($scope.setup.input.email)) globalNotification('loginWarn', 'Bitte gültige Email eingeben')
+
+                else $scope.route = routes.setup.restaurant.openingTimes;
+
                 break;
             case 'openingTimes':
                 $scope.route = routes.setup.restaurant.options;
@@ -230,9 +238,6 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                 $scope.route = routes.setup.restaurant.payments;
                 break;
             case 'payments':
-                $scope.route = routes.setup.restaurant.completed;
-                break;
-            case 'completed':
                 var input = $scope.setup.input;
                 if (input) {
                     var data = {
@@ -253,9 +258,12 @@ myApp.controller('loginController', function ($scope, $route, translateService, 
                         method: 'PUT',
                         params: data
                     }).then(function () {
-                        $scope.route = routes.login;
+                        $scope.route = routes.setup.restaurant.completed;
                     });
                 }
+                break;
+            case 'completed':
+                $scope.route = routes.login;
                 break;
         }
     }

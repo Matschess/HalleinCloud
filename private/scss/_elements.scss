@@ -1,5 +1,12 @@
 input {
   outline: 0;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+  }
 }
 
 *:focus {
@@ -96,11 +103,15 @@ input[type=radio]:checked + label {
 }
 
 .checkbox {
+  text-align: left;
   input {
     display: none;
+
   }
   span {
     padding-left: 22px;
+    font-size: 18px;
+
   }
   div:before {
     visibility: visible;
@@ -139,7 +150,7 @@ textarea {
   border: 0;
   outline: 0;
   resize: none;
-  padding: 8px 35px 8px 8px;
+  padding: 8px;
 }
 
 .tag {
@@ -436,4 +447,51 @@ input:checked + .slider:before {
   padding-top: 14px;
   width: 270px;
   display: block;
+}
+
+
+// Hamburger icon
+.hamburger {
+  display: none;
+  background: transparent;
+  margin: 20px auto 40px;
+  position: relative;
+  height: 30px;
+  width: 50px;
+
+  &:before,
+  &:after {
+    background: #333;
+    backface-visibility: hidden;
+    content: "";
+    height: 1px;
+    left: 0;
+    transition: 0.75s;
+    width: 30px;
+  }
+
+  &:before {
+    box-shadow: #333 0 14px 0 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &:after {
+    position: absolute;
+    top: calc(100% - 2px);
+  }
+
+  &.open {
+
+    &:before {
+      box-shadow: transparent 0 0 0 0;
+      top: 50%;
+      transform: rotate(225deg);
+    }
+
+    &:after {
+      top: 50%;
+      transform: rotate(315deg);
+    }
+  }
 }

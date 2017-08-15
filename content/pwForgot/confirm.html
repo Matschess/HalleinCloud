@@ -1,8 +1,8 @@
 <div class="loginWrapper">
-    <h2>{{ route.title }}</h2>
-    <h3>{{ route.subtitle }}</h3>
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
     <form ng-submit="complete('pwReset/confirm')">
-        <input type="text" class="username" spellcheck="false" placeholder="PIN" ng-model="pwForgot.input.pin"/><br/>
+        <input type="text" class="username" spellcheck="false" placeholder="PIN" ng-model="pwForgot.input.pin" autocapitalize="off"/><br/>
         <div class="actions">
             <input type="button" ng-click="back('pwReset/confirm')" value="{{ 'BACK' | translate }}"/>
             <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>

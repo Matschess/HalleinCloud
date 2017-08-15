@@ -1,5 +1,12 @@
 tooltipstln();
 
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 function tooltipstln() {
     $('.content').ready(function () {
         $('.tooltip').tooltipster({
@@ -116,6 +123,9 @@ function globalNotification(type, text) {
         case 'warning':
             $('.globalNotification').addClass('warning');
             break;
+        case 'loginWarn':
+            $('.globalNotification').addClass('loginWarn');
+            break;
         case 'error':
             $('.globalNotification').addClass('error');
             if (!text) text = 'Fehler';
@@ -145,10 +155,12 @@ function prepareUpload(data) {
 }
 
 $('.content').ready(function () {
-    $('.topbar .burgericon').click(function () {
+    $('.topbar .hamburger').click(function () {
+        $('.hamburger').toggleClass('open');
         $('.navbar').toggleClass('visible');
     });
     $('.navbar ul a li').click(function () {
+        $('.hamburger').removeClass('open');
         $('.navbar').removeClass('visible');
     });
 });
