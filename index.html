@@ -29,38 +29,37 @@
     <!-- ngDraggable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngDraggable/0.1.11/ngDraggable.min.js"></script>
     <!-- ngImgCrop -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/ngImgCropExtended/ng-img-crop-extended.css"/>
-    <script src="assets/plugins/ngImgCropExtended/ng-img-crop-extended.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Public/Assets/Plugins/ngImgCropExtended/ng-img-crop-extended.css"/>
+    <script src="Public/Assets/Plugins/ngImgCropExtended/ng-img-crop-extended.min.js"></script>
     <!-- Libraries -->
     <!-- Tooltipster -->
-    <link rel="stylesheet" type="text/css" href="assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
-    <script type="text/javascript" src="assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="public/css/tooltipster.css"/>
+    <link rel="stylesheet" type="text/css" href="Public/Assets/Plugins/tooltipster/dist/css/tooltipster.bundle.min.css"/>
+    <script type="text/javascript" src="Public/Assets/Plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <!-- JSCookie -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.css"/>
-    <script src="assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="Public/Assets/Plugins/js-cookie/js.cookie.js"></script>
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <link rel="stylesheet" href="assets/plugins/select2/select2.css"/>
+    <link rel="stylesheet" href="Public/Assets/Plugins/select2/select2.css"/>
     <!-- moment.js (required for datepicker) -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/de-at.js"></script>
     <!-- ng-flat-datepicker -->
-    <script src="assets/plugins/ng-flat-datepicker/ng-flat-datepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/plugins/ng-flat-datepicker/ng-flat-datepicker.min.css"/>
+    <script src="Public/Assets/Plugins/ng-flat-datepicker/ng-flat-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Public/Assets/plugins/ng-flat-datepicker/ng-flat-datepicker.min.css"/>
     <!-- JS -->
-    <script src="public/js/app.js"></script>
+    <script src="Public/Scripts/app.js"></script>
     <!-- animate-css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="public/css/style.css" media="screen">
+    <link rel="stylesheet" href="Public/Styles/Styles.css" media="screen">
 </head>
-<body ng-app="myApp" ng-controller="mainController" ng-keydown="checkKey($event)" ng-cloak>
+<body ng-app="halleinApp" ng-controller="MainController" ng-keydown="checkKey($event)">
 
     <!-- Notification -->
     <div class="globalNotification"></div>
     <!-- Login -->
-    <div id="login" class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="loginController">
+    <div id="login" class="login" ng-if="!loggedIn" ng-class="{true:'logout'}[logout]" ng-controller="LoginController">
         <div ng-include="route.content"></div>
     </div>
 
@@ -92,8 +91,8 @@
                 {{ 'CONNECTION-RESTORED' | translate }}
             </div>
             <span class="username">{{ username }}</span>
-            <img src="assets/imgs/profile_default.png"/>
-            <img class="icon" src="assets/icons/arrow_down.png"/>
+            <img src="Public/Assets/Images/profile.jpg"/>
+            <img class="icon" src="Public/Assets/icons/arrow_down.png"/>
         </div>
         <div class="options">
             <ul>

@@ -1,0 +1,21 @@
+.tooltipster-sidetip {
+  &.tooltipster-noir.tooltipster-noir-customized {
+    .tooltipster-box {
+      background-color: #333;
+      border: 0;
+    }
+    .tooltipster-content {
+      color: #fff;
+    }
+  }
+
+  &.tooltipster-light.tooltipster-light-customized {
+    .tooltipster-box {
+      background-color: #2980b9;
+      border: 0;
+    }
+    .tooltipster-content {
+      color: #fff;
+    }
+  }
+}

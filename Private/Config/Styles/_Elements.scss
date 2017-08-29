@@ -1,0 +1,497 @@
+input {
+  outline: 0;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+.clean {
+  color: $primary-color;
+  text-decoration: none;
+  cursor: default;
+}
+
+label {
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+  i {
+    vertical-align: top;
+  }
+  &.shorter {
+    width: 20px;
+  }
+  &.long {
+    width: 40px;
+  }
+  &.longer {
+    width: 100px;
+  }
+  &.distance {
+    margin-left: 30px;
+  }
+}
+
+a{
+  color: #666;
+  &:hover{
+    color: #333;
+  }
+}
+
+label.checkLabel {
+  position: relative;
+  &:before {
+    visibility: visible;
+    content: '';
+    position: absolute;
+    background-color: #f2f2f2;
+    width: 15px;
+    height: 15px;
+    left: -20px;
+    border-radius: 50%;
+  }
+}
+
+input[type=text], input[type=password] {
+  background-color: #f2f2f2;
+  border: 0;
+  border-radius: 0;
+  margin: 5px 5px 5px 0;
+  padding: 8px;
+  width: 50%;
+  height: auto;
+  &.short {
+    width: 20%;
+  }
+  &.shorter {
+    width: 40%;
+  }
+  &.longest {
+    width: 100%;
+  }
+  &:disabled {
+    background-color: lighten(#f2f2f2, 2%);
+    color: #999;
+  }
+}
+
+input[type=radio]:checked + label {
+  &:after {
+    visibility: visible;
+    content: '';
+    position: absolute;
+    background-color: #555;
+    width: 7px;
+    height: 7px;
+    top: 4px;
+    left: -16px;
+    border-radius: 50%;
+  }
+}
+
+.checkbox {
+  text-align: left;
+  input {
+    display: none;
+
+  }
+  span {
+    padding-left: 22px;
+    font-size: 18px;
+
+  }
+  div:before {
+    visibility: visible;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #f2f2f2;
+    margin-top: 2px;
+  }
+  input:checked + div:before {
+    background-image: url('../Assets/Icons/done.png');
+    background-size: cover;
+  }
+}
+
+button {
+  background-color: #f2f2f2;
+  border: 0;
+  outline: 0;
+  padding: 8px 20px;
+  i {
+    vertical-align: middle;
+  }
+  &:hover {
+    background-color: #e2e2e2;
+  }
+  &.transparent {
+    background: none;
+  }
+}
+
+textarea {
+  font-family: inherit;
+  background-color: #f2f2f2;
+  border: 0;
+  outline: 0;
+  resize: none;
+  padding: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #ec5555;
+  color: #fff;
+  padding: 0 14px 0 20px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  i {
+    margin-left: 2px;
+  }
+  &.red {
+    background-color: #ec5555;
+  }
+  &.yellow {
+    background-color: #f39c12;
+  }
+  &.orange {
+    background-color: #e67e22;
+  }
+  &.empty {
+    background-color: #eaeaea;
+    color: #444;
+    padding: 0 14px 0 14px;
+    min-width: 100px;
+    outline: 0;
+  }
+}
+
+// For Add-Tags
+[contentEditable=true]:empty:not(:focus):before {
+  content: attr(data-placeholder);
+  opacity: 0.6;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+// Password-Validation
+.pwChange {
+  input[type=password] {
+    width: 70%;
+  }
+  .pwValidation {
+    width: calc(70% + 16px);
+    font-size: 0;
+    height: 2px;
+    margin-bottom: 5px;
+    div {
+      display: inline-block;
+      background-color: #e8e8e8;
+      width: calc(100% / 4 - 9% / 4);
+      height: 2px;
+      vertical-align: top;
+      margin-right: 3%;
+      -webkit-transition: background-color .2s ease;
+      -moz-transition: background-color .2s ease;
+      -ms-transition: background-color .2s ease;
+      -o-transition: background-color .2s ease;
+      transition: background-color .2s ease;
+      &:nth-of-type(1).active {
+        background-color: #e74c3c;
+      }
+      &:nth-of-type(2).active {
+        background-color: #e67e22;
+      }
+      &:nth-of-type(3).active {
+        background-color: #f1c40f;
+      }
+      &:nth-of-type(4) {
+        margin-right: 0;
+        &.active {
+          background-color: #97CE68;
+        }
+      }
+    }
+  }
+}
+
+.tabs {
+  font-size: 16px;
+  margin-bottom: 20px;
+  li {
+    display: inline;
+    padding: 5px 8px;
+    margin-left: 8px;
+    border-radius: 20px;
+    cursor: default;
+    &.active {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+  }
+}
+
+// For ng-drag elements, sothat they are always visible
+[ng-drag].dragging {
+  position: absolute !important;
+}
+
+// jQuery-Datepicker
+
+.ui-datepicker {
+  font-family: 'Gravity Light';
+  color: #fff;
+  padding: 0;
+  .ui-datepicker-header {
+    font-family: 'Gravity';
+    background: $accent-color;
+    color: #fff;
+    padding: 5px 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .ui-datepicker-prev-hover, .ui-datepicker-next-hover {
+    top: 2px;
+    .ui-icon {
+      opacity: 1;
+    }
+  }
+  .ui-icon {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .8;
+  }
+  .ui-datepicker-prev {
+    &.ui-datepicker-prev-hover {
+      left: 2px;
+    }
+    .ui-icon {
+      background-image: url(../Assets/Icons/arrow_left.png);
+    }
+  }
+  .ui-datepicker-next {
+    &.ui-datepicker-next-hover {
+      right: 2px;
+    }
+    .ui-icon {
+      background-image: url(../Assets/Icons/arrow_right.png);
+    }
+  }
+  .ui-state-hover {
+    background: transparent;
+    border: 0;
+  }
+  table {
+    background: #e76557;
+    th {
+      font-family: 'Gravity';
+      background: $accent-color;
+      color: #e2e2e2;
+    }
+    td {
+      padding: 0;
+    }
+  }
+  .ui-datepicker-week-col {
+    font-family: 'Gravity';
+    text-align: center;
+  }
+  .ui-state-default {
+    background: none;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    &.ui-state-highlight {
+      color: $accent-color;
+      font-family: 'Gravity';
+      &:hover {
+        color: #fff;
+      }
+    }
+    &:hover, &.ui-state-active {
+      background-color: $accent-color;
+    }
+  }
+}
+
+.ui-widget.ui-widget-content {
+  border: 0;
+}
+
+// Switcher
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  vertical-align: middle;
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(51,51,51,0.47);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(51,51,51,0.47);
+  box-shadow: 0px 1px 5px 0px rgba(51,51,51,0.47);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.ng-flat-datepicker table tbody {
+  margin: 0 auto;
+  padding-top: 14px;
+  width: 270px;
+  display: block;
+}
+
+
+// Hamburger icon
+.hamburger {
+  display: none;
+  background: transparent;
+  margin: 20px auto 40px;
+  position: relative;
+  height: 30px;
+  width: 50px;
+
+  &:before,
+  &:after {
+    background: #333;
+    backface-visibility: hidden;
+    content: "";
+    height: 1px;
+    left: 0;
+    transition: 0.75s;
+    width: 30px;
+  }
+
+  &:before {
+    box-shadow: #333 0 14px 0 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &:after {
+    position: absolute;
+    top: calc(100% - 2px);
+  }
+
+  &.open {
+
+    &:before {
+      box-shadow: transparent 0 0 0 0;
+      top: 50%;
+      transform: rotate(225deg);
+    }
+
+    &:after {
+      top: 50%;
+      transform: rotate(315deg);
+    }
+  }
+}

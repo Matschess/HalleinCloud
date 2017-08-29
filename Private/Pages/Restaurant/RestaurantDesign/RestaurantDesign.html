@@ -1,0 +1,71 @@
+<div class="pagesDesignWrapper" ng-controller="RestaurantDesignController">
+    <h3>{{ 'PICTURES' | translate }}</h3>
+    <p>{{ 'PICTURES-TEXT' | translate }}</p>
+    <div class="mainImg" ng-if="img.main" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs"></div>
+    <div class="imgs">
+        <input id="filepicker" class="filepicker" type="file" accept="image/*"/>
+        <label class="uploader" for="filepicker">
+            <div class="text">{{ 'SELECT-IMG-AND-UPLOAD' | translate }}</div>
+            <div class="progress" ng-if="progress">
+                <div ng-style="{'width': + progress + '%'}">{{progress | number: 0}}%</div>
+            </div>
+        </label>
+        <div class="img" ng-style="{'background-image': 'url(' + img.url + ')'}" ng-repeat="img in input.imgs">
+            <div class="actions">
+                <div ng-click="setMainImg($index)"><i class="material-icons">done</i>{{ 'PRIMARY-IMG' | translate }}</div>
+                <div><i class="material-icons">crop</i>{{ 'CROP' | translate }}</div>
+                <div ng-click="deleteImg($index)"><i class="material-icons">delete_outline</i>{{ 'DELETE' | translate }}</div>
+            </div>
+        </div>
+    </div>
+    <h3>{{ 'COLOR' | translate }}</h3>
+    <p>{{ 'COLOR-TEXT' | translate }}</p>
+    <div class="color">
+        <div class="currentColor" ng-click="colorpicker = !colorpicker" ng-style="{'background-color': input.color}"></div>
+        <div class="colorpicker" ng-class="{visible: colorpicker}">
+            <div class="color" ng-click="setColor('#e67e22')" style="background-color: #e67e22">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="setColor('#e6b42e')" style="background-color: #e6b42e"></div>
+                    <div class="color" ng-click="setColor('#e67e22')" style="background-color: #e67e22"></div>
+                    <div class="color" ng-click="setColor('#d06a13')" style="background-color: #d06a13"></div>
+                </div>
+            </div>
+            <div class="color" ng-click="setColor('#e74c3c')" style="background-color: #e74c3c">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="input.color = '#e76f60'; colorpicker = false" style="background-color: #e76f60"></div>
+                    <div class="color" ng-click="input.color = '#e74c3c'; colorpicker = false" style="background-color: #e74c3c"></div>
+                    <div class="color" ng-click="input.color = '#ce4a3a'; colorpicker = false" style="background-color: #ce4a3a"></div>
+                </div>
+            </div>
+            <div class="color" ng-click="setColor('#9b59b6')" style="background-color: #9b59b6">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="input.color = '#a773b6'; colorpicker = false" style="background-color: #a773b6"></div>
+                    <div class="color" ng-click="input.color = '#9b59b6'; colorpicker = false" style="background-color: #9b59b6"></div>
+                    <div class="color" ng-click="input.color = '#68389e'; colorpicker = false" style="background-color: #68389e"></div>
+                </div>
+            </div>
+            <div class="color" ng-click="setColor('#3498db')" style="background-color: #3498db">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="input.color = '#63b3db'; colorpicker = false" style="background-color: #63b3db"></div>
+                    <div class="color" ng-click="input.color = '#3498db'; colorpicker = false" style="background-color: #3498db"></div>
+                    <div class="color" ng-click="input.color = '#334f9d'; colorpicker = false" style="background-color: #334f9d"></div>
+                </div>
+            </div>
+            <div class="color" ng-click="setColor('#1abc9c')" style="background-color: #1abc9c">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="input.color = '#51bcb6'; colorpicker = false" style="background-color: #51bcb6"></div>
+                    <div class="color" ng-click="input.color = '#1abc9c'; colorpicker = false" style="background-color: #1abc9c"></div>
+                    <div class="color" ng-click="input.color = '#18a67c'; colorpicker = false" style="background-color: #18a67c"></div>
+                </div>
+            </div>
+            <div class="color" ng-click="setColor('#2ecc71')" style="background-color: #2ecc71">
+                <div class="subcolorpicker">
+                    <div class="color" ng-click="input.color = '#5ccc95'; colorpicker = false" style="background-color: #5ccc95"></div>
+                    <div class="color" ng-click="input.color = '#2ecc71'; colorpicker = false" style="background-color: #2ecc71"></div>
+                    <div class="color" ng-click="input.color = '#1ca143'; colorpicker = false" style="background-color: #1ca143"></div>
+                </div>
+            </div>
+            <div class="color custom" ng-click="pickColor()"></div>
+        </div>
+    </div>
+</div>

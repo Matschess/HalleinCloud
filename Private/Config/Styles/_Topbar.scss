@@ -1,0 +1,74 @@
+.topbar {
+  position: relative;
+  background-color: #fff;
+  height: 75px;
+  line-height: 75px;
+  padding: 0 30px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  z-index: 998;
+  cursor: default;
+  .burgericon {
+    display: none;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+  .headline {
+    font-size: 28px;
+    font-weight: normal;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+  }
+  .user {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    img {
+      margin-left: 15px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+    .icon {
+      width: auto;
+      height: 10px;
+    }
+  }
+  .options {
+    display: none;
+    position: absolute;
+    width: 250px;
+    top: 75px;
+    right: 0;
+    background-color: #fff;
+    line-height: 22px;
+    z-index: 999;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+    ul {
+      padding: 0;
+
+      li {
+        color: #777;
+        list-style: none;
+        padding: 8px 30px;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+          &#logout {
+            color: #e74c3c;
+          }
+        }
+
+      }
+    }
+  }
+  .user:hover + .options, .options:hover {
+    display: block;
+  }
+}
