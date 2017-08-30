@@ -2,7 +2,7 @@
   "name": "HalleinCloud",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Matschess/halleinAppDashboard.git",
+  "repository": "https://github.com/Matschess/HalleinCloud.git",
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.13",
