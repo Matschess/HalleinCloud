@@ -1,0 +1,16 @@
+<i class="material-icons close tooltipBottom" ng-click="closeThisDialog()" title="{{ 'CLOSE' | translate }}">close</i>
+<content>
+    {{ 'ENTER-RESTDAY' | translate }}
+    <br/>
+    <br/>
+    <div class="restDays">
+        <input type="text" class="datepicker" placeholder="{{ 'FROM' | translate }}" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayFrom" ng-change="restDayTo = restDayFrom; validateRestDays(restDayFrom, restDayTo)"/>
+        <input type="text" class="datepicker" placeholder="{{ 'TO' | translate }}" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="restDayTo" ng-change="validateRestDays(restDayFrom, restDayTo)"/>
+        <br/>
+        <textarea placeholder="{{ 'OPTIONAL-REASON' | translate }}" ng-model="restDayDescription"></textarea>
+    </div>
+</content><br/>
+<div class="actions">
+    <button class="action" ng-click="closeThisDialog()">{{ 'CANCEL' | translate }}</button>
+    <button class="action highlighted" ng-click="restDayAdd(restDayFrom, restDayTo, restDayDescription) && closeThisDialog()" ng-disabled="!validRestDays">{{ 'ENTER' | translate }}</button>
+</div>

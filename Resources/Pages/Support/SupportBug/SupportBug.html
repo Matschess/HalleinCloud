@@ -1,0 +1,9 @@
+<div class="full">
+    <label>Erstellt:</label>
+    {{ bug.created | date:"dd.MM.yyyy 'um' HH:mm" }}
+    <br/>
+    <br/>
+    <label>Fehlerbeschreibung:</label><br/>
+    <br/>
+    "{{ bug.description }}"
+</div>

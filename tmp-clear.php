@@ -2,7 +2,7 @@
 
 error_reporting(0);
 
-removeDirectory("Public/");
+removeDirectory("Web/");
 echo "Successfully cleared cache.";
 
 function removeDirectory($path) {

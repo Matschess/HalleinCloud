@@ -2,8 +2,8 @@
 
 error_reporting(0);
 
-if(!file_exists("Public/cachefile")) {
-    exec("gulp run");
+if(!file_exists("Web/cachefile")) {
+    exec("gulp build");
 }
 
-include "Resources/index.html";
+include "Web/index.html";

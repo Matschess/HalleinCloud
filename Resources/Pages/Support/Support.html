@@ -1,0 +1,101 @@
+<div class="full">
+    <label>{{ "OPEN-QUESTIONS" | translate }} ({{ unreplied.length }})</label><br/>
+    <ng-if ng-if="unreplied.length">
+        <br/>
+        <table class="users">
+            <tr>
+                <th class="sortable" ng-click="sort('unreplied', 'question')">{{ "QUESTION" | translate }}</th>
+                <th class="sortable" ng-click="sort('unreplied', 'lastEdited')">{{ "LAST-EDITED" | translate }}</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="question in unreplied">
+                <td>
+                    <ng-if ng-if="question.question.length > 34">
+                        {{ question.question | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="question.question.length <= 34">
+                        {{ question.question }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <div ng-click="delete(question.id, 'unreplied', $index)" class="tooltipTop" title="Löschen"><i
+                            class="material-icons">close</i>
+                    </div>
+                    <a href="#support/edit/{{question.id}}" class="tooltipTop" title="Beantworten"><i
+                            class="material-icons">reply</i></a>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </ng-if>
+    <br/>
+    <label>{{ "ANSWERED-QUESTIONS" | translate }} ({{ replied.length }})</label><br/>
+    <ng-if ng-show="replied.length">
+        <br/>
+        <label>Kategorie:</label>
+        <select ng-model="category.selected" ng-options="option.name + (option.number) for option in category.options track by option.id"></select>
+        <br/>
+        <br/>
+        <table class="users" ng-if="replied.length">
+            <tr>
+                <th class="sortable" ng-click="sort('replied', 'question')">{{ "QUESTION" | translate }}</th>
+                <th class="sortable" ng-click="sort('replied', 'lastEdited')">{{ "LAST-EDITED" | translate }}</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="question in replied" ng-show="question.category == category.selected.id">
+                <td>
+                    <ng-if ng-if="question.question.length > 34">
+                        {{ question.question | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="question.question.length <= 34">
+                        {{ question.question }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ question.lastEdited | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <div ng-click="delete(question.id, 'replied', $index)" class="tooltipTop" title="{{ 'DELETE' | translate }}"><i
+                            class="material-icons">close</i>
+                    </div>
+                    <a href="#support/edit/{{question.id}}" class="tooltipTop" title="{{ 'EDIT' | translate }}"><i
+                            class="material-icons">edit</i></a>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </ng-if>
+    <br/>
+    <label>{{ "REPORTED-BUGS" | translate }} ({{ bugs.length }})</label><br/>
+    <ng-if ng-if="bugs.length">
+        <br/>
+        <table class="users">
+            <tr>
+                <th>Fehlerbeschreibung</th>
+                <th>Erstellt am</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="bug in bugs">
+                <td>
+                    <ng-if ng-if="bug.description.length > 34">
+                        {{ bug.description | limitTo: 30 }}...
+                    </ng-if>
+                    <ng-if ng-if="bug.description.length <= 34">
+                        {{ bug.description }}
+                    </ng-if>
+                </td>
+                <td>
+                    {{ bug.created | date:"dd.MM.yyyy 'um' HH:mm" }}
+                </td>
+                <td class="actions">
+                    <div ng-click="delete(bug.id, 'bugs', $index)" class="tooltipTop" title="Löschen"><i
+                            class="material-icons">close</i></div>
+                    <a href="#support/bug/{{bug.id}}" class="tooltipTop" title="Ansehen"><i class="material-icons">visibility</i></a>
+                </td>
+            </tr>
+        </table>
+    </ng-if>
+</div>

@@ -1,0 +1,13 @@
+<div class="loginWrapper">
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
+    <form ng-submit="complete('basicData')">
+        <input type="text" placeholder="{{ 'RESTAURANTNAME' | translate }}" ng-model="setup.input.restaurantname"/>
+        <textarea placeholder="{{ 'DESCRIPTION' | translate }}" ng-model="setup.input.description"></textarea>
+        <textarea placeholder="{{ 'DESCRIPTION' | translate }} ({{ 'ENGLISH' | translate }})" ng-model="setup.input.description_en"></textarea>
+        <div class="actions">
+            <input type="button" ng-click="back('basicData')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
+        </div>
+    </form>
+</div>

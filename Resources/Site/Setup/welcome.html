@@ -1,0 +1,11 @@
+<div class="loginWrapper">
+    <h2>{{ route.title | translate }}</h2>
+    <h3>{{ route.subtitle | translate }}</h3>
+    <p>Es ist notwendig, dass Sie einige Daten eingeben. Starten Sie jetzt mit der Einrichtung.</p>
+    <form ng-submit="complete('welcome')">
+        <div class="actions">
+            <input type="button" ng-click="back('welcome')" value="{{ 'BACK' | translate }}"/>
+            <button type="submit" class="primary">{{ 'NEXT' | translate }}</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="fullBox">
+    <div class="title">
+        <h2>{{ config.title | translate }}</h2>
+        <div class="actions">
+            <span ng-repeat="action in config.actions" ng-click="config.return($index)">
+                <a class="icon tooltipBottom" ng-if="action.route" href="#{{action.route}}"
+                   title="{{ action.title | translate }}"><i class="material-icons">{{ action.icon }}</i></a>
+                <a class="icon tooltipBottom" ng-if="!action.route" title="{{ action.title | translate }}"><i
+                        class="material-icons">{{ action.icon }}</i></a>
+            </span>
+        </div>
+    </div>
+    <div class="content">
+        <div ng-include="config.content"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        tooltipstln();
+        selectln();
+        datepicker();
+    });
+
+</script>
