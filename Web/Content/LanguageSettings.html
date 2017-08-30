@@ -1,7 +1,0 @@
-<div ng-controller="languageSettingsController">
-    <form ng-submit="save()">
-        <div class="title">{{ 'CHANGE-LANGUAGE' | translate }}:</div>
-        <select ng-model="languages.selected" ng-options="option.name | translate for option in languages.options track by option.id"></select>
-            <button type="submit" class="transparent action tooltipTop" title="{{ 'SAVE' | translate }}"><i class="material-icons" ng-click="save()">done</i></button>
-    </form>
-</div>

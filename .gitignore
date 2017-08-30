@@ -8,8 +8,8 @@ node_modules/
 # Yarn
 yarn.lock
 
-# Public
-Resources/Public/
+# Web
+Web/
 
 # PhpStorm
 .idea/
