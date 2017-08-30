@@ -6,4 +6,4 @@ if(!file_exists("Public/cachefile")) {
     exec("gulp run");
 }
 
-include "index.html";
+include "Resources/index.html";

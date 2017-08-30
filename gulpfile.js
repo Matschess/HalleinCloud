@@ -11,12 +11,12 @@ var gulp = require('gulp'),
 
 // ---------- CONFIG ----------
 var dest = {
-    styles: 'Public/Styles',
-    scripts: 'Public/Scripts',
-    templates: 'Public/Templates',
-    content: 'Public/Content',
-    assets: 'Public/Assets',
-    languages: 'Public/Languages'
+    styles: 'Resources/Public/Styles',
+    scripts: 'Resources/Public/Scripts',
+    templates: 'Resources/Public/Templates',
+    content: 'Resources/Public/Content',
+    assets: 'Resources/Public/Assets',
+    languages: 'Resources/Public/Languages'
 }
 // ---------- [END] CONFIG ----------
 
@@ -31,8 +31,8 @@ gulp.task('browser-sync', function () {
 
 gulp.task('styles', function () {
     return gulp.src([
-        'Private/Assets/Config/Styles/Styles.scss',
-        'Private/**/*.scss'])
+        'Resources/Private/Assets/Config/Styles/Styles.scss',
+        'Resources/Private/**/*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(cssmin())
         .pipe(concat('Styles.css'))
@@ -41,54 +41,54 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src([
-        'Private/Config/Scripts/Angular/Variables.js',
-        'Private/Config/Scripts/Angular/App.js',
-        'Private/Config/Scripts/Angular/Router.js',
-        'Private/Config/Scripts/Angular/Services/**/*.js',
-        'Private/Config/Scripts/Angular/Directives/**/*.js',
-        'Private/Config/Scripts/Functions.js',
-        'Private/Site/**/*.js',
-        'Private/Pages/**/*.js'])
+        'Resources/Private/Config/Scripts/Angular/Variables.js',
+        'Resources/Private/Config/Scripts/Angular/App.js',
+        'Resources/Private/Config/Scripts/Angular/Router.js',
+        'Resources/Private/Config/Scripts/Angular/Services/**/*.js',
+        'Resources/Private/Config/Scripts/Angular/Directives/**/*.js',
+        'Resources/Private/Config/Scripts/Functions.js',
+        'Resources/Private/Site/**/*.js',
+        'Resources/Private/Pages/**/*.js'])
         .pipe(concat('App.js'))
         //.pipe(uglify())
         .pipe(gulp.dest(dest.scripts));
 });
 
 gulp.task('templates', function () {
-    return gulp.src('Private/Config/Templates/*.html')
+    return gulp.src('Resources/Private/Config/Templates/*.html')
         .pipe(gulp.dest(dest.templates));
 });
 
 gulp.task('content', function () {
-    return gulp.src('Private/**/*.html')
+    return gulp.src('Resources/Private/**/*.html')
         .pipe(flatten())
         .pipe(gulp.dest(dest.content));
 });
 
 gulp.task('assets', function () {
-    return gulp.src('Private/Assets/**/*')
+    return gulp.src('Resources/Private/Assets/**/*')
         .pipe(gulp.dest(dest.assets));
 });
 
 gulp.task('languages', function () {
-    return gulp.src('Private/Languages/*.json')
+    return gulp.src('Resources/Private/Languages/*.json')
         .pipe(jsonminify())
         .pipe(gulp.dest(dest.languages));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['Private/**/*.scss'], ['styles'])
-    gulp.watch(['Private/**/*.js'], ['scripts'])
-    gulp.watch(['Private/Config/Templates/*.html'], ['templates'])
-    gulp.watch(['Private/**/*.html'], ['content'])
-    gulp.watch(['Private/Assets/**/*'], ['assets'])
-    gulp.watch(['Private/Languages/*.json'], ['languages'])
+    gulp.watch(['Resources/Private/**/*.scss'], ['styles'])
+    gulp.watch(['Resources/Private/**/*.js'], ['scripts'])
+    gulp.watch(['Resources/Private/Config/Templates/*.html'], ['templates'])
+    gulp.watch(['Resources/Private/**/*.html'], ['content'])
+    gulp.watch(['Resources/Private/Assets/**/*'], ['assets'])
+    gulp.watch(['Resources/Private/Languages/*.json'], ['languages'])
 })
 
 gulp.task('cachefile', function(cb){
     var now = new Date();
     now = dateFormat(now, 'yyyy/mm/dd-hh:MM TT');
-        fs.writeFile('Public/cachefile', 'Last full build: ' + now, cb);
+        fs.writeFile('Resources/Public/cachefile', 'Last full build: ' + now, cb);
     return;
 });
 
