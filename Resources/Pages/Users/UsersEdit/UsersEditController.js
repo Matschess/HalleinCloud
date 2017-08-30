@@ -76,7 +76,6 @@ halleinApp.controller('UsersEditController', function ($scope, $routeParams, $lo
                 method: 'GET',
                 params: data
             }).then(function (response) {
-                console.log(response.data);
                 $scope.input.username = response.data;
             });
         }

@@ -36,7 +36,6 @@ halleinApp.service('LoginService', function ($route, $rootScope, $location, $htt
         if (userType == 3) {
             restaurant = data.restaurant.id;
         }
-        console.log(restaurant);
         $cookies.put('userdata', JSON.stringify(data));
         $rootScope.loggedIn = true;
         this.getUsername();

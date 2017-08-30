@@ -31,7 +31,6 @@ halleinApp.controller('RestaurantController', function ($scope, $location, $http
                                 website: input.website
                             }
                             data = prepareUpload(data);
-                            console.log(data);
                             $http({
                                 url: URL + '/restaurants',
                                 method: 'PUT',

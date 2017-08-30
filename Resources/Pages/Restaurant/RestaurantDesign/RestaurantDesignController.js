@@ -10,7 +10,6 @@ halleinApp.controller('RestaurantDesignController', function ($scope, $http, ngD
     function loadColor() {
         $http.get(URL + '/restaurants?get=color&id=' + restaurant)
             .then(function (response) {
-                console.log(response);
                 $scope.input = response.data[0];
             });
     }
@@ -18,7 +17,7 @@ halleinApp.controller('RestaurantDesignController', function ($scope, $http, ngD
     $scope.pickColor = function(){
         $scope.hexValid = false;
         ngDialog.open({
-            template: 'content/dialogs/color.html',
+            template: 'Web/Content/dialogs/color.html',
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });
@@ -64,7 +63,7 @@ halleinApp.controller('RestaurantDesignController', function ($scope, $http, ngD
         };
         reader.readAsDataURL(file);
         ngDialog.open({
-            template: 'content/dialogs/cropper.html',
+            template: 'Web/Content/dialogs/cropper.html',
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });

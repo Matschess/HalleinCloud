@@ -19,7 +19,6 @@ halleinApp.service('LoadingInterceptor',
                 },
                 responseError: function (rejection) {
                     $rootScope.loading = false;
-                    console.log(rejection);
                     if (rejection.status.toString().substr(0, 1) != 4) {
                         serverConnection('disconnected');
                         serverConnection('check');
@@ -74,7 +73,6 @@ function serverConnection(job) {
                 $('.serverConnected').removeClass('active');
             }, 4000);
             var username = $('.user .username').html();
-            console.log(username);
             if (!username) {
                 $.get(URL + '/users?get=firstname&id=' + user, function (data) {
                     username = data[0].firstname;

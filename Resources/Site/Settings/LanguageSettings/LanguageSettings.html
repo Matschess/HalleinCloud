@@ -1,4 +1,4 @@
-<div ng-controller="languageSettingsController">
+<div ng-controller="LanguageSettingsController">
     <form ng-submit="save()">
         <div class="title">{{ 'CHANGE-LANGUAGE' | translate }}:</div>
         <select ng-model="languages.selected" ng-options="option.name | translate for option in languages.options track by option.id"></select>

@@ -145,7 +145,6 @@ halleinApp.controller('MealsController', function ($scope, $location, $http) {
                         var id = response.data.id;
                         globalNotification('success', 'Der Ruhetag wurde eingetragen.');
                         $scope.days[index].restDay = {id: id};
-                        console.log($scope.days[index]);
                     },
                     function () {
                         globalNotification('alert')
@@ -180,7 +179,6 @@ halleinApp.controller('MealsController', function ($scope, $location, $http) {
                 restaurant: restaurant,
                 date: dateToString($scope.days[index].date)
             }
-            console.log($scope.menus[menu].id);
             switch ($scope.menus[menu].type) {
                 case 1:
                     data.appetizer = $scope.menus[menu].id;
@@ -206,7 +204,6 @@ halleinApp.controller('MealsController', function ($scope, $location, $http) {
                     globalNotification('error')
                 });
 
-            console.log($scope.days);
             tooltipstln();
         }
         $scope.removeMenu = function (type, index) {
@@ -214,7 +211,6 @@ halleinApp.controller('MealsController', function ($scope, $location, $http) {
                 id: $scope.days[index].id,
                 type: type
             }
-            console.log($scope.days[index]);
             $http({
                 url: URL + '/menus',
                 method: 'DELETE',
@@ -224,7 +220,6 @@ halleinApp.controller('MealsController', function ($scope, $location, $http) {
                     if ($.isEmptyObject($scope.days[index].menu.meals)) {
                         delete $scope.days[index].menu;
                     }
-                    console.log($scope.days);
                 },
                 function () {
                     globalNotification('error')

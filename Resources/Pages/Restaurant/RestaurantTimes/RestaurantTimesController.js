@@ -15,7 +15,7 @@ halleinApp.controller('RestaurantTimesController', function ($scope, $http, ngDi
     $scope.showOpeningTimesAdd = function () {
         $scope.validOpeningTimes = false;
         ngDialog.open({
-            template: 'content/dialogs/openingTimesAdd.html',
+            template: 'Web/Content/dialogs/openingTimesAdd.html',
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });
@@ -90,7 +90,7 @@ halleinApp.controller('RestaurantTimesController', function ($scope, $http, ngDi
     $scope.showRestDayAdd = function () {
         $scope.validRestDays = false;
         ngDialog.open({
-            template: 'content/dialogs/restDayAdd.html',
+            template: 'Web/Content/dialogs/restDayAdd.html',
             appendClassName: 'ngdialog-theme-cropper',
             scope: $scope
         });

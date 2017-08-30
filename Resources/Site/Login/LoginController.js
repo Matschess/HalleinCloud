@@ -11,22 +11,22 @@ halleinApp.controller('LoginController', function ($scope, $route, translateServ
             request: {
                 title: 'RESET-PASSWORD',
                 subtitle: 'SU-PASSWORD-RESET-REQUEST-SUBTITLE',
-                content: 'content/pwForgot/request.html'
+                content: 'Web/Content/pwForgot/request.html'
             },
             confirm: {
                 title: 'RESET-PASSWORD',
                 subtitle: 'SU-PASSWORD-RESET-CONFIRM-SUBTITLE',
-                content: 'content/pwForgot/confirm.html'
+                content: 'Web/Content/pwForgot/confirm.html'
             },
             password: {
                 title: 'RESET-PASSWORD',
                 subtitle: 'SU-PASSWORD-RESET-PASSWORD-SUBTITLE',
-                content: 'content/pwForgot/password.html'
+                content: 'Web/Content/pwForgot/password.html'
             },
             success: {
                 title: 'RESET-PASSWORD',
                 subtitle: "SU-PASSWORD-RESET-SUCCESS-SUBTITLE",
-                content: 'content/pwForgot/success.html'
+                content: 'Web/Content/pwForgot/success.html'
             }
         },
         setup: {
@@ -34,44 +34,44 @@ halleinApp.controller('LoginController', function ($scope, $route, translateServ
                 welcome: {
                     title: 'HELLO',
                     subtitle: 'SU-WELCOME-SUBTITLE',
-                    content: 'content/setup/welcome.html'
+                    content: 'Web/Content/setup/welcome.html'
                 },
                 password: {
                     title: 'SECURITY',
                     subtitle: 'SU-SECURITY-SUBTITLE',
-                    content: 'content/setup/password.html'
+                    content: 'Web/Content/setup/password.html'
                 },
             },
             restaurant: {
                 basicData: {
                     title: 'RESTAURANTDATA',
                     subtitle: 'SU-RESTAURANTDATA-SUBTITLE',
-                    content: 'content/setup/restaurants/basicData.html'
+                    content: 'Web/Content/setup/restaurants/basicData.html'
                 },
                 address: {
                     title: 'ADDRESS-AND-CONTACT',
                     subtitle: 'SU-ADDRESS-AND-CONTACT-SUBTITLE',
-                    content: 'content/setup/restaurants/address.html'
+                    content: 'Web/Content/setup/restaurants/address.html'
                 },
                 openingTimes: {
                     title: 'OPENINGTIMES',
                     subtitle: 'SU-OPENINGTIMES-SUBTITLE',
-                    content: 'content/setup/restaurants/openingTimes.html'
+                    content: 'Web/Content/setup/restaurants/openingTimes.html'
                 },
                 options: {
                     title: 'OPTIONS',
                     subtitle: 'SU-OPTIONS-SUBTITLE',
-                    content: 'content/setup/restaurants/options.html'
+                    content: 'Web/Content/setup/restaurants/options.html'
                 },
                 payments: {
                     title: 'Einrichtung',
                     subtitle: 'Zahlungsmethoden',
-                    content: 'content/setup/restaurants/payments.html'
+                    content: 'Web/Content/setup/restaurants/payments.html'
                 },
                 completed: {
                     title: "Fertig!",
                     subtitle: 'Die Einrichtung ist abgeschlossen.',
-                    content: 'content/setup/restaurants/completed.html'
+                    content: 'Web/Content/setup/restaurants/completed.html'
                 }
             },
 
@@ -103,7 +103,6 @@ halleinApp.controller('LoginController', function ($scope, $route, translateServ
             }).then(function (response) {
                 var response = response.data;
                 if (response.user.initialLogin) {
-                    console.log(response);
                     $scope.route = routes.setup.everyone.welcome;
                     // Token
                     $http.defaults.headers.common['x-access-token'] = response.token;
@@ -123,7 +122,6 @@ halleinApp.controller('LoginController', function ($scope, $route, translateServ
                         params: data
                     }).then(function (response) {
                         $scope.setup = {input: response.data[0]};
-                        console.log($scope.setup);
                     });
                     $('.wrapper').addClass('background');
                 } else {

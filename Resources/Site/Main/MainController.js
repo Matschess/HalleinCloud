@@ -1,10 +1,6 @@
 halleinApp.controller('MainController', function ($scope, $rootScope, $route, $location, $routeParams, $http, translateService, LoginService) {
     translateService.translate();
 
-    $scope.$on('$viewContentLoaded', function(){
-        console.log('loaded');
-    });
-
     // System-Infos
     $scope.system = {
         version: '0.0.0',
@@ -64,20 +60,20 @@ halleinApp.controller('MainController', function ($scope, $rootScope, $route, $l
 
     // Popup
     var settingsLinks = [
-        {name: 'PROFILE', icon: 'person_outline', url: 'settings/profileSettings.html'},
-        {name: 'CHANGE-PASS', icon: 'lock_outline', url: 'settings/pwChange.html'},
-        {name: 'LANGUAGE', icon: 'language', url: 'settings/language.html'}
+        {name: 'PROFILE', icon: 'person_outline', url: 'ProfileSettings.html'},
+        {name: 'CHANGE-PASS', icon: 'lock_outline', url: 'PasswordSettings.html'},
+        {name: 'LANGUAGE', icon: 'language', url: 'LanguageSettings.html'}
     ];
     $scope.openSettings = function () {
         $scope.popup = {
             title: 'SETTINGS',
             links: settingsLinks,
-            content: 'content/' + settingsLinks[0].url,
+            content: 'Web/Content/' + settingsLinks[0].url,
             actions: settingsLinks[0].actions
         }
     }
     $scope.popupLoad = function (index) {
-        $scope.popup.content = 'content/' + $scope.popup.links[index].url;
+        $scope.popup.content = 'Web/Content/' + $scope.popup.links[index].url;
     }
     $scope.popupClose = function () {
         $scope.popup = false;

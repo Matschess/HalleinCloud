@@ -84,7 +84,6 @@ halleinApp.controller('UsersAddController', function ($scope, $location, $http) 
                 method: 'GET',
                 params: data
             }).then(function (response) {
-                console.log(response.data);
                 $scope.input.username = response.data;
             });
         }

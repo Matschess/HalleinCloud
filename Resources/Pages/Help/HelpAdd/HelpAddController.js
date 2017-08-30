@@ -10,7 +10,6 @@ halleinApp.controller('HelpAddController', function ($scope, $location, $http) {
             switch (index) {
                 case 0:
                     if ($scope.input.question) {
-                        console.log($scope.input.emailReply);
                         if ($scope.input.emailReply) {
                             var data = {
                                 user: user,
