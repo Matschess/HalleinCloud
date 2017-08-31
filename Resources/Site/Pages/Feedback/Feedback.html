@@ -1,0 +1,48 @@
+<div class="page-feedback">
+    <div class="switchWrapper">
+        <span ng-if="input.autoAccept">{{ 'AUTO-ACCEPT-ON' | translate }}</span>
+        <span ng-if="!input.autoAccept">{{ 'AUTO-ACCEPT-OFF' | translate }}</span>
+        <label class="switch">
+            <input type="checkbox" ng-model="input.autoAccept" ng-change="changeAutoAccept(input.autoAccept)" ng-true-value="1" ng-false-value="0">
+            <div class="slider round"></div>
+        </label>
+    </div>
+    <div class="feedbackGroup" ng-if="config.switched == 1">
+        <div class="feedbackBox" ng-if="newFeedbacks.length" ng-repeat="feedback in newFeedbacks">
+            <div class="actions">
+                <div class="action accept tooltipTop" title="{{ 'ACCEPT' | translate }}" ng-click="accept(feedback.id, $index)"><i
+                        class="material-icons">done</i></div>
+                <div class="action decline tooltipTop" title="{{ 'DECLINE' | translate }}" ng-click="decline(feedback.id, $index)"><i
+                        class="material-icons">close</i></div>
+            </div>
+            <div class="subject">{{ feedback.subject }}</div>
+            <div class="rating">{{ feedback.rating }}</div>
+            <div class="content">{{ feedback.text }}</div>
+        </div>
+        <div class="feedbackBox" ng-if="!newFeedbacks.length"><i class="material-icons">done</i> {{ 'NO-NEW-FEEDBACK' | translate }}</div>
+    </div>
+    <div class="feedbackGroup" ng-if="config.switched == 2">
+        <div class="feedbackBox" ng-if="acceptedFeedbacks.length" ng-repeat="feedback in acceptedFeedbacks">
+            <div class="actions">
+                <div class="action decline tooltipTop" title="{{ 'DECLINE' | translate }}" ng-click="reDecline(feedback.id, $index)"><i
+                        class="material-icons">close</i></div>
+            </div>
+            <div class="subject">{{ feedback.subject }}</div>
+            <div class="rating">{{ feedback.rating }}</div>
+            <div class="content">{{ feedback.text }}</div>
+        </div>
+        <div class="feedbackBox" ng-if="!acceptedFeedbacks.length"><i class="material-icons">block</i> {{ 'NO-ACCEPTED-FEEDBACK' | translate }}</div>
+    </div>
+    <div class="feedbackGroup" ng-if="config.switched == 3">
+        <div class="feedbackBox" ng-if="declinedFeedbacks.length" ng-repeat="feedback in declinedFeedbacks">
+            <div class="actions">
+                <div class="action accept tooltipTop" title="{{ 'ACCEPT' | translate }}" ng-click="reAccept(feedback.id, $index)"><i
+                        class="material-icons">done</i></div>
+            </div>
+            <div class="subject">{{ feedback.subject }}</div>
+            <div class="rating">{{ feedback.rating }}</div>
+            <div class="content">{{ feedback.text }}</div>
+        </div>
+        <div class="feedbackBox" ng-if="!declinedFeedbacks.length"><i class="material-icons">block</i> {{ 'NO-DECLINED-FEEDBACK' | translate }}</div>
+    </div>
+</div>

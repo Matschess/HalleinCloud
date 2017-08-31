@@ -1,0 +1,79 @@
+.globalNotification {
+  background-size: 30px;
+  background-position: center left 20px;
+  background-repeat: no-repeat;
+  position: fixed;
+  color: #fff;
+  font-size: 18px;
+  padding: 20px 60px;
+  text-align: center;
+  top: 0;
+  opacity: 0;
+  z-index: 999;
+  transform: scale(0);
+  transition: top .4s ease, transform .2s ease, opacity .4s ease;
+  cursor: default;
+  &.visible {
+    opacity: 1;
+    top: 20px;
+    transform: scale(1);
+  }
+  &.success {
+    background-color: #2ecc71;
+    background-image: url('../Assets/Icons/done_white.png');
+  }
+  &.warning {
+    background-color: #f39c12;
+    background-image: url('../Assets/Icons/warning.png');
+  }
+  &.loginWarn {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  &.error {
+    background-color: #e74c3c;
+    background-image: url('../Assets/Icons/close.png');
+  }
+}
+
+.loadingSpinner {
+  display: inline;
+  margin-right: 15px;
+  .loading {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #E6E6E6;
+    border-top: 2px solid #e67e22;
+    border-radius: 50%;
+    animation: rotate 1s ease infinite;
+    vertical-align: middle;
+  }
+}
+
+.serverLost {
+  display: none;
+  margin-right: 15px;
+  color: #fff;
+  background-color: #e74c3c;
+  padding: 5px 8px;
+  border-radius: 10px;
+  opacity: .7;
+  animation: pulse 2s ease infinite;
+  &.active {
+    display: inline;
+  }
+}
+
+.serverConnected {
+  display: none;
+  margin-right: 18px;
+  color: #fff;
+  background-color: #27ae60;
+  padding: 5px 8px;
+  border-radius: 10px;
+  opacity: .7;
+  animation: pulse .5s ease infinite;
+  &.active {
+    display: inline;
+  }
+}

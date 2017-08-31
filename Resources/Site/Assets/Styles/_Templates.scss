@@ -1,0 +1,243 @@
+.fullBox {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  .title {
+    font-size: 20px;
+    background-color: #2b2f38;
+    color: #fff;
+    margin-bottom: 10px;
+    &.loading {
+      text-transform: uppercase;
+    }
+    &.success {
+      background-color: #2ecc71;
+      text-transform: uppercase;
+    }
+    &.error {
+      background-color: #e74c3c;
+      text-transform: uppercase;
+    }
+    h2, a {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: normal;
+      color: #fff;
+      line-height: 50px;
+      padding: 0 20px;
+      margin: 0;
+      text-decoration: none;
+      &.tab {
+        line-height: 47px;
+        border-top: 3px solid #2b2f38;
+        cursor: pointer;
+        &.active {
+          background-color: #fff;
+          color: #333;
+        }
+      }
+    }
+    .actions {
+      float: right;
+      cursor: pointer;
+      a {
+        display: inline-block;
+        padding: 0 15px;
+        line-height: normal;
+        color: #fff;
+        i {
+          line-height: 50px;
+        }
+        &:hover {
+          background-color: #21262f;
+        }
+      }
+    }
+  }
+  .content {
+    padding: 12px 20px;
+    font-size: 0;
+    .left {
+      display: inline-block;
+      font-size: 16px;
+      width: 50%;
+      vertical-align: top;
+    }
+    .right {
+      display: inline-block;
+      font-size: 16px;
+      width: 50%;
+      vertical-align: top;
+    }
+    .appUp {
+      color: #e74c3c;
+    }
+    .appDown {
+      color: #62C462;
+    }
+    .switchWrapper {
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      label {
+        vertical-align: middle;
+        .slider {
+          background-color: #e74c3c;
+        }
+        input:checked + .slider {
+          background-color: #62C462;
+        }
+      }
+    }
+    .full {
+      font-size: 16px;
+    }
+    .tagBox {
+      margin-top: 10px;
+    }
+    .remover {
+      position: absolute;
+    }
+    .veggieWrapper {
+      display: inline-block;
+      label:first-of-type {
+        margin-bottom: 10px;
+      }
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+    textarea {
+      width: 80%;
+      height: 150px;
+      margin: 5px 5px 5px 0;
+      vertical-align: top;
+      &.short {
+        width: 40%;
+        height: 100px;
+      }
+      &.low {
+        height: 80px;
+      }
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: normal;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      &:first-of-type {
+        margin-top: 5px;
+      }
+    }
+    .langLinks {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      .langLink {
+        font-size: 14px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+        &.active {
+          background-color: #3498db;
+          color: #fff;
+        }
+      }
+    }
+    i {
+      font-size: 20px;
+      vertical-align: middle;
+      cursor: default;
+    }
+    button {
+      height: 31px;
+      padding: 0 20px;
+      vertical-align: middle;
+    }
+    .openingHours.sleep {
+      color: #c6c6c6;
+      label {
+        text-decoration: line-through;
+      }
+    }
+    .openingTimes, .restDays {
+      margin-bottom: 5px;
+      div {
+        display: inline-block;
+        span {
+          display: inline-block;
+          &:first-of-type {
+            width: 100px;
+          }
+          &:last-of-type {
+            width: 150px;
+          }
+        }
+      }
+      i {
+        &:hover {
+          color: #dc4a3a;
+        }
+      }
+    }
+  }
+}
+
+.switchBox {
+  h2 {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 50px;
+    padding: 0;
+    margin: 0;
+  }
+  .switcher {
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    li {
+      display: inline;
+      a {
+        color: #333;
+        padding: 6px 8px;
+        margin-left: 6px;
+        border-radius: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+        &.active {
+          background-color: #e74c3c;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .switchWrapper {
+    float: right;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    label {
+      vertical-align: middle;
+      input:checked + .slider {
+        background-color: #e74c3c;
+      }
+    }
+  }
+}

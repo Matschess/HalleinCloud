@@ -1,0 +1,71 @@
+body {
+  font-family: $primary-font;
+  font-size: 15px;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; // sothat only container is scrollable
+
+  // For translation
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /*
+  -webkit-perspective: 500px;
+  perspective: 500px;
+  */
+}
+
+// Remove browser styles
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.wrapper {
+  display: none;
+  background-color: #f3f3f3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  &.finished {
+    display: block;
+    animation: fadeIn .5s ease;
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #bebebe;
+}
+
+.container {
+  display: inline-block;
+  position: absolute;
+  width: calc(77% - 50px * 2);
+  height: calc(100% - 70px - 80px);
+  left: 23%;
+  padding: 40px 50px;
+  overflow: auto; // sothat only container is scrollable
+
+  .view {
+    height: 100%;
+  }
+}

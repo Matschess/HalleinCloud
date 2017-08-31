@@ -1,0 +1,256 @@
+.popup {
+  background-color: #fff;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  padding: 30px;
+  opacity: 0;
+  -webkit-transition: opacity .4s;
+  -moz-transition: opacity .4s;
+  -ms-transition: opacity .4s;
+  -o-transition: opacity .4s;
+  transition: opacity .4s;
+  &.visible {
+    opacity: 1;
+  }
+  &.large {
+    width: 600px;
+    height: 300px;
+    margin-left: calc((300px + 30px) * -1);
+    margin-top: calc((150px + 30px * 2) * -1); // plus padding top and bottom
+  }
+  .close {
+    font-size: 30px;
+    color: #a8a8a8;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    &:hover {
+      color: #333;
+    }
+  }
+  h2 {
+    font-weight: normal;
+    margin-top: 0;
+  }
+  navigation {
+    display: inline-block;
+    border-right: 1px solid #333;
+    width: 40%;
+    height: 90%;
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        padding: 8px 0;
+        color: #444;
+        cursor: pointer;
+        i {
+          font-size: 22px;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+  content {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    padding: 0 15px;
+    .title {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: calc(100% - 35px - 8px);
+      height: 60px;
+      margin: 5px 0 5px 0;
+    }
+    input {
+      width: 70%;
+    }
+    button.done {
+      display: block;
+      float: right;
+      background: none;
+      border: 1px solid #000;
+      border-radius: 50%;
+      margin-top: 10px;
+      padding: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      tr {
+        cursor: default;
+        &:first-of-type {
+          background-color: #f2f2f2;
+        }
+        &:hover {
+          td {
+            color: #000;
+          }
+        }
+      }
+      th {
+        font-weight: normal;
+        text-align: left;
+      }
+      th, td {
+        padding: 4px 8px;
+      }
+      td {
+        color: #666
+      }
+    }
+  }
+  .action {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    i {
+      color: #666;
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      margin-left: 10px;
+      line-height: 35px;
+      border: 1px solid #666;
+      border-radius: 50%;
+      cursor: pointer;
+      &:hover {
+        color: #333;
+        border-color: #333;
+      }
+    }
+  }
+}
+
+.overlay {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  -webkit-transition: opacity .3s, visibility .3s;
+  -moz-transition: opacity .3s, visibility .3s;
+  -ms-transition: opacity .3s, visibility .3s;
+  -o-transition: opacity .3s, visibility .3s;
+  transition: opacity .3s, visibility .3s;
+  &.visible {
+    visibility: visible;
+    opacity: .5;
+  }
+  &.blocker {
+    z-index: 9999;
+    visibility: visible;
+  }
+}
+
+.ngdialog {
+  &.ngdialog-theme-plain {
+    top: 30%;
+    padding: 0;
+    z-index: 997;
+    .ngdialog-overlay {
+      background-color: rgba(0, 0, 0, .5);
+      animation-duration: .3s;
+    }
+    .ngdialog-content {
+      padding-top: 10px;
+      padding-left: 30px;
+      font-family: 'Gravity';
+      color: #444;
+      animation-duration: .4s;
+      .close {
+        font-size: 30px;
+        color: #a8a8a8;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: default;
+        &:hover {
+          color: #333;
+        }
+      }
+      h2 {
+        font-weight: normal;
+        margin-top: 0;
+      }
+      .actions {
+        margin-top: 35px;
+        text-align: right;
+        button {
+          background: none;
+          color: #444;
+          text-transform: uppercase;
+          padding: 10px 15px;
+          &:hover {
+            color: #000;
+          }
+          &.highlighted {
+            background-color: #e74c3c;
+            color: #fff;
+            &:hover:not([disabled]) {
+              background-color: #dc4a3a;
+            }
+            &:disabled {
+              opacity: .5;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.ngdialog-theme-cropper {
+    top: 20%;
+    .ngdialog-content {
+      padding-top: 40px;
+      .cropper {
+        padding-right: 20px;
+        img-crop {
+          font-size: 30px;
+          height: 300px;
+          z-index: 999;
+        }
+      }
+      .color {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .restDays {
+        input {
+          width: 100px;
+        }
+        textarea {
+          width: calc(100% - 20px);
+          height: 100px;
+        }
+      }
+      .actions {
+        button {
+          &.highlighted {
+            background-color: #27bf71;
+            color: #fff;
+            &:hover:not([disabled]) {
+              background-color: #27ae60;
+            }
+          }
+        }
+      }
+    }
+  }
+}

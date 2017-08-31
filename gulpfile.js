@@ -1,6 +1,8 @@
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    bulkSass = require('gulp-sass-bulk-import'),
+    autoprefixer = require('gulp-autoprefixer'),
     cssmin = require('gulp-cssmin'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
@@ -16,7 +18,7 @@ var dest = {
     indexHtml: 'Web/',
     templates: 'Web/Templates',
     content: 'Web/Content',
-    assets: 'Web/Assets',
+    media: 'Web/Assets',
     languages: 'Web/Languages'
 }
 // ---------- [END] CONFIG ----------
@@ -31,10 +33,10 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('styles', function () {
-    return gulp.src([
-        'Resources/Assets/Config/Styles/Styles.scss',
-        'Resources/**/*.scss'])
+    return gulp.src('Resources/Config/Styles/Styles.scss')
+        .pipe(bulkSass())
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(cssmin())
         .pipe(concat('Styles.css'))
         .pipe(gulp.dest(dest.styles));
@@ -42,14 +44,13 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src([
-        'Resources/Config/Scripts/Angular/Variables.js',
-        'Resources/Config/Scripts/Angular/App.js',
-        'Resources/Config/Scripts/Angular/Router.js',
-        'Resources/Config/Scripts/Angular/Services/**/*.js',
-        'Resources/Config/Scripts/Angular/Directives/**/*.js',
-        'Resources/Config/Scripts/Functions.js',
-        'Resources/Site/**/*.js',
-        'Resources/Pages/**/*.js'])
+        'Resources/Config/Scripts/Globals/Variables.js',
+        'Resources/Config/Scripts/App.js',
+        'Resources/Config/Scripts/Router.js',
+        'Resources/Site/Assets/Scripts/**/*.js',
+        'Resources/Site/SiteController.js',
+        'Resources/Site/Components/**/*.js',
+        'Resources/Site/Pages/**/*.js'])
         .pipe(concat('App.js'))
         //.pipe(uglify())
         .pipe(gulp.dest(dest.scripts));
@@ -61,19 +62,21 @@ gulp.task('index-html', function () {
 });
 
 gulp.task('templates', function () {
-    return gulp.src('Resources/Config/Templates/*.html')
+    return gulp.src('Resources/Site/Templates/*.html')
         .pipe(gulp.dest(dest.templates));
 });
 
 gulp.task('content', function () {
-    return gulp.src('Resources/**/*.html')
+    return gulp.src([
+        'Resources/Site/Components/**/*.html',
+        'Resources/Site/Pages/**/*.html'])
         .pipe(flatten())
         .pipe(gulp.dest(dest.content));
 });
 
-gulp.task('assets', function () {
-    return gulp.src('Resources/Assets/**/*')
-        .pipe(gulp.dest(dest.assets));
+gulp.task('media', function () {
+    return gulp.src('Resources/Media/**/*')
+        .pipe(gulp.dest(dest.media));
 });
 
 gulp.task('languages', function () {
@@ -86,9 +89,9 @@ gulp.task('watch', function () {
     gulp.watch(['Resources/**/*.scss'], ['styles'])
     gulp.watch(['Resources/**/*.js'], ['scripts'])
     gulp.watch(['Resources/Site/index.html'], ['index-html'])
-    gulp.watch(['Resources/Config/Templates/*.html'], ['templates'])
-    gulp.watch(['Resources/**/*.html'], ['content'])
-    gulp.watch(['Resources/Assets/**/*'], ['assets'])
+    gulp.watch(['Resources/Site/Templates/*.html'], ['templates'])
+    gulp.watch(['Resources/Site/Components/**/*.html', 'Resources/Site/Pages/**/*.html'], ['content'])
+    gulp.watch(['Resources/Media/**/*'], ['media'])
     gulp.watch(['Resources/Languages/*.json'], ['languages'])
 })
 
@@ -100,10 +103,10 @@ gulp.task('cachefile', function(cb){
 });
 
 gulp.task('build', function () {
-    gulp.start('styles', 'scripts', 'index-html', 'templates',  'content', 'assets', 'languages', 'cachefile');
+    gulp.start('styles', 'scripts', 'index-html', 'templates',  'content', 'media', 'languages', 'cachefile');
 })
 
 
 gulp.task('default', function () {
-    gulp.start('browser-sync', 'styles', 'scripts', 'index-html', 'templates', 'content', 'assets', 'languages', 'watch', 'cachefile');
+    gulp.start('browser-sync', 'styles', 'scripts', 'index-html', 'templates', 'content', 'media', 'languages', 'watch', 'cachefile');
 });

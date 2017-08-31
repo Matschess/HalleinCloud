@@ -1,0 +1,272 @@
+.page-meals {
+  .days {
+    width: 100%;
+    text-align: center;
+    .day {
+      opacity: 0;
+      display: inline-block;
+      font-size: 16px;
+      background-color: #f2f2f2;
+      color: #c3c3c3;
+      line-height: 120px;
+      width: calc(100% / 7 - 4px);
+      height: 120px;
+      margin-right: 4px;
+      text-align: center;
+      vertical-align: top;
+      cursor: default;
+      &:nth-of-type(1) {
+        animation: slideDown .4s ease forwards;
+      }
+      &:nth-of-type(2) {
+        animation: slideDown .4s .05s ease forwards;
+      }
+      &:nth-of-type(3) {
+        animation: slideDown .4s .1s ease forwards;
+      }
+      &:nth-of-type(4) {
+        animation: slideDown .4s .15s ease forwards;
+      }
+      &:nth-of-type(5) {
+        animation: slideDown .4s .2s ease forwards;
+      }
+      &:nth-of-type(6) {
+        animation: slideDown .4s .25s ease forwards;
+      }
+      &:nth-of-type(7) {
+        animation: slideDown .4s .3s ease forwards;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        width: calc(100% / 7);
+      }
+      &.closed {
+        background-color: #e2e2e2;
+        div {
+          text-decoration: line-through;
+        }
+      }
+      .closed, .constant {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: #e2e2e2;
+      }
+      .constant {
+        display: none;
+        right: 30px;
+        &.active {
+          color: #333;
+        }
+      }
+      .closedTag {
+        position: absolute;
+        bottom: -40px;
+        left: 20px;
+        height: 60px;
+        .animate {
+          animation: tag 1s;
+        }
+        @keyframes tag {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          20% {
+            transform: rotate(5deg);
+          }
+          40% {
+            transform: rotate(-5deg);
+          }
+          60% {
+            transform: rotate(2deg);
+          }
+          80% {
+            transform: rotate(-2deg);
+          }
+        }
+      }
+      &:hover {
+        .closed, .constant {
+          color: #333;
+        }
+      }
+      .text {
+        display: inline-block;
+        line-height: normal;
+        vertical-align: middle;
+        .date {
+          font-size: 14px;
+        }
+      }
+      .menu {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        position: relative;
+        .remove {
+          display: none;
+          font-size: 30px;
+          position: absolute;
+          width: 100%;
+          left: 0;
+          line-height: 40px;
+          color: #fff;
+        }
+        &.yellow {
+          background-color: #f39c12;
+          .remove {
+            background-color: darken(#f39c12, 10%);
+          }
+        }
+        &.red {
+          background-color: #e74c3c;
+          .remove {
+            background-color: darken(#e74c3c, 10%);
+          }
+        }
+        &.brown {
+          background-color: #d35400;
+          .remove {
+            background-color: darken(#d35400, 10%);
+          }
+        }
+        &:hover .remove {
+          display: inline;
+        }
+      }
+      .done {
+        background-color: #27ae60;
+        color: #fff;
+        //animation: scaleIn .6s;
+        position: relative;
+        @keyframes scaleIn {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(0);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+  .mealIndicator {
+    opacity: 0;
+    font-size: 16px;
+    color: #000;
+    text-align: right;
+    margin-top: 40px;
+    animation: slideIn .4s .35s ease forwards;
+    span {
+      border-left: 2px solid;
+      padding-left: 4px;
+      &.veggie {
+        border-color: #69c800;
+      }
+    }
+  }
+  .menunames {
+    font-size: 0;
+    width: 100%;
+    margin-top: 20px;
+    .menutype {
+      opacity: 0;
+      display: inline-block;
+      font-size: 16px;
+      background-color: #fafafa;
+      width: 32%;
+      margin-right: 2%;
+      vertical-align: top;
+      &.appetizer {
+        animation: slideIn .4s .1s ease forwards;
+        label {
+          background-color: #f39c12;
+        }
+      }
+      &.mainCourse {
+        animation: slideIn .4s .15s ease forwards;
+        label {
+          background-color: #e74c3c;
+        }
+      }
+      &.desert {
+        animation: slideIn .4s .2s ease forwards;
+        label {
+          background-color: #d35400;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+      label {
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+        text-transform: uppercase;
+        i {
+          cursor: pointer;
+        }
+        .searchbox {
+          background-color: transparent;
+          color: #fff;
+          border-bottom: 1px solid #fff;
+          margin: 0;
+          padding: 0;
+        }
+        a {
+          color: #fff;
+        }
+        .search {
+          position: absolute;
+          right: 40px;
+        }
+        .add {
+          position: absolute;
+          right: 10px;
+        }
+      }
+      .menuWrapper {
+        max-height: 300px;
+        overflow-y: auto;
+        .empty {
+          text-align: center;
+          margin-top: 8px;
+          margin-bottom: 8px;
+          i, span {
+            vertical-align: middle;
+          }
+        }
+        .menu {
+          position: relative;
+          display: inline-block;
+          font-size: 16px;
+          color: #333;
+          opacity: 1;
+          padding: 8px 12px;
+          border-bottom: 1px solid #d2d2d2;
+          border-left: 3px solid transparent;
+          width: calc(100% - 27px);
+          cursor: move;
+          z-index: 1;
+          &.veggie {
+            border-left: 2px solid #69c800;
+          }
+          &:hover {
+            background-color: #e8e8e8;
+            .remove {
+              display: block;
+            }
+          }
+          .remove {
+            display: none;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}

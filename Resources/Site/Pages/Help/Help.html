@@ -1,0 +1,12 @@
+<div class="full page-help">
+    <div ng-repeat="category in categories">
+        <div class="category" ng-if="(faqs | filter: { category:category.id }).length">{{ category.name | translate }}</div>
+        <div class="help" ng-repeat="faq in faqs | filter: { category:category.id }" ng-click="faq.show=!faq.show">
+            <div class="question" ng-class="{'opened':faq.show}">
+                {{faq.question}}
+            </div>
+            <div class="answer" ng-class="{'visible':faq.show}" ng-bind-html="faq.answer"></div>
+        </div>
+        <br/>
+    </div>
+</div>
